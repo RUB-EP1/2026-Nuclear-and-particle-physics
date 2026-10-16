@@ -1,0 +1,7 @@
+# Public sources only. Local assets, notes, tools and build outputs stay local.
+*
+!*/
+!/.gitignore
+!index.qmd
+!slides/lectures/Lecture_*/Lecture_*.qmd
+!.github/workflows/*.yml

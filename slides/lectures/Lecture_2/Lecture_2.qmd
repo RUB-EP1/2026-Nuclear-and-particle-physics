@@ -1,0 +1,164 @@
+---
+pagetitle: "KT1 · Lecture 2 · Particle kinematics"
+format:
+  revealjs:
+    theme: simple
+    controls: false
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    css: [../../styles.css, ../../lecture-styles.css]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    min-scale: 0.2
+    max-scale: 2.0
+    auto-stretch: false
+    html-math-method: mathml
+    include-in-header:
+      - file: ../../scripts/frames.html
+      - file: ../../scripts/widget.html
+---
+
+## Particle kinematics {.title-card}
+
+::: {.subtitle}
+KT1 · 2026 · Lecture 2
+:::
+
+Energy, momentum and reconstructed mass.
+
+::: {.notes}
+Draft assembled from material deferred from Lecture 1. Add the full covariant/contravariant and metric teaching sequence before presenting.
+:::
+
+## Energy units and four-momentum
+
+An **electronvolt** (eV) is the energy gained by charge $e$ across a potential difference of one volt.
+
+$$1\,\mathrm{GeV}=10^9\,\mathrm{eV}.$$
+
+The **four-momentum** combines energy $E$ and three-momentum $\mathbf p$:
+
+$$p^\mu=(E/c,\mathbf p),\qquad E^2-c^2|\mathbf p|^2=m^2c^4.$$
+
+We will use units with $c=1$.
+
+::: {.notes}
+Introduce m as rest mass and c as the speed of light. In natural units energies, masses and momenta are expressed in GeV; with c restored their units differ. The invariant norm uses the (+,−,−,−) metric. State this relation without deriving it here.
+:::
+
+
+
+## Can we find a particle that decays unseen?
+
+$$pp\longrightarrow Z+X\longrightarrow\mu^+\mu^-+X$$
+
+Measure the two muons.
+
+Reconstruct the mass of their parent.
+
+[Explore a CMS collision event](https://opendata.cern.ch/visualise/events/cms)
+
+::: {.notes}
+X denotes the rest of the event. This is the running example, not a claim that every dimuon pair comes from a Z. Open the CMS display as an optional instructor-led extension; choose a suitable dimuon event before class. The deck does not automatically select an event.
+:::
+
+
+
+## Symbols for the two-muon measurement
+
+$p_1,p_2$: the measured muon **four-momenta**.  
+$E_1,E_2$: their energies.  
+$\theta$: the angle between their three-momenta.  
+$M$: the reconstructed mass of the pair.
+
+For a pair from one parent, four-momentum conservation gives $p_{\mathrm{parent}}=p_1+p_2$.
+
+::: {.notes}
+Clarify four-vectors versus three-vectors before the blackboard expansion. The superscript μ is an index, not the muon symbol. The square of a four-vector is its Minkowski norm, not the sum of four positive squares.
+:::
+
+
+
+## Two tracks, one mass
+
+In units with $c=1$:
+
+$$M^2=(p_1+p_2)^2.$$
+
+For highly relativistic daughters:
+
+$$M^2\simeq2E_1E_2(1-\cos\theta).$$
+
+**The reconstructed mass is independent of the observer’s frame.**
+
+::: {.notes}
+Blackboard, 5–7 minutes, the only derivation. Define p_i=(E_i, p-vector_i) and the (+,−,−,−) metric. Expand M²=(E1+E2)²−|p1+p2|²=m1²+m2²+2(E1E2−p1·p2). For relativistic muons neglect m_mu and use |p_i|≈E_i, giving 2E1E2(1−cosθ). Take two back-to-back muons with E1=E2=45.6 GeV: M≈91.2 GeV. This is an idealized numerical example, not a measured event. Conservation of four-momentum makes the sum the parent four-momentum; its Minkowski norm is invariant. Stop here, without a second derivation of fixed-target kinematics.
+:::
+
+
+
+## From events to a mass distribution
+
+An **event** is one recorded collision. It gives one value of the reconstructed pair mass.
+
+A **histogram** counts how many events fall within each interval of mass.
+
+A **resonance** can appear as a localized excess near a parent particle’s mass.
+
+Other processes produce **background** events in the same measurement.
+
+::: {.notes}
+Finite detector resolution and the particle’s intrinsic decay width both affect a peak. Repeated evidence and controlled uncertainties are necessary. Do not present a schematic peak as actual data.
+:::
+
+
+
+## A discovery needs many collisions
+
+One pair gives one reconstructed mass.
+
+Many events produce a mass distribution.
+
+A localized excess can reveal a resonance.
+
+**Backgrounds and detector effects must also be tested.**
+
+::: {.notes}
+Explain a Z peak near 91 GeV qualitatively. A peak alone is not sufficient proof of a new particle: calibration, background modelling and statistical evidence matter. Cross section describes production frequency, lifetime describes decay, and branching fraction describes the fraction in a given decay channel. Formal calculations come later.
+:::
+
+
+
+
+## What is momentum transfer?
+
+$$\mathbf q=\mathbf p_{\mathrm{in}}-\mathbf p_{\mathrm{out}},\qquad Q=|\mathbf q|.$$
+
+$\mathbf p_{\mathrm{in}}$: incoming probe momentum.  
+$\mathbf p_{\mathrm{out}}$: outgoing probe momentum.
+
+$\mathbf q$ is the momentum delivered to the target system.
+
+Even a change of direction alone gives a nonzero transfer.
+
+::: {.notes}
+This slide defines Q as the magnitude of a three-momentum transfer for a simple spatial-resolution estimate. In relativistic scattering literature Q² often means minus the squared four-momentum transfer; do not silently identify those two definitions. The target system includes any recoiling or produced particles.
+:::
+
+
+
+## Resolution and momentum transfer
+
+$$R\sim\frac{\hbar}{Q}.$$
+
+$R$: distance scale probed. $Q=|\mathbf q|$: magnitude of the three-momentum transfer in this estimate.
+
+$\hbar=h/(2\pi)$: reduced Planck constant.
+
+A larger transfer can reveal finer structure. High beam momentum alone is insufficient if the deflection is tiny.
+
+::: {.notes}
+Order-of-magnitude spatial-resolution estimate, not an exact radius formula. Distinguish this Q from invariant relativistic momentum-transfer conventions.
+:::

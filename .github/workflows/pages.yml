@@ -1,0 +1,70 @@
+name: Build and publish lectures
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch pinned course layout
+        uses: actions/checkout@v4
+        with:
+          repository: RUB-EP1/Data-Analysis-Block-Course-2026
+          ref: 901d7cbf1a2cc223ef9a4ca74adc395a90f73ebf
+          path: _layout
+          sparse-checkout: |
+            slides/styles.css
+            slides/lecture-styles.css
+            slides/scripts
+            site/site.css
+          sparse-checkout-cone-mode: false
+      - name: Prepare website
+        shell: bash
+        run: |
+          mkdir -p site slides/scripts
+          cp _layout/site/site.css site/site.css
+          cp _layout/slides/styles.css _layout/slides/lecture-styles.css slides/
+          cp _layout/slides/scripts/frames.html _layout/slides/scripts/widget.html slides/scripts/
+          cat > _quarto.yml <<'YAML'
+          project:
+            type: website
+            output-dir: _site
+            render:
+              - index.qmd
+              - slides/lectures/Lecture_*/Lecture_*.qmd
+          website:
+            title: Nuclear and Particle Physics
+            site-url: https://rub-ep1.github.io/2026-Nuclear-and-particle-physics/
+            repo-url: https://github.com/RUB-EP1/2026-Nuclear-and-particle-physics
+            page-footer:
+              left: KT1 · 2026 · Experimental Physics I · Ruhr-Universität Bochum
+          YAML
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.8.26
+      - name: Render website
+        run: quarto render
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

@@ -1,0 +1,75 @@
+---
+pagetitle: "Nuclear and Particle Physics · 2026"
+page-layout: full
+format:
+  html:
+    theme: cosmo
+    css: site/site.css
+    toc: false
+    include-in-header:
+      text: |
+        <style>main .hero { grid-template-columns:minmax(0,1fr); } .lecture-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; } .course-card { padding:1.5rem; } .course-card h3 { margin-top:.5rem; }</style>
+---
+
+::: {.hero}
+::: {.hero-copy}
+[KT1 · Winter semester 2026/27 · Course 160202]{.hero-kicker}
+
+# Introduction to Nuclear and Particle Physics {.hero-title}
+
+Lectures by Prof. Dr. Mikhail Mikhasenko at Ruhr-Universität Bochum.
+From quantum mechanics and the constituents of matter to interactions,
+experiments and particle kinematics.
+
+::: {.hero-links}
+[Moodle](https://moodle.ruhr-uni-bochum.de/course/view.php?id=73836){.btn-main}
+[E-campus](https://campus.uv.ruhr-uni-bochum.de/campus/lecturer/event.asp?mode=own&gguid=0x0305174459434149AD1B7088F70E7346&tguid=0x7A6472FC3512415984363071EF7A542D){.chip}
+[GitHub](https://github.com/RUB-EP1/2026-Nuclear-and-particle-physics){.chip}
+:::
+:::
+
+::: {.hero-group}
+Experimental Physics I · Ruhr-Universität Bochum
+:::
+:::
+
+## Lectures {.section-title}
+
+Browser slides with interactive demonstrations. Press **F** for full screen,
+**Esc** for the overview. Films require an internet connection.
+
+:::: {.lecture-grid}
+::: {.course-card}
+[Lecture 1 · Introduction]{.card-tag}
+
+### Nuclear and particle physics
+
+Particle tracks, quantum mechanics, spin, the Standard Model and its interactions.
+
+[Open slides](slides/lectures/Lecture_1/Lecture_1.qmd){.btn-main}
+:::
+
+::: {.course-card}
+[Lecture 2 · Partial draft]{.card-tag}
+
+### Particle kinematics
+
+Energy units, four-momentum, reconstructed mass and momentum transfer.
+This lecture is still being developed.
+
+[Preview draft](slides/lectures/Lecture_2/Lecture_2.qmd){.btn-main}
+:::
+::::
+
+## Schedule {.section-title}
+
+Lectures start **16 October 2026**.
+
+| Session | Day | Time | Room |
+|---|---|---|---|
+| Lecture | Tuesday | 12:00–14:00 | NB 3/99 |
+| Lecture | Friday | 10:00–12:00 | NB 3/99 |
+| Exercise class | Friday | 08:00–10:00 | NB 7/173 |
+| Exercise class | Friday | 12:00–14:00 | NB 2/158 |
+
+Course announcements and exercise information are on [Moodle](https://moodle.ruhr-uni-bochum.de/course/view.php?id=73836).
