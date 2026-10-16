@@ -1000,6 +1000,10 @@ Last year's AI-supported course produced ambitious work, but did not reliably se
 
 **Use AI to learn. Practise solving problems without it.**
 
+See the homework from last year’s course, referenced in the study below.
+
+**Not all of last year’s problems have been solved. Interested in continuing? Please reach out.**
+
 ::: {.credit}
 M. Mikhasenko et al., *AI in Particle Physics Education: Research Problems and Foundational Skills* (2026). [Study and preprint](https://inspirehep.net/literature/3200750).
 :::
