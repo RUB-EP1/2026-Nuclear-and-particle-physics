@@ -61,6 +61,14 @@ This lecture is still being developed.
 :::
 ::::
 
+## Exercises {.section-title}
+
+[Download exercise sheet 1 (PDF)](exercises/Sheet_1/Sheet_1.pdf){.btn-main}
+
+Thomson problems **1.1, 1.4, 1.10, and 2.16**. Due **October 23, 2026**.
+Submit individual, handwritten solutions to your tutor:
+Hendric Jonas or Dhruvanshu Parmar.
+
 ## Schedule {.section-title}
 
 Lectures start **16 October 2026**.

@@ -5,3 +5,4 @@
 !index.qmd
 !slides/lectures/Lecture_*/Lecture_*.qmd
 !.github/workflows/*.yml
+!exercises/Sheet_*/Sheet_*.pdf

@@ -37,6 +37,8 @@ jobs:
           project:
             type: website
             output-dir: _site
+            resources:
+              - exercises/Sheet_*/Sheet_*.pdf
             render:
               - index.qmd
               - slides/lectures/Lecture_*/Lecture_*.qmd
