@@ -1,0 +1,605 @@
+---
+pagetitle: "KT1 · Lecture 3 · Quantum Amplitudes and Transition Rates"
+format:
+  revealjs:
+    theme: simple
+    controls: false
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    css: [../../styles.css, ../../lecture-styles.css, lecture.css]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    min-scale: 0.2
+    max-scale: 2.0
+    auto-stretch: false
+    html-math-method: mathml
+    include-in-header:
+      - file: ../../scripts/frames.html
+      - file: ../../scripts/widget.html
+---
+
+## Lecture 3 {.title-card}
+
+::: {.subtitle}
+Quantum Amplitudes and Transition Rates
+:::
+
+What determines how often an allowed process occurs?
+
+::: {.notes}
+Plan for 90 minutes of teaching: 0–30 kinematics repetition at the board; 30–35 Menti; 35–55 amplitudes and states; 55–75 first-order perturbation theory and Fermi’s golden rule; 75–90 decay rate and a short cross-section connection. If discussion takes longer, retain the decay-rate example and defer the detailed scattering formula to backup.
+:::
+
+## Kinematics recap — invariants
+
+:::: {.slide-body}
+$$p^2=E^2-|\mathbf p|^2=m^2,\qquad P=\sum_i p_i,\qquad M^2=P^2.$$
+**At the board:** two photons have energies $E_1,E_2$ and opening angle $\theta$.
+
+Derive $M^2=2E_1E_2(1-\cos\theta)$.
+
+Can a system of massless particles have nonzero mass?
+::::
+
+::: {.notes}
+Minutes 0–6. Use c=1. Expand (p₁+p₂)² and use pᵢ²=0. Parallel photons give M=0; opposite photons give M²=4E₁E₂. Ask which measured quantities change under a boost.
+:::
+
+## Kinematics recap — the CM frame
+
+:::: {.slide-body}
+$$P=(E,\mathbf P),\qquad \boldsymbol\beta_{\mathrm{CM}}=\frac{\mathbf P}{E},\qquad E_{\mathrm{CM}}=M.$$
+A system has $P=(5,0,0,3)\ \mathrm{GeV}$.
+
+Find its mass and the boost to its CM frame. Check the transformed energy and momentum.
+::::
+
+::: {.notes}
+Minutes 6–11. M=4 GeV, β=0.6 along +z, γ=1.25. E′=γ(5−0.6×3)=4 GeV and Pz′=γ(3−0.6×5)=0. The CM frame requires timelike total momentum.
+:::
+
+## Kinematics recap — two-body decay
+
+:::: {.slide-body}
+$$P=p_1+p_2,\qquad P=(M,\mathbf0).$$
+**Re-derive:**
+$$E_1^*=\frac{M^2+m_1^2-m_2^2}{2M},\qquad p^*=\sqrt{E_1^{*2}-m_1^2}.$$
+For $M=5$, $m_1=3$, $m_2=0$ (all in GeV), find both daughter energies and $p^*$.
+::::
+
+::: {.notes}
+Minutes 11–19. Have students supply (P−p₁)²=m₂². E₁*=3.4 GeV; E₂*=p*=1.6 GeV. Ask whether the direction or lifetime has been determined. Neither has.
+:::
+
+## Kinematics recap — boost the daughters
+
+:::: {.slide-body}
+$$E_1^{\mathrm{lab}}=\gamma(E_1^*+\beta p^*\cos\theta^*).$$
+Use the preceding decay with a parent moving at $\beta=0.6$.
+
+Find the energy endpoints. Explain why every event still reconstructs the same parent mass.
+::::
+
+::: {.notes}
+Minutes 19–24. γ=1.25; endpoints 3.05 and 5.45 GeV. This is a boost from the parent rest frame to the lab; β is the parent lab velocity. Invariance follows by transforming the sum of the four-momenta.
+:::
+
+## Kinematics recap — thresholds
+
+:::: {.slide-body}
+$$s=m_a^2+m_b^2+2m_bE_a\quad\text{(stationary target)}.$$
+For $p+p\to p+p+p+\bar p$, compare fixed-target and symmetric-collider thresholds.
+
+**Explain:** why does the fixed-target beam need more kinetic energy?
+::::
+
+::: {.notes}
+Minutes 24–30. Fixed target total beam energy 7m_p, kinetic 6m_p. Symmetric collider total energy 2m_p per beam, kinetic m_p per beam. At threshold the final particles have no relative motion in CM, but the fixed-target CM moves in the lab. Close the recap at 30 minutes.
+:::
+
+## Menti — kinematics
+
+:::: {.slide-body}
+Three questions on invariant mass, two-body decay, and production thresholds.
+
+[Open the Menti knowledge check](https://www.mentimeter.com/app/presentation/aluubvt6yrjixpq16wnpba6724n89xjp/present){target="_blank"}
+
+Vote first, then explain the reasoning.
+
+**After the quiz:** kinematics fixes what is possible. What fixes the rate?
+::::
+
+::: {.notes}
+Minutes 30–35. Untimed Multiple Choice knowledge check; no points or leaderboard. Presenter link: https://www.mentimeter.com/app/presentation/aluubvt6yrjixpq16wnpba6724n89xjp/present. Edit link: https://www.mentimeter.com/app/presentation/aluubvt6yrjixpq16wnpba6724n89xjp/edit. The complete three-question bank, correct answers and explanations are in kinematics-quiz.json. Do not reveal answers before voting.
+:::
+
+## Allowed processes and transition probabilities
+
+:::: {.slide-body}
+Conservation laws determine the allowed final states.
+
+Interactions determine the amplitudes for reaching those states.
+
+$$\text{transition rate}\ \sim\ |\text{transition amplitude}|^2\times\text{available final states}$$
+
+We will make this statement quantitative using perturbation theory.
+::::
+
+::: {.notes}
+This is a schematic relation, not yet a dimensionally complete formula. Use the same two-body decay throughout. Its momentum is known from kinematics; its lifetime is not.
+:::
+
+## Classical particles versus waves
+
+:::: {.slide-body}
+| Classical particle | Classical wave |
+|---|---|
+| Localized trajectory | Extended amplitude |
+| Position and momentum | Wavelength and frequency |
+| Alternative paths give exclusive events | Amplitudes can interfere |
+
+Quantum particles give **localized detections with wave-like statistics**.
+::::
+
+::: {.notes}
+The columns compare idealized classical descriptions. A quantum particle does not repeatedly switch between a tiny classical ball and a classical material wave.
+:::
+
+## Double-slit experiment {.plot-slide}
+
+:::: {.slide-body}
+![Single-slit sum compared with coherent two-slit interference](figures/double-slit.svg){.physics-plot}
+
+$$P(x)\propto|\psi_1(x)+\psi_2(x)|^2$$
+::::
+
+::: {.notes}
+Schematic far-field intensity for two finite-width slits, not observed data. Cross terms cause maxima and minima. Which-path information suppresses coherence even when no person reads the record. Individual detections sample the probability distribution.
+:::
+
+## de Broglie wavelength
+
+:::: {.slide-body}
+$$\lambda=\frac hp=\frac{2\pi\hbar}{p}$$
+
+Higher momentum means shorter wavelength.
+
+For $p=1\ \mathrm{MeV}/c$: $\lambda\simeq1.24\ \mathrm{pm}$.
+
+**Wavelength is a spatial phase scale, not a particle’s diameter.**
+::::
+
+::: {.notes}
+Use h=2πhbar. Do not silently substitute hbar/p for the full de Broglie wavelength.
+:::
+
+## Spatial resolution
+
+:::: {.slide-body}
+$$\mathbf q=\mathbf p_{\mathrm{in}}-\mathbf p_{\mathrm{out}},\qquad Q=|\mathbf q|$$
+
+$$R\sim\frac{\hbar}{Q}$$
+
+At $Q=1\ \mathrm{GeV}/c$, the scale is roughly $0.2\ \mathrm{fm}$.
+
+A high beam momentum alone is insufficient when the deflection is tiny.
+::::
+
+::: {.notes}
+This is an order-of-magnitude spatial-resolution estimate, not an exact radius. Q here is a three-momentum-transfer magnitude; relativistic scattering often uses Q²=−qμqμ, a different convention. This preserves the momentum-transfer discussion from the original draft.
+:::
+
+## What is a wave function?
+
+:::: {.slide-body}
+$$\psi(x,t)=\operatorname{Re}\psi(x,t)+i\operatorname{Im}\psi(x,t)$$
+
+A wave function is a **complex probability amplitude**.
+
+$$\psi\to e^{i\alpha}\psi\quad\Rightarrow\quad|\psi|^2\ \text{unchanged}$$
+
+Global phase is unobservable; relative phase can change interference.
+::::
+
+::: {.notes}
+The optional backup demonstration shows the real and imaginary amplitude curves. A global phase is common to the whole state, not a phase shift between two components.
+:::
+
+## Probability interpretation
+
+:::: {.slide-body}
+$$\rho(x,t)=|\psi(x,t)|^2=\psi^*(x,t)\psi(x,t)$$
+
+$$P(a\le x\le b)=\int_a^b|\psi(x,t)|^2\,dx$$
+
+The density is nonnegative. The probability is an **area under the density**.
+::::
+
+::: {.notes}
+In one dimension rho has units of inverse length; psi has units of inverse square-root length. A density is not the probability of a single exact point.
+:::
+
+## Plane waves
+
+:::: {.slide-body}
+$$\psi(x,t)=A\,e^{i(kx-\omega t)}$$
+
+A definite wave number gives a definite momentum.
+
+$$|\psi(x,t)|^2=|A|^2$$
+
+An ideal plane wave extends through all space; it is not a localized particle.
+::::
+
+::: {.notes}
+For an infinite line this is a generalized momentum eigenstate. A finite periodic box permits ordinary normalization. The phase moves even though the density is stationary.
+:::
+
+## Momentum and wavelength
+
+:::: {.slide-body}
+$$p=\hbar k,\qquad E=\hbar\omega$$
+
+$$k=\frac{2\pi}{\lambda},\qquad\omega=2\pi\nu$$
+
+Relativistic particles satisfy
+
+$$\hbar^2\omega^2=\hbar^2k^2c^2+m^2c^4.$$
+::::
+
+::: {.notes}
+Here E is total relativistic energy. The following state expansion uses energy eigenstates and general Hamiltonian evolution; the nonrelativistic spatial Schrödinger refresher is in backup. The relativistic dispersion alone is not a complete relativistic quantum theory.
+:::
+
+## States and their time evolution
+
+:::: {.slide-body}
+$$H_0|n\rangle=E_n|n\rangle,\qquad |n,t\rangle=e^{-iE_nt/\hbar}|n\rangle.$$
+$$|\Psi(t)\rangle=\sum_n c_n(t)e^{-iE_nt/\hbar}|n\rangle.$$
+$|c_n(t)|^2$ is the probability to find state $n$ in an orthonormal discrete basis.
+
+Without an interaction, these probabilities remain constant.
+::::
+
+::: {.notes}
+Introduce ket notation as a label for a state, not as an extra topic. The position wave function is ⟨x|Ψ⟩. Start with box-normalized states; replace sums by integrals for a continuum later. The total energies in the phase can include rest energies; a common energy offset has no effect on transition probabilities.
+:::
+
+## A weak interaction couples states
+
+:::: {.slide-body}
+$$H=H_0+V,\qquad V_{fi}=\langle f|V|i\rangle.$$
+$$i\hbar\frac{d}{dt}|\Psi(t)\rangle=H|\Psi(t)\rangle.$$
+Initially the system is in state $i$: $c_i(0)=1$ and $c_{f\ne i}(0)=0$.
+
+**At the board:** insert the state expansion and project onto $\langle f|$.
+::::
+
+::: {.notes}
+Take V time independent after switching on at t=0. Cancel the H₀ terms to obtain iℏ ċ_f=Σ_n V_fn c_n exp[i(E_f−E_n)t/ℏ]. First-order perturbation theory substitutes c_n≈δ_ni on the right-hand side. This applies to a general state space, including multiparticle final states; it is not particle production by a single-particle Schrödinger potential.
+:::
+
+## First-order transition amplitude
+
+:::: {.slide-body}
+$$c_f^{(1)}(t)=-\frac{i}{\hbar}V_{fi}\int_0^t e^{i(E_f-E_i)t'/\hbar}\,dt',\qquad f\ne i.$$
+Writing $\Delta E=E_f-E_i$ gives
+$$P_{i\to f}(t)=4|V_{fi}|^2\frac{\sin^2(\Delta E\,t/2\hbar)}{(\Delta E)^2}.$$
+
+The time integral selects final energies near $E_i$.
+::::
+
+::: {.notes}
+Evaluate the integral at the board. At ΔE=0 use the continuous limit P=|V_fi|²t²/ℏ². This probability for a single discrete state is not a constant decay rate. First order requires small total transition probability. Reference: https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S3.html#S3.SS6.SSS1
+:::
+
+## Sum over available final states
+
+:::: {.slide-body}
+Let $\rho(E)\,dE$ count final states in an energy interval $dE$.
+$$P_{\mathrm{out}}(t)=\int dE\,\rho(E)|V_{Ei}|^2\frac{4\sin^2[(E-E_i)t/2\hbar]}{(E-E_i)^2}.$$
+For a smooth continuum, the narrow peak has area $2\pi t/\hbar$.
+
+**The integrated probability grows linearly with time.**
+::::
+
+::: {.notes}
+For times long compared with the inverse energy scale over which ρ|V|² varies, but short compared with depletion time, replace the smooth factor by its value at E_i. Sum additional quantum numbers if needed. The delta-function limit is a distribution under the integral, not the limit of an individual transition probability. Reference: Tong, QFT §3.6.1.
+:::
+
+## Fermi’s golden rule
+
+:::: {.slide-body}
+$$\boxed{w_{i\to F}=\frac{2\pi}{\hbar}|V_{fi}|^2\rho(E_i)}$$
+
+$|V_{fi}|^2$: strength of the transition into the specified channel.
+
+$\rho(E_i)$: available final states at the conserved energy.
+
+**Check:** if $V_{fi}$ doubles while phase space stays fixed, what happens to the rate?
+::::
+
+::: {.notes}
+The rate increases by four. The compact formula assumes the matrix element is effectively constant over the relevant energy window and any remaining degeneracies have been counted consistently. General expression: w=(2π/ℏ)Σ_f |V_fi|²δ(E_f−E_i). V has energy units and ρ inverse energy units, so w has units 1/time. Weak coupling and a smooth continuum are essential. Reference: Tong, QFT §3.6.1.
+:::
+
+## Decay rate, lifetime, and width
+
+:::: {.slide-body}
+For a constant total decay rate $w$ in the parent rest frame:
+$$\frac{dN}{dt}=-wN,\qquad N(t)=N(0)e^{-wt},\qquad \tau=\frac1w.$$
+$$\Gamma=\hbar w=\frac{\hbar}{\tau},\qquad \Gamma_{\mathrm{tot}}=\sum_f\Gamma_f,\qquad B_f=\frac{\Gamma_f}{\Gamma_{\mathrm{tot}}}.$$
+
+$\tau$ is the mean lifetime; $\Gamma$ is the energy width.
+::::
+
+::: {.notes}
+Use a constant conditional decay probability w dt for survivors to obtain exponential decay. The first-order probability wt motivates this rate; it does not remain a valid total probability for arbitrarily long times. The exponential law is the usual weak-coupling regime. Half-life is τ ln 2, not τ. In natural units ℏ=1, rate and width share the same numerical value; restore ℏ for seconds.
+:::
+
+## Two-body decay rate
+
+:::: {.slide-body}
+For distinguishable daughters and an angle-independent invariant amplitude, with $\hbar=c=1$:
+$$\boxed{\Gamma_{1\to2}=\frac{p^*}{8\pi M^2}\,\overline{|\mathcal M|^2}}.$$
+
+Kinematics supplies $p^*$; the interaction supplies $\mathcal M$.
+
+As $M\to m_1+m_2$, $p^*\to0$: phase space closes.
+::::
+
+::: {.notes}
+State the relativistic result rather than identifying V_fi directly with the invariant amplitude: their state-normalization conventions differ. The bar denotes summing final spins and averaging initial spins for an unpolarized parent. The angular-independent expression follows by integrating dΓ/dΩ=p*|M|²/(32π²M²). Identical final particles require the appropriate symmetry factor. The phase-space formula is in backup; threshold conclusion assumes a finite amplitude. Reference: Tong, QFT §3.6.2.
+:::
+
+## Board problem — a decay width
+
+:::: {.slide-body}
+Use $M=5\ \mathrm{GeV}$, $m_1=3\ \mathrm{GeV}$, $m_2=0$, so $p^*=1.6\ \mathrm{GeV}$.
+
+For this toy model, take $\overline{|\mathcal M|^2}=1\ \mathrm{GeV}^2$, independent of angle.
+
+Compute $\Gamma$ and the mean lifetime using
+$$\hbar=6.582\times10^{-25}\ \mathrm{GeV\,s}.$$
+::::
+
+::: {.notes}
+Γ=1.6/(8π×25) GeV≈0.00254648 GeV=2.55 MeV. τ=ℏ/Γ≈2.58×10⁻²² s. This is an invented toy amplitude, not a measured particle width. Ask which part of the calculation was already possible in Lecture 2.
+:::
+
+## Scattering and cross section
+
+:::: {.slide-body}
+For incident flux $j$ and one target:
+$$\text{scattering rate}=j\sigma.$$
+
+Cross section removes the dependence on incident flux.
+
+For colliding beams, the event rate is $R=\mathcal L\sigma$.
+
+**The same ingredients recur:** amplitude squared, final-state phase space, and the initial-state normalization.
+::::
+
+::: {.notes}
+j has units particles/(area×time), σ has units area, and luminosity L has units 1/(area×time). The single-target statement assumes a dilute beam. Observed rates additionally include acceptance and efficiency. The invariant scattering expression is in backup; avoid starting a second long derivation if the golden-rule discussion uses the remaining time. Reference: Tong, QFT §3.6.3.
+:::
+
+## What determines an observed process?
+
+:::: {.slide-body}
+**Kinematics:** allowed momenta and available phase space.
+
+**Quantum dynamics:** transition amplitudes and interference.
+
+**Measured quantities:** decay widths, lifetimes, branching fractions, and cross sections.
+
+Can a kinematically allowed process have zero rate? Explain.
+::::
+
+::: {.notes}
+Yes: a vanishing matrix element, for example through a selection rule or exact cancellation, can give zero rate even with nonzero phase space. Have students identify the separate ingredients in the worked decay example.
+:::
+
+## Backup {.section-title}
+
+::: {.subtitle}
+Quantum reminders and relativistic phase space
+:::
+
+## Light: wave and particle
+
+:::: {.slide-body}
+Interference reveals wave behavior.
+
+Discrete absorption and emission reveal photon energy quanta.
+
+$$E=h\nu=\hbar\omega$$
+
+The frequency determines the energy of **each photon**.
+::::
+
+::: {.notes}
+Intensity is not photon energy. For fixed frequency, increasing the mean number of photons increases the total energy.
+:::
+
+## Do electrons behave like waves?
+
+:::: {.slide-body}
+An electron beam can form diffraction patterns.
+
+Regularly spaced atoms provide coherent scattering alternatives.
+
+Each electron is detected locally; many detections reveal an extended pattern.
+
+**The relevant wavelength depends on momentum.**
+::::
+
+::: {.notes}
+Discuss electron diffraction qualitatively; no synthetic image is presented as experimental data. Connect lattice spacing and wavelength. Coherence and experimental geometry are required.
+:::
+
+## Normalization
+
+:::: {.slide-body}
+$$\int_{-\infty}^{\infty}|\psi(x,t)|^2\,dx=1$$
+
+For an unnormalized square-integrable function $f$:
+
+$$\psi(x)=\frac{f(x)}{\sqrt{\int|f(x)|^2dx}}$$
+
+The particle must be found somewhere in the allowed space.
+::::
+
+::: {.notes}
+Unitary closed-system evolution preserves the norm. Plane waves on the infinite line are generalized states, not square-normalizable wave packets.
+:::
+
+## How does a wave function evolve?
+
+:::: {.slide-body}
+An initial wave function specifies the state at $t=0$.
+
+An equation of motion predicts its later amplitude and phase.
+
+$$\psi(x,0)\quad\longrightarrow\quad\psi(x,t)$$
+
+We now use **nonrelativistic quantum mechanics**, valid for momenta $p\ll mc$.
+::::
+
+::: {.notes}
+Connect to the classical initial-value problem, while emphasizing probability amplitudes rather than a definite trajectory. Remove the uniform rest-energy phase; the Schrödinger Hamiltonian below contains kinetic plus potential energy.
+:::
+
+## Energy and momentum operators
+
+:::: {.slide-body}
+Acting on $e^{i(kx-\omega t)}$:
+
+$$-i\hbar\frac{\partial\psi}{\partial x}=\hbar k\psi=p\psi$$
+
+$$i\hbar\frac{\partial\psi}{\partial t}=\hbar\omega\psi=E\psi$$
+
+$$\hat p=-i\hbar\partial_x,\qquad\hat E=i\hbar\partial_t$$
+::::
+
+::: {.notes}
+These plane-wave eigenvalue relations motivate the operator representation. Energy measurement is associated with the Hamiltonian; i hbar ∂t equals H on solutions. They do not derive all quantum postulates.
+:::
+
+## Schrödinger equation
+
+:::: {.slide-body}
+Start from the nonrelativistic energy relation:
+
+$$E=\frac{p^2}{2m}+V$$
+
+Replace energy and momentum by their operators:
+
+$$i\hbar\frac{\partial\psi}{\partial t}=\left[-\frac{\hbar^2}{2m}\nabla^2+V\right]\psi$$
+
+**This motivates the equation; it is not a derivation from classical mechanics.**
+::::
+
+::: {.notes}
+Second blackboard derivation: apply the energy operator, square the momentum operator, then add a local scalar potential. E is kinetic plus potential energy after removing the rest-energy phase. Restrict to a spinless particle or a spin-independent spatial problem. Relativistic quantum mechanics requires a more general framework.
+:::
+
+## Free particle
+
+:::: {.slide-body}
+For $V=0$, plane waves solve the Schrödinger equation:
+
+$$\psi(x,t)=A e^{i(kx-\omega t)},\qquad\omega=\frac{\hbar k^2}{2m}.$$
+
+$$E=\frac{p^2}{2m},\qquad p=\hbar k$$
+
+The energy determines how quickly the phase evolves.
+::::
+
+::: {.notes}
+Nonrelativistic free-particle dispersion; the rest-energy phase is omitted. An ideal plane wave on the infinite line is a generalized momentum eigenstate rather than a normalizable state. The wave-packet demonstrations are optional backup material.
+:::
+
+## Particle in a box {.plot-slide}
+
+:::: {.slide-body}
+![First three stationary states in an infinite square well](figures/box.svg){.physics-plot}
+
+$$\psi_n(x)=\sqrt{\frac2L}\sin\frac{n\pi x}{L},\qquad E_n=\frac{n^2\pi^2\hbar^2}{2mL^2},\quad n=1,2,\ldots$$
+::::
+
+::: {.notes}
+Infinite walls at x=0,L require psi=0 there. Inside V=0; outside the wave function vanishes. The figure shows amplitudes and densities, each offset by its energy level. A stationary state has time-dependent global phase but fixed density; superpositions can have time-dependent density. A narrower well increases energy spacings.
+:::
+
+## Uncertainty principle
+
+:::: {.slide-body}
+$$\Delta x\,\Delta p\ge\frac\hbar2$$
+
+$\Delta x$ and $\Delta p$ are standard deviations of measurement distributions.
+
+A narrower position packet requires a broader momentum distribution.
+
+**This is a property of the quantum state, not merely imperfect equipment.**
+::::
+
+::: {.notes}
+The optional backup demonstrates a minimum-uncertainty Gaussian that saturates the bound at t=0. During free evolution position–momentum correlations develop, and ΔxΔp can increase while Δp remains fixed. Use the backup demonstration if needed.
+:::
+
+## Wave packets {.widget-slide}
+
+:::: {.slide-body}
+::: {.widget data-src="widgets/wave-packet.html" data-poster="widgets/wave-packet-poster.png" data-alt="A Gaussian packet in position and momentum space"}
+:::
+::::
+
+::: {.notes}
+Start at t=0. Vary mean momentum and initial position width separately. Identify the carrier oscillation and envelope. Use the following backup slide for free evolution; global phase can be explored here.
+:::
+
+
+## Free evolution of a wave packet {.widget-slide}
+
+:::: {.slide-body}
+For $V=0$: $\omega=\hbar k^2/(2m)$ and $v_{\mathrm{group}}=p/m$.
+
+::: {.widget data-src="widgets/wave-packet.html" data-poster="widgets/wave-packet-poster.png" data-alt="Free Schrödinger evolution of a Gaussian wave packet"}
+:::
+::::
+
+::: {.notes}
+Set potential V=0. Explain ω=ℏk²/(2m), group velocity dω/dk=p/m, and spreading because different momentum components have different velocities. In widget units ℏ=m=1. Momentum density stays fixed; position density spreads. The rest-energy phase is omitted.
+:::
+## Relativistic final-state phase space
+
+:::: {.slide-body}
+With $\hbar=c=1$:
+$$d\Phi_n=(2\pi)^4\delta^{(4)}\!\left(P-\sum_jp_j\right)\prod_j\frac{d^3p_j}{(2\pi)^3\,2E_j}.$$
+$$d\Gamma=\frac{1}{2M}\overline{|\mathcal M|^2}\,d\Phi_n.$$
+
+The delta function enforces four-momentum conservation.
+::::
+
+::: {.notes}
+This uses relativistically normalized asymptotic states and is written for a parent at rest. Include identical-particle symmetry factors and sums over final species as appropriate. For two bodies dΦ₂=p* dΩ/(16π²M), giving the main-slide width. Reference: https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S3.html#S3.SS6.SSS2
+:::
+
+## Two-body scattering in the CM frame
+
+:::: {.slide-body}
+For distinguishable final particles, with $\hbar=c=1$:
+$$\frac{d\sigma}{d\Omega}=\frac{1}{64\pi^2s}\frac{|\mathbf p_f^*|}{|\mathbf p_i^*|}\overline{|\mathcal M|^2}.$$
+
+The bar denotes a sum over final spins and an average over unpolarized initial spins.
+
+The angular dependence comes from $\mathcal M$.
+::::
+
+::: {.notes}
+This is the 2→2 CM expression with standard relativistic state normalization. Include symmetry factors for identical final particles when integrating over fully labeled phase space. General form dσ=|M|²dΦ_n/[4 sqrt((p_a·p_b)²−m_a²m_b²)]. The incident momentum must be nonzero. Reference: Tong, QFT §3.6.3.
+:::
+

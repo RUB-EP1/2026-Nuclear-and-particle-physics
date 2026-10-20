@@ -1,0 +1,62 @@
+.reveal .slide-body{padding-bottom:.5em}.reveal .widget-slide .slide-body{padding:.25em 0 0;justify-content:stretch}.reveal .widget-slide .widget{flex:1;min-height:0}.reveal .physics-plot{display:block;width:auto;max-width:100%;height:470px;object-fit:contain;margin:0 auto}.reveal .plot-slide .slide-body>p{margin:.15em 0}.reveal .plot-slide math[display="block"]{font-size:.9em;margin:.3em 0}.reveal .vertex{height:430px;max-width:100%;object-fit:contain;display:block;margin:0 auto}.reveal table{font-size:36px;width:100%}.reveal th,.reveal td{padding:16px 20px}.reveal .quiz-placeholder{color:#71787f;text-align:center;font-size:54px}.reveal strong{color:#007dc5}
+.reveal table{table-layout:fixed}.reveal td,.reveal th{overflow-wrap:normal;word-break:normal}.reveal #the-four-fundamental-interactions th:nth-child(1){width:25%}.reveal #the-four-fundamental-interactions th:nth-child(2){width:25%}
+.reveal .slides section table{width:100%!important;table-layout:fixed}.reveal .slides section td,.reveal .slides section th{white-space:normal;padding:14px 18px;font-size:36px}
+
+
+/* Click-to-reveal vocabulary, with quiet frames and fixed rhythm. */
+.reveal .vocabulary-slide .slide-body{padding-top:28px;justify-content:flex-start}
+.reveal .vocabulary-slide .slide-body>p{font-size:30px;color:#627383;margin:0 0 18px}
+.reveal .vocabulary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin:0 0 26px}
+.reveal .vocabulary-term{--term:#527089;margin:0;min-height:270px;padding:24px;border:1px solid #dce4eb;border-top:5px solid var(--term);border-radius:3px;background:#fafcfd;box-sizing:border-box;transition:background .15s}
+.reveal .vocabulary-term.lepton{--term:#398466}.reveal .vocabulary-term.quark{--term:#087bb9}.reveal .vocabulary-term.gauge{--term:#b77913}.reveal .vocabulary-term.spin{--term:#7950ad}
+.reveal .vocabulary-term[open]{background:#fff}
+.reveal .vocabulary-term summary{cursor:pointer;list-style:none;font-size:37px;font-weight:600;color:var(--term);line-height:1.15}
+.reveal .vocabulary-term summary::-webkit-details-marker{display:none}
+.reveal .vocabulary-term summary::after{content:'+';float:right;font-size:27px;font-weight:400;opacity:.6}
+.reveal .vocabulary-term[open] summary::after{content:'−'}
+.reveal .vocabulary-term summary:focus-visible{outline:3px solid #087bb9;outline-offset:6px}
+.reveal .vocabulary-term .definition p{font-size:25px;line-height:1.22;margin:18px 0 0}
+.reveal .vocabulary-term .definition .example{font-size:22px;color:#627383;margin-top:12px}
+.reveal .vocabulary-takeaway p{margin:0;font-size:28px}
+.reveal .vertex-demo{height:430px;width:100%;object-fit:contain;flex-shrink:0;margin:0}
+.reveal .vertex-equations{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px;margin:25px 0 12px;min-height:190px}
+.reveal .symbolic-vertex{display:flex;justify-content:center;gap:18px;align-items:center;font-size:59px}
+.reveal .outgoing{color:#087bb9}.reveal .coupling{color:#b77913}.reveal .incoming{color:#7950ad}
+.reveal .component-vertex{display:flex;gap:24px;align-items:center;justify-content:center}
+.reveal .box-object{display:grid;gap:7px}.reveal .box-object.row{grid-template-columns:repeat(4,30px)}.reveal .box-object.matrix{grid-template-columns:repeat(4,30px)}.reveal .box-object.column{grid-template-columns:30px}
+.reveal .box-object i{width:30px;height:30px;border:2px solid currentColor;background:color-mix(in srgb,currentColor 13%,white)}
+.reveal .vertex-dimensions{display:grid;grid-template-columns:1fr 1fr;text-align:center;font-size:27px;color:#627383;margin:0 0 20px}
+.reveal .vertex-slide .slide-body>p{font-size:32px}
+.reveal .boost-pair{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.reveal #lorentz-transformations .slide-body{font-size:36px}.reveal #lorentz-transformations math[display="block"]{margin:.2em 0;font-size:.95em}
+.reveal .component-vertex>p{display:flex;align-items:center;justify-content:center;gap:24px;margin:0;line-height:1}
+.reveal .component-vertex .box-object{flex-shrink:0}
+
+.reveal .vertex-slide>h2{font-size:64px}
+.reveal .mass-slide .slide-body{font-size:35px}.reveal .mass-slide math[display="block"]{font-size:.95em;margin:.3em 0}
+.reveal .mass-columns{display:grid;grid-template-columns:1fr 1fr;gap:55px;margin:20px 0 24px}.reveal .mass-columns h3{font-size:40px;color:#172635;margin:0 0 22px}.reveal .mass-cm{border-left:2px solid #dbe3ea;padding-left:40px}
+.reveal .mass-input-row{display:flex;gap:14px;align-items:end;margin-bottom:14px}.reveal .mass-input-row label{display:flex;flex-direction:column;font-size:23px;color:#627383;gap:5px;min-width:0;flex:1}.reveal .mass-input-row input{width:100%;box-sizing:border-box;font:27px 'Helvetica Neue',Arial;padding:9px 6px;border:1px solid #adbfcc;border-radius:4px;color:#172635;background:#fff}.reveal .particle-name{font-size:30px;padding-bottom:10px;min-width:35px}
+.reveal .mass-cm p{font-size:29px;line-height:1.4;margin:20px 0;font-variant-numeric:tabular-nums}.reveal .mass-total{font-size:26px!important;color:#627383;margin:18px 0 0!important;white-space:nowrap}
+.reveal .mass-results{border-top:2px solid #dbe3ea;padding-top:18px;font-size:35px;font-weight:600;color:#087bb9;font-variant-numeric:tabular-nums}
+.reveal .mass-actions{display:flex;align-items:center;gap:24px;margin-top:22px;font-size:25px;color:#627383}.reveal .mass-actions button{font:27px 'Helvetica Neue',Arial;padding:10px 18px;color:#172635;border:1px solid #adbfcc;background:white;border-radius:5px;cursor:pointer}.reveal .mass-actions button:focus-visible,.reveal .mass-input-row input:focus-visible{outline:3px solid #087bb9;outline-offset:3px}
+.reveal .mass-problem{font-size:33px;margin:24px 0 10px}.reveal .mass-feedback{font-size:25px;color:#627383;margin:0}
+.reveal #spacetime-interval td,.reveal #spacetime-interval th{font-size:31px}
+/* Two physical frames, a shared 3D viewing camera. */
+.reveal .mass-slide .slide-body{justify-content:flex-start;padding:14px 0 0;font-size:30px}
+.reveal .mass-slide math[display="block"]{font-size:.95em;margin:.15em 0}
+.reveal .mass-columns{gap:35px;margin:8px 0 12px}.reveal .mass-columns h3{font-size:33px;margin:0}
+.reveal .mass-cm{padding-left:25px}.reveal .momentum-plot{width:100%;height:260px;display:block;touch-action:none;cursor:grab}.reveal .momentum-plot:active{cursor:grabbing}.reveal .momentum-plot text{font:20px 'Helvetica Neue',Arial}
+.reveal .momentum-legend{display:flex;gap:28px;font-size:24px;color:#627383;align-items:center;margin:10px 0 0}.reveal .p-one{color:#087bb9}.reveal .p-two{color:#b77913}.reveal .p-total{color:#398466}
+.reveal .mass-input-row{margin-bottom:6px;gap:10px}.reveal .mass-input-row input{font-size:24px;padding:5px}.reveal .mass-input-row label{font-size:19px;gap:2px}.reveal .particle-name{font-size:25px;padding-bottom:5px}
+.reveal .mass-cm p{font-size:26px;margin:18px 0}.reveal .mass-total{font-size:23px!important;margin:9px 0 0!important}
+.reveal .mass-results{font-size:30px;padding-top:12px}.reveal .mass-actions{margin-top:12px;font-size:23px;gap:20px}.reveal .mass-actions button{font-size:24px;padding:7px 12px}.reveal .mass-problem{font-size:29px;margin:16px 0 5px}.reveal .mass-feedback{font-size:23px;min-height:28px}
+
+.reveal .momentum-plot{height:440px}
+.reveal .mass-slide .slide-body{padding-top:6px}
+.reveal .momentum-legend{margin:4px 0 0;font-size:22px}
+.reveal .mass-columns{margin:4px 0 8px}
+.reveal .mass-input-row{margin-bottom:4px}.reveal .mass-input-row input{font-size:23px;padding:3px 5px}.reveal .mass-input-row label{font-size:18px}
+.reveal .mass-cm p{font-size:25px;margin:12px 0}
+.reveal .mass-bottom{display:flex;align-items:center;gap:24px;margin-top:10px}
+.reveal .mass-bottom .mass-actions{margin:0;flex-shrink:0}.reveal .mass-bottom .mass-problem{margin:0;font-size:26px}
+.reveal .mass-results{font-size:29px;padding-top:8px}.reveal .mass-feedback:empty{display:none}

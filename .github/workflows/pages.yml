@@ -39,6 +39,7 @@ jobs:
             output-dir: _site
             resources:
               - exercises/Sheet_*/Sheet_*.pdf
+              - slides/lectures/Lecture_3/widgets/**
             render:
               - index.qmd
               - slides/lectures/Lecture_*/Lecture_*.qmd
@@ -54,6 +55,15 @@ jobs:
           version: 1.8.26
       - name: Render website
         run: quarto render
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF export dependencies
+        run: |
+          python -m pip install -r scripts/requirements-pdf.txt
+          python -m playwright install --with-deps chromium
+      - name: Build lecture PDFs
+        run: make pdf HTML_ROOT=_site PDF_PYTHON=python
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

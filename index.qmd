@@ -47,18 +47,32 @@ Browser slides with interactive demonstrations. Press **F** for full screen,
 Particle tracks, quantum mechanics, spin, the Standard Model and its interactions.
 
 [Open slides](slides/lectures/Lecture_1/Lecture_1.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_1/Lecture_1.pdf){.chip download="Lecture_1.pdf"}
 :::
 
 ::: {.course-card}
-[Lecture 2 · Partial draft]{.card-tag}
+[Lecture 2 · Kinematics]{.card-tag}
 
 ### Particle kinematics
 
-Energy units, four-momentum, reconstructed mass and momentum transfer.
-This lecture is still being developed.
+Four-momentum, reconstructed mass, two-body decay, boosts and production thresholds.
 
-[Preview draft](slides/lectures/Lecture_2/Lecture_2.qmd){.btn-main}
+[Open slides](slides/lectures/Lecture_2/Lecture_2.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_2/Lecture_2.pdf){.chip download="Lecture_2.pdf"}
 :::
+
+::: {.course-card}
+[Lecture 3 · Draft]{.card-tag}
+
+### Quantum amplitudes and transition rates
+
+Kinematics recap and quiz, quantum amplitudes, perturbation theory,
+Fermi’s golden rule, decay rates and cross sections.
+
+[Preview draft](slides/lectures/Lecture_3/Lecture_3.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_3/Lecture_3.pdf){.chip download="Lecture_3.pdf"}
+:::
+
 ::::
 
 ## Exercises {.section-title}
