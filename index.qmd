@@ -66,7 +66,7 @@ Four-momentum, reconstructed mass, two-body decay, boosts and production thresho
 
 ### Quantum amplitudes and transition rates
 
-Relativity, four-vectors and natural units with a quiz, Mandelstam variables,
+Recap of Relativity and natural units; Mandelstam variables,
 resolution, conservation laws, oscillations and widths, angular momentum,
 Fermi’s golden rule.
 
@@ -78,11 +78,16 @@ Fermi’s golden rule.
 
 ## Exercises {.section-title}
 
-[Download exercise sheet 1 (PDF)](exercises/Sheet_1/Sheet_1.pdf){.btn-main}
-
-Thomson problems **1.1, 1.4, 1.10, and 2.16**. Due **October 23, 2026**.
 Submit individual, handwritten solutions to your tutor:
 Hendric Jonas or Dhruvanshu Parmar.
+
+### Exercise 1
+Thomson problems **1.1, 1.4, 1.10, and 2.16**. Due **October 23, 2026**.
+[Download exercise sheet 1 (PDF)](exercises/Sheet_1/Sheet_1.pdf){.btn-main}
+
+### Exercise 2
+Thomson problems **2.6, 2.12, 3.2, and 3.4**. Due **October 30, 2026**.
+
 
 ## Schedule {.section-title}
 
