@@ -62,14 +62,15 @@ Four-momentum, reconstructed mass, two-body decay, boosts and production thresho
 :::
 
 ::: {.course-card}
-[Lecture 3 · Draft]{.card-tag}
+[Lecture 3 · Amplitudes]{.card-tag}
 
 ### Quantum amplitudes and transition rates
 
-Kinematics recap and quiz, quantum amplitudes, perturbation theory,
-Fermi’s golden rule, decay rates and cross sections.
+Relativity, four-vectors and natural units with a quiz, Mandelstam variables,
+resolution, conservation laws, oscillations and widths, angular momentum,
+Fermi’s golden rule.
 
-[Preview draft](slides/lectures/Lecture_3/Lecture_3.qmd){.btn-main}
+[Open slides](slides/lectures/Lecture_3/Lecture_3.qmd){.btn-main}
 [Download PDF](slides/lectures/Lecture_3/Lecture_3.pdf){.chip download="Lecture_3.pdf"}
 :::
 

@@ -28,107 +28,707 @@ Quantum Amplitudes and Transition Rates
 
 What determines how often an allowed process occurs?
 
-::: {.notes}
-Plan for 90 minutes of teaching: 0–30 kinematics repetition at the board; 30–35 Menti; 35–55 amplitudes and states; 55–75 first-order perturbation theory and Fermi’s golden rule; 75–90 decay rate and a short cross-section connection. If discussion takes longer, retain the decay-rate example and defer the detailed scattering formula to backup.
+## Recap: special relativity {.section-title}
+
+::: {.subtitle}
+Inertial frames, light cones and Lorentz transformations
 :::
 
-## Kinematics recap — invariants
+## Inertial frames and events
+
+:::::: {.slide-body}
+::::: {.side-by-side}
+:::: {.txt}
+An **inertial frame** has no acceleration and no rotation: a free particle moves on a straight line with constant velocity.
+
+An **event** is a point in spacetime, $(t,x,y,z)$.
+
+Two inertial frames $\Sigma$ and $\Sigma'$ assign **different coordinates to the same event**.
+
+For $v\ll c$ they are related by the Galilean rule $x'=x-vt$, $t'=t$. For large $v$ that rule fails.
+::::
+![One event P described in two inertial frames](figures/frames-event.svg)
+:::::
+::::::
+
+## Einstein’s postulates
 
 :::: {.slide-body}
-$$p^2=E^2-|\mathbf p|^2=m^2,\qquad P=\sum_i p_i,\qquad M^2=P^2.$$
-**At the board:** two photons have energies $E_1,E_2$ and opening angle $\theta$.
+1. The laws of physics have the same form in all inertial frames.
 
-Derive $M^2=2E_1E_2(1-\cos\theta)$.
+2. The speed of light in vacuum is $c$ in every inertial frame, independent of the motion of the source.
 
-Can a system of massless particles have nonzero mass?
+A flash emitted at $t=t'=0$ from the common origin has a spherical wavefront for **both** observers:
+$$c^2t^2-x^2-y^2-z^2=0\quad\text{and}\quad c^2t'^2-x'^2-y'^2-z'^2=0.$$
+The transformation must therefore preserve $c^2t^2-\mathbf x^2$. The **linear** maps that do are the **Lorentz transformations**.
+
+::: {.footnote}
+Experimental tests of postulate 2: [Michelson and Morley 1887](https://doi.org/10.2475/ajs.s3-34.203.333){target="_blank"}, no ether wind. [Alväger et al. 1964](https://doi.org/10.1016/0031-9163(64)91095-9){target="_blank"}, photons from fast $\pi^0$ decays (source $\beta=0.99975$) travel at $c$ within about $10^{-4}$. [Müller et al. 2003](https://doi.org/10.1103/PhysRevLett.91.020401){target="_blank"}, isotropy of $c$ to a few parts in $10^{15}$ with cryogenic optical resonators.
+:::
 ::::
 
-::: {.notes}
-Minutes 0–6. Use c=1. Expand (p₁+p₂)² and use pᵢ²=0. Parallel photons give M=0; opposite photons give M²=4E₁E₂. Ask which measured quantities change under a boost.
+## The light cone
+
+:::::: {.slide-body}
+::::: {.side-by-side}
+:::: {.txt}
+Time goes up, one space direction sideways.
+
+Light travels on **45° lines** — in every inertial frame, by postulate 2.
+
+The sign of $\Delta s^2=c^2\Delta t^2-\Delta\mathbf x^2$ is frame independent: **timelike**, **lightlike** or **spacelike**.
+
+Massive particles have worldlines **inside** the cone, $v<c$.
+::::
+![Light cone with timelike, lightlike and spacelike regions](figures/light-cone.svg)
+:::::
+::::::
+
+## A second observer in the same diagram
+
+:::::: {.slide-body}
+::::: {.side-by-side}
+:::: {.txt}
+Frame $\Sigma'$ moves with $\beta$ along $x$. Its axes, drawn in the $\Sigma$ diagram:
+
+$ct'$ axis ($x'=0$): the line $x=\beta\,ct$.
+
+$x'$ axis ($ct'=0$): the line $ct=\beta\,x$.
+
+Both tilt by $\tan\theta=\beta$ **towards the light cone**, which stays at 45°.
+
+Same event, different coordinates, **same interval**:
+$(ct)^2-x^2=(ct')^2-x'^2$.
+::::
+![Boosted axes in a spacetime diagram, with the invariant hyperbola through event P](figures/boosted-axes.svg)
+:::::
+::::::
+
+## Lorentz transformation in matrix form
+
+:::: {.slide-body}
+$$\begin{pmatrix}ct'\\x'\\y'\\z'\end{pmatrix}=\begin{pmatrix}\gamma&-\beta\gamma&0&0\\-\beta\gamma&\gamma&0&0\\0&0&1&0\\0&0&0&1\end{pmatrix}\begin{pmatrix}ct\\x\\y\\z\end{pmatrix},\qquad X'=\Lambda X$$
+$$\beta=\frac vc,\qquad\gamma=\frac1{\sqrt{1-\beta^2}},\qquad X=\Lambda^{-1}X'\ \text{ with }\ \Lambda^{-1}=\Lambda(-\beta).$$
+The inverse transformation swaps the roles of $\Sigma$ and $\Sigma'$: flip the sign of $\beta$.
+
+Rotations of the spatial axes are Lorentz transformations too.
+::::
+
+## Recap: four-vectors and notation {.section-title}
+
+::: {.subtitle}
+Definitions, invariants and the notation used in the book
 :::
 
-## Kinematics recap — the CM frame
+## Four-vectors
 
 :::: {.slide-body}
-$$P=(E,\mathbf P),\qquad \boldsymbol\beta_{\mathrm{CM}}=\frac{\mathbf P}{E},\qquad E_{\mathrm{CM}}=M.$$
-A system has $P=(5,0,0,3)\ \mathrm{GeV}$.
+A **contravariant** four-vector is any set of four quantities that transforms like $x^\mu$:
+$$a'^{\mu}=\Lambda^{\mu}{}_{\nu}\,a^{\nu}$$
+Examples, with $c=1$: $\;x^\mu=(t,x,y,z)$, $\;p^\mu=(E,p_x,p_y,p_z)$.
 
-Find its mass and the boost to its CM frame. Check the transformed energy and momentum.
+**Einstein summation:** an index that appears once up and once down is summed over $0,1,2,3$:
+$$\Lambda^{\mu}{}_{\nu}\,a^{\nu}\equiv\sum_{\nu=0}^{3}\Lambda^{\mu}{}_{\nu}\,a^{\nu}$$
+Greek indices ($\mu,\nu$) run over $0,\dots,3$ (0 = time). Latin indices $i=1,2,3$ label space.
 ::::
 
-::: {.notes}
-Minutes 6–11. M=4 GeV, β=0.6 along +z, γ=1.25. E′=γ(5−0.6×3)=4 GeV and Pz′=γ(3−0.6×5)=0. The CM frame requires timelike total momentum.
+## Covariant components and the metric
+
+:::: {.slide-body}
+$$a_\mu=g_{\mu\nu}a^\nu,\qquad g_{\mu\nu}=\begin{pmatrix}1&0&0&0\\0&-1&0&0\\0&0&-1&0\\0&0&0&-1\end{pmatrix}\quad\Rightarrow\quad a_\mu=(a^0,-\mathbf a)$$
+Particle-physics (“west-coast”) signature $(+,-,-,-)$.\
+Many General Relativity (GR) texts use $(-,+,+,+)$ (“east-coast”).
+
+
+**Covariant** vectors transform with the **inverse** matrix: $a'_\mu=(\Lambda^{-1})^{\nu}{}_{\mu}\,a_\nu$.
+
+$$a^\mu b_\mu=g_{\mu\nu}a^\mu b^\nu=a^0b^0-\mathbf a\cdot\mathbf b$$
+
+::: {.footnote}
+Indices versus matrices: in index notation only the **position** of an index (up or down) matters, not a row or column layout.
+When we write matrices, contravariant vectors are columns and covariant vectors are rows.
+Thomson writes both as columns; for a boost the matrix is symmetric, which hides the difference.
+:::
+::::
+
+## Scalar products are Lorentz invariant
+
+:::: {.slide-body}
+$$a'^{\mu}b'_{\mu}=g_{\mu\nu}\,a'^{\mu}b'^{\nu}=\big(\Lambda^{\mu}{}_{\rho}\,g_{\mu\nu}\,\Lambda^{\nu}{}_{\sigma}\big)\,a^{\rho}b^{\sigma}=g_{\rho\sigma}\,a^{\rho}b^{\sigma}=a^{\rho}b_{\rho}$$
+because a Lorentz transformation preserves the metric: $\Lambda^{\mu}{}_{\rho}\,g_{\mu\nu}\,\Lambda^{\nu}{}_{\sigma}=g_{\rho\sigma}$.
+
+Rotations preserve $\sum_i a^ib^i$; Lorentz transformations preserve $a^0b^0-\sum_i a^ib^i$.
+
+**In your own time:** verify $\big(\Lambda^{\mu}{}_{\rho}\,g_{\mu\nu}\,\Lambda^{\nu}{}_{\sigma}\big)=g_{\rho\sigma}$.
+
+**Hence:** any fully contracted expression is Lorentz invariant — $x^\mu x_\mu$, $p^\mu p_\mu=m^2$, $q^\mu q_\mu$, $(p_1+p_2)^\mu(p_1+p_2)_\mu,\dots$
+::::
+
+## Sums of four-vectors are four-vectors
+
+:::: {.slide-body}
+$a'^{\mu}+b'^{\mu}=\Lambda^{\mu}{}_{\nu}\,(a^{\nu}+b^{\nu})$, so $a^\mu+b^\mu$ transforms like a four-vector. \
+So does $\lambda a^\mu$ for a scalar $\lambda$.
+
+- $P^\mu=\sum_i p_i^{\mu}$ is a four-vector, and $P^\mu P_\mu=M^2$ is the **invariant mass** of the system.
+- $\sum p^{\mu}_{\mathrm{in}}-\sum p^{\mu}_{\mathrm{out}}=0$ is a four-vector that vanishes: it vanishes **in every frame** if it vanishes in one.
+- $E'=\gamma(E-\beta p_x)$ mixes $E$ and $p_x$: energy conservation survives a boost only **together with** momentum conservation.
+- Not invariant: $E_1+E_2$, $|\mathbf p_1|+|\mathbf p_2|$, $m_1+m_2$. Invariant: $(E_1+E_2)^2-|\mathbf p_1+\mathbf p_2|^2=(p_1+p_2)^\mu(p_1+p_2)_\mu$.
+::::
+
+## Where four-vectors come from
+
+:::: {.slide-body}
+| Object | Definition | Components, $c=1$ |
+|---|---|---|
+| Position | $x^\mu$ | $(t,\mathbf x)$ |
+| Four-velocity | $u^\mu=\dfrac{dx^\mu}{d\tau}$ | $\gamma\,(1,\boldsymbol\beta)$ |
+| Four-momentum | $p^\mu=m\,u^\mu$ | $(E,\mathbf p)=(\gamma m,\gamma m\boldsymbol\beta)$ |
+| Four-derivative | $\partial_\mu=\dfrac{\partial}{\partial x^\mu}$ | $(\partial_t,+\nabla)$, covariant |
+
+The proper time $\tau$ and the mass $m$ are **scalars**.
+::::
+
+## Common notation (Thomson)
+
+:::: {.slide-body}
+| Symbol | Meaning |
+|---|---|
+| $x,\ p,\ a$ | four-vectors (plain) |
+| $\mathbf x,\ \mathbf p,\ \mathbf a$ | three-vectors (**bold**) |
+| $\lvert\mathbf p\rvert$ | magnitude of a three-vector |
+| $\mathbf p_1\!\cdot\!\mathbf p_2$ | three-vector scalar product |
+| $a\!\cdot\!b\equiv a^\mu b_\mu$ | four-vector scalar product |
+| $a^2\equiv a\!\cdot\!a$ versus $\mathbf a^2\equiv\mathbf a\!\cdot\!\mathbf a$ | **different quantities** |
+| $p^*,\ E^*$ | three-vectors evaluated in the CM frame |
+::::
+
+## Recap: natural units {.section-title}
+
+::: {.subtitle}
+$\hbar=c=1$ and Table 2.1
 :::
 
-## Kinematics recap — two-body decay
+## Natural units and Table 2.1
 
 :::: {.slide-body}
-$$P=p_1+p_2,\qquad P=(M,\mathbf0).$$
-**Re-derive:**
-$$E_1^*=\frac{M^2+m_1^2-m_2^2}{2M},\qquad p^*=\sqrt{E_1^{*2}-m_1^2}.$$
-For $M=5$, $m_1=3$, $m_2=0$ (all in GeV), find both daughter energies and $p^*$.
+Choose $\hbar=c=1$: every quantity is a power of GeV.
+
+| Quantity | [kg, m, s] | [ħ, c, GeV] | ħ = c = 1 |
+|---|---|---|---|
+| Energy | kg m² s⁻² | GeV | GeV |
+| Momentum | kg m s⁻¹ | GeV/c | GeV |
+| Mass | kg | GeV/c² | GeV |
+| Time | s | (GeV/ħ)⁻¹ | GeV⁻¹ |
+| Length | m | (GeV/ħc)⁻¹ | GeV⁻¹ |
+| Area | m² | (GeV/ħc)⁻² | GeV⁻² |
+
+The factors of $\hbar$ and $c$ are not lost: they appear in the dimensions.
 ::::
 
-::: {.notes}
-Minutes 11–19. Have students supply (P−p₁)²=m₂². E₁*=3.4 GeV; E₂*=p*=1.6 GeV. Ask whether the direction or lifetime has been determined. Neither has.
+## Converting back to SI units
+
+:::: {.slide-body}
+Restore $\hbar$ and $c$ by dimensional analysis:
+$$\hbar c=0.1973\ \mathrm{GeV\,fm},\qquad\hbar=6.582\times10^{-25}\ \mathrm{GeV\,s}$$
+
+- **Length:** $\langle r^2\rangle^{1/2}_{\mathrm{proton}}=4.1\ \mathrm{GeV}^{-1}\;\to\;4.1\times0.1973\ \mathrm{fm}=0.81\ \mathrm{fm}$.
+- **Time:** $1\ \mathrm{GeV}^{-1}=6.582\times10^{-25}\ \mathrm s$, so a width $\Gamma$ gives $\tau=\hbar/\Gamma$.
+- **Area:** $1\ \mathrm{GeV}^{-2}=(\hbar c)^2=0.3894\ \mathrm{mb}$.
+
+Multiply by $\hbar$ and $c$ until the units are the ones you want.
+::::
+
+## Join the quiz
+
+```{=html}
+<div style="display:flex;align-items:center;justify-content:center;gap:100px;height:700px">
+<a href="https://www.menti.com/?code=56562487" target="_blank" rel="noopener"><img src="figures/menti-qr.svg" alt="QR code for the Lecture 3 recap quiz on menti.com" style="width:600px;height:600px;margin:0"></a>
+<div style="text-align:center"><p style="font-size:48px;margin:0 0 28px">Scan to join</p><p style="font-size:36px;margin:0 0 18px">or go to <strong>menti.com</strong></p><p style="font-size:76px;font-weight:600;letter-spacing:.06em;margin:0">5656 2487</p></div>
+</div>
+```
+
+## Question 1 — Inertial frame?
+
+:::: {.slide-body}
+Ignore gravity. Which observer is in an **inertial frame**?
+
+**A.** A car at a constant 100 km/h on a roundabout.
+
+**B.** A rocket coasting with its engines off, far from any star.
+
+**C.** A lift accelerating upwards.
+
+**D.** A seat on a carousel turning at constant angular speed.
+::::
+
+## Question 2 — Speed of light
+
+:::: {.slide-body}
+A lamp at rest in frame $\Sigma$ emits a flash. Bob flies **towards the lamp** at $0.8c$.
+
+What speed of the light does Bob measure?
+
+**A.** $1.8\,c$
+
+**B.** $\approx1.67\,c$
+
+**C.** $c$
+
+**D.** $0.2\,c$
+::::
+
+## Question 3 — Which is a four-vector?
+
+:::: {.slide-body}
+Which four-component object transforms as a **four-vector**?
+
+**A.** $(m,\,p_x,\,p_y,\,p_z)$
+
+**B.** $(t,\,v_x,\,v_y,\,v_z)$
+
+**C.** $(E^2,\,p_x^2,\,p_y^2,\,p_z^2)$
+
+**D.** $(E_1+E_2,\ \mathbf p_1+\mathbf p_2)$ for two particles
+::::
+
+## Question 4 — Conservation in another frame
+
+:::: {.slide-body}
+In frame $S$ a reaction conserves total energy and total momentum.
+
+Bob flies past in frame $S'$. Is **total energy** conserved in $S'$?
+
+**A.** Yes: $E'=\gamma(E-\beta p_x)$ mixes $E$ and $p_x$, which are both conserved in $S$.
+
+**B.** No: energy is not invariant, so it is generally not conserved in $S'$.
+
+**C.** Yes: energy is a Lorentz scalar.
+
+**D.** Only if $\beta\ll1$.
+::::
+
+## Question 5 — Reading the notation
+
+:::: {.slide-body}
+A particle has four-momentum $p$, three-momentum $\mathbf p$, energy $E$ and mass $m$.
+
+Which equation is correct, using Thomson’s notation (bold = three-vector)?
+
+**A.** $p^2=E^2+\mathbf p^2$
+
+**B.** $E^2=\mathbf p^2+m^2$
+
+**C.** $E^2=p^2+m^2$
+
+**D.** $p^2=\mathbf p^2-m^2$
+::::
+
+## Question 6 — Natural units
+
+:::: {.slide-body}
+The proton’s rms charge radius is $4.1\ \mathrm{GeV}^{-1}$ in natural units.
+
+What is it in femtometres? ($\hbar c=0.1973\ \mathrm{GeV\,fm}$)
+
+**A.** $0.048\ \mathrm{fm}$
+
+**B.** $21\ \mathrm{fm}$
+
+**C.** $0.81\ \mathrm{fm}$
+
+**D.** $4.1\ \mathrm{fm}$
+::::
+
+## Mandelstam variables {.section-title}
+
+::: {.subtitle}
+Lorentz invariants of $2\to2$ scattering
 :::
 
-## Kinematics recap — boost the daughters
+## Two-to-two kinematics
+
+:::::: {.slide-body}
+::::: {.side-by-side .wide-text}
+:::: {.txt}
+$$a(p_1)+b(p_2)\to c(p_3)+d(p_4)$$
+$$p_1+p_2=p_3+p_4$$
+$$s=(p_1+p_2)^2=(p_3+p_4)^2$$
+$$t=(p_1-p_3)^2=(p_2-p_4)^2$$
+$$u=(p_1-p_4)^2=(p_2-p_3)^2$$
+Each one is the square of a four-vector, so each is **Lorentz invariant**: evaluate it in the frame where it is easiest.
+::::
+![A generic two-to-two process with the labels used for the Mandelstam variables](figures/scattering-2to2.svg)
+:::::
+::::::
+
+## $s$: energy in the CM frame
 
 :::: {.slide-body}
-$$E_1^{\mathrm{lab}}=\gamma(E_1^*+\beta p^*\cos\theta^*).$$
-Use the preceding decay with a parent moving at $\beta=0.6$.
-
-Find the energy endpoints. Explain why every event still reconstructs the same parent mass.
+CM frame: $p_1=(E_1^*,\mathbf p^*)$ and $p_2=(E_2^*,-\mathbf p^*)$, so
+$$s=(E_1^*+E_2^*)^2\qquad\Longrightarrow\qquad\sqrt s=\text{total energy in the CM frame.}$$
+Stationary target, $p_2=(m_2,\mathbf 0)$:
+$$s=m_1^2+m_2^2+2m_2E_1.$$
+**Check:** which beam energy on a proton at rest gives $\sqrt s=14\ \mathrm{TeV}$?
 ::::
 
-::: {.notes}
-Minutes 19–24. γ=1.25; endpoints 3.05 and 5.45 GeV. This is a boost from the parent rest frame to the lab; β is the parent lab velocity. Invariance follows by transforming the sum of the four-momenta.
-:::
-
-## Kinematics recap — thresholds
+## $t$ and $u$: the exchanged four-momentum {.plot-slide}
 
 :::: {.slide-body}
-$$s=m_a^2+m_b^2+2m_bE_a\quad\text{(stationary target)}.$$
-For $p+p\to p+p+p+\bar p$, compare fixed-target and symmetric-collider thresholds.
+![s-channel, t-channel and u-channel diagrams](figures/mandelstam.svg){.physics-plot}
 
-**Explain:** why does the fixed-target beam need more kinetic energy?
+The squared four-momentum of the exchanged particle is $q^2=s,\ t$ or $u$.
+
+Elastic scattering ($m_3=m_1$), CM frame: $t=-2p^{*2}(1-\cos\theta^*)\le0$, a **spacelike** momentum transfer.
 ::::
 
-::: {.notes}
-Minutes 24–30. Fixed target total beam energy 7m_p, kinetic 6m_p. Symmetric collider total energy 2m_p per beam, kinetic m_p per beam. At threshold the final particles have no relative motion in CM, but the fixed-target CM moves in the lab. Close the recap at 30 minutes.
-:::
-
-## Menti — kinematics
+## The sum rule
 
 :::: {.slide-body}
-Three questions on invariant mass, two-body decay, and production thresholds.
+$$s+t+u=m_1^2+m_2^2+m_3^2+m_4^2$$
+Only **two** of $s,t,u$ are independent: a $2\to2$ process is fixed by the CM energy $\sqrt s$ and the scattering angle, or equivalently by $s$ and $t$.
 
-[Open the Menti knowledge check](https://www.mentimeter.com/app/presentation/aluubvt6yrjixpq16wnpba6724n89xjp/present){target="_blank"}
-
-Vote first, then explain the reasoning.
-
-**After the quiz:** kinematics fixes what is possible. What fixes the rate?
+**In Exercise 2** you will derive the sum rule. Hint: expand each square, e.g. $s=m_1^2+m_2^2+2\,p_1\!\cdot\!p_2$, and use $p_2-p_3-p_4=-p_1$.
 ::::
 
-::: {.notes}
-Minutes 30–35. Untimed Multiple Choice knowledge check; no points or leaderboard. Presenter link: https://www.mentimeter.com/app/presentation/aluubvt6yrjixpq16wnpba6724n89xjp/present. Edit link: https://www.mentimeter.com/app/presentation/aluubvt6yrjixpq16wnpba6724n89xjp/edit. The complete three-question bank, correct answers and explanations are in kinematics-quiz.json. Do not reveal answers before voting.
+## Mandelstam variables beyond $2\to2$
+
+:::: {.slide-body}
+- **More particles:** use invariant masses of subsets, $s_{ij}=(p_i+p_j)^2$, $(p_i+p_j+p_k)^2,\dots$
+- **How many?** $N\ge4$ massive external particles have $3N-10$ independent invariants: 2 for $2\to2$ and $1\to3$, 5 for $2\to3$.
+- **Three-body decay** $M\to1+2+3$: $s_{12}+s_{23}+s_{13}=M^2+m_1^2+m_2^2+m_3^2$, the sum rule behind the Dalitz plot.
+- **Crossing:** one amplitude, as a function of $s,t,u$, describes related processes with the roles of $s,t,u$ exchanged, e.g. $e^-\mu^-\to e^-\mu^-$ and $e^+e^-\to\mu^+\mu^-$.
+- **Outlook to Hadron colliders:** partons collide at $\hat s=x_1x_2\,s$ ("Bjorken $x$").
+
+Kinematics fixes **what is possible**. What fixes **how often**?
+::::
+
+## Amplitudes and decay rates {.section-title}
+
+::: {.subtitle}
+From what is possible to how often
 :::
 
 ## Allowed processes and transition probabilities
 
 :::: {.slide-body}
-Conservation laws determine the allowed final states.
-
-Interactions determine the amplitudes for reaching those states.
+Conservation laws determine the allowed final states. Interactions determine the amplitudes for reaching them.
 
 $$\text{transition rate}\ \sim\ |\text{transition amplitude}|^2\times\text{available final states}$$
 
-We will make this statement quantitative using perturbation theory.
+See Thomson, Sec. 2.3:
+
+1. **Waves and probes:** plane waves, de Broglie wavelength, resolution
+2. **Probability and flux:** beams and cross sections
+3. **Time evolution and conservation:** stationary states, widths
+4. **Angular momentum:** the algebra behind spin, isospin and colour
+5. **Transition rates:** Fermi’s golden rule
 ::::
 
-::: {.notes}
-This is a schematic relation, not yet a dimensionally complete formula. Use the same two-body decay throughout. Its momentum is known from kinematics; its lifetime is not.
+## Waves, probes and resolution {.section-title}
+
+::: {.subtitle}
+Sec. 2.3.1 · Plane waves, de Broglie wavelength, momentum transfer
+:::
+
+## Plane waves are momentum eigenstates
+
+:::: {.slide-body}
+$$\psi(\mathbf x,t)=N\,e^{i(\mathbf p\cdot\mathbf x-Et)}=N\,e^{-ip_\mu x^\mu}$$
+$$\hat{\mathbf p}=-i\nabla,\quad\hat E=i\frac{\partial}{\partial t}\qquad\Rightarrow\qquad\hat{\mathbf p}\,\psi=\mathbf p\,\psi,\quad\hat E\,\psi=E\,\psi$$
+De Broglie and Planck–Einstein, $\mathbf k=\mathbf p/\hbar$ and $\omega=E/\hbar$, together say $k^\mu=p^\mu/\hbar$. The phase $p_\mu x^\mu$ is a Lorentz scalar: all observers agree on the wave.
+
+Observables are eigenvalues of Hermitian operators acting on $\psi$.
+
+::::
+
+## de Broglie wavelength: a beam is a microscope
+
+:::: {.slide-body}
+$$\lambda=\frac h{|\mathbf p|}=\frac{2\pi\hbar}{|\mathbf p|}\qquad\lambda\simeq\frac{1.24\ \mathrm{fm}}{|\mathbf p|\,[\mathrm{GeV}/c]}$$
+
+| Probe momentum | Wavelength $\lambda$ | Compare with |
+|---|---|---|
+| $1\ \mathrm{MeV}/c$ | $1.24\ \mathrm{pm}$ | between atom and nucleus |
+| $100\ \mathrm{MeV}/c$ | $12.4\ \mathrm{fm}$ | a heavy nucleus ($R\approx7\ \mathrm{fm}$) |
+| $1\ \mathrm{GeV}/c$ | $1.24\ \mathrm{fm}$ | the proton ($r\approx0.84\ \mathrm{fm}$) |
+| $10\ \mathrm{GeV}/c$ | $0.124\ \mathrm{fm}$ | structure inside the proton |
+| $6.5\ \mathrm{TeV}/c$ | $1.9\times10^{-4}\ \mathrm{fm}$ | one LHC proton beam |
+
+$\lambda$ is a spatial phase scale, not a particle’s diameter.
+::::
+
+## Momentum transfer sets the resolution
+
+:::::: {.slide-body}
+::::: {.side-by-side .wide-text}
+:::: {.txt}
+$$q^\mu=p^\mu_{\mathrm{in}}-p^\mu_{\mathrm{out}}=(\Delta E,\mathbf q),\qquad t=q^\mu q_\mu=\Delta E^2-\mathbf q^2$$
+Elastic scattering in the CM frame (or off a heavy target): $\Delta E=0$ and $|\mathbf p_{\mathrm{in}}|=|\mathbf p_{\mathrm{out}}|$, so
+$$Q\equiv|\mathbf q|=2|\mathbf p|\sin\frac\theta2,\qquad t=-Q^2,\qquad R\sim\frac{\hbar}{Q}$$
+A large $|t|$ resolves a small $R$: at $Q=1\ \mathrm{GeV}/c$, about $0.2\ \mathrm{fm}$.
+
+A high $|\mathbf p|$ alone is not enough: a tiny deflection $\theta$ gives a tiny $Q$.
+
+::: {.footnote}
+Once $Q\gtrsim\hbar/R$, the extended charge matters: the cross section is multiplied by $\lvert F(Q)\rvert^2$, the squared Fourier transform of the charge distribution. Form factors are treated in Thomson Chap. 7 (Sec. 7.3), deep inelastic scattering in Chap. 8.
+:::
+::::
+![Incoming and outgoing three-momentum and the momentum transfer q](figures/momentum-transfer.svg)
+:::::
+::::::
+
+## Resolving a target {.widget-slide}
+
+:::: {.slide-body}
+::: {.widget data-src="widgets/resolution.html" data-poster="widgets/resolution-poster.png" data-alt="Elastic scattering off a uniform sphere: momentum transfer, resolution length and diffraction minima"}
+:::
+::::
+
+## Probability and flux {.section-title}
+
+::: {.subtitle}
+Sec. 2.3.2 · Beams and cross sections
+:::
+
+## Wave function and probability
+
+:::: {.slide-body}
+A wave function is a **complex probability amplitude**.
+
+$$\rho(\mathbf x,t)=\psi^*\psi,\qquad P(V)=\int_V\rho\,d^3x$$
+
+A global phase, $\psi\to e^{i\alpha}\psi$, is unobservable; relative phases change interference.
+::::
+
+## Probability current: a beam has a flux
+
+:::: {.slide-body}
+$$\frac{\partial\rho}{\partial t}+\nabla\!\cdot\!\mathbf j=0,\qquad\mathbf j=\frac1{2im}\big(\psi^*\nabla\psi-\psi\nabla\psi^*\big)$$
+
+Plane wave: $\rho=|N|^2\equiv n$ and $\mathbf j=n\,\mathbf p/m=n\,\mathbf v$.
+
+It describes a beam with $n$ particles per unit volume and flux $\mathbf j=n\mathbf v$.
+
+**Cross section = transition rate / incident flux.**
+::::
+
+## Time evolution and conservation {.section-title}
+
+::: {.subtitle}
+Sec. 2.3.3–2.3.4 · Stationary states, conserved quantities, widths
+:::
+
+## Stationary states and time evolution
+
+:::: {.slide-body}
+$$\hat H\phi_n=E_n\phi_n,\qquad\psi_n(\mathbf x,t)=\phi_n(\mathbf x)\,e^{-iE_nt}$$
+$$|\varphi(t)\rangle=\sum_n c_n\,e^{-iE_nt}\,|\phi_n\rangle$$
+Energy eigenstates only pick up a phase: all expectation values are constant (**stationary states**).
+
+A superposition of different energies evolves: the relative phases $e^{-i(E_n-E_m)t}$ change with time.
+::::
+
+## Superposition of energy eigenstates: oscillations
+
+:::: {.slide-body}
+Two stationary states with different energies, $|\nu_\alpha\rangle=\cos\theta\,|\nu_1\rangle+\sin\theta\,|\nu_2\rangle$, dephase over a distance $L$ (natural units):
+
+$$P(\nu_\alpha\to\nu_\alpha)=1-\sin^{2}2\theta\,\sin^2\!\Big(\frac{\Delta m^2L}{4E}\Big),\qquad\frac{\Delta m^2L}{4E}=1.267\,\frac{\Delta m^2[\mathrm{eV}^2]\,L[\mathrm{km}]}{E[\mathrm{GeV}]}$$
+
+Example, T2K: $L=295\ \mathrm{km}$, $E\approx0.6\ \mathrm{GeV}$, $\Delta m^2\approx2.5\times10^{-3}\ \mathrm{eV}^2$ give a phase of about $\pi/2$: for $\sin^{2}2\theta\approx1$, nearly complete disappearance.
+
+::: {.footnote}
+Amplitude for $\nu_\alpha\to\nu_\beta$: $\sum_iU^*_{\alpha i}\,e^{-iE_it}\,U_{\beta i}$. For two flavours $U$ is a rotation by $\theta$. Revisited in Chapters 13 and 14.
+:::
+::::
+
+## Oscillations {.widget-slide}
+
+:::: {.slide-body}
+::: {.widget data-src="widgets/oscillation.html" data-poster="widgets/oscillation-poster.png" data-alt="Two-flavour neutrino oscillation probability against distance and against L over E"}
+:::
+::::
+
+## Conserved quantities
+
+:::: {.slide-body}
+$$\frac{d\langle\hat A\rangle}{dt}=i\,\langle[\hat H,\hat A]\rangle$$
+
+If $[\hat H,\hat A]=0$, then $A$ is **conserved**.
+
+Momentum (translations), angular momentum (rotations), parity (reflections), …
+
+Symmetry $\Rightarrow$ conservation law $\Rightarrow$ quantum numbers that label states: Noether’s theorem in quantum language.
+::::
+
+## Conservation laws at a glance (for reference)
+
+:::: {.slide-body}
+::: {.ref-table}
+| Quantity | Symmetry | Strong | EM | Weak |
+|---|---|:-:|:-:|:-:|
+| Energy, momentum | time and space translations | ✓ | ✓ | ✓ |
+| Angular momentum $J$ | rotations | ✓ | ✓ | ✓ |
+| Electric charge $Q$ | U(1) | ✓ | ✓ | ✓ |
+| Colour | SU(3) | ✓ | ✓ | ✓ |
+| Baryon number $B$ | U(1) | ✓ | ✓ | ✓ |
+| Lepton numbers $L_e,L_\mu,L_\tau$ | U(1) each | ✓ | ✓ | ✓* |
+| Isospin $I$ | SU(2) flavour | ✓ | only $I_3$ | ✗ |
+| Strangeness, charm, beauty | U(1) each | ✓ | ✓ | ✗ |
+| Parity $P$, charge conjugation $C$ | discrete | ✓ | ✓ | ✗ |
+| $CP$ | discrete | ✓ | ✓ | small violation |
+| $CPT$ | discrete | ✓ | ✓ | ✓ |
+:::
+
+::: {.footnote}
+For reference after the lecture; we return to each entry later in the course. \*Total lepton number is conserved, but neutrino oscillations violate the individual lepton flavours.
+:::
+::::
+
+## Commutators label states and limit knowledge
+
+:::: {.slide-body}
+Compatible observables, $[\hat A,\hat B]=0$, have common eigenstates $|a,b\rangle$: **quantum numbers** label states.
+
+$$\Delta A\,\Delta B\ge\tfrac12\big|\langle i[\hat A,\hat B]\rangle\big|,\qquad[\hat x,\hat p_x]=i\ \Rightarrow\ \Delta x\,\Delta p_x\ge\frac\hbar2$$
+
+Energy and time: $\Delta E\,\Delta t\sim\hbar$. A short-lived state does not have a sharp energy.
+::::
+
+## Lifetime and width
+
+:::: {.slide-body}
+$$\frac{dN}{dt}=-\Gamma N,\qquad N(t)=N(0)\,e^{-\Gamma t},\qquad\tau=\frac\hbar\Gamma$$
+$$\lvert\psi(t)\rvert^2\propto e^{-\Gamma t}\quad\Longleftrightarrow\quad\text{Breit–Wigner}\quad\frac{1}{(E-M)^2+\Gamma^2/4},\qquad\mathrm{FWHM}=\Gamma$$
+
+| State | $\Gamma$ | $\tau=\hbar/\Gamma$ |
+|---|---|---|
+| $Z$ | $2.5\ \mathrm{GeV}$ | $2.6\times10^{-25}\ \mathrm s$ |
+| $\rho^0$ | $149\ \mathrm{MeV}$ | $4.4\times10^{-24}\ \mathrm s$ |
+| $J/\psi$ | $93\ \mathrm{keV}$ | $7.1\times10^{-21}\ \mathrm s$ |
+
+$\Gamma_{\mathrm{tot}}=\sum_f\Gamma_f$ and branching fractions $B_f=\Gamma_f/\Gamma_{\mathrm{tot}}$.
+::::
+
+## Width and lifetime {.widget-slide}
+
+:::: {.slide-body}
+::: {.widget data-src="widgets/lineshape.html" data-poster="widgets/lineshape-poster.png" data-alt="Breit-Wigner line shape, exponential decay and decay length for several particles"}
+:::
+::::
+
+## Angular momentum {.section-title}
+
+::: {.subtitle}
+Sec. 2.3.5 · The algebra behind spin, isospin and colour
+:::
+
+## Angular momentum algebra
+
+:::: {.slide-body}
+$$[\hat L_x,\hat L_y]=i\hat L_z\ \text{(and cyclic)},\qquad[\hat L^2,\hat L_i]=0$$
+$$\hat L^2|\ell,m\rangle=\ell(\ell+1)|\ell,m\rangle,\qquad\hat L_z|\ell,m\rangle=m|\ell,m\rangle,\qquad m=-\ell,\dots,+\ell$$
+The commutators fix the spectrum: $2\ell+1$ states, with integer or half-integer $\ell$ (spin).\
+Ladder operators $\hat L_\pm$ step $m$ by one.
+
+**The same algebra returns** for isospin SU(2), flavour SU(3) and colour SU(3): \
+learn it once for $\hat L$, use it for all of them.
+::::
+
+## Angular distributions {.widget-slide}
+
+:::: {.slide-body}
+::: {.widget data-src="widgets/angular.html" data-poster="widgets/angular-poster.png" data-alt="Vector model and angular distribution of the decay products of a spin state"}
+:::
+::::
+
+## Transition rates {.section-title}
+
+::: {.subtitle}
+Sec. 2.3.6 · Fermi’s golden rule
+:::
+
+## Transitions induced by a weak perturbation
+
+:::: {.slide-body}
+$$\hat H=\hat H_0+\hat H',\qquad\psi=\sum_k c_k(t)\,\phi_k\,e^{-iE_kt},\qquad c_k(0)=\delta_{ki}$$
+$$\frac{dc_f}{dt}\approx-i\,T_{fi}\,e^{i(E_f-E_i)t},\qquad T_{fi}=\langle f|\hat H'|i\rangle$$
+$$P_{fi}(T)=\lvert T_{fi}\rvert^2\,\frac{\sin^2(\Delta E\,T/2)}{(\Delta E/2)^2},\qquad\Delta E=E_f-E_i$$
+First order: $c_i\approx1$ and $c_{k\ne i}\approx0$, with $\hbar=1$.\
+The time integral selects $E_f\approx E_i$ within $\Delta E\sim1/T$.
+::::
+
+## Sum over final states: a rate emerges
+
+:::: {.slide-body}
+Let $\rho(E)=dn/dE$ count the final states.
+$$P_{\mathrm{out}}(T)=\int dE\,\rho(E)\,\lvert T_{Ei}\rvert^2\,\frac{\sin^2[(E-E_i)T/2]}{[(E-E_i)/2]^2}\ \xrightarrow{\ T\to\infty\ }\ 2\pi\,\lvert T_{fi}\rvert^2\rho(E_i)\,T$$
+The window has area $2\pi T$: the probability grows **linearly** with time, so the rate is constant.
+::::
+
+## Fermi’s golden rule
+
+:::: {.slide-body}
+$$\boxed{\Gamma_{fi}=2\pi\,\lvert T_{fi}\rvert^2\,\rho(E_i)}\qquad\rho(E_i)=\left|\frac{dn}{dE_f}\right|_{E_i}$$
+
+$\lvert T_{fi}\rvert^2$: the strength of the interaction, the particle physics.
+
+$\rho(E_i)$: the available final states, the kinematics (phase space).
+
+**Check:** if $T_{fi}$ doubles at fixed phase space, what happens to the rate?
+::::
+
+## The golden rule {.widget-slide}
+
+:::: {.slide-body}
+::: {.widget data-src="widgets/golden-rule.html" data-poster="widgets/golden-rule-poster.png" data-alt="Probability to each final level and total probability growing linearly with time"}
+:::
+::::
+
+## Beyond first order: intermediate states
+
+:::: {.slide-body}
+$$T_{fi}=\langle f|\hat H'|i\rangle+\sum_{k\ne i}\frac{\langle f|\hat H'|k\rangle\langle k|\hat H'|i\rangle}{E_i-E_k}+\dots$$
+Second order: the transition goes through an intermediate state $k$.
+
+In the relativistic theory this is an exchanged particle: each term is a Feynman diagram, and the energy denominator becomes the propagator $1/(q^2-m^2)$ with $q^2=s,\,t,\,u$.
+
+The terms are suppressed when the perturbation is weak, for example by powers of $\alpha\approx1/137$ in QED.
+::::
+
+
+
+## The big takeaway from this lecture
+
+:::: {.slide-body}
+$$\text{transition rate}\ \sim\ |\text{transition amplitude}|^2\times\text{available final states}$$
+
+::: {.takeaway}
+| Transition rate | Transition amplitude | Available final states |
+|---|---|---|
+| **Measured:** event counts give widths, lifetimes, branching fractions, cross sections | **Computed:** the matrix element of the interaction, from the Feynman rules | **Kinematics:** four-momentum conservation, masses, $s,t,u$: phase space |
+:::
+
+Fermi’s golden rule: $\Gamma_{fi}=2\pi\,\lvert T_{fi}\rvert^2\,\rho(E_i)$
+::::
+
+## Thanks for your attention!
+
+:::: {.slide-body}
+**Before you leave — a quick quiz**
+
+1. A probe with $|\mathbf p|=1\ \mathrm{GeV}/c$ scatters elastically through a very small angle. Is the resolution good or poor? Which quantity decides, and how is it related to the Mandelstam variable $t$?
+
+2. The $\rho^0$ has a width of about $150\ \mathrm{MeV}$. Estimate its mean lifetime. Would you see a displaced decay vertex?
+
+3. In $\Gamma=2\pi\lvert T_{fi}\rvert^2\rho$: which factor comes from kinematics and which from the interaction? Can a kinematically allowed decay have zero rate?
+::::
+
+## Backup {.section-title}
+
+::: {.subtitle}
+Quantum reminders and relativistic phase space
 :::
 
 ## Classical particles versus waves
@@ -143,10 +743,6 @@ This is a schematic relation, not yet a dimensionally complete formula. Use the 
 Quantum particles give **localized detections with wave-like statistics**.
 ::::
 
-::: {.notes}
-The columns compare idealized classical descriptions. A quantum particle does not repeatedly switch between a tiny classical ball and a classical material wave.
-:::
-
 ## Double-slit experiment {.plot-slide}
 
 :::: {.slide-body}
@@ -154,259 +750,6 @@ The columns compare idealized classical descriptions. A quantum particle does no
 
 $$P(x)\propto|\psi_1(x)+\psi_2(x)|^2$$
 ::::
-
-::: {.notes}
-Schematic far-field intensity for two finite-width slits, not observed data. Cross terms cause maxima and minima. Which-path information suppresses coherence even when no person reads the record. Individual detections sample the probability distribution.
-:::
-
-## de Broglie wavelength
-
-:::: {.slide-body}
-$$\lambda=\frac hp=\frac{2\pi\hbar}{p}$$
-
-Higher momentum means shorter wavelength.
-
-For $p=1\ \mathrm{MeV}/c$: $\lambda\simeq1.24\ \mathrm{pm}$.
-
-**Wavelength is a spatial phase scale, not a particle’s diameter.**
-::::
-
-::: {.notes}
-Use h=2πhbar. Do not silently substitute hbar/p for the full de Broglie wavelength.
-:::
-
-## Spatial resolution
-
-:::: {.slide-body}
-$$\mathbf q=\mathbf p_{\mathrm{in}}-\mathbf p_{\mathrm{out}},\qquad Q=|\mathbf q|$$
-
-$$R\sim\frac{\hbar}{Q}$$
-
-At $Q=1\ \mathrm{GeV}/c$, the scale is roughly $0.2\ \mathrm{fm}$.
-
-A high beam momentum alone is insufficient when the deflection is tiny.
-::::
-
-::: {.notes}
-This is an order-of-magnitude spatial-resolution estimate, not an exact radius. Q here is a three-momentum-transfer magnitude; relativistic scattering often uses Q²=−qμqμ, a different convention. This preserves the momentum-transfer discussion from the original draft.
-:::
-
-## What is a wave function?
-
-:::: {.slide-body}
-$$\psi(x,t)=\operatorname{Re}\psi(x,t)+i\operatorname{Im}\psi(x,t)$$
-
-A wave function is a **complex probability amplitude**.
-
-$$\psi\to e^{i\alpha}\psi\quad\Rightarrow\quad|\psi|^2\ \text{unchanged}$$
-
-Global phase is unobservable; relative phase can change interference.
-::::
-
-::: {.notes}
-The optional backup demonstration shows the real and imaginary amplitude curves. A global phase is common to the whole state, not a phase shift between two components.
-:::
-
-## Probability interpretation
-
-:::: {.slide-body}
-$$\rho(x,t)=|\psi(x,t)|^2=\psi^*(x,t)\psi(x,t)$$
-
-$$P(a\le x\le b)=\int_a^b|\psi(x,t)|^2\,dx$$
-
-The density is nonnegative. The probability is an **area under the density**.
-::::
-
-::: {.notes}
-In one dimension rho has units of inverse length; psi has units of inverse square-root length. A density is not the probability of a single exact point.
-:::
-
-## Plane waves
-
-:::: {.slide-body}
-$$\psi(x,t)=A\,e^{i(kx-\omega t)}$$
-
-A definite wave number gives a definite momentum.
-
-$$|\psi(x,t)|^2=|A|^2$$
-
-An ideal plane wave extends through all space; it is not a localized particle.
-::::
-
-::: {.notes}
-For an infinite line this is a generalized momentum eigenstate. A finite periodic box permits ordinary normalization. The phase moves even though the density is stationary.
-:::
-
-## Momentum and wavelength
-
-:::: {.slide-body}
-$$p=\hbar k,\qquad E=\hbar\omega$$
-
-$$k=\frac{2\pi}{\lambda},\qquad\omega=2\pi\nu$$
-
-Relativistic particles satisfy
-
-$$\hbar^2\omega^2=\hbar^2k^2c^2+m^2c^4.$$
-::::
-
-::: {.notes}
-Here E is total relativistic energy. The following state expansion uses energy eigenstates and general Hamiltonian evolution; the nonrelativistic spatial Schrödinger refresher is in backup. The relativistic dispersion alone is not a complete relativistic quantum theory.
-:::
-
-## States and their time evolution
-
-:::: {.slide-body}
-$$H_0|n\rangle=E_n|n\rangle,\qquad |n,t\rangle=e^{-iE_nt/\hbar}|n\rangle.$$
-$$|\Psi(t)\rangle=\sum_n c_n(t)e^{-iE_nt/\hbar}|n\rangle.$$
-$|c_n(t)|^2$ is the probability to find state $n$ in an orthonormal discrete basis.
-
-Without an interaction, these probabilities remain constant.
-::::
-
-::: {.notes}
-Introduce ket notation as a label for a state, not as an extra topic. The position wave function is ⟨x|Ψ⟩. Start with box-normalized states; replace sums by integrals for a continuum later. The total energies in the phase can include rest energies; a common energy offset has no effect on transition probabilities.
-:::
-
-## A weak interaction couples states
-
-:::: {.slide-body}
-$$H=H_0+V,\qquad V_{fi}=\langle f|V|i\rangle.$$
-$$i\hbar\frac{d}{dt}|\Psi(t)\rangle=H|\Psi(t)\rangle.$$
-Initially the system is in state $i$: $c_i(0)=1$ and $c_{f\ne i}(0)=0$.
-
-**At the board:** insert the state expansion and project onto $\langle f|$.
-::::
-
-::: {.notes}
-Take V time independent after switching on at t=0. Cancel the H₀ terms to obtain iℏ ċ_f=Σ_n V_fn c_n exp[i(E_f−E_n)t/ℏ]. First-order perturbation theory substitutes c_n≈δ_ni on the right-hand side. This applies to a general state space, including multiparticle final states; it is not particle production by a single-particle Schrödinger potential.
-:::
-
-## First-order transition amplitude
-
-:::: {.slide-body}
-$$c_f^{(1)}(t)=-\frac{i}{\hbar}V_{fi}\int_0^t e^{i(E_f-E_i)t'/\hbar}\,dt',\qquad f\ne i.$$
-Writing $\Delta E=E_f-E_i$ gives
-$$P_{i\to f}(t)=4|V_{fi}|^2\frac{\sin^2(\Delta E\,t/2\hbar)}{(\Delta E)^2}.$$
-
-The time integral selects final energies near $E_i$.
-::::
-
-::: {.notes}
-Evaluate the integral at the board. At ΔE=0 use the continuous limit P=|V_fi|²t²/ℏ². This probability for a single discrete state is not a constant decay rate. First order requires small total transition probability. Reference: https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S3.html#S3.SS6.SSS1
-:::
-
-## Sum over available final states
-
-:::: {.slide-body}
-Let $\rho(E)\,dE$ count final states in an energy interval $dE$.
-$$P_{\mathrm{out}}(t)=\int dE\,\rho(E)|V_{Ei}|^2\frac{4\sin^2[(E-E_i)t/2\hbar]}{(E-E_i)^2}.$$
-For a smooth continuum, the narrow peak has area $2\pi t/\hbar$.
-
-**The integrated probability grows linearly with time.**
-::::
-
-::: {.notes}
-For times long compared with the inverse energy scale over which ρ|V|² varies, but short compared with depletion time, replace the smooth factor by its value at E_i. Sum additional quantum numbers if needed. The delta-function limit is a distribution under the integral, not the limit of an individual transition probability. Reference: Tong, QFT §3.6.1.
-:::
-
-## Fermi’s golden rule
-
-:::: {.slide-body}
-$$\boxed{w_{i\to F}=\frac{2\pi}{\hbar}|V_{fi}|^2\rho(E_i)}$$
-
-$|V_{fi}|^2$: strength of the transition into the specified channel.
-
-$\rho(E_i)$: available final states at the conserved energy.
-
-**Check:** if $V_{fi}$ doubles while phase space stays fixed, what happens to the rate?
-::::
-
-::: {.notes}
-The rate increases by four. The compact formula assumes the matrix element is effectively constant over the relevant energy window and any remaining degeneracies have been counted consistently. General expression: w=(2π/ℏ)Σ_f |V_fi|²δ(E_f−E_i). V has energy units and ρ inverse energy units, so w has units 1/time. Weak coupling and a smooth continuum are essential. Reference: Tong, QFT §3.6.1.
-:::
-
-## Decay rate, lifetime, and width
-
-:::: {.slide-body}
-For a constant total decay rate $w$ in the parent rest frame:
-$$\frac{dN}{dt}=-wN,\qquad N(t)=N(0)e^{-wt},\qquad \tau=\frac1w.$$
-$$\Gamma=\hbar w=\frac{\hbar}{\tau},\qquad \Gamma_{\mathrm{tot}}=\sum_f\Gamma_f,\qquad B_f=\frac{\Gamma_f}{\Gamma_{\mathrm{tot}}}.$$
-
-$\tau$ is the mean lifetime; $\Gamma$ is the energy width.
-::::
-
-::: {.notes}
-Use a constant conditional decay probability w dt for survivors to obtain exponential decay. The first-order probability wt motivates this rate; it does not remain a valid total probability for arbitrarily long times. The exponential law is the usual weak-coupling regime. Half-life is τ ln 2, not τ. In natural units ℏ=1, rate and width share the same numerical value; restore ℏ for seconds.
-:::
-
-## Two-body decay rate
-
-:::: {.slide-body}
-For distinguishable daughters and an angle-independent invariant amplitude, with $\hbar=c=1$:
-$$\boxed{\Gamma_{1\to2}=\frac{p^*}{8\pi M^2}\,\overline{|\mathcal M|^2}}.$$
-
-Kinematics supplies $p^*$; the interaction supplies $\mathcal M$.
-
-As $M\to m_1+m_2$, $p^*\to0$: phase space closes.
-::::
-
-::: {.notes}
-State the relativistic result rather than identifying V_fi directly with the invariant amplitude: their state-normalization conventions differ. The bar denotes summing final spins and averaging initial spins for an unpolarized parent. The angular-independent expression follows by integrating dΓ/dΩ=p*|M|²/(32π²M²). Identical final particles require the appropriate symmetry factor. The phase-space formula is in backup; threshold conclusion assumes a finite amplitude. Reference: Tong, QFT §3.6.2.
-:::
-
-## Board problem — a decay width
-
-:::: {.slide-body}
-Use $M=5\ \mathrm{GeV}$, $m_1=3\ \mathrm{GeV}$, $m_2=0$, so $p^*=1.6\ \mathrm{GeV}$.
-
-For this toy model, take $\overline{|\mathcal M|^2}=1\ \mathrm{GeV}^2$, independent of angle.
-
-Compute $\Gamma$ and the mean lifetime using
-$$\hbar=6.582\times10^{-25}\ \mathrm{GeV\,s}.$$
-::::
-
-::: {.notes}
-Γ=1.6/(8π×25) GeV≈0.00254648 GeV=2.55 MeV. τ=ℏ/Γ≈2.58×10⁻²² s. This is an invented toy amplitude, not a measured particle width. Ask which part of the calculation was already possible in Lecture 2.
-:::
-
-## Scattering and cross section
-
-:::: {.slide-body}
-For incident flux $j$ and one target:
-$$\text{scattering rate}=j\sigma.$$
-
-Cross section removes the dependence on incident flux.
-
-For colliding beams, the event rate is $R=\mathcal L\sigma$.
-
-**The same ingredients recur:** amplitude squared, final-state phase space, and the initial-state normalization.
-::::
-
-::: {.notes}
-j has units particles/(area×time), σ has units area, and luminosity L has units 1/(area×time). The single-target statement assumes a dilute beam. Observed rates additionally include acceptance and efficiency. The invariant scattering expression is in backup; avoid starting a second long derivation if the golden-rule discussion uses the remaining time. Reference: Tong, QFT §3.6.3.
-:::
-
-## What determines an observed process?
-
-:::: {.slide-body}
-**Kinematics:** allowed momenta and available phase space.
-
-**Quantum dynamics:** transition amplitudes and interference.
-
-**Measured quantities:** decay widths, lifetimes, branching fractions, and cross sections.
-
-Can a kinematically allowed process have zero rate? Explain.
-::::
-
-::: {.notes}
-Yes: a vanishing matrix element, for example through a selection rule or exact cancellation, can give zero rate even with nonzero phase space. Have students identify the separate ingredients in the worked decay example.
-:::
-
-## Backup {.section-title}
-
-::: {.subtitle}
-Quantum reminders and relativistic phase space
-:::
 
 ## Light: wave and particle
 
@@ -420,10 +763,6 @@ $$E=h\nu=\hbar\omega$$
 The frequency determines the energy of **each photon**.
 ::::
 
-::: {.notes}
-Intensity is not photon energy. For fixed frequency, increasing the mean number of photons increases the total energy.
-:::
-
 ## Do electrons behave like waves?
 
 :::: {.slide-body}
@@ -435,10 +774,6 @@ Each electron is detected locally; many detections reveal an extended pattern.
 
 **The relevant wavelength depends on momentum.**
 ::::
-
-::: {.notes}
-Discuss electron diffraction qualitatively; no synthetic image is presented as experimental data. Connect lattice spacing and wavelength. Coherence and experimental geometry are required.
-:::
 
 ## Normalization
 
@@ -452,10 +787,6 @@ $$\psi(x)=\frac{f(x)}{\sqrt{\int|f(x)|^2dx}}$$
 The particle must be found somewhere in the allowed space.
 ::::
 
-::: {.notes}
-Unitary closed-system evolution preserves the norm. Plane waves on the infinite line are generalized states, not square-normalizable wave packets.
-:::
-
 ## How does a wave function evolve?
 
 :::: {.slide-body}
@@ -468,10 +799,6 @@ $$\psi(x,0)\quad\longrightarrow\quad\psi(x,t)$$
 We now use **nonrelativistic quantum mechanics**, valid for momenta $p\ll mc$.
 ::::
 
-::: {.notes}
-Connect to the classical initial-value problem, while emphasizing probability amplitudes rather than a definite trajectory. Remove the uniform rest-energy phase; the Schrödinger Hamiltonian below contains kinetic plus potential energy.
-:::
-
 ## Energy and momentum operators
 
 :::: {.slide-body}
@@ -483,10 +810,6 @@ $$i\hbar\frac{\partial\psi}{\partial t}=\hbar\omega\psi=E\psi$$
 
 $$\hat p=-i\hbar\partial_x,\qquad\hat E=i\hbar\partial_t$$
 ::::
-
-::: {.notes}
-These plane-wave eigenvalue relations motivate the operator representation. Energy measurement is associated with the Hamiltonian; i hbar ∂t equals H on solutions. They do not derive all quantum postulates.
-:::
 
 ## Schrödinger equation
 
@@ -502,10 +825,6 @@ $$i\hbar\frac{\partial\psi}{\partial t}=\left[-\frac{\hbar^2}{2m}\nabla^2+V\righ
 **This motivates the equation; it is not a derivation from classical mechanics.**
 ::::
 
-::: {.notes}
-Second blackboard derivation: apply the energy operator, square the momentum operator, then add a local scalar potential. E is kinetic plus potential energy after removing the rest-energy phase. Restrict to a spinless particle or a spin-independent spatial problem. Relativistic quantum mechanics requires a more general framework.
-:::
-
 ## Free particle
 
 :::: {.slide-body}
@@ -518,10 +837,6 @@ $$E=\frac{p^2}{2m},\qquad p=\hbar k$$
 The energy determines how quickly the phase evolves.
 ::::
 
-::: {.notes}
-Nonrelativistic free-particle dispersion; the rest-energy phase is omitted. An ideal plane wave on the infinite line is a generalized momentum eigenstate rather than a normalizable state. The wave-packet demonstrations are optional backup material.
-:::
-
 ## Particle in a box {.plot-slide}
 
 :::: {.slide-body}
@@ -529,10 +844,6 @@ Nonrelativistic free-particle dispersion; the rest-energy phase is omitted. An i
 
 $$\psi_n(x)=\sqrt{\frac2L}\sin\frac{n\pi x}{L},\qquad E_n=\frac{n^2\pi^2\hbar^2}{2mL^2},\quad n=1,2,\ldots$$
 ::::
-
-::: {.notes}
-Infinite walls at x=0,L require psi=0 there. Inside V=0; outside the wave function vanishes. The figure shows amplitudes and densities, each offset by its energy level. A stationary state has time-dependent global phase but fixed density; superpositions can have time-dependent density. A narrower well increases energy spacings.
-:::
 
 ## Uncertainty principle
 
@@ -546,21 +857,12 @@ A narrower position packet requires a broader momentum distribution.
 **This is a property of the quantum state, not merely imperfect equipment.**
 ::::
 
-::: {.notes}
-The optional backup demonstrates a minimum-uncertainty Gaussian that saturates the bound at t=0. During free evolution position–momentum correlations develop, and ΔxΔp can increase while Δp remains fixed. Use the backup demonstration if needed.
-:::
-
 ## Wave packets {.widget-slide}
 
 :::: {.slide-body}
 ::: {.widget data-src="widgets/wave-packet.html" data-poster="widgets/wave-packet-poster.png" data-alt="A Gaussian packet in position and momentum space"}
 :::
 ::::
-
-::: {.notes}
-Start at t=0. Vary mean momentum and initial position width separately. Identify the carrier oscillation and envelope. Use the following backup slide for free evolution; global phase can be explored here.
-:::
-
 
 ## Free evolution of a wave packet {.widget-slide}
 
@@ -571,9 +873,57 @@ For $V=0$: $\omega=\hbar k^2/(2m)$ and $v_{\mathrm{group}}=p/m$.
 :::
 ::::
 
-::: {.notes}
-Set potential V=0. Explain ω=ℏk²/(2m), group velocity dω/dk=p/m, and spreading because different momentum components have different velocities. In widget units ℏ=m=1. Momentum density stays fixed; position density spreads. The rest-energy phase is omitted.
+## Two-body decay rate
+
+:::: {.slide-body}
+For distinguishable daughters and an angle-independent invariant amplitude, with $\hbar=c=1$:
+$$\boxed{\Gamma_{1\to2}=\frac{p^*}{8\pi M^2}\,\overline{|\mathcal M|^2}}.$$
+
+Kinematics supplies $p^*$; the interaction supplies $\mathcal M$.
+
+As $M\to m_1+m_2$, $p^*\to0$: phase space closes.
+::::
+
+## Check: a decay width
+
+:::: {.slide-body}
+Use $M=5\ \mathrm{GeV}$, $m_1=3\ \mathrm{GeV}$, $m_2=0$, so $p^*=1.6\ \mathrm{GeV}$.
+
+For this toy model, take $\overline{|\mathcal M|^2}=1\ \mathrm{GeV}^2$, independent of angle.
+
+Compute $\Gamma$ and the mean lifetime using
+$$\hbar=6.582\times10^{-25}\ \mathrm{GeV\,s}.$$
+
+::: {.footnote}
+Result: $\Gamma\approx2.5\ \mathrm{MeV}$ and $\tau\approx2.6\times10^{-22}\ \mathrm s$. The amplitude is an invented toy number, not a measured width.
 :::
+::::
+
+## Scattering and cross section
+
+:::: {.slide-body}
+For incident flux $j=nv$ and one target:
+$$\text{scattering rate}=j\sigma.$$
+
+The cross section removes the dependence on the incident flux.
+
+For colliding beams, the event rate is $R=\mathcal L\sigma$.
+
+**The same ingredients recur:** amplitude squared, final-state phase space, and the initial-state normalization.
+::::
+
+## What determines an observed process?
+
+:::: {.slide-body}
+**Kinematics:** allowed momenta and available phase space.
+
+**Quantum dynamics:** transition amplitudes and interference.
+
+**Measured quantities:** decay widths, lifetimes, branching fractions, and cross sections.
+
+Can a kinematically allowed process have zero rate? Explain.
+::::
+
 ## Relativistic final-state phase space
 
 :::: {.slide-body}
@@ -583,10 +933,6 @@ $$d\Gamma=\frac{1}{2M}\overline{|\mathcal M|^2}\,d\Phi_n.$$
 
 The delta function enforces four-momentum conservation.
 ::::
-
-::: {.notes}
-This uses relativistically normalized asymptotic states and is written for a parent at rest. Include identical-particle symmetry factors and sums over final species as appropriate. For two bodies dΦ₂=p* dΩ/(16π²M), giving the main-slide width. Reference: https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S3.html#S3.SS6.SSS2
-:::
 
 ## Two-body scattering in the CM frame
 
@@ -598,8 +944,3 @@ The bar denotes a sum over final spins and an average over unpolarized initial s
 
 The angular dependence comes from $\mathcal M$.
 ::::
-
-::: {.notes}
-This is the 2→2 CM expression with standard relativistic state normalization. Include symmetry factors for identical final particles when integrating over fully labeled phase space. General form dσ=|M|²dΦ_n/[4 sqrt((p_a·p_b)²−m_a²m_b²)]. The incident momentum must be nonzero. Reference: Tong, QFT §3.6.3.
-:::
-

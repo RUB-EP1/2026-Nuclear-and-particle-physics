@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" font-family="'Helvetica Neue', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+<line x1="130" y1="470" x2="887.2" y2="470" stroke="#172635" stroke-width="3" stroke-linecap="butt"/>
+<polygon points="900,470 885.38,476.51 885.38,463.49" fill="#172635"/>
+<line x1="150" y1="490" x2="150" y2="72.8" stroke="#172635" stroke-width="3" stroke-linecap="butt"/>
+<polygon points="150,60 156.51,74.62 143.49,74.62" fill="#172635"/>
+<text x="912" y="480" font-size="30" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">x</tspan></text>
+<text x="140" y="44" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">y</tspan></text>
+<line x1="410" y1="470" x2="867.2" y2="470" stroke="#b77913" stroke-width="4" stroke-linecap="butt" stroke-dasharray="12 9"/>
+<polygon points="880,470 865.38,476.51 865.38,463.49" fill="#b77913"/>
+<line x1="410" y1="470" x2="410" y2="112.8" stroke="#b77913" stroke-width="4" stroke-linecap="butt" stroke-dasharray="12 9"/>
+<polygon points="410,100 416.51,114.62 403.49,114.62" fill="#b77913"/>
+<text x="398" y="100" font-size="30" fill="#b77913" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">y</tspan>′</text>
+<text x="892" y="456" font-size="30" fill="#b77913" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">x</tspan>′</text>
+<line x1="150" y1="508" x2="410" y2="508" stroke="#627383" stroke-width="2" stroke-linecap="round"/>
+<line x1="150" y1="498" x2="150" y2="518" stroke="#627383" stroke-width="2" stroke-linecap="round"/>
+<line x1="410" y1="498" x2="410" y2="518" stroke="#627383" stroke-width="2" stroke-linecap="round"/>
+<text x="280" y="546" font-size="28" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal"><tspan font-style="italic">v</tspan><tspan font-style="italic">t</tspan>  (origin of Σ′ at <tspan font-style="italic">x</tspan> = <tspan font-style="italic">v</tspan><tspan font-style="italic">t</tspan>)</text>
+<line x1="428" y1="400" x2="522" y2="400" stroke="#b77913" stroke-width="5" stroke-linecap="butt"/>
+<polygon points="538,400 519.73,408.13 519.73,391.87" fill="#b77913"/>
+<text x="554" y="410" font-size="32" fill="#b77913" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-weight="bold" font-style="italic">v</tspan></text>
+<line x1="150" y1="470" x2="697.84" y2="226.84" stroke="#087bb9" stroke-width="4" stroke-linecap="butt"/>
+<polygon points="711,221 698.94,234.36 693,220.98" fill="#087bb9"/>
+<line x1="410" y1="470" x2="702.75" y2="235.99" stroke="#b77913" stroke-width="4" stroke-linecap="butt"/>
+<polygon points="714,227 705.73,242.99 696.58,231.55" fill="#b77913"/>
+<text x="380" y="330" font-size="34" fill="#087bb9" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-weight="bold">r</tspan></text>
+<text x="585" y="380" font-size="34" fill="#b77913" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-weight="bold">r</tspan>′</text>
+<circle cx="720" cy="215" r="10" fill="#172635"/>
+<text x="740" y="187" font-size="30" fill="#172635" text-anchor="start" font-weight="bold" font-style="normal">event P</text>
+<text x="740" y="223" font-size="30" fill="#087bb9" text-anchor="start" font-weight="normal" font-style="normal">(<tspan font-style="italic">t</tspan>, <tspan font-weight="bold">r</tspan>) in Σ</text>
+<text x="740" y="261" font-size="30" fill="#b77913" text-anchor="start" font-weight="normal" font-style="normal">(<tspan font-style="italic">t</tspan>′, <tspan font-weight="bold">r</tspan>′) in Σ′</text>
+<text x="176" y="80" font-size="42" fill="#172635" text-anchor="start" font-weight="bold" font-style="normal">Σ</text>
+<text x="436" y="130" font-size="42" fill="#b77913" text-anchor="start" font-weight="bold" font-style="normal">Σ′</text>
+<text x="280" y="570" font-size="1" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"></text>
+</svg>

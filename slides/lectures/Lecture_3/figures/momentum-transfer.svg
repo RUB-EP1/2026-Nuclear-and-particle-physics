@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="430" viewBox="0 0 560 430" font-family="'Helvetica Neue', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+<line x1="110" y1="330" x2="394" y2="330" stroke="#087bb9" stroke-width="5" stroke-linecap="butt"/>
+<polygon points="410,330 391.73,338.13 391.73,321.87" fill="#087bb9"/>
+<line x1="110" y1="330" x2="292.55" y2="112.44" stroke="#b77913" stroke-width="5" stroke-linecap="butt"/>
+<polygon points="302.84,100.19 297.32,119.41 284.86,108.95" fill="#b77913"/>
+<line x1="302.84" y1="100.19" x2="402.56" y2="314.05" stroke="#398466" stroke-width="6" stroke-linecap="butt"/>
+<polygon points="410,330 393.4,315.57 409.62,308" fill="#398466"/>
+<line x1="260" y1="340" x2="260" y2="320" stroke="#172635" stroke-width="3" stroke-linecap="round"/>
+<line x1="214.08" y1="221.52" x2="198.76" y2="208.67" stroke="#172635" stroke-width="3" stroke-linecap="round"/>
+<path d="M 180 330 L 179.97 327.96 L 179.88 325.93 L 179.73 323.9 L 179.53 321.87 L 179.26 319.85 L 178.94 317.84 L 178.55 315.84 L 178.11 313.86 L 177.61 311.88 L 177.06 309.92 L 176.45 307.98 L 175.78 306.06 L 175.05 304.16 L 174.28 302.27 L 173.44 300.42 L 172.55 298.58 L 171.61 296.78 L 170.62 295 L 169.58 293.25 L 168.48 291.53 L 167.34 289.85 L 166.15 288.2 L 164.91 286.58 L 163.62 285 L 162.29 283.46 L 160.92 281.96 L 159.5 280.5 L 158.04 279.08 L 156.54 277.71 L 155 276.38" fill="none" stroke="#627383" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="194" y="312" font-size="34" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">θ</text>
+<text x="424" y="340" font-size="34" fill="#087bb9" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-weight="bold">p</tspan><tspan font-size="22" dy="8">in</tspan><tspan dy="-8"></tspan></text>
+<text x="298.84" y="84.19" font-size="34" fill="#b77913" text-anchor="middle" font-weight="normal" font-style="normal"><tspan font-weight="bold">p</tspan><tspan font-size="22" dy="8">out</tspan><tspan dy="-8"></tspan></text>
+<text x="378.42" y="227.09" font-size="38" fill="#398466" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-weight="bold">q</tspan></text>
+<text x="40" y="376" font-size="27" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal">|<tspan font-weight="bold">p</tspan><tspan font-size="20" dy="7">in</tspan><tspan dy="-7"></tspan>| = |<tspan font-weight="bold">p</tspan><tspan font-size="20" dy="7">out</tspan><tspan dy="-7"></tspan>|   (elastic, ΔE = 0)</text>
+<text x="40" y="410" font-size="30" fill="#398466" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-weight="bold">q</tspan> = <tspan font-weight="bold">p</tspan><tspan font-size="20" dy="7">in</tspan><tspan dy="-7"></tspan> − <tspan font-weight="bold">p</tspan><tspan font-size="20" dy="7">out</tspan><tspan dy="-7"></tspan></text>
+</svg>

@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="widgets.css"><title>Fermi's golden rule</title></head><body><main>
+<h1>Fermi’s golden rule: from levels to a rate</h1>
+<p class="intro">One initial state coupled by a constant T<sub>fi</sub> to a ladder of final levels with spacing d (density of states ρ = 1/d) · first-order perturbation theory · ħ = 1</p>
+<div class="controls">
+<label for="t">Time t <output id="tV"></output><input id="t" type="range" min="0" max="1" step="0.002" value="0.15"></label>
+<label for="V">Coupling |T_fi| <output id="VV"></output><input id="V" type="range" min="0.001" max="0.02" step="0.0005" value="0.005"></label>
+<label for="d">Level spacing d = 1/ρ <output id="dV"></output><input id="d" type="range" min="-1.7" max="0" step="0.01" value="-1"></label>
+<button id="play">Play</button>
+</div>
+<div class="grid">
+<section class="card"><h2>Transition probability to each final level</h2><svg id="lv" viewBox="0 0 550 330" role="img" aria-label="Probability to each final level and the sinc squared window"></svg><div class="legend"><span class="blue">sticks</span>: P<sub>f</sub>(t) = |T<sub>fi</sub>|² sin²(ΔE t/2)/(ΔE/2)² at the allowed energies · curve: the window, scaled to its peak</div></section>
+<section class="card"><h2>Total probability to leave the initial state</h2><svg id="tot" viewBox="0 0 550 330" role="img" aria-label="Total transition probability against time with the golden-rule straight line"></svg><div class="legend"><span class="blue">solid: Σ<sub>f</sub> P<sub>f</sub>(t)</span> · <span class="orange">dashed: Γt with Γ = 2π|T<sub>fi</sub>|² ρ</span></div></section>
+</div>
+<section class="card readout" id="readout"></section>
+<p class="prompt">Let time run: the window narrows (energy conservation emerges) and the total grows linearly. Then make the levels sparser (large d) and watch the straight line fail.</p>
+<script src="physics.js"></script>
+<script>
+const $=id=>document.getElementById(id),P=Physics,n=id=>Number($(id).value);
+const par=new URLSearchParams(location.search);['t','V'].forEach(k=>{if(par.has(k))$(k).value=par.get(k);});if(par.has('d'))$('d').value=Math.log10(Number(par.get('d')));
+const path=(pts,color,w=2.6,dash='')=>`<path d="${pts.map((v,i)=>(i?'L':'M')+v[0].toFixed(1)+','+v[1].toFixed(1)).join(' ')}" fill="none" stroke="${color}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''}/>`;
+const sinc=x=>Math.abs(x)<1e-9?1:Math.sin(x)/x;
+const sg=(x,d=3)=>x===0?'0':(Math.abs(x)>=1e-2&&Math.abs(x)<1e3?Number(x.toPrecision(d)).toString():x.toExponential(d-1));
+let playing=false,last=0;
+function render(){
+ const V=n('V'),d=Math.pow(10,n('d')),rho=1/d,Tmax=1.25*2*Math.PI/d,t=Math.max(n('t')*Tmax,1e-6),G=2*Math.PI*V*V*rho;
+ $('tV').textContent=sg(t,3);$('VV').textContent=V.toFixed(4);$('dV').textContent=sg(d,2)+'  (ρ = '+sg(rho,2)+')';
+ // left: levels
+ const Em=Math.min(10,Math.max(5*d,10*Math.PI/t)),x0=45,x1=525,yT=24,yB=262,X=e=>(x0+x1)/2+e/Em*(x1-x0)/2,Y=v=>yB-v*(yB-yT)*0.9;
+ let s=`<path d="M${x0} ${yT}V${yB}H${x1}" class="axis"/>`;
+ for(let k=-2;k<=2;k++){const e=k*Em/2;s+=`<line x1="${X(e)}" y1="${yB}" x2="${X(e)}" y2="${yB+5}" stroke="#a7b8c5"/><text x="${X(e)}" y="${yB+22}" class="lbl" text-anchor="middle" font-size="15">${k===0?'0':(e>0?'+':'')+sg(e,2)}</text>`;}
+ s+=`<text x="${x1}" y="${yB+44}" class="lbl" text-anchor="end" font-size="15">ΔE = E<tspan dy="4" font-size="11">f</tspan><tspan dy="-4"> − E</tspan><tspan dy="4" font-size="11">i</tspan><tspan dy="-4">  (arb. units)</tspan></text>`;
+ const env=[];for(let i=0;i<=400;i++){const e=-Em+2*Em*i/400,w=sinc(e*t/2);env.push([X(e),Y(w*w)]);}
+ s+=path(env,'#9cc9e6',2.2);
+ const kmax=Math.floor(Em/d);let sticks='';for(let k=-kmax;k<=kmax;k++){const e=k*d,w=sinc(e*t/2),h=w*w;sticks+=`<line x1="${X(e)}" y1="${yB}" x2="${X(e)}" y2="${Y(h)}" stroke="#007dc5" stroke-width="${Math.max(1.2,Math.min(3,(x1-x0)/(2*kmax+1)*0.5))}"/>`;if(kmax<60)sticks+=`<circle cx="${X(e)}" cy="${Y(h)}" r="3.2" fill="#007dc5"/>`;}
+ s+=sticks+`<text x="${x0+8}" y="${yT+8}" class="lbl" font-size="15">peak P<tspan dy="4" font-size="11">f</tspan><tspan dy="-4"> = |T</tspan><tspan dy="4" font-size="11">fi</tspan><tspan dy="-4">|² t² = ${sg(V*V*t*t,3)}</tspan></text><text x="${x0+8}" y="${yT+30}" class="lbl" font-size="15">window width ≈ 2π/t = ${sg(2*Math.PI/t,3)}</text>`;
+ $('lv').innerHTML=s;
+ // right: P_out(t)
+ const tx0=60,tx1=525,tyT=24,tyB=262,N=160,pts=[];let pmax=0;for(let i=0;i<=N;i++){const tt=Tmax*i/N,pv=P.goldenP(V,d,tt);pts.push([tt,pv]);pmax=Math.max(pmax,pv,G*tt);}
+ const TX=v=>tx0+v/Tmax*(tx1-tx0),TY=v=>tyB-v/pmax*(tyB-tyT)*0.92;
+ let r=`<path d="M${tx0} ${tyT}V${tyB}H${tx1}" class="axis"/>`;
+ for(let k=0;k<=4;k++){const v=Tmax*k/4;r+=`<line x1="${TX(v)}" y1="${tyB}" x2="${TX(v)}" y2="${tyB+5}" stroke="#a7b8c5"/><text x="${TX(v)}" y="${tyB+22}" class="lbl" text-anchor="middle" font-size="15">${sg(v,2)}</text>`;}
+ for(let k=1;k<=4;k++){const v=pmax*k/4/0.92*0.92;r+=`<line x1="${tx0}" y1="${TY(v)}" x2="${tx1}" y2="${TY(v)}" class="grid-line"/><text x="${tx0-6}" y="${TY(v)+5}" class="lbl" text-anchor="end" font-size="14">${sg(v,2)}</text>`;}
+ r+=`<text x="${tx1}" y="${tyB+44}" class="lbl" text-anchor="end" font-size="15">time t</text>`;
+ r+=path(pts.map(q=>[TX(q[0]),TY(q[1])]),'#007dc5',2.8)+path([[TX(0),TY(0)],[TX(Tmax),TY(G*Tmax)]],'#b86900',2.2,'7 5');
+ const tr=2*Math.PI/d;r+=`<line x1="${TX(tr)}" y1="${tyT}" x2="${TX(tr)}" y2="${tyB}" stroke="#a7b8c5" stroke-dasharray="3 4"/><text x="${TX(tr)-4}" y="${tyT+12}" class="lbl" text-anchor="end" font-size="13" fill="#536878">2π/d: levels resolved</text>`;
+ const Pt=P.goldenP(V,d,t);r+=`<circle cx="${TX(t)}" cy="${TY(Pt)}" r="6" fill="#172635"/>`;
+ $('tot').innerHTML=r;
+ const ratio=Pt/(G*t);
+ $('readout').innerHTML=`<b>Γ = 2π|T<sub>fi</sub>|²ρ = ${sg(G,3)}</b> · P<sub>out</sub>(t) = ${sg(Pt,3)} · P<sub>out</sub>/(Γt) = ${ratio.toFixed(2)} · ${Pt>0.3?'<b>P<sub>out</sub> is not small: first order breaks down</b>':t*d>3?'<b>t is comparable to 2π/d: the discrete levels are resolved and the continuum approximation fails</b>':t<6/Em/1.2&&Em>=10?'<b>t is short: the energy window is still broad, no rate yet</b>':'<b>continuum regime: the total grows linearly, rate = Γ</b>'}`;
+}
+function tick(now){if(!playing)return;let v=n('t')+(now-last)/9000;last=now;if(v>=1){v=1;playing=false;$('play').textContent='Play';}$('t').value=v;render();if(playing)requestAnimationFrame(tick);}
+$('play').onclick=()=>{if(playing){playing=false;$('play').textContent='Play';return;}if(n('t')>=1)$('t').value=0;playing=true;last=performance.now();$('play').textContent='Pause';requestAnimationFrame(tick);};
+document.querySelectorAll('input').forEach(e=>e.oninput=()=>{if(e.id!=='t'||true){playing=false;$('play').textContent='Play';}render();});render();
+</script></main></body></html>

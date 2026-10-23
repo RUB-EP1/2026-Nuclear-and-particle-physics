@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="widgets.css"><title>Angular momentum states</title></head><body><main>
+<h1>Angular momentum: states and decay angular distributions</h1>
+<p class="intro">[L<sub>x</sub>, L<sub>y</sub>] = iL<sub>z</sub> ⇒ L² = ℓ(ℓ+1), L<sub>z</sub> = m ∈ {−ℓ, …, +ℓ} · decay of a spin-ℓ state into two spinless particles: dN/dΩ = |Y<sub>ℓ</sub><sup>m</sup>(θ, φ)|²</p>
+<div class="controls">
+<label for="l">ℓ <output id="lV"></output><input id="l" type="range" min="0" max="3" step="1" value="1"></label>
+<label for="m">m <output id="mV"></output><input id="m" type="range" min="-1" max="1" step="1" value="0"></label>
+<label for="f" id="fLabel">Population of m = 0 <output id="fV"></output><input id="f" type="range" min="0" max="1" step="0.01" value="0.33"></label>
+</div>
+<div class="controls presets"><span class="tag">Mode:</span><button data-mode="pure">pure state |ℓ, m⟩</button><button data-mode="mix">spin-1 mixture, e.g. ρ⁰ → π⁺π⁻</button><span class="tag">Presets:</span><button data-pre="rho0">ρ⁰, m = 0</button><button data-pre="rho1">ρ⁰, m = ±1</button><button data-pre="unpol">unpolarised ρ⁰</button><button data-pre="f2">f₂(1270), m = 0</button></div>
+<div class="grid">
+<section class="card"><h2>Vector model: 2ℓ+1 projections on z</h2><svg id="vm" viewBox="0 0 550 330" role="img" aria-label="Cones of the angular momentum vector for each allowed projection m"></svg><div class="legend">The length |L| = √(ℓ(ℓ+1)) is fixed; only L<sub>z</sub> = m is sharp, the azimuth of L is undetermined (L<sub>x</sub>, L<sub>y</sub> do not commute with L<sub>z</sub>).</div></section>
+<section class="card"><h2>Angular distribution of the decay products</h2><svg id="pd" viewBox="0 0 550 330" role="img" aria-label="Polar plot of the angular distribution"></svg><div class="legend">Polar plot of dN/dΩ against the polar angle θ from the z axis (rotationally symmetric about z).</div></section>
+</div>
+<section class="card readout" id="readout"></section>
+<p class="prompt">Which states give a distribution that vanishes along z? Find the population of m = 0 for which the spin-1 distribution becomes isotropic.</p>
+<script src="physics.js"></script>
+<script>
+const $=id=>document.getElementById(id),P=Physics,n=id=>Number($(id).value);
+let mode='pure';
+const path=(pts,color,w=2.6,dash='',fill='none')=>`<path d="${pts.map((v,i)=>(i?'L':'M')+v[0].toFixed(1)+','+v[1].toFixed(1)).join(' ')}Z" fill="${fill}" stroke="${color}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''}/>`;
+function arrow(x1,y1,x2,y2,color,w=3){const a=Math.atan2(y2-y1,x2-x1),h=10;return `<line x1="${x1}" y1="${y1}" x2="${x2-h*Math.cos(a)}" y2="${y2-h*Math.sin(a)}" stroke="${color}" stroke-width="${w}"/><polygon points="${x2},${y2} ${x2-h*Math.cos(a-.4)},${y2-h*Math.sin(a-.4)} ${x2-h*Math.cos(a+.4)},${y2-h*Math.sin(a+.4)}" fill="${color}"/>`;}
+const par=new URLSearchParams(location.search);
+function syncM(){const l=n('l');$('m').min=-l;$('m').max=l;if(n('m')>l)$('m').value=l;if(n('m')<-l)$('m').value=-l;$('m').disabled=(l===0||mode==='mix');}
+function setPre(k){if(k==='rho0'){mode='pure';$('l').value=1;syncM();$('m').value=0;}else if(k==='rho1'){mode='pure';$('l').value=1;syncM();$('m').value=1;}else if(k==='unpol'){mode='mix';$('l').value=1;syncM();$('f').value=1/3;}else if(k==='f2'){mode='pure';$('l').value=2;syncM();$('m').value=0;}}
+if(par.has('pre'))setPre(par.get('pre'));
+function W(l,m,x){return mode==='mix'?n('f')*P.Ylm2(1,0,x)+(1-n('f'))*P.Ylm2(1,1,x):P.Ylm2(l,m,x);}
+function render(){
+ if(mode==='mix')$('l').value=1;syncM();
+ const l=mode==='mix'?1:n('l'),m=mode==='mix'?0:n('m'),f=n('f');
+ $('lV').textContent=l;$('mV').textContent=(mode==='mix'?'(mixture)':(m>0?'+':'')+m);$('fV').textContent=f.toFixed(2);$('fLabel').style.display=mode==='mix'?'':'none';$('l').disabled=mode==='mix';
+ document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+ // vector model
+ const O=[275,172],Lm=Math.sqrt(l*(l+1)),s=l===0?0:100/Lm;let v='';
+ v+=arrow(O[0],O[1]+Lm*s+14,O[0],O[1]-Lm*s-22,'#a7b8c5',2)+`<text x="${O[0]+8}" y="${O[1]-Lm*s-14}" class="lbl" font-size="16" fill="#536878">z</text>`;
+ if(l===0){v+=`<circle cx="${O[0]}" cy="${O[1]}" r="7" fill="#172635"/><text x="${O[0]+14}" y="${O[1]+5}" class="lbl" font-size="16">ℓ = 0: L = 0, no preferred direction</text>`;}
+ else{for(let mm=-l;mm<=l;mm++){const rho=Math.sqrt(Math.max(0,Lm*Lm-mm*mm)),cy=O[1]-s*mm,sel=mm===m&&mode==='pure';const pts=[];for(let i=0;i<64;i++){const ph=2*Math.PI*i/64;pts.push([O[0]+s*rho*Math.cos(ph),cy-0.3*s*rho*Math.sin(ph)]);}
+  v+=path(pts,sel?'#b86900':'#c9d6df',sel?3:1.6,sel?'':'4 4')+`<text x="${O[0]-s*rho-8}" y="${cy+5}" class="lbl" text-anchor="end" font-size="15" fill="${sel?'#b86900':'#536878'}">m = ${mm>0?'+':''}${mm}</text>`;
+  if(sel){const ph=-0.7,px=O[0]+s*rho*Math.cos(ph),py=cy-0.3*s*rho*Math.sin(ph);v+=arrow(O[0],O[1],px,py,'#b86900',3.4)+`<circle cx="${O[0]}" cy="${cy}" r="3" fill="#b86900"/><line x1="${O[0]}" y1="${O[1]}" x2="${O[0]}" y2="${cy}" stroke="#b86900" stroke-dasharray="3 3"/><text x="${px+8}" y="${py-6}" class="lbl" font-size="15" fill="#b86900">L</text>`;}}}
+ v+=`<text x="10" y="22" class="lbl strong" font-size="17">|L| = √(ℓ(ℓ+1)) = ${Lm.toFixed(3)}  (in units of ħ)</text><text x="10" y="44" class="lbl" font-size="16">${mode==='pure'?'L<tspan dy="4" font-size="12">z</tspan><tspan dy="-4"> = m = '+m+'':'ℓ = 1: m = −1, 0, +1 with the populations set below'}</tspan></text>`;
+ $('vm').innerHTML=v;
+ // polar distribution
+ const C=[275,158],R=104;let wmax=0;for(let i=0;i<=400;i++){wmax=Math.max(wmax,W(l,m,-1+2*i/400));}
+ let d='';for(const rr of [0.5,1]){d+=`<circle cx="${C[0]}" cy="${C[1]}" r="${R*rr}" fill="none" stroke="#e3eaf0"/>`;}
+ d+=arrow(C[0],C[1]+R+14,C[0],C[1]-R-20,'#a7b8c5',2)+`<text x="${C[0]+8}" y="${C[1]-R-12}" class="lbl" font-size="16" fill="#536878">z axis</text><path d="M${C[0]-R-10} ${C[1]}H${C[0]+R+10}" stroke="#e3eaf0"/>`;
+ const pts=[];for(let i=0;i<=360;i++){const th=Math.PI*i/360,r=W(l,m,Math.cos(th))/wmax*R;pts.push([C[0]+r*Math.sin(th),C[1]-r*Math.cos(th)]);}
+ for(let i=360;i>=0;i--){const th=Math.PI*i/360,r=W(l,m,Math.cos(th))/wmax*R;pts.push([C[0]-r*Math.sin(th),C[1]-r*Math.cos(th)]);}
+ d+=path(pts,'#087bb9',2.8,'','rgba(0,125,197,0.16)');
+ d+=`<text x="10" y="296" class="lbl" font-size="15">dN/dΩ at 0°: ${(W(l,m,1)*4*Math.PI).toFixed(2)} · at 90°: ${(W(l,m,0)*4*Math.PI).toFixed(2)} (units of 1/4π)</text><text x="10" y="318" class="lbl" font-size="15">isotropic distribution = 1 in these units</text>`;
+ $('pd').innerHTML=d;
+ const sh={'1,0':'(3/4π) cos²θ','1,1':'(3/8π) sin²θ','2,0':'(5/16π)(3cos²θ − 1)²','2,1':'(15/8π) sin²θ cos²θ','2,2':'(15/32π) sin⁴θ','0,0':'1/4π'};
+ let txt;if(mode==='mix'){const iso=Math.abs(f-1/3)<0.015;txt=`<b>ρ⁰ → π⁺π⁻ with a fraction ${f.toFixed(2)} in m = 0 and ${(1-f).toFixed(2)} in m = ±1</b> · dN/dΩ = ${f.toFixed(2)}·(3/4π)cos²θ + ${(1-f).toFixed(2)}·(3/8π)sin²θ · ${iso?'<b>≈ isotropic: an unpolarised spin-1 state (1/3 in each m)</b>':f>1/3?'longitudinal enhancement along z':'transverse enhancement'}`;}
+ else{const key=`${l},${Math.abs(m)}`;txt=`<b>|ℓ, m⟩ = |${l}, ${m>0?'+':''}${m}⟩</b> · ${2*l+1} states for this ℓ · |Y<sub>${l}</sub><sup>${m}</sup>|² = ${sh[key]||'(see Y₃ᵐ)'}${l===1?' · ρ⁰ → π⁺π⁻ is an ℓ = 1 final state':l===2?' · f₂(1270) → π⁺π⁻ is an ℓ = 2 final state':''}`;}
+ $('readout').innerHTML=txt;
+}
+document.querySelectorAll('input').forEach(e=>e.oninput=render);document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;render();});document.querySelectorAll('[data-pre]').forEach(b=>b.onclick=()=>{setPre(b.dataset.pre);render();});
+render();
+</script></main></body></html>

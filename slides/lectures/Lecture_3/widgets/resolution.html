@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="widgets.css"><title>Resolving a target</title></head><body><main>
+<h1>Resolving a target: momentum, angle and size</h1>
+<p class="intro">Elastic scattering of a point-like probe off a uniform sphere · natural units · recoil and spin neglected</p>
+<div class="controls">
+<label for="p">Probe momentum |p| <output id="pV"></output><input id="p" type="range" min="-1.3" max="1" step="0.01" value="0"></label>
+<label for="theta">Scattering angle θ <output id="thetaV"></output><input id="theta" type="range" min="1" max="180" step="1" value="60"></label>
+<label for="R">Target radius R <output id="RV"></output><input id="R" type="range" min="0.5" max="8" step="0.05" value="2.7"></label>
+</div>
+<div class="controls presets"><span class="tag">Target:</span><button data-radius="1.1">proton-sized</button><button data-radius="2.7">¹²C</button><button data-radius="4.1">⁴⁰Ca</button><button data-radius="7.1">²⁰⁸Pb</button><span class="tag">(R = 1.2 A<sup>1/3</sup> fm)</span></div>
+<div class="grid">
+<section class="card"><h2>Momentum transfer and length scales</h2><svg id="vec" viewBox="0 0 550 330" role="img" aria-label="Incoming and outgoing momentum, their difference q, and a length ruler"></svg><div class="legend"><b class="blue">p</b><sub>in</sub> · <b class="orange">p</b><sub>out</sub> · <b class="green">q</b> = <b>p</b><sub>in</sub> − <b>p</b><sub>out</sub> (three-vectors) · |<b>p</b><sub>in</sub>| = |<b>p</b><sub>out</sub>| = |<b>p</b>|</div></section>
+<section class="card"><h2>Cross section relative to a point target</h2><svg id="ff" viewBox="0 0 550 330" role="img" aria-label="Squared form factor as a function of scattering angle on a logarithmic scale"></svg><div class="legend">|F(Q)|² for a uniform sphere, F = 3(sin x − x cos x)/x³ with x = QR/ħc · form factors: Thomson Chap. 7</div></section>
+</div>
+<section class="card readout" id="readout"></section>
+<p class="prompt">Fix θ and raise p: when does ħ/Q drop below R? Fix p and R: at which angle does the first minimum appear?</p>
+<script src="physics.js"></script>
+<script>
+const $=id=>document.getElementById(id),P=Physics,n=id=>Number($(id).value);
+const par=new URLSearchParams(location.search);
+if(par.has('p'))$('p').value=Math.log10(Number(par.get('p')));if(par.has('theta'))$('theta').value=par.get('theta');if(par.has('R'))$('R').value=par.get('R');
+const sup=s=>String(s).replace(/[-0-9]/g,c=>'⁻⁰¹²³⁴⁵⁶⁷⁸⁹'['-0123456789'.indexOf(c)]);
+const len=x=>x>=100?x.toFixed(0):x>=10?x.toFixed(1):x>=1?x.toFixed(2):x.toPrecision(2);
+const mom=x=>x>=1?x.toFixed(2):x.toPrecision(2);
+const path=(pts,color,w=2.6,dash='')=>`<path d="${pts.map((v,i)=>(i?'L':'M')+v[0].toFixed(1)+','+v[1].toFixed(1)).join(' ')}" fill="none" stroke="${color}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''}/>`;
+function arrow(x1,y1,x2,y2,color,w=3.5){const a=Math.atan2(y2-y1,x2-x1),h=11,bx=x2-h*Math.cos(a),by=y2-h*Math.sin(a);return `<line x1="${x1}" y1="${y1}" x2="${bx}" y2="${by}" stroke="${color}" stroke-width="${w}"/><polygon points="${x2},${y2} ${x2-h*Math.cos(a-.4)},${y2-h*Math.sin(a-.4)} ${x2-h*Math.cos(a+.4)},${y2-h*Math.sin(a+.4)}" fill="${color}"/>`;}
+function render(){
+ const p=Math.pow(10,n('p')),th=n('theta'),R=n('R'),Q=P.qTransfer(p,th),lam=2*Math.PI*P.HBARC/p,res=Q>0?P.HBARC/Q:Infinity,x=Q*R/P.HBARC;
+ $('pV').textContent=mom(p)+' GeV/c';$('thetaV').textContent=th+'°';$('RV').textContent=R.toFixed(2)+' fm';
+ document.querySelectorAll('[data-radius]').forEach(b=>b.classList.toggle('active',Math.abs(Number(b.dataset.radius)-R)<0.026));
+ // left: vectors + ruler
+ const O=[250,160],L=125,a=th*Math.PI/180,A=[O[0]+L,O[1]],B=[O[0]+L*Math.cos(a),O[1]-L*Math.sin(a)];
+ let s='';
+ s+=arrow(O[0],O[1],A[0],A[1],'#007dc5')+arrow(O[0],O[1],B[0],B[1],'#b86900')+arrow(B[0],B[1],A[0],A[1],'#00745b',4);
+ const arc=[];for(let i=0;i<=24;i++){const t=a*i/24;arc.push([O[0]+38*Math.cos(t),O[1]-38*Math.sin(t)]);}
+ s+=path(arc,'#536878',2)+`<text x="${O[0]+46}" y="${O[1]-8}" class="lbl">θ</text>`;
+ s+=`<text x="${A[0]+8}" y="${A[1]+6}" class="lbl" fill="#007dc5" style="font-weight:700">p<tspan dy="5" font-size="13" style="font-weight:400">in</tspan></text>`;
+ s+=`<text x="${B[0]-6}" y="${B[1]-10}" class="lbl" fill="#b86900" text-anchor="middle" style="font-weight:700">p<tspan dy="5" font-size="13" style="font-weight:400">out</tspan></text>`;
+ {const mx=(A[0]+B[0])/2,my=(A[1]+B[1])/2,dx=A[0]-B[0],dy=A[1]-B[1],dl=Math.hypot(dx,dy)||1;let nx=dy/dl,ny=-dx/dl;if(nx*(mx-O[0])+ny*(my-O[1])<0){nx=-nx;ny=-ny;}
+  s+=`<text x="${mx+nx*16-4}" y="${my+ny*16+6}" class="lbl" fill="#00745b" style="font-weight:700">q</text>`;}
+ s+=`<text x="10" y="22" class="lbl strong">Q = 2|p| sin(θ/2) = ${mom(Q)} GeV/c</text><text x="10" y="44" class="lbl">t = −Q² = −${(Q*Q).toPrecision(3)} GeV²</text>`;
+ // ruler (log scale 1e-3 .. 1e1 fm)
+ const X=v=>40+(Math.log10(Math.max(v,1e-3))+3)/4*480,y0=250;
+ s+=`<path d="M40 ${y0-6}H520" class="axis"/>`;
+ for(let e=-3;e<=1;e++){s+=`<line x1="${X(Math.pow(10,e))}" y1="${y0-10}" x2="${X(Math.pow(10,e))}" y2="${y0-2}" stroke="#a7b8c5"/><text x="${X(Math.pow(10,e))}" y="${y0-14}" class="lbl" text-anchor="middle" font-size="14">10${sup(e)}</text>`;}
+ s+=`<text x="528" y="${y0-2}" class="lbl" font-size="14">fm</text>`;
+ const bars=[['R (target)',R,'#b86900'],['ħ/Q (resolution)',res,'#00745b'],['λ = h/|p|',lam,'#007dc5']];
+ bars.forEach((b,i)=>{const y=y0+26+i*26,xe=X(b[1]);s+=`<text x="42" y="${y-7}" class="lbl" fill="${b[2]}" font-size="14">${b[0]} = ${len(b[1])} fm</text><line x1="40" y1="${y}" x2="${xe}" y2="${y}" stroke="${b[2]}" stroke-width="6" stroke-linecap="round"/>`;});
+ s+=`<line x1="${X(R)}" y1="${y0-6}" x2="${X(R)}" y2="${y0+82}" stroke="#b86900" stroke-dasharray="3 4"/>`;
+ $('vec').innerHTML=s;
+ // right: |F|^2 vs angle
+ const x0=60,x1=525,yT=22,yB=285,ly=v=>yT+(-Math.max(Math.log10(Math.max(v,1e-12)),-8))/8*(yB-yT),tx=d=>x0+d/180*(x1-x0);
+ let f='';
+ for(let e=0;e>=-8;e-=2){f+=`<line x1="${x0}" y1="${ly(Math.pow(10,e))}" x2="${x1}" y2="${ly(Math.pow(10,e))}" class="grid-line"/><text x="${x0-6}" y="${ly(Math.pow(10,e))+5}" class="lbl" text-anchor="end" font-size="14">10${sup(e)}</text>`;}
+ for(let d=0;d<=180;d+=45)f+=`<line x1="${tx(d)}" y1="${yB}" x2="${tx(d)}" y2="${yB+5}" stroke="#a7b8c5"/><text x="${tx(d)}" y="${yB+22}" class="lbl" text-anchor="middle" font-size="15">${d}°</text>`;
+ f+=`<path d="M${x0} ${yT}V${yB}H${x1}" class="axis"/><text x="${x1}" y="${yB+40}" class="lbl" text-anchor="end" font-size="15">scattering angle θ</text>`;
+ const pts=[];for(let d=0.5;d<=180;d+=0.5){const q=P.qTransfer(p,d),F=P.sphereFF(q*R/P.HBARC);pts.push([tx(d),ly(F*F)]);}
+ f+=path(pts,'#087bb9',2.4);
+ const sMin=4.4934*P.HBARC/(2*p*R);let note;
+ if(sMin<=1){const dm=2*Math.asin(sMin)*180/Math.PI;f+=`<line x1="${tx(dm)}" y1="${yT}" x2="${tx(dm)}" y2="${yB}" stroke="#b86900" stroke-dasharray="5 4"/><text x="${x1-4}" y="${yT+16}" class="lbl" text-anchor="end" fill="#b86900" font-size="15">first minimum at ${dm.toFixed(1)}° (QR = 4.49)</text>`;note=`first minimum at θ = ${dm.toFixed(1)}°`;}
+ else{f+=`<text x="${x1-4}" y="${(yT+yB)/2}" class="lbl" text-anchor="end" fill="#536878" font-size="15">no minimum reachable (QR &lt; 4.49)</text>`;note='no minimum reachable at this p';}
+ const F0=P.sphereFF(x);f+=`<line x1="${tx(th)}" y1="${yT}" x2="${tx(th)}" y2="${yB}" stroke="#172635" stroke-width="1.5"/><circle cx="${tx(th)}" cy="${ly(F0*F0)}" r="6" fill="#172635"/>`;
+ $('ff').innerHTML=f;
+ const regime=x<0.6?'point-like: F ≈ 1, the structure is not resolved':x<4.49?'structure resolved: the cross section is suppressed':'beyond the first minimum: diffraction pattern';
+ $('readout').innerHTML=`<b>QR/ħc = ${x.toFixed(2)}</b> · |F|² = ${F0*F0>=0.01?(F0*F0).toFixed(3):(F0*F0).toExponential(1)} · ${regime}<br>λ = ${len(lam)} fm · ħ/Q = ${len(res)} fm · R = ${R.toFixed(2)} fm · ${note}`;
+}
+document.querySelectorAll('input').forEach(e=>e.oninput=render);document.querySelectorAll('[data-radius]').forEach(b=>b.onclick=()=>{$('R').value=b.dataset.radius;render();});render();
+</script></main></body></html>

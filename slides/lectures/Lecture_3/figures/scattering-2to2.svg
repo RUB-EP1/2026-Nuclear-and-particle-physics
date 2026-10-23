@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="530" viewBox="0 0 900 530" font-family="'Helvetica Neue', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+<circle cx="450" cy="230" r="78" fill="#e6f2fa" stroke="#087bb9" stroke-width="4"/>
+<text x="450" y="244" font-size="44" fill="#087bb9" text-anchor="middle" font-weight="normal" font-style="normal"><tspan font-style="italic">M</tspan></text>
+<line x1="70" y1="70" x2="378.11" y2="199.73" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="232.9,138.59 210.54,139.83 218.16,121.73" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="62" y="56" font-size="34" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">a</tspan> (<tspan font-style="italic">p</tspan><tspan font-size="22" dy="8">1</tspan><tspan dy="-8"></tspan>)</text>
+<line x1="70" y1="390" x2="378.11" y2="260.27" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="232.9,321.41 218.16,338.27 210.54,320.17" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="62" y="426" font-size="34" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">b</tspan> (<tspan font-style="italic">p</tspan><tspan font-size="22" dy="8">2</tspan><tspan dy="-8"></tspan>)</text>
+<line x1="521.89" y1="199.73" x2="830" y2="70" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="684.79,131.14 670.05,148 662.43,129.9" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="838" y="56" font-size="34" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">c</tspan> (<tspan font-style="italic">p</tspan><tspan font-size="22" dy="8">3</tspan><tspan dy="-8"></tspan>)</text>
+<line x1="521.89" y1="260.27" x2="830" y2="390" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="684.79,328.86 662.43,330.1 670.05,312" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="838" y="426" font-size="34" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">d</tspan> (<tspan font-style="italic">p</tspan><tspan font-size="22" dy="8">4</tspan><tspan dy="-8"></tspan>)</text>
+<text x="110" y="505" font-size="28" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">initial state</text>
+<text x="790" y="505" font-size="28" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">final state</text>
+<line x1="330" y1="505" x2="558.8" y2="505" stroke="#627383" stroke-width="3" stroke-linecap="butt"/>
+<polygon points="570,505 557.21,510.69 557.21,499.31" fill="#627383"/>
+<text x="450" y="493" font-size="24" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">time</text>
+</svg>

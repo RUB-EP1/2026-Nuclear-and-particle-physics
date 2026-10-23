@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="widgets.css"><title>Neutrino oscillations</title></head><body><main>
+<h1>Superposition of energy eigenstates: neutrino oscillations</h1>
+<p class="intro">|ν<sub>α</sub>(L)⟩ = cos θ e<sup>−iE₁t</sup>|ν₁⟩ + sin θ e<sup>−iE₂t</sup>|ν₂⟩ · two-flavour approximation · survival probability of the initial flavour</p>
+<div class="controls">
+<label for="dm">Δm² <output id="dmV"></output><input id="dm" type="range" min="-5" max="-2" step="0.01" value="-2.6"></label>
+<label for="s2">sin²2θ <output id="s2V"></output><input id="s2" type="range" min="0" max="1" step="0.01" value="1"></label>
+<label for="L">Baseline L <output id="LV"></output><input id="L" type="range" min="0" max="4.3" step="0.01" value="2.47"></label>
+<label for="E">Energy E <output id="EV"></output><input id="E" type="range" min="-3" max="2" step="0.01" value="-0.22"></label>
+</div>
+<div class="controls presets"><span class="tag">Experiment:</span><button data-k="t2k">T2K</button><button data-k="dune">DUNE</button><button data-k="reactor">reactor (KamLAND-like)</button><span class="tag">(approximate values)</span></div>
+<div class="grid">
+<section class="card"><h2>Survival probability against distance (fixed E)</h2><svg id="pl" viewBox="0 0 550 330" role="img" aria-label="Phase of the two mass eigenstates and survival probability against baseline"></svg><div class="legend">Δ = Δm² L/(2E) is the relative phase of the two energy eigenstates; P = 1 − sin²2θ · sin²(Δ/2)</div></section>
+<section class="card"><h2>The same curve against L/E (universal)</h2><svg id="pe" viewBox="0 0 550 330" role="img" aria-label="Survival probability against L over E on a logarithmic axis"></svg><div class="legend">1.267 Δm²[eV²] L[km]/E[GeV] = Δ/2 · first oscillation maximum at L/E = 1.24 km/GeV ÷ Δm²[eV²]</div></section>
+</div>
+<section class="card readout" id="readout"></section>
+<p class="prompt">Set Δm² and sin²2θ, then place the experiment (L, E) at the first minimum of the survival probability. Why does a reactor experiment need MeV neutrinos and a baseline of ~100 km?</p>
+<script src="physics.js"></script>
+<script>
+const $=id=>document.getElementById(id),P=Physics,n=id=>Number($(id).value);
+const PRE={t2k:{dm:2.5e-3,s2:1,L:295,E:0.6,name:'T2K'},dune:{dm:2.5e-3,s2:1,L:1285,E:2.5,name:'DUNE'},reactor:{dm:7.5e-5,s2:0.85,L:180,E:0.004,name:'reactor'}};
+let st={dm:Math.pow(10,-2.6),s2:1,L:Math.pow(10,2.47),E:Math.pow(10,-0.22)};
+function set(k){const p=PRE[k];st={dm:p.dm,s2:p.s2,L:p.L,E:p.E};$('dm').value=Math.log10(p.dm);$('s2').value=p.s2;$('L').value=Math.log10(p.L);$('E').value=Math.log10(p.E);}
+const par=new URLSearchParams(location.search);set(par.has('k')&&PRE[par.get('k')]?par.get('k'):'t2k');
+const sg=(x,d=3)=>x===0?'0':(Math.abs(x)>=1e-2&&Math.abs(x)<1e4?Number(x.toPrecision(d)).toString():x.toExponential(d-1));
+const path=(pts,color,w=2.6,dash='')=>`<path d="${pts.map((v,i)=>(i?'L':'M')+v[0].toFixed(1)+','+v[1].toFixed(1)).join(' ')}" fill="none" stroke="${color}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''}/>`;
+function arrow(x1,y1,x2,y2,color,w=3){const a=Math.atan2(y2-y1,x2-x1),h=9;return `<line x1="${x1}" y1="${y1}" x2="${x2-h*Math.cos(a)}" y2="${y2-h*Math.sin(a)}" stroke="${color}" stroke-width="${w}"/><polygon points="${x2},${y2} ${x2-h*Math.cos(a-.4)},${y2-h*Math.sin(a-.4)} ${x2-h*Math.cos(a+.4)},${y2-h*Math.sin(a+.4)}" fill="${color}"/>`;}
+function render(){
+ const dm=st.dm,s2=st.s2,L=st.L,E=st.E,ph=P.oscPhase(dm,L,E),Dl=2*ph,Pv=1-P.oscProb(s2,dm,L,E);
+ $('dmV').textContent=sg(dm,2)+' eV²';$('s2V').textContent=s2.toFixed(2);$('LV').textContent=sg(L,4)+' km';$('EV').textContent=(E>=1?sg(E,3)+' GeV':E>=1e-3?sg(E*1e3,3)+' MeV':sg(E*1e6,3)+' keV');
+ document.querySelectorAll('[data-k]').forEach(b=>{const p=PRE[b.dataset.k];b.classList.toggle('active',p.dm===st.dm&&p.s2===st.s2&&p.L===st.L&&p.E===st.E);});
+ const L1=1.2398*E/dm; // first maximum distance at this E
+ // left card: phasors + P(L)
+ let s='';const cx=62,cy=52,r=36;
+ s+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#c9d6df"/>`+arrow(cx,cy,cx+r,cy,'#007dc5')+arrow(cx,cy,cx+r*Math.cos(Dl),cy+r*Math.sin(Dl),'#b86900');
+ s+=`<text x="${cx+r+14}" y="${cy-18}" class="lbl" font-size="15" fill="#007dc5">e<tspan dy="-5" font-size="11">−iE₁t</tspan><tspan dy="5">|ν₁⟩</tspan></text><text x="${cx+r+14}" y="${cy+2}" class="lbl" font-size="15" fill="#b86900">e<tspan dy="-5" font-size="11">−iE₂t</tspan><tspan dy="5">|ν₂⟩</tspan></text><text x="${cx+r+14}" y="${cy+24}" class="lbl" font-size="15" fill="#172635">Δ = ${sg(Dl%(2*Math.PI),3)} rad (mod 2π)</text>`;
+ const x0=55,x1=525,yT=110,yB=278,Lm=Math.max(4*L1,1.15*L,1e-9),LX=v=>x0+v/Lm*(x1-x0),PY=v=>yB-v*(yB-yT);
+ s+=`<path d="M${x0} ${yT}V${yB}H${x1}" class="axis"/>`;
+ for(let k=0;k<=4;k++){const v=Lm*k/4;s+=`<line x1="${LX(v)}" y1="${yB}" x2="${LX(v)}" y2="${yB+5}" stroke="#a7b8c5"/><text x="${LX(v)}" y="${yB+21}" class="lbl" text-anchor="middle" font-size="15">${sg(v,2)}</text>`;}
+ for(const v of [0,0.5,1])s+=`<line x1="${x0}" y1="${PY(v)}" x2="${x1}" y2="${PY(v)}" class="grid-line"/><text x="${x0-6}" y="${PY(v)+5}" class="lbl" text-anchor="end" font-size="14">${v}</text>`;
+ s+=`<text x="${x1}" y="${yB+40}" class="lbl" text-anchor="end" font-size="15">baseline L (km)</text>`;
+ const pts=[];for(let i=0;i<=600;i++){const l=Lm*i/600;pts.push([LX(l),PY(1-P.oscProb(s2,dm,l,E))]);}
+ s+=path(pts,'#007dc5',2.8)+`<circle cx="${LX(L)}" cy="${PY(Pv)}" r="6" fill="#172635"/>`;
+ $('pl').innerHTML=s;
+ // right card: P vs L/E (log), adaptive sampling
+ const rx0=55,rx1=525,ryT=24,ryB=278,xmin=1,xmax=1e5,RX=v=>rx0+(Math.log10(v)-Math.log10(xmin))/(Math.log10(xmax)-Math.log10(xmin))*(rx1-rx0);
+ let r2=`<path d="M${rx0} ${ryT}V${ryB}H${rx1}" class="axis"/>`;
+ for(let e=0;e<=5;e++)r2+=`<line x1="${RX(Math.pow(10,e))}" y1="${ryB}" x2="${RX(Math.pow(10,e))}" y2="${ryB+5}" stroke="#a7b8c5"/><text x="${RX(Math.pow(10,e))}" y="${ryB+21}" class="lbl" text-anchor="middle" font-size="15">10${'⁰¹²³⁴⁵'[e]}</text>`;
+ for(const v of [0,0.5,1])r2+=`<line x1="${rx0}" y1="${ryT+(1-v)*(ryB-ryT)}" x2="${rx1}" y2="${ryT+(1-v)*(ryB-ryT)}" class="grid-line"/><text x="${rx0-6}" y="${ryT+(1-v)*(ryB-ryT)+5}" class="lbl" text-anchor="end" font-size="14">${v}</text>`;
+ r2+=`<text x="${rx1}" y="${ryB+40}" class="lbl" text-anchor="end" font-size="15">L/E (km/GeV)</text>`;
+ const q=[];let x=xmin;const dphase=0.25/(1.26693*Math.max(dm,1e-9));while(x<=xmax){q.push([RX(x),ryT+(1-(1-P.oscProb(s2,dm,x,1)))*(ryB-ryT)]);x+=Math.min(x*Math.LN10/150,dphase);}
+ r2+=path(q,'#007dc5',2)+`<line x1="${RX(1.2398/dm)}" y1="${ryT}" x2="${RX(1.2398/dm)}" y2="${ryB}" stroke="#a7b8c5" stroke-dasharray="3 4"/>`;
+ const xe=Math.min(Math.max(L/E,xmin),xmax);r2+=`<line x1="${RX(xe)}" y1="${ryT}" x2="${RX(xe)}" y2="${ryB}" stroke="#172635" stroke-width="1.4"/><circle cx="${RX(xe)}" cy="${ryT+(1-Pv)*(ryB-ryT)}" r="6" fill="#172635"/>`;
+ $('pe').innerHTML=r2;
+ $('readout').innerHTML=`<b>P(survival) = ${Pv.toFixed(3)}</b> · L/E = ${sg(L/E,3)} km/GeV · 1.267 Δm² L/E = ${sg(ph,3)} rad (maximum disappearance at π/2 = 1.571) · first oscillation maximum (survival minimum) at L/E = ${sg(1.2398/dm,3)} km/GeV, i.e. L = ${sg(L1,3)} km at this E`;
+}
+document.querySelectorAll('input').forEach(e=>e.oninput=()=>{const v=Number(e.value);if(e.id==='dm')st.dm=Math.pow(10,v);else if(e.id==='s2')st.s2=v;else if(e.id==='L')st.L=Math.pow(10,v);else st.E=Math.pow(10,v);render();});document.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{set(b.dataset.k);render();});render();
+</script></main></body></html>

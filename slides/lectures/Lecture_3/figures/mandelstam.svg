@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="470" viewBox="0 0 1440 470" font-family="'Helvetica Neue', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+<line x1="60" y1="70" x2="170" y2="210" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="119.82,146.13 103.44,138.2 115.99,128.34" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="48" y="64" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">1</tspan><tspan dy="-7"></tspan></text>
+<line x1="60" y1="350" x2="170" y2="210" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="119.82,273.87 115.99,291.66 103.44,281.8" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="48" y="372" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">2</tspan><tspan dy="-7"></tspan></text>
+<line x1="310" y1="210" x2="420" y2="70" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="369.82,133.87 365.99,151.66 353.44,141.8" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="432" y="64" font-size="30" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">3</tspan><tspan dy="-7"></tspan></text>
+<line x1="310" y1="210" x2="420" y2="350" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="369.82,286.13 353.44,278.2 365.99,268.34" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="432" y="372" font-size="30" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">4</tspan><tspan dy="-7"></tspan></text>
+<path d="M 170 210 L 172 210.6 L 174 212.12 L 176 213.83 L 178 214.81 L 180 214.26 L 182 211.85 L 184 207.85 L 186 204.03 L 188 201.58 L 190 201.07 L 192 202.59 L 194 205.82 L 196 210 L 198 214.18 L 200 217.41 L 202 218.93 L 204 218.42 L 206 215.97 L 208 212.15 L 210 207.85 L 212 204.03 L 214 201.58 L 216 201.07 L 218 202.59 L 220 205.82 L 222 210 L 224 214.18 L 226 217.41 L 228 218.93 L 230 218.42 L 232 215.97 L 234 212.15 L 236 207.85 L 238 204.03 L 240 201.58 L 242 201.07 L 244 202.59 L 246 205.82 L 248 210 L 250 214.18 L 252 217.41 L 254 218.93 L 256 218.42 L 258 215.97 L 260 212.15 L 262 207.85 L 264 204.03 L 266 201.58 L 268 201.07 L 270 202.59 L 272 205.82 L 274 210 L 276 214.18 L 278 217.41 L 280 218.93 L 282 218.42 L 284 215.97 L 286 212.15 L 288 207.85 L 290 204.03 L 292 201.58 L 294 201.07 L 296 202.59 L 298 206.41 L 300 210 L 302 212.39 L 304 213.17 L 306 212.55 L 308 211.2 L 310 210" fill="none" stroke="#087bb9" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="170" cy="210" r="7" fill="#172635"/>
+<circle cx="310" cy="210" r="7" fill="#172635"/>
+<text x="240" y="182" font-size="30" fill="#087bb9" text-anchor="middle" font-weight="normal" font-style="normal"><tspan font-style="italic">q</tspan></text>
+<text x="240" y="410" font-size="28" fill="#172635" text-anchor="middle" font-weight="bold" font-style="normal"><tspan font-style="italic">s</tspan>-channel:  <tspan font-style="italic">q</tspan> = <tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">1</tspan><tspan dy="-7"></tspan> + <tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">2</tspan><tspan dy="-7"></tspan></text>
+<text x="240" y="438" font-size="1" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"></text>
+<line x1="540" y1="70" x2="720" y2="150" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="637.13,113.17 618.94,113.81 625.42,99.23" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="528" y="64" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">1</tspan><tspan dy="-7"></tspan></text>
+<line x1="540" y1="350" x2="720" y2="270" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="637.13,306.83 625.42,320.77 618.94,306.19" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="528" y="372" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">2</tspan><tspan dy="-7"></tspan></text>
+<line x1="720" y1="150" x2="900" y2="70" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="817.13,106.83 805.42,120.77 798.94,106.19" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="912" y="64" font-size="30" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">3</tspan><tspan dy="-7"></tspan></text>
+<line x1="720" y1="270" x2="900" y2="350" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="817.13,313.17 798.94,313.81 805.42,299.23" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="912" y="372" font-size="30" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">4</tspan><tspan dy="-7"></tspan></text>
+<path d="M 720 150 L 719.4 152 L 717.88 154 L 716.17 156 L 715.19 158 L 715.74 160 L 718.15 162 L 722.15 164 L 725.97 166 L 728.42 168 L 728.93 170 L 727.41 172 L 724.18 174 L 720 176 L 715.82 178 L 712.59 180 L 711.07 182 L 711.58 184 L 714.03 186 L 717.85 188 L 722.15 190 L 725.97 192 L 728.42 194 L 728.93 196 L 727.41 198 L 724.18 200 L 720 202 L 715.82 204 L 712.59 206 L 711.07 208 L 711.58 210 L 714.03 212 L 717.85 214 L 722.15 216 L 725.97 218 L 728.42 220 L 728.93 222 L 727.41 224 L 724.18 226 L 720 228 L 715.82 230 L 712.59 232 L 711.07 234 L 711.58 236 L 714.03 238 L 717.85 240 L 722.15 242 L 725.97 244 L 728.42 246 L 728.93 248 L 727.41 250 L 724.18 252 L 720 254 L 715.82 256 L 713.65 258 L 713.62 260 L 715.19 262 L 717.44 264 L 719.38 266 L 720.31 268 L 720 270" fill="none" stroke="#087bb9" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="720" cy="150" r="7" fill="#172635"/>
+<circle cx="720" cy="270" r="7" fill="#172635"/>
+<text x="742" y="216" font-size="30" fill="#087bb9" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">q</tspan></text>
+<text x="720" y="410" font-size="28" fill="#172635" text-anchor="middle" font-weight="bold" font-style="normal"><tspan font-style="italic">t</tspan>-channel:  <tspan font-style="italic">q</tspan> = <tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">1</tspan><tspan dy="-7"></tspan> − <tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">3</tspan><tspan dy="-7"></tspan></text>
+<text x="720" y="438" font-size="1" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"></text>
+<line x1="1020" y1="70" x2="1200" y2="150" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="1117.13,113.17 1098.94,113.81 1105.42,99.23" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="1008" y="64" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">1</tspan><tspan dy="-7"></tspan></text>
+<line x1="1020" y1="350" x2="1200" y2="270" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="1117.13,306.83 1105.42,320.77 1098.94,306.19" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="1008" y="372" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">2</tspan><tspan dy="-7"></tspan></text>
+<line x1="1200" y1="270" x2="1380" y2="70" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="1295.22,164.2 1290.21,181.7 1278.34,171.02" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="1392" y="64" font-size="30" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">3</tspan><tspan dy="-7"></tspan></text>
+<line x1="1200" y1="150" x2="1380" y2="350" stroke="#172635" stroke-width="4" stroke-linecap="round"/>
+<polygon points="1295.22,255.8 1278.34,248.98 1290.21,238.3" fill="#627383" fill-opacity="1.0" stroke="none"/>
+<text x="1392" y="372" font-size="30" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">4</tspan><tspan dy="-7"></tspan></text>
+<path d="M 1200 150 L 1199.4 152 L 1197.88 154 L 1196.17 156 L 1195.19 158 L 1195.74 160 L 1198.15 162 L 1202.15 164 L 1205.97 166 L 1208.42 168 L 1208.93 170 L 1207.41 172 L 1204.18 174 L 1200 176 L 1195.82 178 L 1192.59 180 L 1191.07 182 L 1191.58 184 L 1194.03 186 L 1197.85 188 L 1202.15 190 L 1205.97 192 L 1208.42 194 L 1208.93 196 L 1207.41 198 L 1204.18 200 L 1200 202 L 1195.82 204 L 1192.59 206 L 1191.07 208 L 1191.58 210 L 1194.03 212 L 1197.85 214 L 1202.15 216 L 1205.97 218 L 1208.42 220 L 1208.93 222 L 1207.41 224 L 1204.18 226 L 1200 228 L 1195.82 230 L 1192.59 232 L 1191.07 234 L 1191.58 236 L 1194.03 238 L 1197.85 240 L 1202.15 242 L 1205.97 244 L 1208.42 246 L 1208.93 248 L 1207.41 250 L 1204.18 252 L 1200 254 L 1195.82 256 L 1193.65 258 L 1193.62 260 L 1195.19 262 L 1197.44 264 L 1199.38 266 L 1200.31 268 L 1200 270" fill="none" stroke="#087bb9" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1200" cy="150" r="7" fill="#172635"/>
+<circle cx="1200" cy="270" r="7" fill="#172635"/>
+<text x="1166" y="216" font-size="30" fill="#087bb9" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">q</tspan></text>
+<text x="1200" y="410" font-size="28" fill="#172635" text-anchor="middle" font-weight="bold" font-style="normal"><tspan font-style="italic">u</tspan>-channel:  <tspan font-style="italic">q</tspan> = <tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">1</tspan><tspan dy="-7"></tspan> − <tspan font-style="italic">p</tspan><tspan font-size="20" dy="7">4</tspan><tspan dy="-7"></tspan></text>
+<text x="1200" y="438" font-size="1" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"></text>
+<line x1="24" y1="452" x2="99.6" y2="452" stroke="#627383" stroke-width="3" stroke-linecap="butt"/>
+<polygon points="110,452 98.12,457.29 98.12,446.71" fill="#627383"/>
+<text x="122" y="461" font-size="24" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">time</text>
+</svg>

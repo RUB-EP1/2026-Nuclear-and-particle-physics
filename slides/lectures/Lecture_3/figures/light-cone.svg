@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="640" viewBox="0 0 900 640" font-family="'Helvetica Neue', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+<polygon points="450,320 150,20 750,20" fill="#e6f2fa" fill-opacity="1.0" stroke="none"/>
+<polygon points="450,320 150,620 750,620" fill="#e6f2fa" fill-opacity="1.0" stroke="none"/>
+<polygon points="450,320 150,20 30,20 30,620 150,620" fill="#faf0dc" fill-opacity="1.0" stroke="none"/>
+<polygon points="450,320 750,20 870,20 870,620 750,620" fill="#faf0dc" fill-opacity="1.0" stroke="none"/>
+<line x1="150" y1="20" x2="750" y2="620" stroke="#7950ad" stroke-width="4" stroke-linecap="round"/>
+<line x1="150" y1="620" x2="750" y2="20" stroke="#7950ad" stroke-width="4" stroke-linecap="round"/>
+<line x1="450" y1="628" x2="450" y2="26.8" stroke="#172635" stroke-width="3" stroke-linecap="butt"/>
+<polygon points="450,14 456.51,28.62 443.49,28.62" fill="#172635"/>
+<line x1="40" y1="320" x2="871.2" y2="320" stroke="#172635" stroke-width="3" stroke-linecap="butt"/>
+<polygon points="884,320 869.38,326.51 869.38,313.49" fill="#172635"/>
+<text x="464" y="40" font-size="32" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal"><tspan font-style="italic">ct</tspan></text>
+<text x="876" y="304" font-size="32" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal"><tspan font-style="italic">x</tspan></text>
+<path d="M 342 620 L 344.39 616 L 346.75 612 L 349.08 608 L 351.4 604 L 353.68 600 L 355.94 596 L 358.17 592 L 360.38 588 L 362.56 584 L 364.72 580 L 366.85 576 L 368.96 572 L 371.04 568 L 373.09 564 L 375.12 560 L 377.12 556 L 379.1 552 L 381.05 548 L 382.98 544 L 384.88 540 L 386.76 536 L 388.6 532 L 390.43 528 L 392.23 524 L 394 520 L 395.75 516 L 397.47 512 L 399.16 508 L 400.84 504 L 402.48 500 L 404.1 496 L 405.69 492 L 407.26 488 L 408.8 484 L 410.32 480 L 411.81 476 L 413.28 472 L 414.72 468 L 416.13 464 L 417.52 460 L 418.88 456 L 420.22 452 L 421.53 448 L 422.82 444 L 424.08 440 L 425.32 436 L 426.52 432 L 427.71 428 L 428.87 424 L 430 420 L 431.11 416 L 432.19 412 L 433.24 408 L 434.28 404 L 435.28 400 L 436.26 396 L 437.21 392 L 438.14 388 L 439.04 384 L 439.92 380 L 440.77 376 L 441.6 372 L 442.4 368 L 443.17 364 L 443.92 360 L 444.64 356 L 445.34 352 L 446.01 348 L 446.66 344 L 447.28 340 L 447.88 336 L 448.44 332 L 448.99 328 L 449.51 324 L 450 320 L 450.49 316 L 451.01 312 L 451.56 308 L 452.12 304 L 452.72 300 L 453.34 296 L 453.99 292 L 454.66 288 L 455.36 284 L 456.08 280 L 456.83 276 L 457.6 272 L 458.4 268 L 459.23 264 L 460.08 260 L 460.96 256 L 461.86 252 L 462.79 248 L 463.74 244 L 464.72 240 L 465.72 236 L 466.76 232 L 467.81 228 L 468.89 224 L 470 220 L 471.13 216 L 472.29 212 L 473.48 208 L 474.68 204 L 475.92 200 L 477.18 196 L 478.47 192 L 479.78 188 L 481.12 184 L 482.48 180 L 483.87 176 L 485.28 172 L 486.72 168 L 488.19 164 L 489.68 160 L 491.2 156 L 492.74 152 L 494.31 148 L 495.9 144 L 497.52 140 L 499.16 136 L 500.84 132 L 502.53 128 L 504.25 124 L 506 120 L 507.77 116 L 509.57 112 L 511.4 108 L 513.24 104 L 515.12 100 L 517.02 96 L 518.95 92 L 520.9 88 L 522.88 84 L 524.88 80 L 526.91 76 L 528.96 72 L 531.04 68 L 533.15 64 L 535.28 60" fill="none" stroke="#087bb9" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="450" cy="320" r="9" fill="#172635"/>
+<text x="464" y="354" font-size="28" fill="#172635" text-anchor="start" font-weight="bold" font-style="normal">O</text>
+<text x="422" y="110" font-size="30" fill="#087bb9" text-anchor="end" font-weight="bold" font-style="normal">future</text>
+<text x="422" y="146" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">timelike</text>
+<text x="422" y="180" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">Δ<tspan font-style="italic">s</tspan>² &gt; 0</text>
+<text x="478" y="520" font-size="30" fill="#087bb9" text-anchor="start" font-weight="bold" font-style="normal">past</text>
+<text x="478" y="556" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">timelike</text>
+<text x="478" y="590" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">Δ<tspan font-style="italic">s</tspan>² &gt; 0</text>
+<text x="140" y="290" font-size="30" fill="#b77913" text-anchor="middle" font-weight="bold" font-style="normal">spacelike</text>
+<text x="140" y="372" font-size="28" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">Δ<tspan font-style="italic">s</tspan>² &lt; 0</text>
+<text x="140" y="408" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">no causal link</text>
+<text x="760" y="290" font-size="30" fill="#b77913" text-anchor="middle" font-weight="bold" font-style="normal">spacelike</text>
+<text x="760" y="372" font-size="28" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">Δ<tspan font-style="italic">s</tspan>² &lt; 0</text>
+<text x="760" y="408" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">no causal link</text>
+<line x1="46" y1="566" x2="96" y2="566" stroke="#7950ad" stroke-width="4" stroke-linecap="round"/>
+<text x="108" y="575" font-size="26" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal">light (Δ<tspan font-style="italic">s</tspan>² = 0)</text>
+<line x1="46" y1="602" x2="96" y2="602" stroke="#087bb9" stroke-width="5" stroke-linecap="round"/>
+<text x="108" y="611" font-size="26" fill="#172635" text-anchor="start" font-weight="normal" font-style="normal">massive particle</text>
+</svg>

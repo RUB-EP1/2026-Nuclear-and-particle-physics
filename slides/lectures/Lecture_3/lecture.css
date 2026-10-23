@@ -60,3 +60,15 @@
 .reveal .mass-bottom{display:flex;align-items:center;gap:24px;margin-top:10px}
 .reveal .mass-bottom .mass-actions{margin:0;flex-shrink:0}.reveal .mass-bottom .mass-problem{margin:0;font-size:26px}
 .reveal .mass-results{font-size:29px;padding-top:8px}.reveal .mass-feedback:empty{display:none}
+
+/* Recap: text beside a figure. */
+.reveal .side-by-side{display:grid;grid-template-columns:minmax(0,.40fr) minmax(0,.60fr);gap:36px;align-items:center;width:100%}
+.reveal .side-by-side>p{margin:0;display:flex;justify-content:center;align-items:center}
+.reveal .side-by-side img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto}
+.reveal .side-by-side .txt{font-size:36px}
+.reveal .side-by-side .txt p{margin:0 0 .55em}
+.reveal .slide-body math[display="block"]{margin:.45em 0}
+.reveal .footnote{font-size:26px;color:#627383;margin-top:.8em;line-height:1.3}.reveal .footnote p{margin:0;font-size:inherit}
+.reveal .side-by-side.wide-text{grid-template-columns:minmax(0,.55fr) minmax(0,.45fr)}
+.reveal .slides section .ref-table table{width:100%}.reveal .slides section .ref-table td,.reveal .slides section .ref-table th{font-size:27px;padding:7px 14px;line-height:1.25}.reveal .slides section .ref-table th{font-size:25px}
+.reveal .slides section .takeaway table{width:100%;margin-top:.6em}.reveal .slides section .takeaway th{font-size:38px;color:#007dc5;font-weight:700;padding:10px 18px;vertical-align:top}.reveal .slides section .takeaway td{font-size:33px;padding:12px 18px;line-height:1.3;vertical-align:top}
