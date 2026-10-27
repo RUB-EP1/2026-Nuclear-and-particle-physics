@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="widgets.css"><title>Counting final states</title></head><body><main>
+<h1>Counting final states: the density of states</h1>
+<p class="intro">One free particle in a box of side L · momentum states p = 2πħ n / L · the number in a shell follows V · 4π p² Δp / (2πħ)³</p>
+<div class="controls">
+<label for="L">Box size L <output id="LV"></output><input id="L" type="range" min="3" max="20" step="0.5" value="10"></label>
+<label for="p">Momentum p <output id="pV"></output><input id="p" type="range" min="100" max="1500" step="10" value="600"></label>
+<label for="d">Shell width Δp <output id="dV"></output><input id="d" type="range" min="20" max="300" step="5" value="120"></label>
+</div>
+<div class="controls presets"><span class="tag">Particle mass:</span><button data-m="0">massless (γ, ν)</button><button data-m="0.511">electron</button><button data-m="139.57">pion</button><button data-m="938.27">proton</button></div>
+<div class="grid">
+<section class="card"><h2>Momentum lattice (slice n<sub>z</sub> = 0)</h2><svg id="lat" viewBox="0 0 550 330" role="img" aria-label="Lattice of allowed momenta with a spherical shell highlighted"></svg><div class="legend"><span class="blue">blue: states in the shell p … p + Δp</span> · grey: all other states · every point is one state</div></section>
+<section class="card"><h2>Count per momentum bin (all three directions)</h2><svg id="hist" viewBox="0 0 550 330" role="img" aria-label="Number of states per momentum bin compared with the continuum formula"></svg><div class="legend"><span class="blue">bars: exact count</span> · <span class="orange">line: V · 4πp²Δp/(2πħ)³</span> · shaded: the chosen shell</div></section>
+</div>
+<section class="card readout" id="readout"></section>
+<p class="prompt">Make the box larger: the lattice gets finer and the bars follow the smooth curve, while the number of states per volume stays fixed. Now switch the particle mass: the bars and the curve do not change, but ρ(E) = dn/dE in the readout does. Why? (Hint: dE = p dp / E.)</p>
+<script src="physics.js"></script>
+<script>
+const $=id=>document.getElementById(id),n=id=>Number($(id).value),HC=2*Math.PI*Physics.HBARC*1000; // 2*pi*hbar*c in MeV fm
+let mass=0;
+const sup=s=>String(s).replace(/[-0-9]/g,c=>'⁻⁰¹²³⁴⁵⁶⁷⁸⁹'['-0123456789'.indexOf(c)]);
+const sig=(x,d=3)=>{if(x===0)return '0';const e=Math.floor(Math.log10(Math.abs(x)));return Math.abs(e)>=4?(x/Math.pow(10,e)).toFixed(d-1)+'×10'+sup(e):Number(x.toPrecision(d)).toString();};
+const PMAX=1600;
+function render(){
+ const L=n('L'),p=n('p'),dp=n('d'),dl=HC/L,V=L*L*L,E=Math.hypot(p,mass);
+ $('LV').textContent=L+' fm  (spacing '+Math.round(dl)+' MeV/c)';$('pV').textContent=p+' MeV/c';$('dV').textContent=dp+' MeV/c';
+ document.querySelectorAll('[data-m]').forEach(b=>b.classList.toggle('active',Number(b.dataset.m)===mass));
+ // exact count: one pass over the 3D lattice
+ const N=Math.ceil(PMAX/dl),nb=Math.floor(PMAX/dp),bins=new Array(nb).fill(0);let shell=0;
+ for(let a=-N;a<=N;a++)for(let b=-N;b<=N;b++)for(let c=-N;c<=N;c++){const k=dl*Math.sqrt(a*a+b*b+c*c);if(k<nb*dp)bins[Math.floor(k/dp)]++;if(k>=p&&k<p+dp)shell++;}
+ const cont=(q)=>4*Math.PI*q*q*dp*V/(HC*HC*HC),nCont=cont(p+dp/2);
+ // lattice slice
+ const R=1.15*(p+dp),sc=150/R,cx=275,cy=165;let e=`<path d="M${cx-150} ${cy}H${cx+150}M${cx} ${cy-150}V${cy+150}" class="axis"/>`;
+ const r1=p*sc,r2=(p+dp)*sc;e+=`<path d="M${cx-r2} ${cy}a${r2} ${r2} 0 1 0 ${2*r2} 0a${r2} ${r2} 0 1 0 ${-2*r2} 0ZM${cx-r1} ${cy}a${r1} ${r1} 0 1 0 ${2*r1} 0a${r1} ${r1} 0 1 0 ${-2*r1} 0Z" fill="#cfe6f5" fill-rule="evenodd"/>`;
+ const M=Math.floor(R/dl),dot=Math.max(1.6,Math.min(5,dl*sc*0.22));
+ for(let a=-M;a<=M;a++)for(let b=-M;b<=M;b++){const k=dl*Math.hypot(a,b);if(k>R)continue;const inShell=k>=p&&k<p+dp;e+=`<circle cx="${(cx+a*dl*sc).toFixed(1)}" cy="${(cy-b*dl*sc).toFixed(1)}" r="${inShell?dot*1.25:dot}" fill="${inShell?'#007dc5':'#a7b8c5'}"/>`;}
+ e+=`<text x="${cx+150}" y="${cy-8}" class="lbl" text-anchor="end" font-size="15">p<tspan dy="4" font-size="11">x</tspan></text><text x="${cx+8}" y="${cy-136}" class="lbl" font-size="15">p<tspan dy="4" font-size="11">y</tspan></text>`;
+ $('lat').innerHTML=e;
+ // histogram
+ const x0=50,x1=525,yT=24,yB=262,X=v=>x0+v/PMAX*(x1-x0);let ymax=0;bins.forEach((v,i)=>{ymax=Math.max(ymax,v,cont((i+.5)*dp));});ymax*=1.1;const Y=v=>yB-v/ymax*(yB-yT);
+ let h=`<rect x="${X(p)}" y="${yT}" width="${X(p+dp)-X(p)}" height="${yB-yT}" fill="#e3f1fa"/><path d="M${x0} ${yT}V${yB}H${x1}" class="axis"/>`;
+ bins.forEach((v,i)=>{h+=`<rect x="${X(i*dp)+1}" y="${Y(v)}" width="${Math.max(1,X(dp)-x0-2)}" height="${yB-Y(v)}" fill="#007dc5" fill-opacity=".75"/>`;});
+ const pts=[];for(let i=0;i<=120;i++){const q=PMAX*i/120;pts.push([X(q),Y(cont(q))]);}
+ h+=`<path d="${pts.map((v,i)=>(i?'L':'M')+v[0].toFixed(1)+','+v[1].toFixed(1)).join(' ')}" fill="none" stroke="#b86900" stroke-width="2.6"/>`;
+ for(let k=0;k<=PMAX;k+=400)h+=`<line x1="${X(k)}" y1="${yB}" x2="${X(k)}" y2="${yB+5}" stroke="#a7b8c5"/><text x="${X(k)}" y="${yB+22}" class="lbl" text-anchor="middle" font-size="15">${k}</text>`;
+ h+=`<text x="${x1}" y="${yB+44}" class="lbl" text-anchor="end" font-size="15">momentum p (MeV/c)</text><text x="${x0+6}" y="${yT+10}" class="lbl" font-size="15">states per bin of width Δp</text>`;
+ $('hist').innerHTML=h;
+ const rho=4*Math.PI*V*p*E/(HC*HC*HC),rho0=4*Math.PI*V*p*p/(HC*HC*HC);
+ $('readout').innerHTML=`<b>Shell ${p} … ${p+dp} MeV/c:</b> exact count = ${shell}, continuum formula = ${sig(nCont,3)} · states per volume = ${sig(nCont/V,3)} fm⁻³<br>ρ(E) = dn/dE = V·4π·p·E/(2πħ)³ = ${sig(rho,3)} MeV⁻¹ for m = ${mass} MeV (E = ${sig(E,4)} MeV)${mass>0?` · ${sig(E/p,3)}× the massless value`:''}`;
+}
+document.querySelectorAll('input').forEach(e=>e.oninput=render);document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mass=Number(b.dataset.m);render();});render();
+</script></main></body></html>

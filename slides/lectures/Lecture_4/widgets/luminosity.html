@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="widgets.css"><title>Luminosity and event rates</title></head><body><main>
+<h1>Luminosity and event rates: R = 𝓛 σ</h1>
+<p class="intro">Round Gaussian bunches colliding head-on · 𝓛 = f · n<sub>b</sub> · N₁N₂ / (4π σ²) · exp(−d²/4σ²) · illustrative parameters, not machine records</p>
+<div class="controls">
+<label for="N">Protons per bunch N <output id="NV"></output><input id="N" type="range" min="10" max="11.7" step="0.01" value="11.06"></label>
+<label for="nb">Bunches <output id="nbV"></output><input id="nb" type="range" min="100" max="3000" step="1" value="2808"></label>
+<label for="s">Beam size σ <output id="sV"></output><input id="s" type="range" min="5" max="60" step="0.1" value="16.6"></label>
+<label for="d">Offset d / σ <output id="dV"></output><input id="d" type="range" min="0" max="4" step="0.05" value="0"></label>
+</div>
+<div class="controls presets"><span class="tag">Illustrative set-ups (f = 11 245 Hz):</span><button data-k="design">design-like</button><button data-k="peak">squeezed, Run-2-like</button><button data-k="lhcb">levelled, LHCb-like</button></div>
+<div class="grid">
+<section class="card"><h2>Transverse overlap of the two beams</h2><svg id="beam" viewBox="0 0 550 330" role="img" aria-label="Two Gaussian beam profiles with an offset"></svg><div class="legend"><span class="blue">beam 1</span> · <span class="orange">beam 2</span> · contours at 1σ and 2σ · luminosity is the overlap integral of the two densities</div></section>
+<section class="card"><h2>Events per second for a given process</h2><svg id="rate" viewBox="0 0 550 330" role="img" aria-label="Event rates of five pp processes for the chosen luminosity"></svg><div class="legend">rate = 𝓛 σ (log scale, events per second) · σ for pp at 13 TeV, rounded</div></section>
+</div>
+<section class="card readout" id="readout"></section>
+<p class="prompt">Squeeze the beams to double 𝓛, then offset them by 3σ. Which process rate changes? Does the branching fraction in σ × B depend on the collider?</p>
+<script>
+const $=id=>document.getElementById(id),n=id=>Number($(id).value),F=11245;
+const PRE={design:{N:11.06,nb:2808,s:16.6},peak:{N:11.08,nb:2556,s:12.5},lhcb:{N:11.08,nb:2400,s:39}};
+function setPre(k){const p=PRE[k];$('N').value=p.N;$('nb').value=p.nb;$('s').value=p.s;$('d').value=0;}
+const sup=s=>String(s).replace(/[-0-9]/g,c=>'⁻⁰¹²³⁴⁵⁶⁷⁸⁹'['-0123456789'.indexOf(c)]);
+const sig=(x,d=3)=>{if(x===0)return '0';const e=Math.floor(Math.log10(Math.abs(x)));return Math.abs(e)>=4||e<=-3?(x/Math.pow(10,e)).toFixed(d-1)+'×10'+sup(e):Number(x.toPrecision(d)).toString();};
+// sigma in cm^2
+const PROC=[{n:'pp inelastic  79.5 mb',s:7.95e-26,c:'#536878'},{n:'b b̄ in LHCb acc.  154 µb',s:1.54e-28,c:'#007dc5'},{n:'t t̄  830 pb',s:8.3e-34,c:'#00745b'},{n:'pp → H  55 pb',s:5.5e-35,c:'#b86900'},{n:'H → γγ  (σ × 0.23 %)',s:5.5e-35*0.00227,c:'#7950ad'}];
+function render(){
+ const N=Math.pow(10,n('N')),nb=n('nb'),s=n('s'),d=n('d'),sc=s*1e-4; // cm
+ const geo=Math.exp(-d*d/4),L=F*nb*N*N/(4*Math.PI*sc*sc)*geo,fb=L*1e7*1e-39;
+ $('NV').textContent=sig(N,3);$('nbV').textContent=nb;$('sV').textContent=s+' µm';$('dV').textContent=d.toFixed(2)+' σ  (×'+geo.toFixed(3)+')';
+ // beams
+ const cx=275,cy=165,u=45;let b=`<path d="M${cx-250} ${cy}H${cx+250}M${cx} ${cy-150}V${cy+150}" class="axis"/>`;
+ const blob=(x,c)=>[1,2].map(k=>`<circle cx="${x}" cy="${cy}" r="${k*u}" fill="${k===1?c:'none'}" fill-opacity=".28" stroke="${c}" stroke-width="2.4"/>`).join('');
+ b+=blob(cx-d*u/2,'#007dc5')+blob(cx+d*u/2,'#b86900');
+ b+=`<text x="${cx+250}" y="${cy-8}" class="lbl" text-anchor="end" font-size="15">x</text><text x="${cx+8}" y="${cy-134}" class="lbl" font-size="15">y</text>`;
+ $('beam').innerHTML=b;
+ // rates
+ const x0=235,x1=525,yT=24,rh=48,lo=-6,hi=10,X=v=>x0+(v-lo)/(hi-lo)*(x1-x0);let r=`<path d="M${x0} ${yT-6}V${yT+rh*5+4}" class="axis"/>`;
+ for(let k=lo;k<=hi;k+=4)r+=`<line x1="${X(k)}" y1="${yT-6}" x2="${X(k)}" y2="${yT+rh*5}" class="grid-line"/><text x="${X(k)}" y="${yT+rh*5+24}" class="lbl" text-anchor="middle" font-size="14">10${sup(k)}</text>`;
+ r+=`<text x="${x1}" y="${yT+rh*5+48}" class="lbl" text-anchor="end" font-size="15">events per second</text>`;
+ PROC.forEach((q,i)=>{const R=L*q.s,y=yT+rh*i+rh/2,lg=Math.log10(Math.max(R,1e-30));r+=`<text x="${x0-8}" y="${y+5}" class="lbl" text-anchor="end" font-size="14" fill="${q.c}">${q.n}</text><rect x="${x0}" y="${y-12}" width="${Math.max(0,X(Math.min(hi,lg))-x0)}" height="24" fill="${q.c}" fill-opacity=".8"/><text x="${Math.min(X(Math.min(hi,lg))+8,x1-95)}" y="${y+5}" class="lbl strong" font-size="15" fill="${lg>8.2?'#fff':q.c}">${sig(R,2)} /s</text>`;});
+ $('rate').innerHTML=r;
+ const H=L*5.5e-35,HG=H*0.00227;
+ $('readout').innerHTML=`<b>𝓛 = ${sig(L,3)} cm⁻²s⁻¹</b> → ∫𝓛dt over 10⁷ s = <b>${sig(fb,3)} fb⁻¹</b> (1 fb⁻¹ = 10³⁹ cm⁻²)<br>Higgs bosons: ${sig(H,2)} per second, ${sig(H*1e7,2)} per 10⁷ s · of these, H → γγ: ${sig(HG*86400,2)} per day`;
+}
+document.querySelectorAll('input').forEach(e=>e.oninput=render);document.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{setPre(b.dataset.k);render();});render();
+</script></main></body></html>

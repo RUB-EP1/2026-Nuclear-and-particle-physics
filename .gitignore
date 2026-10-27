@@ -18,3 +18,13 @@
 !slides/lectures/Lecture_3/widgets/*.png
 !slides/lectures/Lecture_3/widgets/*.css
 !slides/lectures/Lecture_3/widgets/*.js
+!slides/lectures/Lecture_4/lecture.css
+!slides/lectures/Lecture_4/figures/*.svg
+!slides/lectures/Lecture_4/figures/*.png
+!slides/lectures/Lecture_4/widgets/*.html
+!slides/lectures/Lecture_4/widgets/*.png
+!slides/lectures/Lecture_4/widgets/*.css
+!slides/lectures/Lecture_4/widgets/*.js
+
+/.quarto/
+**/*.quarto_ipynb

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1530" height="610" viewBox="0 0 1530 610" font-family="'Helvetica Neue', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+<rect x="150.0" y="70.0" width="1220.0" height="440.0" fill="none" fill-opacity="1.0" stroke="#627383" stroke-width="2"/>
+<line x1="150.0" y1="510.0" x2="1370.0" y2="510.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="519.0" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">1 pb</text>
+<text x="1382.0" y="519.0" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">10⁻²</text>
+<line x1="150.0" y1="471.7" x2="1370.0" y2="471.7" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="480.7" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">10 pb</text>
+<text x="1382.0" y="480.7" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">0.1</text>
+<line x1="150.0" y1="433.5" x2="1370.0" y2="433.5" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="442.5" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">100 pb</text>
+<text x="1382.0" y="442.5" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">1</text>
+<line x1="150.0" y1="395.2" x2="1370.0" y2="395.2" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="404.2" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">1 nb</text>
+<text x="1382.0" y="404.2" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">10</text>
+<line x1="150.0" y1="357.0" x2="1370.0" y2="357.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="366.0" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">10 nb</text>
+<text x="1382.0" y="366.0" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">10²</text>
+<line x1="150.0" y1="318.7" x2="1370.0" y2="318.7" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="327.7" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">100 nb</text>
+<text x="1382.0" y="327.7" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">10³</text>
+<line x1="150.0" y1="280.4" x2="1370.0" y2="280.4" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="289.4" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">1 µb</text>
+<text x="1382.0" y="289.4" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">10⁴</text>
+<line x1="150.0" y1="242.2" x2="1370.0" y2="242.2" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="251.2" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">10 µb</text>
+<text x="1382.0" y="251.2" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">10⁵</text>
+<line x1="150.0" y1="203.9" x2="1370.0" y2="203.9" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="212.9" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">100 µb</text>
+<text x="1382.0" y="212.9" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">10⁶</text>
+<line x1="150.0" y1="165.7" x2="1370.0" y2="165.7" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="174.7" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">1 mb</text>
+<text x="1382.0" y="174.7" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">10⁷</text>
+<line x1="150.0" y1="127.4" x2="1370.0" y2="127.4" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="136.4" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">10 mb</text>
+<text x="1382.0" y="136.4" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">10⁸</text>
+<line x1="150.0" y1="89.1" x2="1370.0" y2="89.1" stroke="#dbe3ea" stroke-width="2"/>
+<text x="138.0" y="98.1" font-size="26" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">100 mb</text>
+<text x="1382.0" y="98.1" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">10⁹</text>
+<line x1="278.4" y1="510.0" x2="278.4" y2="519.0" stroke="#627383" stroke-width="2"/>
+<text x="278.4" y="548.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">7</text>
+<line x1="406.8" y1="510.0" x2="406.8" y2="519.0" stroke="#627383" stroke-width="2"/>
+<text x="406.8" y="548.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">8</text>
+<line x1="663.7" y1="510.0" x2="663.7" y2="519.0" stroke="#627383" stroke-width="2"/>
+<text x="663.7" y="548.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10</text>
+<line x1="920.5" y1="510.0" x2="920.5" y2="519.0" stroke="#627383" stroke-width="2"/>
+<text x="920.5" y="548.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">12</text>
+<line x1="1048.9" y1="510.0" x2="1048.9" y2="519.0" stroke="#627383" stroke-width="2"/>
+<text x="1048.9" y="548.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">13</text>
+<line x1="1177.4" y1="510.0" x2="1177.4" y2="519.0" stroke="#627383" stroke-width="2"/>
+<text x="1177.4" y="548.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">14</text>
+<text x="760.0" y="588.0" font-size="28" fill="#172635" text-anchor="middle" font-weight="600" font-style="normal">√s (TeV)</text>
+<text x="150.0" y="40.0" font-size="28" fill="#172635" text-anchor="start" font-weight="600" font-style="normal">cross section σ</text>
+<text x="1370.0" y="40.0" font-size="28" fill="#172635" text-anchor="end" font-weight="600" font-style="normal">events per second at 𝓛 = 10³⁴ cm⁻² s⁻¹</text>
+<polyline points="278.4,89.4 406.8,88.9 1048.9,87.5" fill="none" stroke="#087bb9" stroke-width="3" stroke-dasharray="" stroke-opacity="0.55"/>
+<circle cx="278.4" cy="89.4" r="10.0" fill="#087bb9" fill-opacity="1.0" stroke="#087bb9" stroke-width="4"/>
+<circle cx="406.8" cy="88.9" r="10.0" fill="#087bb9" fill-opacity="1.0" stroke="#087bb9" stroke-width="4"/>
+<circle cx="1048.9" cy="87.5" r="10.0" fill="#087bb9" fill-opacity="1.0" stroke="#087bb9" stroke-width="4"/>
+<text x="496.7" y="134.6" font-size="27" fill="#087bb9" text-anchor="start" font-weight="600" font-style="normal">pp total (TOTEM)</text>
+<text x="1215.9" y="96.5" font-size="28" fill="#087bb9" text-anchor="start" font-weight="600" font-style="normal">×1.1</text>
+<polyline points="278.4,355.8 1048.9,344.9 1126.0,345.2" fill="none" stroke="#00745b" stroke-width="3" stroke-dasharray="" stroke-opacity="0.55"/>
+<circle cx="278.4" cy="355.8" r="10.0" fill="#00745b" fill-opacity="1.0" stroke="#00745b" stroke-width="4"/>
+<circle cx="1048.9" cy="344.9" r="10.0" fill="#00745b" fill-opacity="1.0" stroke="#00745b" stroke-width="4"/>
+<circle cx="1126.0" cy="345.2" r="10.0" fill="#00745b" fill-opacity="1.0" stroke="#00745b" stroke-width="4"/>
+<text x="496.7" y="332.2" font-size="27" fill="#00745b" text-anchor="start" font-weight="600" font-style="normal">W → ℓν, both signs (ATLAS)</text>
+<text x="1215.9" y="353.9" font-size="28" fill="#00745b" text-anchor="start" font-weight="600" font-style="normal">×1.9</text>
+<polyline points="278.4,395.4 1048.9,383.9 1126.0,383.8" fill="none" stroke="#7950ad" stroke-width="3" stroke-dasharray="" stroke-opacity="0.55"/>
+<circle cx="278.4" cy="395.4" r="10.0" fill="#7950ad" fill-opacity="1.0" stroke="#7950ad" stroke-width="4"/>
+<circle cx="1048.9" cy="383.9" r="10.0" fill="#7950ad" fill-opacity="1.0" stroke="#7950ad" stroke-width="4"/>
+<circle cx="1126.0" cy="383.8" r="10.0" fill="#7950ad" fill-opacity="1.0" stroke="#7950ad" stroke-width="4"/>
+<text x="496.7" y="371.5" font-size="27" fill="#7950ad" text-anchor="start" font-weight="600" font-style="normal">Z → ℓℓ, 66–116 GeV (ATLAS)</text>
+<text x="1215.9" y="384.9" font-size="28" fill="#7950ad" text-anchor="start" font-weight="600" font-style="normal">×2.0</text>
+<polyline points="278.4,423.7 406.8,417.9 1048.9,398.2 1126.0,396.5 1177.4,395.5" fill="none" stroke="#b86900" stroke-width="3" stroke-dasharray="10 7" stroke-opacity="0.55"/>
+<circle cx="278.4" cy="423.7" r="10.0" fill="#ffffff" fill-opacity="1.0" stroke="#b86900" stroke-width="4"/>
+<circle cx="406.8" cy="417.9" r="10.0" fill="#ffffff" fill-opacity="1.0" stroke="#b86900" stroke-width="4"/>
+<circle cx="1048.9" cy="398.2" r="10.0" fill="#ffffff" fill-opacity="1.0" stroke="#b86900" stroke-width="4"/>
+<circle cx="1126.0" cy="396.5" r="10.0" fill="#ffffff" fill-opacity="1.0" stroke="#b86900" stroke-width="4"/>
+<circle cx="1177.4" cy="395.5" r="10.0" fill="#ffffff" fill-opacity="1.0" stroke="#b86900" stroke-width="4"/>
+<text x="496.7" y="449.9" font-size="27" fill="#b86900" text-anchor="start" font-weight="600" font-style="normal">t t̄ (NNLO+NNLL)</text>
+<text x="1215.9" y="419.2" font-size="28" fill="#b86900" text-anchor="start" font-weight="600" font-style="normal">×4.6</text>
+<polyline points="278.4,461.0 406.8,457.0 1048.9,443.4 1126.0,442.2" fill="none" stroke="#172635" stroke-width="3" stroke-dasharray="10 7" stroke-opacity="0.55"/>
+<circle cx="278.4" cy="461.0" r="10.0" fill="#ffffff" fill-opacity="1.0" stroke="#172635" stroke-width="4"/>
+<circle cx="406.8" cy="457.0" r="10.0" fill="#ffffff" fill-opacity="1.0" stroke="#172635" stroke-width="4"/>
+<circle cx="1048.9" cy="443.4" r="10.0" fill="#ffffff" fill-opacity="1.0" stroke="#172635" stroke-width="4"/>
+<circle cx="1126.0" cy="442.2" r="10.0" fill="#ffffff" fill-opacity="1.0" stroke="#172635" stroke-width="4"/>
+<text x="496.7" y="500.3" font-size="27" fill="#172635" text-anchor="start" font-weight="600" font-style="normal">H, four main modes (LHC HXSWG)</text>
+<text x="1215.9" y="452.4" font-size="28" fill="#172635" text-anchor="start" font-weight="600" font-style="normal">×2.9</text>
+<circle cx="432.5" cy="177.1" r="9.0" fill="#627383" fill-opacity="1.0" stroke="#627383" stroke-width="4"/>
+<text x="454.5" y="186.1" font-size="25" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">measurement</text>
+<circle cx="432.5" cy="215.1" r="9.0" fill="#ffffff" fill-opacity="1.0" stroke="#627383" stroke-width="4"/>
+<text x="454.5" y="224.1" font-size="25" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">theory prediction (dashed)</text>
+<text x="423.5" y="267.1" font-size="25" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">×  =  σ(13 TeV) / σ(7 TeV)</text>
+</svg>

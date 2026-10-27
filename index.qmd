@@ -74,6 +74,19 @@ Fermi’s golden rule.
 [Download PDF](slides/lectures/Lecture_3/Lecture_3.pdf){.chip download="Lecture_3.pdf"}
 :::
 
+::: {.course-card}
+[Lecture 4 · Rates]{.card-tag}
+
+### Decay rates and cross sections
+
+Phase space and normalization, Particle decays with two- and three-body kinematics,
+cross sections, luminosity, and
+differential cross sections.
+
+[Open slides](slides/lectures/Lecture_4/Lecture_4.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_4/Lecture_4.pdf){.chip download="Lecture_4.pdf"}
+:::
+
 ::::
 
 ## Exercises {.section-title}

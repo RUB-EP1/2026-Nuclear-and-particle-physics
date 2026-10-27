@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="560" viewBox="0 0 1700 560" font-family="'Helvetica Neue', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+<text x="425.0" y="50.0" font-size="38" fill="#172635" text-anchor="middle" font-weight="600" font-style="normal">π⁰ → γγ</text>
+<text x="425.0" y="92.0" font-size="32" fill="#00745b" text-anchor="middle" font-weight="600" font-style="normal">allowed</text>
+<circle cx="425.0" cy="270.0" r="62.0" fill="#e6f2fa" fill-opacity="1.0" stroke="#087bb9" stroke-width="4"/>
+<text x="425.0" y="282.0" font-size="34" fill="#087bb9" text-anchor="middle" font-weight="600" font-style="normal">π⁰</text>
+<line x1="495.0" y1="270.0" x2="763.0" y2="270.0" stroke="#172635" stroke-width="5"/>
+<polygon points="785.0,270.0 763.0,279.9 763.0,260.1" fill="#172635"/>
+<line x1="585.0" y1="192.0" x2="669.0" y2="192.0" stroke="#b86900" stroke-width="8"/>
+<polygon points="695.0,192.0 669.0,203.7 669.0,180.3" fill="#b86900"/>
+<text x="640.0" y="332.0" font-size="30" fill="#172635" text-anchor="middle" font-weight="600" font-style="normal">γ, h = +1</text>
+<line x1="355.0" y1="270.0" x2="87.0" y2="270.0" stroke="#172635" stroke-width="5"/>
+<polygon points="65.0,270.0 87.0,260.1 87.0,279.9" fill="#172635"/>
+<line x1="265.0" y1="192.0" x2="181.0" y2="192.0" stroke="#b86900" stroke-width="8"/>
+<polygon points="155.0,192.0 181.0,180.3 181.0,203.7" fill="#b86900"/>
+<text x="210.0" y="332.0" font-size="30" fill="#172635" text-anchor="middle" font-weight="600" font-style="normal">γ, h = +1</text>
+<text x="425.0" y="400.0" font-size="28" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">spins opposite</text>
+<text x="425.0" y="460.0" font-size="34" fill="#00745b" text-anchor="middle" font-weight="600" font-style="normal">Sz = +1 − 1 = 0 = J  ✓</text>
+<text x="1275.0" y="50.0" font-size="38" fill="#172635" text-anchor="middle" font-weight="600" font-style="normal">π⁰ → νν̄  (massless ν)</text>
+<text x="1275.0" y="92.0" font-size="32" fill="#7950ad" text-anchor="middle" font-weight="600" font-style="normal">forbidden</text>
+<circle cx="1275.0" cy="270.0" r="62.0" fill="#e6f2fa" fill-opacity="1.0" stroke="#087bb9" stroke-width="4"/>
+<text x="1275.0" y="282.0" font-size="34" fill="#087bb9" text-anchor="middle" font-weight="600" font-style="normal">π⁰</text>
+<line x1="1345.0" y1="270.0" x2="1613.0" y2="270.0" stroke="#172635" stroke-width="5"/>
+<polygon points="1635.0,270.0 1613.0,279.9 1613.0,260.1" fill="#172635"/>
+<line x1="1545.0" y1="192.0" x2="1461.0" y2="192.0" stroke="#b86900" stroke-width="8"/>
+<polygon points="1435.0,192.0 1461.0,180.3 1461.0,203.7" fill="#b86900"/>
+<text x="1490.0" y="332.0" font-size="30" fill="#172635" text-anchor="middle" font-weight="600" font-style="normal">ν, h = −½</text>
+<line x1="1205.0" y1="270.0" x2="937.0" y2="270.0" stroke="#172635" stroke-width="5"/>
+<polygon points="915.0,270.0 937.0,260.1 937.0,279.9" fill="#172635"/>
+<line x1="1115.0" y1="192.0" x2="1031.0" y2="192.0" stroke="#b86900" stroke-width="8"/>
+<polygon points="1005.0,192.0 1031.0,180.3 1031.0,203.7" fill="#b86900"/>
+<text x="1060.0" y="332.0" font-size="30" fill="#172635" text-anchor="middle" font-weight="600" font-style="normal">ν̄, h = +½</text>
+<text x="1275.0" y="400.0" font-size="28" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">spins parallel</text>
+<text x="1275.0" y="460.0" font-size="34" fill="#7950ad" text-anchor="middle" font-weight="600" font-style="normal">Sz = −½ − ½ = −1 ≠ J = 0  ✗</text>
+<line x1="60.0" y1="520.0" x2="206.0" y2="520.0" stroke="#627383" stroke-width="3"/>
+<polygon points="220.0,520.0 206.0,526.3 206.0,513.7" fill="#627383"/>
+<text x="235.0" y="530.0" font-size="24" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">z (decay axis)</text>
+<line x1="620.0" y1="520.0" x2="682.0" y2="520.0" stroke="#b86900" stroke-width="6"/>
+<polygon points="700.0,520.0 682.0,528.1 682.0,511.9" fill="#b86900"/>
+<text x="715.0" y="530.0" font-size="24" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">spin direction</text>
+<line x1="1000.0" y1="520.0" x2="1064.0" y2="520.0" stroke="#172635" stroke-width="4"/>
+<polygon points="1080.0,520.0 1064.0,527.2 1064.0,512.8" fill="#172635"/>
+<text x="1095.0" y="530.0" font-size="24" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">momentum</text>
+</svg>

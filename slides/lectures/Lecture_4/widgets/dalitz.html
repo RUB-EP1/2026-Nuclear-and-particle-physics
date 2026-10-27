@@ -1,0 +1,89 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="widgets.css"><title>Dalitz plot</title>
+<style>.cwrap{flex:1 1 0;min-height:0;position:relative}.cwrap canvas{position:absolute;left:0;top:0;width:100%;height:100%;cursor:crosshair;touch-action:none}.grid.dz{grid-template-columns:1.3fr .9fr}.readout.col{font-size:.9rem;line-height:1.5;overflow:auto}.readout.col b{color:#087bb9}.readout .bad{color:#b86900;font-weight:600}</style></head><body><main>
+<h1>Dalitz plot of a three-body decay: limits, flat phase space and resonance bands</h1>
+<p class="intro">M → 1 + 2 + 3 · axes m₁₂² and m₂₃² · dΓ ∝ |𝓜|² dm₁₂² dm₂₃², so a constant |𝓜|² fills the allowed region uniformly (spin-0 daughters, no dynamics) · spin factors are included for π⁰ → γe⁺e⁻ and K⁺ → π⁺νν̄, not for Λ<sub>b</sub> · resonance bands are illustrative, not fits · rounded PDG values</p>
+<div class="controls">
+<label for="m">Parent mass M / M₀ <output id="mV"></output><input id="m" type="range" min="-1" max="0.4" step="0.005" value="0"></label>
+<button id="rs" aria-pressed="true">resonance bands: on</button>
+</div>
+<div class="controls presets"><span class="tag">Decay:</span><button data-k="k3">K⁺ → π⁺π⁺π⁻</button><button data-k="eta">η → π⁺π⁻π⁰</button><button data-k="dal">π⁰ → γe⁺e⁻</button><button data-k="knn">K⁺ → π⁺νν̄</button><button data-k="bkpp">B⁺ → K⁺π⁺π⁻</button><button data-k="lb">Λ<sub>b</sub> → J/ψ p K⁻</button></div>
+<div class="grid dz">
+<section class="card"><h2 id="ttl">Dalitz plot</h2><div class="cwrap"><canvas id="cv" role="img" aria-label="Dalitz plot with kinematic boundary"></canvas></div><div class="legend">outline: kinematic limit = all three momenta collinear · <span class="orange">dashed: resonance bands</span> · move the pointer, click to pin a point</div></section>
+<section class="card"><h2>Chosen point</h2><div class="readout col" id="readout"></div></section>
+</div>
+<script>
+const $=id=>document.getElementById(id),n=id=>Number($(id).value);
+// masses in GeV; res: pair of daughters ('12','23','13'), mass, width, relative strength (illustrative)
+// spin sums of |M|^2 (arbitrary normalisation) as functions of the invariants
+// pi0 -> gamma gamma* -> gamma e+ e-: (M^2-s23)^2/s23 times the angular factor 1+cos^2+(4m^2/s23)sin^2 of the virtual photon
+function wDal(s12,s23,g){const M=g.M,m=g.m,w=Math.sqrt(s23),E1=(M*M-s23-m[0]*m[0])/(2*w),E2=(s23+m[1]*m[1]-m[2]*m[2])/(2*w),p1=E1,p2=Math.sqrt(Math.max(1e-30,E2*E2-m[1]*m[1]));let c=(E1*E2+(m[0]*m[0]+m[1]*m[1]-s12)/2)/(p1*p2);c=Math.max(-1,Math.min(1,c));return Math.pow(M*M-s23,2)/s23*(1+c*c+4*m[1]*m[1]/s23*(1-c*c));}
+// K+ -> pi+ nu nubar through the vector current, constant form factor: 2(P.p2)(P.p3) - P^2 p2.p3 with P = pK + ppi, proportional to q^2 p*^2 sin^2(theta)
+function wKnn(s12,s23,g){const M=g.M,m2=g.m[0]*g.m[0],s13=g.Sig-s12-s23,a=s12-m2+s23/2,b=s13-m2+s23/2,P2=M*M+m2+s12+s13;return Math.max(0,2*a*b-P2*s23/2);}
+const PRE={
+ k3:{name:'K⁺ → π⁺π⁺π⁻',M:.493677,m:[.13957,.13957,.13957],lab:['π⁺','π⁺','π⁻'],res:[]},
+ eta:{name:'η → π⁺π⁻π⁰',M:.547862,m:[.13957,.13957,.134977],lab:['π⁺','π⁻','π⁰'],res:[]},
+ dal:{name:'π⁰ → γ e⁺e⁻',M:.134977,m:[0,.000511,.000511],lab:['γ','e⁺','e⁻'],res:[],log:1,w:wDal},
+ knn:{name:'K⁺ → π⁺νν̄',M:.493677,m:[.13957,0,0],lab:['π⁺','ν','ν̄'],res:[],w:wKnn},
+ bkpp:{name:'B⁺ → K⁺π⁺π⁻',M:5.27934,m:[.493677,.13957,.13957],lab:['K⁺','π⁺','π⁻'],res:[{p:'13',m:.8956,g:.0473,a:6,n:'K*(892)'},{p:'23',m:.7753,g:.149,a:3,n:'ρ(770)'}]},
+ lb:{name:'Λb → J/ψ p K⁻',M:5.6196,m:[3.0969,.938272,.493677],lab:['J/ψ','p','K⁻'],res:[{p:'23',m:1.5195,g:.0156,a:8,n:'Λ(1520)'},{p:'23',m:1.69,g:.07,a:3,n:'Λ(1690)'},{p:'12',m:4.3119,g:.0098,a:6,n:'Pc(4312)'},{p:'12',m:4.4403,g:.0206,a:6,n:'Pc(4440)'},{p:'12',m:4.4573,g:.0064,a:6,n:'Pc(4457)'}]}
+};
+let cur=PRE.k3,key='k3',showRes=true,pin=false,pt=null;
+const par=new URLSearchParams(location.search);
+function setPre(k){key=k;cur=PRE[k];$('m').value=0;pt=null;pin=false;}
+setPre(par.has('k')&&PRE[par.get('k')]?par.get('k'):'k3');
+const sup=s=>String(s).replace(/[-0-9]/g,c=>'⁻⁰¹²³⁴⁵⁶⁷⁸⁹'['-0123456789'.indexOf(c)]);
+const sig=(x,d=3)=>{if(x===0)return '0';const e=Math.floor(Math.log10(Math.abs(x)));return Math.abs(e)>=4||e<=-3?(x/Math.pow(10,e)).toFixed(d-1)+'×10'+sup(e):Number(x.toPrecision(d)).toString();};
+function lim(s12,M,m){const w=Math.sqrt(s12);const E2=(s12-m[0]*m[0]+m[1]*m[1])/(2*w),E3=(M*M-s12-m[2]*m[2])/(2*w);const p2=Math.sqrt(Math.max(0,E2*E2-m[1]*m[1])),p3=Math.sqrt(Math.max(0,E3*E3-m[2]*m[2])),T=(E2+E3)*(E2+E3);return [T-(p2+p3)*(p2+p3),T-(p2-p3)*(p2-p3)];}
+function geom(){const M=cur.M*Math.pow(10,n('m')),m=cur.m,smin=Math.pow(m[0]+m[1],2),smax=Math.pow(M-m[2],2),open=M>m[0]+m[1]+m[2]+1e-9;return {M,m,smin,smax,open,Sig:M*M+m[0]*m[0]+m[1]*m[1]+m[2]*m[2]};}
+function ticks(a,b){const r=b-a,raw=r/5,e=Math.pow(10,Math.floor(Math.log10(raw))),f=raw/e,st=(f<1.5?1:f<3.5?2:f<7.5?5:10)*e,out=[];for(let v=Math.ceil(a/st)*st;v<=b+1e-12;v+=st)out.push(Number(v.toPrecision(10)));return out;}
+const cv=$('cv'),ctx=cv.getContext('2d');let W=0,H=0,dpr=1,P={};
+function resize(){const r=cv.parentElement.getBoundingClientRect();dpr=window.devicePixelRatio||1;W=Math.max(200,r.width);H=Math.max(160,r.height);cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);render();}
+function dens(s12,s23,g){let d=cur.w?cur.w(s12,s23,g):1;if(!showRes||!cur.res.length)return d;const s13=g.Sig-s12-s23;for(const r of cur.res){const sp=r.p==='12'?s12:r.p==='23'?s23:s13;const mp=Math.sqrt(Math.max(sp,0));d+=r.a*(r.g*r.g/4)/((mp-r.m)*(mp-r.m)+r.g*r.g/4);}return d;}
+function render(){
+ const g=geom();document.querySelectorAll('[data-k]').forEach(b=>b.classList.toggle('active',b.dataset.k===key));$('rs').textContent='resonance bands: '+(showRes?'on':'off');$('rs').setAttribute('aria-pressed',showRes);$('rs').style.display=cur.res.length?'':'none';
+ $('mV').textContent=sig(g.M,4)+' GeV'+(g.open?'':'  (closed)');$('ttl').textContent='Dalitz plot of '+cur.name;
+ ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+ const L=suppMargins();P=L;
+ if(!g.open){ctx.fillStyle='#b86900';ctx.font='600 22px Helvetica Neue,Arial,sans-serif';ctx.textAlign='center';ctx.fillText('decay kinematically forbidden: M < m₁ + m₂ + m₃',W/2,H/2);$('readout').innerHTML='<span class="bad">M is below the sum of the daughter masses: the allowed region has shrunk to nothing.</span>';return;}
+ const ylo=Math.pow(g.m[1]+g.m[2],2),yhi=Math.pow(g.M-g.m[0],2),pdx=.07*(g.smax-g.smin),pdy=.07*(yhi-ylo);
+ const x0=Math.max(0,g.smin-pdx),x1=g.smax+pdx,y0=Math.max(0,ylo-pdy),y1=yhi+pdy;P.x0=x0;P.x1=x1;P.y0=y0;P.y1=y1;
+ const X=v=>P.l+(v-x0)/(x1-x0)*P.w,Y=v=>P.t+P.h-(v-y0)/(y1-y0)*P.h;P.X=X;P.Y=Y;
+ // heat map, one column at a time
+ const hc=document.createElement('canvas');hc.width=Math.round(P.w);hc.height=Math.round(P.h);const hx=hc.getContext('2d'),img=hx.createImageData(hc.width,hc.height);
+ const cols=hc.width,rows=hc.height;let dmax=cur.w?0:1;const colD=[];
+ for(let i=0;i<cols;i++){const s12=x0+(i+.5)/cols*(x1-x0);if(s12<g.smin||s12>g.smax){colD.push(null);continue;}const [lo,hi]=lim(s12,g.M,g.m);colD.push([lo,hi]);for(let j=0;j<rows;j+=3){const s23=y0+(1-(j+.5)/rows)*(y1-y0);if(s23>=lo&&s23<=hi)dmax=Math.max(dmax,dens(s12,s23,g));}}
+ for(let i=0;i<cols;i++){const c=colD[i];if(!c)continue;const s12=x0+(i+.5)/cols*(x1-x0);for(let j=0;j<rows;j++){const s23=y0+(1-(j+.5)/rows)*(y1-y0);if(s23<c[0]||s23>c[1])continue;const v=(cur.w||showRes&&cur.res.length)?dens(s12,s23,g)/dmax:.28,k=(j*cols+i)*4;const t=cur.log?Math.max(0,Math.min(1,1+Math.log10(Math.max(v,1e-9))/3)):Math.min(1,Math.pow(v,.6));img.data[k]=Math.round(235-t*205);img.data[k+1]=Math.round(244-t*160);img.data[k+2]=Math.round(251-t*60);img.data[k+3]=255;}}
+ hx.putImageData(img,0,0);ctx.drawImage(hc,P.l,P.t,P.w,P.h);
+ // axes and ticks
+ ctx.strokeStyle='#a7b8c5';ctx.lineWidth=1.5;ctx.strokeRect(P.l,P.t,P.w,P.h);ctx.fillStyle='#536878';ctx.font='14px Helvetica Neue,Arial,sans-serif';ctx.textAlign='center';
+ ticks(x0,x1).forEach(v=>{ctx.beginPath();ctx.moveTo(X(v),P.t+P.h);ctx.lineTo(X(v),P.t+P.h+5);ctx.stroke();ctx.fillText(sig(v,2),X(v),P.t+P.h+20);});
+ ctx.textAlign='right';ticks(y0,y1).forEach(v=>{ctx.beginPath();ctx.moveTo(P.l-5,Y(v));ctx.lineTo(P.l,Y(v));ctx.stroke();ctx.fillText(sig(v,2),P.l-8,Y(v)+5);});
+ ctx.font='600 15px Helvetica Neue,Arial,sans-serif';ctx.textAlign='right';ctx.fillText('m('+cur.lab[0]+cur.lab[1]+')² (GeV²)',P.l+P.w,P.t+P.h+40);ctx.save();ctx.translate(16,P.t+P.h/2);ctx.rotate(-Math.PI/2);ctx.textAlign='center';ctx.fillText('m('+cur.lab[1]+cur.lab[2]+')² (GeV²)',0,0);ctx.restore();
+ // boundary
+ ctx.strokeStyle='#087bb9';ctx.lineWidth=2.6;ctx.beginPath();const N=400,top=[],bot=[];for(let i=0;i<=N;i++){const s12=g.smin+(g.smax-g.smin)*i/N,[lo,hi]=lim(s12,g.M,g.m);top.push([X(s12),Y(hi)]);bot.push([X(s12),Y(lo)]);}
+ top.forEach((q,i)=>i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]));for(let i=N;i>=0;i--)ctx.lineTo(bot[i][0],bot[i][1]);ctx.closePath();ctx.stroke();
+ // resonance band outlines
+ if(showRes){ctx.setLineDash([6,4]);ctx.strokeStyle='#b86900';ctx.lineWidth=1.6;ctx.fillStyle='#b86900';ctx.font='600 13px Helvetica Neue,Arial,sans-serif';ctx.textAlign='left';
+  let vk=0;for(const r of cur.res){const a=Math.pow(Math.max(0,r.m-r.g),2),b=Math.pow(r.m+r.g,2);ctx.beginPath();
+   if(r.p==='12'){if(b>x0&&a<x1){[a,b].forEach(v=>{ctx.moveTo(X(v),P.t);ctx.lineTo(X(v),P.t+P.h);});ctx.stroke();ctx.fillText(r.n,X(b)+4,P.t+14+14*vk++);}}
+   else if(r.p==='23'){if(b>y0&&a<y1){[a,b].forEach(v=>{ctx.moveTo(P.l,Y(v));ctx.lineTo(P.l+P.w,Y(v));});ctx.stroke();ctx.fillText(r.n,P.l+6,Y(b)-4);}}
+   else{[g.Sig-b,g.Sig-a].forEach(v=>{const sa=Math.max(x0,v-y1),sb=Math.min(x1,v-y0);if(sb>sa){ctx.moveTo(X(sa),Y(v-sa));ctx.lineTo(X(sb),Y(v-sb));}});ctx.stroke();const sm=Math.min(x1,g.Sig-a-y0)-(x1-x0)*.02;ctx.fillText(r.n,X(sm)-70,Y(g.Sig-a-sm)-8);}}
+  ctx.setLineDash([]);}
+ // chosen point
+ if(!pt){const s=(g.smin+g.smax)/2,[lo,hi]=lim(s,g.M,g.m);pt=[s,(lo+hi)/2];}
+ const [s12,s23]=pt,[lo,hi]=(s12>=g.smin&&s12<=g.smax)?lim(s12,g.M,g.m):[1,0],inside=s23>=lo&&s23<=hi;
+ ctx.strokeStyle='#172635';ctx.lineWidth=2;ctx.fillStyle=inside?'#fff':'#b86900';ctx.beginPath();ctx.arc(X(s12),Y(s23),7,0,2*Math.PI);ctx.fill();ctx.stroke();
+ if(pin){ctx.beginPath();ctx.moveTo(X(s12)-12,Y(s23));ctx.lineTo(X(s12)+12,Y(s23));ctx.moveTo(X(s12),Y(s23)-12);ctx.lineTo(X(s12),Y(s23)+12);ctx.stroke();}
+ // readout
+ const s13=g.Sig-s12-s23,E=[(g.M*g.M+g.m[0]*g.m[0]-s23)/(2*g.M),(g.M*g.M+g.m[1]*g.m[1]-s13)/(2*g.M),(g.M*g.M+g.m[2]*g.m[2]-s12)/(2*g.M)];
+ let area=0;for(let i=0;i<400;i++){const s=g.smin+(g.smax-g.smin)*(i+.5)/400,[a,b]=lim(s,g.M,g.m);area+=(b-a)*(g.smax-g.smin)/400;}
+ const mom=E.map((e,i)=>Math.sqrt(Math.max(0,e*e-g.m[i]*g.m[i])));
+ $('readout').innerHTML=`<b>Limits</b><br>m₁₂² ∈ [(m₁+m₂)², (M−m₃)²] = [${sig(g.smin,3)}, ${sig(g.smax,3)}] GeV²<br>m₂₃² ∈ [${sig(Math.pow(g.m[1]+g.m[2],2),3)}, ${sig(Math.pow(g.M-g.m[0],2),3)}] GeV², and the edge is the curve above<br>area (phase space) = ${sig(area,3)} GeV⁴, energy release M − Σm = ${sig(g.M-g.m[0]-g.m[1]-g.m[2],3)} GeV<br><br><b>Point</b> ${pin?'(pinned)':'(follows the pointer)'}<br>${cur.w&&inside?`spin-summed |𝓜|² relative to its maximum on the plot: ${sig(dens(s12,s23,g)/dmax,2)}${cur.log?' (colour scale logarithmic)':''}<br>`:''}m₁₂² = ${sig(s12,4)}, m₂₃² = ${sig(s23,4)}, m₁₃² = ${sig(s13,4)} GeV², sum rule: ${sig(s12+s23+s13,5)} = M² + Σm² = ${sig(g.Sig,5)}<br>${inside?`E* = (${E.map(v=>sig(v,3)).join(', ')}) GeV for (${cur.lab.join(', ')}), p* = (${mom.map(v=>sig(v,3)).join(', ')}) GeV/c`:'<span class="bad">outside the boundary: no physical momenta, the decay cannot go here</span>'}`;
+}
+function suppMargins(){return {l:78,t:14,w:W-78-18,h:H-14-52};}
+function setFromEvent(e){const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;if(!P.X)return;const s12=P.x0+(x-P.l)/P.w*(P.x1-P.x0),s23=P.y0+(1-(y-P.t)/P.h)*(P.y1-P.y0);if(x<P.l||x>P.l+P.w||y<P.t||y>P.t+P.h)return;pt=[s12,s23];render();}
+cv.addEventListener('pointermove',e=>{if(!pin)setFromEvent(e);});cv.addEventListener('click',e=>{pin=!pin;if(pin)setFromEvent(e);else render();});
+$('m').oninput=()=>{if(!pin)pt=null;render();};$('rs').onclick=()=>{showRes=!showRes;render();};
+document.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{setPre(b.dataset.k);render();});
+window.addEventListener('resize',resize);new ResizeObserver(resize).observe(cv.parentElement);resize();
+</script></main></body></html>

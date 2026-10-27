@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="730" viewBox="0 0 1700 730" font-family="'Helvetica Neue', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+<line x1="470.0" y1="56.0" x2="470.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="470.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10⁻¹⁰</text>
+<line x1="587.0" y1="56.0" x2="587.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="587.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10⁻⁹</text>
+<line x1="704.0" y1="56.0" x2="704.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="704.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10⁻⁸</text>
+<line x1="821.0" y1="56.0" x2="821.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="821.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10⁻⁷</text>
+<line x1="938.0" y1="56.0" x2="938.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="938.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10⁻⁶</text>
+<line x1="1055.0" y1="56.0" x2="1055.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="1055.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10⁻⁵</text>
+<line x1="1172.0" y1="56.0" x2="1172.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="1172.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10⁻⁴</text>
+<line x1="1289.0" y1="56.0" x2="1289.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="1289.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10⁻³</text>
+<line x1="1406.0" y1="56.0" x2="1406.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="1406.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10⁻²</text>
+<line x1="1523.0" y1="56.0" x2="1523.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="1523.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">10⁻¹</text>
+<line x1="1640.0" y1="56.0" x2="1640.0" y2="580.0" stroke="#dbe3ea" stroke-width="2"/>
+<text x="1640.0" y="616.0" font-size="26" fill="#627383" text-anchor="middle" font-weight="normal" font-style="normal">1</text>
+<text x="1640.0" y="658.0" font-size="28" fill="#627383" text-anchor="end" font-weight="normal" font-style="normal">Branching fraction  Γᵢ / Γ</text>
+<text x="448.0" y="103.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">γγ</text>
+<rect x="470.0" y="79.0" width="1169.4" height="28.0" fill="#087bb9" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="1627.4" y="103.0" font-size="28" fill="#ffffff" text-anchor="end" font-weight="600" font-style="normal">98.8 %</text>
+<text x="448.0" y="149.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">e⁺e⁻γ</text>
+<rect x="470.0" y="125.0" width="944.2" height="28.0" fill="#087bb9" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="1428.2" y="149.0" font-size="28" fill="#087bb9" text-anchor="start" font-weight="600" font-style="normal">1.17 %</text>
+<text x="448.0" y="195.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">e⁺e⁺e⁻e⁻</text>
+<rect x="470.0" y="171.0" width="646.3" height="28.0" fill="#087bb9" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="1130.3" y="195.0" font-size="28" fill="#087bb9" text-anchor="start" font-weight="600" font-style="normal">3.3×10⁻⁵</text>
+<text x="448.0" y="241.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">e⁺e⁻</text>
+<rect x="470.0" y="217.0" width="328.8" height="28.0" fill="#087bb9" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="812.8" y="241.0" font-size="28" fill="#087bb9" text-anchor="start" font-weight="600" font-style="normal">6.5×10⁻⁸</text>
+<text x="448.0" y="287.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">γ + positronium</text>
+<rect x="470.0" y="263.0" width="147.4" height="28.0" fill="#087bb9" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="631.4" y="287.0" font-size="28" fill="#087bb9" text-anchor="start" font-weight="600" font-style="normal">1.8×10⁻⁹</text>
+<text x="448.0" y="333.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">νₑν̄ₑ</text>
+<line x1="965.0" y1="323.0" x2="895.0" y2="323.0" stroke="#b86900" stroke-width="3"/>
+<polygon points="893.0,323.0 906.0,316.0 906.0,330.0" fill="#b86900"/>
+<circle cx="965.0" cy="323.0" r="8.0" fill="#b86900" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="983.0" y="333.0" font-size="28" fill="#b86900" text-anchor="start" font-weight="600" font-style="normal">&lt; 1.7×10⁻⁶</text>
+<text x="448.0" y="379.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">γνν̄</text>
+<line x1="853.6" y1="369.0" x2="783.6" y2="369.0" stroke="#b86900" stroke-width="3"/>
+<polygon points="781.6,369.0 794.6,362.0 794.6,376.0" fill="#b86900"/>
+<circle cx="853.6" cy="369.0" r="8.0" fill="#b86900" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="871.6" y="379.0" font-size="28" fill="#b86900" text-anchor="start" font-weight="600" font-style="normal">&lt; 1.9×10⁻⁷</text>
+<text x="448.0" y="425.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">4γ</text>
+<line x1="739.2" y1="415.0" x2="669.2" y2="415.0" stroke="#b86900" stroke-width="3"/>
+<polygon points="667.2,415.0 680.2,408.0 680.2,422.0" fill="#b86900"/>
+<circle cx="739.2" cy="415.0" r="8.0" fill="#b86900" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="757.2" y="425.0" font-size="28" fill="#b86900" text-anchor="start" font-weight="600" font-style="normal">&lt; 2×10⁻⁸</text>
+<text x="448.0" y="471.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">invisible</text>
+<line x1="662.3" y1="461.0" x2="592.3" y2="461.0" stroke="#b86900" stroke-width="3"/>
+<polygon points="590.3,461.0 603.3,454.0 603.3,468.0" fill="#b86900"/>
+<circle cx="662.3" cy="461.0" r="8.0" fill="#b86900" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="680.3" y="471.0" font-size="28" fill="#b86900" text-anchor="start" font-weight="600" font-style="normal">&lt; 4.4×10⁻⁹</text>
+<text x="448.0" y="517.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">3γ   (C violation)</text>
+<line x1="761.5" y1="507.0" x2="691.5" y2="507.0" stroke="#7950ad" stroke-width="3"/>
+<polygon points="689.5,507.0 702.5,500.0 702.5,514.0" fill="#7950ad"/>
+<circle cx="761.5" cy="507.0" r="8.0" fill="#7950ad" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="779.5" y="517.0" font-size="28" fill="#7950ad" text-anchor="start" font-weight="600" font-style="normal">&lt; 3.1×10⁻⁸</text>
+<text x="448.0" y="563.0" font-size="30" fill="#172635" text-anchor="end" font-weight="normal" font-style="normal">μ±e∓   (lepton flavour)</text>
+<line x1="535.1" y1="553.0" x2="465.1" y2="553.0" stroke="#7950ad" stroke-width="3"/>
+<polygon points="463.1,553.0 476.1,546.0 476.1,560.0" fill="#7950ad"/>
+<circle cx="535.1" cy="553.0" r="8.0" fill="#7950ad" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="553.1" y="563.0" font-size="28" fill="#7950ad" text-anchor="start" font-weight="600" font-style="normal">&lt; 3.6×10⁻¹⁰</text>
+<rect x="70.0" y="694.0" width="30.0" height="22.0" fill="#087bb9" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="112.0" y="712.0" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">measured</text>
+<line x1="400.0" y1="705.0" x2="360.0" y2="705.0" stroke="#b86900" stroke-width="3"/>
+<polygon points="358.0,705.0 371.0,698.0 371.0,712.0" fill="#b86900"/>
+<circle cx="400.0" cy="705.0" r="6.0" fill="#b86900" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="420.0" y="712.0" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">upper limit (90 % CL), allowed in the SM</text>
+<line x1="1060.0" y1="705.0" x2="1020.0" y2="705.0" stroke="#7950ad" stroke-width="3"/>
+<polygon points="1018.0,705.0 1031.0,698.0 1031.0,712.0" fill="#7950ad"/>
+<circle cx="1060.0" cy="705.0" r="6.0" fill="#7950ad" fill-opacity="1.0" stroke="none" stroke-width="0"/>
+<text x="1080.0" y="712.0" font-size="26" fill="#627383" text-anchor="start" font-weight="normal" font-style="normal">forbidden by a symmetry</text>
+</svg>

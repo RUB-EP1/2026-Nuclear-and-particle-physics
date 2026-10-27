@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="widgets.css"><title>Electron-proton scattering</title></head><body><main>
+<h1>e⁻p → e⁻p in the lab frame: kinematics and the shape of dσ/dΩ</h1>
+<p class="intro">Thomson Sec. 3.5.2 · massless electron on a proton at rest · E₃ = m<sub>p</sub>E₁ / (m<sub>p</sub> + E₁(1 − cos θ)) · toy amplitude |𝓜|² ∝ 1/t² (spin factors: Chap. 6–7)</p>
+<div class="controls">
+<label for="e">Beam energy E₁ <output id="eV"></output><input id="e" type="range" min="-1" max="1.5" step="0.01" value="0"></label>
+<label for="th">Scattering angle θ <output id="thV"></output><input id="th" type="range" min="1" max="180" step="1" value="40"></label>
+<button id="ff" aria-pressed="true">proton form factor: dipole</button>
+</div>
+<div class="grid">
+<section class="card"><h2>Energy of the scattered electron and the proton recoil</h2><svg id="kin" viewBox="0 0 550 330" role="img" aria-label="Scattered electron energy and proton recoil energy versus angle"></svg><div class="legend"><span class="blue">E₃, scattered electron</span> · <span class="orange">T<sub>p</sub> = E₁ − E₃, proton recoil</span> · dot: chosen θ</div></section>
+<section class="card"><h2>Shape of dσ/dΩ (log scale, relative to a point charge at 30°)</h2><svg id="xs" viewBox="0 0 550 330" role="img" aria-label="Toy differential cross section versus angle with and without form factor"></svg><div class="legend"><span class="blue">point-like proton</span> · <span class="orange">with dipole form factor F(Q²) = (1 + Q²/0.71 GeV²)⁻²</span> · dσ/dΩ ∝ (E₃/E₁)² F² / t²</div></section>
+</div>
+<section class="card readout" id="readout"></section>
+<p class="prompt">At E₁ = 0.1 GeV the curve is Rutherford-like, ∝ 1/sin⁴(θ/2). Raise E₁ to 10 GeV: where do the recoil and the form factor start to matter, and what does the resolution ħ/Q say about it?</p>
+<script src="physics.js"></script>
+<script>
+const $=id=>document.getElementById(id),n=id=>Number($(id).value),MP=0.93827,HB=Physics.HBARC;
+let useFF=true;
+const sup=s=>String(s).replace(/[-0-9]/g,c=>'⁻⁰¹²³⁴⁵⁶⁷⁸⁹'['-0123456789'.indexOf(c)]);
+const sig=(x,d=3)=>{if(x===0)return '0';const e=Math.floor(Math.log10(Math.abs(x)));return Math.abs(e)>=4||e<=-3?(x/Math.pow(10,e)).toFixed(d-1)+'×10'+sup(e):Number(x.toPrecision(d)).toString();};
+const path=(pts,color,w=2.6)=>`<path d="${pts.map((v,i)=>(i?'L':'M')+v[0].toFixed(1)+','+v[1].toFixed(1)).join(' ')}" fill="none" stroke="${color}" stroke-width="${w}"/>`;
+const E3=(E1,t)=>MP*E1/(MP+E1*(1-Math.cos(t*Math.PI/180)));
+const Q2=(E1,t)=>2*MP*(E1-E3(E1,t));
+const FF=q2=>Math.pow(1+q2/0.71,-2);
+const xsec=(E1,t,ff)=>{const q2=Q2(E1,t),r=E3(E1,t)/E1;return r*r/(q2*q2)*(ff?Math.pow(FF(q2),2):1);};
+function render(){
+ const E1=Math.pow(10,n('e')),th=n('th'),e3=E3(E1,th),q2=Q2(E1,th),Q=Math.sqrt(q2),Tp=E1-e3;
+ $('eV').textContent=sig(E1,3)+' GeV';$('thV').textContent=th+'°';$('ff').setAttribute('aria-pressed',useFF);$('ff').classList.toggle('active',useFF);
+ // left: E3 and Tp vs theta
+ const x0=50,x1=525,yT=24,yB=262,X=t=>x0+t/180*(x1-x0),Y=v=>yB-v/E1*(yB-yT)*0.95;
+ let k=`<path d="M${x0} ${yT}V${yB}H${x1}" class="axis"/>`;
+ for(let t=0;t<=180;t+=45)k+=`<line x1="${X(t)}" y1="${yB}" x2="${X(t)}" y2="${yB+5}" stroke="#a7b8c5"/><text x="${X(t)}" y="${yB+22}" class="lbl" text-anchor="middle" font-size="15">${t}°</text>`;
+ [0,0.5,1].forEach(v=>{k+=`<line x1="${x0}" y1="${Y(v*E1)}" x2="${x1}" y2="${Y(v*E1)}" class="grid-line"/><text x="${x0-6}" y="${Y(v*E1)+5}" class="lbl" text-anchor="end" font-size="14">${sig(v*E1,2)}</text>`;});
+ const a=[],b=[];for(let t=0;t<=180;t+=2){a.push([X(t),Y(E3(E1,t))]);b.push([X(t),Y(E1-E3(E1,t))]);}
+ k+=path(a,'#007dc5',2.8)+path(b,'#b86900',2.8)+`<circle cx="${X(th)}" cy="${Y(e3)}" r="6" fill="#007dc5"/><circle cx="${X(th)}" cy="${Y(Tp)}" r="6" fill="#b86900"/><text x="${x1}" y="${yB+44}" class="lbl" text-anchor="end" font-size="15">scattering angle θ</text><text x="${x0+6}" y="${yT+10}" class="lbl" font-size="15">energy (GeV)</text>`;
+ $('kin').innerHTML=k;
+ // right: log cross section, relative to a point charge at 30 deg
+ const ref=xsec(E1,30,false),ts=[];for(let t=1;t<=180;t+=1)ts.push(t);
+ const lg=(t,ff)=>Math.log10(xsec(E1,t,ff)/ref);let lo=1e9,hi=-1e9;ts.forEach(t=>{[true,false].forEach(ff=>{const v=lg(t,ff);lo=Math.min(lo,v);hi=Math.max(hi,v);});});
+ lo=Math.floor(lo)-0.2;hi=Math.ceil(hi)+0.2;const Yl=v=>yB-(v-lo)/(hi-lo)*(yB-yT);
+ let s=`<path d="M${x0} ${yT}V${yB}H${x1}" class="axis"/>`;
+ for(let t=0;t<=180;t+=45)s+=`<line x1="${X(t)}" y1="${yB}" x2="${X(t)}" y2="${yB+5}" stroke="#a7b8c5"/><text x="${X(t)}" y="${yB+22}" class="lbl" text-anchor="middle" font-size="15">${t}°</text>`;
+ const step=Math.max(1,Math.ceil((hi-lo)/6));for(let v=Math.ceil(lo);v<=hi;v+=step)s+=`<line x1="${x0}" y1="${Yl(v)}" x2="${x1}" y2="${Yl(v)}" class="grid-line"/><text x="${x0-6}" y="${Yl(v)+5}" class="lbl" text-anchor="end" font-size="14">10${sup(v)}</text>`;
+ s+=path(ts.map(t=>[X(t),Yl(lg(t,false))]),'#007dc5',2.8);if(useFF)s+=path(ts.map(t=>[X(t),Yl(lg(t,true))]),'#b86900',2.8);
+ s+=`<line x1="${X(th)}" y1="${yT}" x2="${X(th)}" y2="${yB}" stroke="#172635" stroke-dasharray="4 4"/><text x="${x1}" y="${yB+44}" class="lbl" text-anchor="end" font-size="15">scattering angle θ</text><text x="${x0+6}" y="${yT+10}" class="lbl" font-size="15">dσ/dΩ (relative)</text>`;
+ $('xs').innerHTML=s;
+ const s2=MP*MP+2*MP*E1;
+ $('readout').innerHTML=`<b>θ = ${th}°:</b> E₃ = ${sig(e3,3)} GeV, T<sub>p</sub> = ${sig(Tp,3)} GeV · t = −Q² = −${sig(q2,3)} GeV², Q = ${sig(Q,3)} GeV/c → resolution ħc/Q = <b>${sig(HB/Q,2)} fm</b> (proton radius ≈ 0.84 fm)<br>√s = ${sig(Math.sqrt(s2),3)} GeV · (E₃/E₁)² = ${sig(Math.pow(e3/E1,2),3)} · F²(Q²) = ${sig(Math.pow(FF(q2),2),3)}`;
+}
+document.querySelectorAll('input').forEach(e=>e.oninput=render);$('ff').onclick=()=>{useFF=!useFF;render();};render();
+</script></main></body></html>
