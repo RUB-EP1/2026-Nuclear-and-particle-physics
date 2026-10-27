@@ -25,6 +25,11 @@ make pdf        # render slides and export all lecture PDFs
 
 See [the publishing workflow](.github/workflows/pages.yml) for template setup.
 
+CI also runs `scripts/check_site.py --site _site --browser` on the rendered website. It fails
+if a widget, poster, figure or script a lecture refers to is missing from the build (widgets are
+loaded at run time, so Quarto only copies them if listed under `resources` in the workflow) or if
+a widget page raises an error in headless Chromium. The file check alone needs no dependencies.
+
 ## License and media credits
 
 The original course material and repository architecture are available under

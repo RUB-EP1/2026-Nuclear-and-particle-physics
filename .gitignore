@@ -10,6 +10,7 @@
 !/README.md
 !/LICENSE
 !/THIRD_PARTY.md
+!/scripts/check_site.py
 !/scripts/export_pdf.py
 !/scripts/requirements-pdf.txt
 !slides/lectures/Lecture_3/lecture.css
