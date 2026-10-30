@@ -87,6 +87,19 @@ differential cross sections.
 [Download PDF](slides/lectures/Lecture_4/Lecture_4.pdf){.chip download="Lecture_4.pdf"}
 :::
 
+::: {.course-card}
+[Lecture 5 · Matter]{.card-tag}
+
+### Interaction of particles with matter
+
+Recap of cross sections and luminosity; ionization and dE/dx, bremsstrahlung,
+multiple scattering, photon and nuclear interactions, Cherenkov light,
+and a 3D time projection chamber.
+
+[Open slides](slides/lectures/Lecture_5/Lecture_5.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_5/Lecture_5.pdf){.chip download="Lecture_5.pdf"}
+:::
+
 ::::
 
 ## Exercises {.section-title}
