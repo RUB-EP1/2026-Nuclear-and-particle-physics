@@ -277,6 +277,23 @@ $$P=\frac{N_t\,\sigma}{A}=n_t\ell\,\sigma\ll1.$$
 
 With $\dot N_b$ beam particles per second:
 $$R=\dot N_b\,n_t\ell\,\sigma\equiv\mathcal L_{\mathrm{fixed}}\,\sigma.$$
+$$\boxed{\mathcal L_{\mathrm{fixed}}=\dot N_b\,n_t\ell}$$
+
+::: {.notation}
+$n_t$ · target centres per volume
+
+$\ell$ · target thickness
+
+$A$ · area seen by the beam
+
+$\sigma$ · cross section = disc area
+
+$P$ · interaction probability per beam particle
+
+$\dot N_b$ · beam particles per second
+
+$R$ · interactions per second
+:::
 :::
 ::: {.visual}
 ::: {.widget data-src="widgets/tube-counting.html" data-poster="widgets/tube-counting-poster.png" data-alt="Beam's-eye view of a thin target: discs of area sigma and the beam particles that land on them"}
@@ -304,6 +321,18 @@ $$N_{\mathrm{events/crossing}}=\frac{N_1N_2}{A}\,\sigma.$$
 
 At crossing frequency $f$:
 $$\boxed{\mathcal L=\frac{fN_1N_2}{A}},\qquad R=\mathcal L\sigma.$$
+
+::: {.notation}
+$N_1,N_2$ · particles per bunch
+
+$f$ · bunch-crossing frequency
+
+$A$ · bunch area (uniform); Gaussian: $4\pi\sigma_x\sigma_y$
+
+$P$ · interaction probability per particle of bunch 1
+
+$R$ · interactions per second
+:::
 :::
 ::: {.visual}
 ::: {.widget data-src="widgets/tube-counting.html?mode=collider" data-poster="widgets/tube-counting-collider-poster.png" data-alt="Beam's-eye view of a bunch: discs of area sigma around its particles and the particles of the other bunch landing on them"}
@@ -314,7 +343,7 @@ $$\boxed{\mathcal L=\frac{fN_1N_2}{A}},\qquad R=\mathcal L\sigma.$$
 ::::
 
 ::: {.notes}
-About 3 minutes. Same picture as for the fixed target; only the target changed. General form for two beams with densities n1, n2: R = σ (v1+v2) ∫ n1 n2 d³x; per crossing the factor v1+v2 cancels the crossing time and leaves the transverse overlap. Real bunches are Gaussian: A_eff = 4π σx σy for identical beams; crossing angles and the hourglass effect reduce the overlap.
+About 3 minutes. Same picture as for the fixed target; only the target changed. General form for two beams with densities n1, n2: R = σ (v1+v2) ∫ n1 n2 d³x; per crossing the factor v1+v2 cancels the crossing time and leaves the transverse overlap. The slide assumes uniform bunches of area A; real bunches are Gaussian, A_eff = 4π σx σy for identical head-on beams (σx, σy are the transverse beam sizes, not the cross section); crossing angles and the hourglass effect reduce the overlap.
 :::
 
 

@@ -128,3 +128,8 @@
 .reveal .counting-slide .copy {font-size:33px;}
 .reveal .counting-slide .visual .widget {height:660px;background:#fff;}
 .reveal .counting-slide .widget iframe {max-width:none!important;max-height:none!important;}
+.reveal .notation {display:grid;grid-template-columns:1fr 1fr;gap:4px 26px;margin-top:20px;padding-top:12px;border-top:1px solid #dfe3e7;font-size:23px;line-height:1.3;color:#4a5560;}
+.reveal .notation p {margin:0;}
+.reveal .counting-slide .copy p {margin:.25em 0 .45em;}
+/* \boxed becomes <menclose notation="box">, which Chrome's MathML does not draw. */
+.reveal menclose[notation="box"] {border:0.05em solid currentColor;padding:0.15em 0.3em;}
