@@ -429,6 +429,27 @@ The mean free path is $\lambda=1/(n\sigma)$.
 Bridge to the existing matter section. Independent interactions, homogeneous material and fixed cross section; attenuation of the uncollided beam.
 :::
 
+## Quiz: recall Lecture 4 {#recall-quiz}
+
+:::: {.slide-body}
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 120px;">
+<img src="figures/menti-join-screenshot.jpg" alt="Mentimeter quiz QR code and joining code 1299 7733" style="height: 620px; width: auto; max-height: none;">
+<div>
+<p>Scan the QR code or visit <a href="https://www.menti.com">menti.com</a></p>
+<p style="font-size: 2em; font-weight: 700;">1299 7733</p>
+<p>Six questions · one answer per question</p>
+</div>
+</div>
+
+::::
+
+::: {.notes}
+Joining panel captured from the live Mentimeter quiz on 30 October 2026. Check the joining code before reusing this slide in a later session.
+Presenter: https://www.mentimeter.com/app/presentation/alqqnvak4gfdyz6rcpa729e7t41b2f15/present
+:::
+
+
 ## Interaction of particles with matter {.section-title}
 
 :::: {.slide-body}
