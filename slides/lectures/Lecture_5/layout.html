@@ -1,0 +1,69 @@
+<script>
+// Chrome's MathML does not stretch the \overline accent (a macron glyph), so the bar over
+// |M|^2 stays glyph-wide. Mark those accents; lecture.css draws the bar as a top border.
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("mover > mo").forEach((mo) => {
+    if (mo.textContent === "¯") mo.parentElement.classList.add("overbar");
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const footer = document.createElement("div");
+  footer.className = "deck-footer";
+  ["Mikhail Mikhasenko", document.title, "KT1 · RUB · 2026/27"].forEach((text) => {
+    const label = document.createElement("span");
+    label.textContent = text;
+    footer.appendChild(label);
+  });
+  // Reveal scales this canvas, including its footer, as one 16:9 unit.
+  const canvas = document.querySelector(".reveal .slides");
+  canvas.appendChild(footer);
+  const attachPageNumber = () => {
+    const number = document.querySelector(".reveal .slide-number");
+    if (number) canvas.appendChild(number);
+  };
+  attachPageNumber();
+  window.addEventListener("load", attachPageNumber);
+  if (window.Reveal) Reveal.on("ready", attachPageNumber);
+  document.querySelectorAll(".reveal .slides > section").forEach((s) => {
+    if (s.classList.contains("section-title") ||
+        s.classList.contains("title-card") ||
+        s.id === "title-slide" ||
+        s.querySelector(":scope > .slide-body")) return;
+    let n = s.firstElementChild;
+    while (n && (n.tagName === "H2" ||
+                 n.classList.contains("slide-refs") ||
+                 n.classList.contains("subtitle"))) {
+      n = n.nextElementSibling;
+    }
+    const rest = [];
+    while (n) { rest.push(n); n = n.nextElementSibling; }
+    if (!rest.length) return;
+    const body = document.createElement("div");
+    body.className = "slide-body";
+    rest.forEach((el) => body.appendChild(el));
+    s.appendChild(body);
+  });
+});
+</script>
+<script>
+if (new URLSearchParams(location.search).has("export")) {
+  document.documentElement.classList.add("export-pdf");
+  window.addEventListener("load", async () => {
+    if (window.Reveal) Reveal.configure({ minScale: 1, maxScale: 1 });
+    document.querySelectorAll("img[data-src]").forEach((img) => {
+      img.src = img.getAttribute("data-src");
+    });
+    try {
+      if (window.MathJax?.startup?.promise) await MathJax.startup.promise;
+      if (window.MathJax?.typesetPromise) await MathJax.typesetPromise();
+    } catch (e) {}
+    await Promise.all([...document.images].map((img) => {
+      if (img.complete) return Promise.resolve();
+      return new Promise((res) => { img.onload = img.onerror = res; });
+    }));
+    document.documentElement.classList.add("export-ready");
+  });
+}
+</script>

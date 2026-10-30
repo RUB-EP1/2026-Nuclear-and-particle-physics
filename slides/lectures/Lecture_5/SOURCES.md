@@ -83,6 +83,25 @@ Accessed 30 October 2026.
 
 ## Added media and interactive explanation
 
+- **Recap rework** (30 October 2026): spin-averaged |M|² bar drawn over the whole
+  expression (`layout.html` marks MathML overlines, `lecture.css` draws them); a
+  "From decays to collisions" divider; 3n−4 counted on the phase-space slide (the separate
+  counting slide removed); two-body momentum written out explicitly; three-body recursion
+  moved to backup; references moved to the top-right corner as short links; the six recall
+  questions moved to `recall-questions.md` with their answers.
+- `widgets/tube-counting.html` (posters `tube-counting-poster.png`,
+  `tube-counting-collider-poster.png`): written for this course. Beam's-eye view of a thin
+  target (default) or of the other bunch (`?mode=collider`): discs of area σ, random beam
+  particles, measured versus expected hits.
+- `figures/atlas-intlumi.png`: ATLAS, total integrated luminosity in LHC Runs 1–3 (9/25
+  calibration), https://atlas.web.cern.ch/Atlas/GROUPS/DATAPREPARATION/PublicPlots/2026/DataSummary/figs/intlumivstimeRun123.png ,
+  from https://twiki.cern.ch/twiki/bin/view/AtlasPublic/LuminosityPublicResultsRun3 ;
+  CC BY 4.0 as stated on that page. Unmodified.
+- Reference cross sections on the luminosity slide: LHCb, σ(pp → H_b X) = 154.3 ± 1.5 ± 14.3 μb
+  at 13 TeV, 2 < η < 5, PRL 118 (2017) 052002 (arXiv v1 quoted 144 μb); Higgs at
+  13.6 TeV, mH = 125 GeV: gluon fusion 52.2 pb, all modes ≈ 60 pb (our sum of the tables in
+  LHC Higgs WG, arXiv:2402.09955).
+
 - **Structure of the new material** (added 30 October 2026): an overview figure, a
   process-by-particle map, and six numbered sections (ionization, bremsstrahlung,
   multiple scattering, photon interactions, nuclear interactions, Cherenkov light), each

@@ -51,10 +51,14 @@ Decay formula: parent rest frame. Throughout: $\hbar=c=1$ unless restored.
 ::::
 
 ::: {.notes}
-About 40 minutes including discussion and six questions. Kinematics adapted from ESHEP Lecture 2, section 20-kinematics; no spin or exotic-hadron material. The bar denotes the appropriate sum/average over unobserved spin states, not a topic for this recap.
+About 40 minutes including discussion; the six recall questions are in recall-questions.md. Kinematics adapted from ESHEP Lecture 2, section 20-kinematics; no spin or exotic-hadron material. The bar denotes the appropriate sum/average over unobserved spin states, not a topic for this recap.
 :::
 
 ## Phase space: what does each factor count? {.phase-space-components}
+
+::: {.slide-refs}
+[AEPSHEP 2026 · Hadron spectroscopy](https://mmikhasenko.github.io/2026-AEPSHEP-Hadron-Spectroscopy/)
+:::
 
 :::: {.slide-body}
 
@@ -84,7 +88,7 @@ $E_i=\sqrt{m_i^2+|\mathbf p_i|^2}$: the energy is fixed by the mass, not a new n
 ::: {.ps-card .ps-delta}
 <p class="ps-card-title">Conservation</p>
 
-Total energy and momentum equal the parent's: four constraints remove **4** numbers.
+Total energy and momentum equal the parent's: $3n$ momenta $-\,4$ constraints $=$ **$3n-4$** coordinates.
 :::
 :::
 
@@ -98,44 +102,22 @@ The measure counts states; **the matrix element weights them**.
 Adapted directly from the AEPSHEP Lecture 2 coloured phase-space layout. Fixed external masses and fixed total four-momentum. Identical-particle symmetry factors are required when integrating labelled momenta for identical daughters.
 :::
 
-## How many numbers describe one decay? 
-
-:::: {.slide-body}
-
-For fixed parent four-momentum and daughter masses:
-$$3n\text{ momentum components}-4\text{ constraints}=3n-4.$$
-
-| Final state | Independent coordinates | In the parent rest frame |
-|---|---|---|
-| Two bodies | $2$ | Two angles; momentum magnitude fixed |
-| Three bodies | $5$ | Two shape variables + three orientation angles |
-
-For a generic $n\ge3$ configuration, removing overall rotations leaves $3n-7$ shape variables.
-
-::::
-
-::: {.notes}
-Do not apply 3n−7 to two bodies: rotations about their common axis do not change the configuration. At threshold the generic counting degenerates. Orientation coordinates are not additional invariant masses.
-:::
-
 ## Collider and decay: which rotations matter? {.counting-figure}
+
+::: {.slide-refs}
+[Hanhart & Mikhasenko · AEPSHEP 2026](https://mmikhasenko.github.io/2026-AEPSHEP-Hadron-Spectroscopy/)
+:::
 
 :::: {.slide-body}
 
 ![Counting kinematic variables for scattering and decay](figures/hm-counting.png)
 
-**Collider:** the beam defines an axis. Remove one overall azimuth; allow the collision energy to vary: $(3n-4)-1+1=3n-4$.
-
-**Decay:** at fixed parent mass, remove three overall orientation angles: $(3n-4)-3=3n-7$ shape variables, for generic $n\ge3$.
-
-::: {.credit}
-Counting figure from AEPSHEP Lecture 2 · Hanhart & Mikhasenko. Here $n$ counts final particles; these are amplitude variables after removing overall rotations.
-:::
 ::::
 
 ::: {.notes}
-Distinguish the full final-state phase-space dimension 3n−4 at fixed incoming four-momenta from the reduced kinematic variables of an amplitude. For scattering at fixed s, after removing azimuth, the count is 3n−5; allowing s to vary restores one. The decay reduction assumes no preferred external orientation. Do not apply 3n−7 to a two-body decay: rotations around its common momentum axis act trivially. No spin or pentaquark material is needed here.
+Here n counts final particles; these are amplitude variables after removing overall rotations. Collider: the beam defines an axis, remove one overall azimuth and let the collision energy vary, (3n−4)−1+1 = 3n−4. Decay at fixed parent mass: remove three orientation angles, 3n−7 shape variables for generic n ≥ 3 (two bodies: 2 coordinates, both angles; three bodies: 5 = 2 shape + 3 orientation). Do not apply 3n−7 to a two-body decay: rotations around its common momentum axis act trivially. For scattering at fixed s, after removing azimuth, the count is 3n−5; allowing s to vary restores one.
 :::
+
 
 ## Two bodies: one fixed momentum {.formula-slide}
 
@@ -143,8 +125,8 @@ Distinguish the full final-state phase-space dimension 3n−4 at fixed incoming 
 
 $$\mathbf p_1^*=-\mathbf p_2^*,\qquad
 E_1^*+E_2^*=M,\qquad
-q=\frac{\sqrt{\lambda(M^2,m_1^2,m_2^2)}}{2M}$$
-$$\lambda(a,b,c)=a^2+b^2+c^2-2ab-2ac-2bc$$
+$$
+$$q=\frac{\sqrt{\big(M^2-(m_1+m_2)^2\big)\big(M^2-(m_1-m_2)^2\big)}}{2M}$$
 $$d\Phi_2=\frac{q}{16\pi^2M}\,d\Omega,
 \qquad\Phi_2=\frac{q}{4\pi M}$$
 
@@ -156,26 +138,6 @@ Phase space is uniform in solid angle; the **amplitude can introduce angular dep
 
 ::: {.notes}
 Board derivation: the spatial delta function sets p2=−p1. The radial integral is q² dq δ(M−E1−E2)/(16π²E1E2). Its Jacobian is q(1/E1+1/E2)=qM/(E1E2), giving q/(16π²M).
-:::
-
-## Three bodies: build phase space in two steps {.formula-slide}
-
-:::: {.slide-body}
-
-Group two daughters into $Q=p_1+p_2$, with $Q^2=s_{12}$:
-$$P\to Q+p_3,\qquad Q\to p_1+p_2.$$
-$$d\Phi_3(P;1,2,3)=\frac{ds_{12}}{2\pi}\,
- d\Phi_2(P;Q,3)\,d\Phi_2(Q;1,2)$$
-$$(m_1+m_2)^2\le s_{12}\le(M-m_3)^2.$$
-
-**An exact kinematic identity:** the pair need not be a resonance.
-
-One pair mass + two directions in each step = **five coordinates**.
-
-::::
-
-::: {.notes}
-Adapted from ESHEP recursive phase space. The second two-body direction is defined in the pair rest frame; the first in the parent rest frame. The two frames are related by a boost.
 :::
 
 ## Three pair masses, only two independent 
@@ -199,6 +161,10 @@ Board: expand all three pair squares and compare with P². Ask students why addi
 
 ## Shape and orientation of one event {.widget-slide}
 
+::: {.slide-refs}
+[AEPSHEP 2026 · Hadron spectroscopy](https://mmikhasenko.github.io/2026-AEPSHEP-Hadron-Spectroscopy/)
+:::
+
 :::: {.slide-body}
 
 ::: {.widget data-src="widgets/eshep/shape-orientation.html?rot=35" data-poster="widgets/eshep/w-shape.png" data-alt="Shape and orientation of one event"}
@@ -211,6 +177,10 @@ ESHEP widget: Λb → p K− J/ψ is only a kinematic example. Rotate the triang
 :::
 
 ## The Dalitz plot: flat measure, curved boundary {.formula-slide}
+
+::: {.slide-refs}
+[AEPSHEP 2026 · Hadron spectroscopy](https://mmikhasenko.github.io/2026-AEPSHEP-Hadron-Spectroscopy/)
+:::
 
 :::: {.slide-body}
 
@@ -232,6 +202,10 @@ The measure shown is orientation-integrated. If the amplitude depends on orienta
 
 ## Uniform phase space and its projection {.widget-slide}
 
+::: {.slide-refs}
+[AEPSHEP 2026 · Hadron spectroscopy](https://mmikhasenko.github.io/2026-AEPSHEP-Hadron-Spectroscopy/)
+:::
+
 :::: {.slide-body}
 
 ::: {.widget data-src="widgets/eshep/dalitz-phasespace.html?n=4000&mass=m2" data-poster="widgets/eshep/w-phsp-fill.png" data-alt="Uniform phase space and its projection"}
@@ -244,6 +218,10 @@ Increase the event count. Switch from m² to m. Ask whether the broad peak in th
 :::
 
 ## One pair mass and one angle {.widget-slide}
+
+::: {.slide-refs}
+[AEPSHEP 2026 · Hadron spectroscopy](https://mmikhasenko.github.io/2026-AEPSHEP-Hadron-Spectroscopy/)
+:::
 
 :::: {.slide-body}
 
@@ -273,211 +251,133 @@ Restore seconds with $\hbar=6.582\times10^{-25}\,\mathrm{GeV\,s}$.
 
 ::::
 
-## Fixed target: derive the cross section from counts {.formula-slide}
+## From decays to collisions {.section-title}
 
 :::: {.slide-body}
 
-A beam has number density $n_b$, speed $v_b$, and area $A$.
+A width counts decays **per parent particle**: $\;d\Gamma=\overline{|\mathcal M|^2}\,d\Phi_n/2M$.
 
-Its particle flux is $j_b=n_bv_b$; $\dot N_b=j_bA$ particles arrive per second.
+A cross section counts collisions **per incoming flux**: $\;d\sigma=\overline{|\mathcal M|^2}\,d\Phi_n/F$.
 
-A thin target of thickness $\ell$ and density $n_t$ has $N_t=n_tA\ell$ scattering centres.
+How do we count collisions?
 
-$$R=j_b\,\sigma N_t
-=\dot N_b\,(n_t\ell)\,\sigma
-\equiv\mathcal L_{\mathrm{fixed}}\sigma.$$
-$$\boxed{\sigma=\frac{R}{\dot N_b\,n_t\ell}},\qquad
-P_{\mathrm{interaction}}\simeq n_t\ell\,\sigma\ll1.$$
+::::
+
+
+## Fixed target: count the discs {.counting-slide}
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+Seen along the beam, every target centre is a **disc of area $\sigma$**.
+
+A beam particle interacts if it lands on a disc. In area $A$ there are $N_t=n_tA\ell$ discs:
+$$P=\frac{N_t\,\sigma}{A}=n_t\ell\,\sigma\ll1.$$
+
+With $\dot N_b$ beam particles per second:
+$$R=\dot N_b\,n_t\ell\,\sigma\equiv\mathcal L_{\mathrm{fixed}}\,\sigma.$$
+:::
+::: {.visual}
+::: {.widget data-src="widgets/tube-counting.html" data-poster="widgets/tube-counting-poster.png" data-alt="Beam's-eye view of a thin target: discs of area sigma and the beam particles that land on them"}
+:::
+:::
+:::
 
 ::::
 
 ::: {.notes}
-Uniform beam covering the target area, independent target scatterers, negligible attenuation, fixed incident energy. R is the interaction rate corrected for efficiency and background. j has dimensions area⁻¹ time⁻¹; luminosity has the same dimensions but includes the number of targets.
+About 3 minutes. Equivalent picture: each beam particle drags a tube of cross-section σ through the target; the number of centres inside the tube is n_t σ ℓ. Fire 200 and compare the hit fraction with the covered fraction; raise σ or the number of centres. Thin target: discs rarely overlap, P ≪ 1 (overlaps are where attenuation e^(−n σ x) comes from, used later in the lecture). Assumptions: uniform beam over the target area, independent scatterers, fixed incident energy. R is the interaction rate corrected for efficiency and background.
 :::
 
-## Collider: derive luminosity from beam overlap {.formula-slide}
+
+## Collider: the other bunch is the target {.counting-slide}
 
 :::: {.slide-body}
 
-For two head-on beams with densities $n_1(\mathbf x,t)$ and $n_2(\mathbf x,t)$:
-$$R=\sigma\,(v_1+v_2)\int n_1n_2\,d^3x
-\equiv\sigma\mathcal L(t).$$
+::: {.split}
+::: {.copy}
+Bunch 2 has $N_2$ particles spread over area $A$: $N_2$ discs.
 
-One crossing of uniform bunches, populations $N_1,N_2$, transverse area $A$:
-$$N_{\mathrm{events/crossing}}=\sigma\frac{N_1N_2}{A}.$$
+Each of the $N_1$ particles of bunch 1 hits one with $P=N_2\sigma/A$:
+$$N_{\mathrm{events/crossing}}=\frac{N_1N_2}{A}\,\sigma.$$
+
 At crossing frequency $f$:
-$$\boxed{\mathcal L=\frac{fN_1N_2}{A}}.$$
+$$\boxed{\mathcal L=\frac{fN_1N_2}{A}},\qquad R=\mathcal L\sigma.$$
+:::
+::: {.visual}
+::: {.widget data-src="widgets/tube-counting.html?mode=collider" data-poster="widgets/tube-counting-collider-poster.png" data-alt="Beam's-eye view of a bunch: discs of area sigma around its particles and the particles of the other bunch landing on them"}
+:::
+:::
+:::
 
 ::::
 
 ::: {.notes}
-Collinear opposite velocities, fixed collision energy. Derive per crossing by integrating the longitudinal overlap in time: the factor v1+v2 cancels the crossing duration. For identical round/elliptic Gaussian transverse beams A_eff=4πσxσy; crossing angles and hourglass effects reduce the overlap. v1+v2 is the flux velocity here, not the speed of one particle measured in the rest frame of the other.
+About 3 minutes. Same picture as for the fixed target; only the target changed. General form for two beams with densities n1, n2: R = σ (v1+v2) ∫ n1 n2 d³x; per crossing the factor v1+v2 cancels the crossing time and leaves the transverse overlap. Real bunches are Gaussian: A_eff = 4π σx σy for identical beams; crossing angles and the hourglass effect reduce the overlap.
 :::
 
-## The invariant flux connects both experiments {.formula-slide}
+
+## The flux factor in different frames {.formula-slide}
 
 :::: {.slide-body}
 
-$$F=4\sqrt{(p_1\!\cdot p_2)^2-m_1^2m_2^2},
-\qquad d\sigma=\frac{\overline{|\mathcal M|^2}}{F}\,d\Phi_n.$$
+$$d\sigma=\frac{\overline{|\mathcal M|^2}}{F}\,d\Phi_n,
+\qquad F=4\sqrt{(p_1\!\cdot p_2)^2-m_1^2m_2^2}\quad\text{(invariant)}$$
 
-**Fixed target:** $p_2=(m_2,\mathbf0)$, so $F=4m_2|\mathbf p_{\mathrm{beam}}|$.
+| Situation | Flux factor $F$ |
+|---|---|
+| Collinear beams | $4E_1E_2\,|\mathbf v_1-\mathbf v_2|$ |
+| Fixed target, $p_2=(m_2,\mathbf 0)$ | $4m_2\,|\mathbf p_{\mathrm{beam}}|$ |
+| Centre of mass | $4p^*\sqrt s$ |
+| Massless particles | $2s$ |
 
-**Centre of mass:** $\mathbf p_1^*=-\mathbf p_2^*$, so $F=4p_i^*\sqrt s$.
-
-With $d\Phi_2=p_f^*d\Omega/(16\pi^2\sqrt s)$:
-$$\boxed{\frac{d\sigma}{d\Omega}=\frac{1}{64\pi^2s}
-\frac{p_f^*}{p_i^*}\overline{|\mathcal M|^2}}.$$
+In a decay, $2M$ plays the role of $F$: one particle at rest.
 
 ::::
 
 ::: {.notes}
-Relativistic state normalization gives F=4E1E2 v_flux. v_flux=√[(p1·p2)²−m1²m2²]/(E1E2), reducing to beam speed for a stationary target and v1+v2 for head-on beams. F is the invariant normalization in the microscopic cross section; luminosity counts actual beam overlap. Distinguishable final particles.
+About 2 minutes. F = 4 E1 E2 v_rel with v_rel = √[(p1·p2)² − m1²m2²]/(E1E2); for collinear motion v_rel = |v1 − v2|, the beam speed for a stationary target and v1+v2 for head-on beams. Massless: p1·p2 = s/2, so F = 2s. F is the invariant normalization in the microscopic cross section; luminosity counts the actual beam overlap. Centre of mass: p* is the momentum of either incoming particle.
 :::
 
-## Instantaneous luminosity versus accumulated data 
+
+## Instantaneous luminosity versus accumulated data
+
+::: {.slide-refs}
+[ATLAS luminosity, CC BY 4.0](https://twiki.cern.ch/twiki/bin/view/AtlasPublic/LuminosityPublicResultsRun3)
+
+[LHCb, PRL 118 (2017) 052002](https://doi.org/10.1103/PhysRevLett.118.052002)
+
+[LHC Higgs WG, arXiv:2402.09955](https://arxiv.org/abs/2402.09955)
+:::
 
 :::: {.slide-body}
 
-$$R(t)=\mathcal L(t)\sigma,\qquad
-\mathcal L_{\mathrm{int}}=\int\mathcal L(t)\,dt,\qquad
-N=\sigma\mathcal L_{\mathrm{int}}.$$
+::: {.split}
+::: {.copy}
+$$R=\mathcal L\sigma,\qquad
+\mathcal L_{\mathrm{int}}=\int\mathcal L\,dt,\qquad
+N=\sigma\mathcal L_{\mathrm{int}}$$
 
-| Quantity | Meaning | Typical units |
-|---|---|---|
-| $\mathcal L$ | Collision opportunity per second | $\mathrm{cm^{-2}s^{-1}}$ |
-| $\mathcal L_{\mathrm{int}}$ | Accumulated exposure | $\mathrm{pb^{-1}}$ or $\mathrm{fb^{-1}}$ |
-| $\sigma$ | Process cross section | $\mathrm{pb}$ or $\mathrm{fb}$ |
+$[\mathcal L]=\mathrm{cm^{-2}s^{-1}}$, $\;[\mathcal L_{\mathrm{int}}]=\mathrm{fb^{-1}}$, $\;1\,\mathrm{fb}=10^{-39}\,\mathrm{cm^2}$
 
-A selected decay sample: $N_{\mathrm{selected}}=\mathcal L_{\mathrm{int}}\sigma B\varepsilon$.
+**Higgs**, 13.6 TeV: $\sigma\approx60\,\mathrm{pb}$
+$\times\,332\,\mathrm{fb^{-1}}\approx2\times10^7$ produced
+
+**b hadrons** in LHCb, 13 TeV: $\sigma\approx154\,\mu\mathrm b$
+$\times\,1\,\mathrm{fb^{-1}}\approx1.5\times10^{11}$
+:::
+::: {.visual}
+![ATLAS total integrated luminosity in LHC Runs 1 to 3](figures/atlas-intlumi.png)
+:::
+:::
 
 ::::
 
 ::: {.notes}
-Constant cross section at a fixed collision energy; otherwise integrate σ(t)L(t). Branching fraction and efficiency are separate factors.
+About 3 minutes. 332 fb⁻¹ is the Run 3 luminosity recorded by ATLAS on the plot (9/25 calibration, to early 2026). Higgs: about 60 pb is the sum of all production modes at mH = 125 GeV from the LHC Higgs WG interim 13.6 TeV tables (gluon fusion alone 52.2 pb); 60 pb × 332 fb⁻¹ = 60 000 fb × 332 fb⁻¹ ≈ 2 × 10⁷ produced, before any branching fraction or efficiency. b hadrons: LHCb σ(pp → H_b X) = 154.3 ± 1.5 ± 14.3 μb at 13 TeV for 2 < η < 5 (published value; the arXiv v1 quoted 144 μb). 1 μb = 10⁹ fb. A selected decay sample: N_selected = L_int σ B ε. Constant cross section at fixed energy; otherwise integrate σ(t)L(t).
 :::
 
-## Question 1 — Amplitude, phase space or flux? {.recap-question}
-
-:::: {.slide-body}
-
-In $d\sigma=\overline{|\mathcal M|^2}d\Phi/F$, which statement is correct?
-
-**A.** $d\Phi$ describes interaction strength; $\mathcal M$ counts states.
-
-**B.** $\mathcal M$ describes the interaction; $d\Phi$ counts final states; $F$ normalizes incident flux.
-
-**C.** Doubling beam intensity doubles the cross section.
-
-**D.** Branching fraction is another name for incident flux.
-
-::::
-
-::: {.notes}
-Answer: B. Intensity changes the rate, not the cross section for independent collisions at fixed energy.
-:::
-
-## Question 2 — What happens at a two-body threshold? {.recap-question}
-
-:::: {.slide-body}
-
-Let $M\to m_1+m_2$ from above, with a finite, constant matrix element and nonzero daughter masses. What happens to the width?
-
-**A.** It stays constant because the interaction is unchanged.
-
-**B.** It diverges because the particles move slowly.
-
-**C.** It tends to zero because $q\to0$ and $\Phi_2\propto q/M$.
-
-**D.** It vanishes only if a conservation law forbids the decay.
-
-::::
-
-::: {.notes}
-Answer: C. Γ=q|M|²/(8πM²) for an angle-independent amplitude and distinguishable daughters.
-:::
-
-## Question 3 — Which width determines the lifetime? {.recap-question}
-
-:::: {.slide-body}
-
-A particle has $\tau=6.58\times10^{-22}\,\mathrm s$ and a channel with $B=0.20$.
-Use $\hbar=6.58\times10^{-22}\,\mathrm{MeV\,s}$. What are $(\Gamma_{\mathrm{tot}},\Gamma_i)$?
-
-**A.** $(1,\ 0.2)\,\mathrm{MeV}$
-
-**B.** $(0.2,\ 1)\,\mathrm{MeV}$
-
-**C.** $(1,\ 5)\,\mathrm{MeV}$
-
-**D.** $(5,\ 1)\,\mathrm{MeV}$
-
-::::
-
-::: {.notes}
-Answer: A. Total width ℏ/τ=1 MeV; partial width BΓtot=0.2 MeV.
-:::
-
-## Question 4 — Luminosity and event counts {.recap-question}
-
-:::: {.slide-body}
-
-A process has $\sigma=2\,\mathrm{pb}$ and the sample has $\mathcal L_{\mathrm{int}}=10\,\mathrm{pb^{-1}}$.
-If instantaneous luminosity doubles, which statement is correct?
-
-**A.** The cross section becomes $4\,\mathrm{pb}$.
-
-**B.** The same integrated luminosity now gives 40 produced events.
-
-**C.** The event rate stays fixed, but the sample grows faster.
-
-**D.** The sample gives 20 produced events; twice the luminosity collects it in half the time.
-
-::::
-
-::: {.notes}
-Answer: D. Assume steady running at fixed energy, no branching or efficiency cuts.
-:::
-
-## Question 5 — How many coordinates survive? {.recap-question}
-
-:::: {.slide-body}
-
-For a three-body decay with fixed masses, which statement is correct?
-
-**A.** Nine independent coordinates remain after conservation laws.
-
-**B.** Five remain: two describe shape and three orientation. Pair masses are unchanged by a Lorentz boost.
-
-**C.** Three pair masses are independent, and change when the event is rotated.
-
-**D.** A boost to the laboratory creates a sixth independent decay coordinate.
-
-::::
-
-::: {.notes}
-Answer: B. 9−4=5 at fixed parent four-momentum. Three pair invariants obey one sum rule. Changing the parent lab motion is not an extra internal decay coordinate.
-:::
-
-## Question 6 — Does a peak prove a resonance? {.recap-question}
-
-:::: {.slide-body}
-
-A constant matrix element generates a uniform Dalitz plot in $(s_{12},s_{13})$. Its projection onto $s_{12}$ has a broad maximum. What can explain it?
-
-**A.** A resonance is required.
-
-**B.** Lorentz invariance has been violated.
-
-**C.** The allowed interval in $s_{13}$ varies with $s_{12}$.
-
-**D.** A uniform two-dimensional density must have a uniform projection.
-
-::::
-
-::: {.notes}
-Answer: C. Pure phase space can produce a broad maximum. Compare with the kinematic projection before interpreting structure as dynamics.
-:::
 
 ## From cross section to matter 
 
@@ -533,14 +433,15 @@ About 2 minutes. Independent interactions in a homogeneous medium; a fixed cross
 
 ## Each particle leaves its own signature {.full-figure}
 
+::: {.slide-refs}
+Redrawn after C. Lippmann (2003)
+:::
+
 :::: {.slide-body}
 
 ::: {.visual}
 ![Signatures of photons, electrons, muons, charged and neutral hadrons in the layers of a detector](figures/detector-layers.svg)
 
-::: {.credit}
-Redrawn after C. Lippmann (2003)
-:::
 :::
 
 ::: {.take-home}
@@ -671,6 +572,10 @@ About 2 minutes. Use x for geometric path length throughout, rather than alterna
 
 ## Ionization: the Bethe–Bloch curve
 
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.2](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
 :::: {.slide-body}
 
 ::: {.split}
@@ -686,9 +591,6 @@ The horizontal variable is $\beta\gamma=p/(Mc)$.
 ::: {.visual}
 ![Mass stopping power versus beta gamma for several materials](figures/dedx_table_98.png)
 
-::: {.credit}
-[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.2
-:::
 :::
 :::
 
@@ -724,14 +626,15 @@ About 2 minutes. Original page 5. The 1–2 range is a practical rule of thumb, 
 
 ## Energy-loss regimes {.full-figure}
 
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.1](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
 :::: {.slide-body}
 
 ::: {.visual}
 ![Muon mass stopping power in copper across nine orders of magnitude in beta gamma](figures/rpp_icru49_cu_col.png)
 
-::: {.credit}
-[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.1
-:::
 :::
 
 ::: {.take-home}
@@ -746,6 +649,10 @@ About 2 minutes. Original page 6. The central overview plot uses positive muons 
 
 ## Energy-loss fluctuations
 
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.7](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
 :::: {.slide-body}
 
 ::: {.split}
@@ -759,9 +666,6 @@ The **most-probable loss** $\Delta_p$ lies below $\langle\Delta E\rangle$.
 ::: {.visual}
 ![Skewed energy deposit distribution for a 10 GeV muon traversing 1.7 mm silicon](figures/bichsel_thick.png)
 
-::: {.credit}
-[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.7
-:::
 :::
 :::
 
@@ -772,6 +676,10 @@ About 3 minutes. Original page 11. This is the PDG Landau–Vavilov/Bichsel comp
 :::
 
 ## Time projection chamber
+
+::: {.slide-refs}
+[LCTPC · Working principle](https://www.lctpc.org/e8/e57671)
+:::
 
 :::: {.slide-body}
 
@@ -786,9 +694,6 @@ A magnetic field bends the track, providing the momentum.
 ::: {.visual}
 ![Time projection chamber showing ionization electrons drifting to the readout plane](figures/tpc-principle.jpg)
 
-::: {.credit}
-[LCTPC · Working principle](https://www.lctpc.org/e8/e57671)
-:::
 :::
 :::
 
@@ -810,6 +715,10 @@ About 5 minutes. Pick a pion at 0.5 GeV/c and press Drift: the track crosses in 
 
 ## Particle identification with ionization
 
+::: {.slide-refs}
+[ALICE / Heidelberg](https://www.physi.uni-heidelberg.de/~sma/research/tpc.php)
+:::
+
 :::: {.slide-body}
 
 ::: {.split}
@@ -829,9 +738,6 @@ Different masses therefore sample different parts of the ionization curve.
 ::: {.visual}
 ![ALICE measured TPC energy-loss bands versus momentum](figures/tpc-dedx.jpg)
 
-::: {.credit}
-[ALICE / Heidelberg](https://www.physi.uni-heidelberg.de/~sma/research/tpc.php)
-:::
 :::
 :::
 
@@ -889,6 +795,10 @@ About 2 minutes. Original page 12. X0 is used here as a length; material tables 
 
 ## Electrons and positrons
 
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.11](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
 :::: {.slide-body}
 
 ::: {.split}
@@ -903,9 +813,6 @@ Their small mass makes radiation important at modest energies.
 ::: {.visual}
 ![Fractional energy loss per radiation length for electrons and positrons in lead](figures/elossfrac_06.png)
 
-::: {.credit}
-[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.11
-:::
 :::
 :::
 
@@ -916,6 +823,10 @@ About 2 minutes. Original page 13. The electron is identical to target electrons
 :::
 
 ## Critical energy
+
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.13](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
 
 :::: {.slide-body}
 
@@ -934,9 +845,6 @@ For electrons in copper, the scale is about **20 MeV**.
 ::: {.visual}
 ![Copper electron energy loss showing ionization, bremsstrahlung and critical energy definitions](figures/encrit_cu.png)
 
-::: {.credit}
-[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.13
-:::
 :::
 :::
 
@@ -971,6 +879,10 @@ Section 3 of 6. One slide; the full Highland expression is in backup.
 
 ## Multiple Coulomb scattering
 
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.10](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
 :::: {.slide-body}
 
 ::: {.split}
@@ -986,9 +898,6 @@ $$\theta_0\propto\frac{|z|}{\beta p}\sqrt{\frac{x}{X_0}}.$$
 ::: {.visual}
 ![Geometry of projected multiple-scattering angle and transverse displacement](figures/multscat.png)
 
-::: {.credit}
-[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.10
-:::
 :::
 :::
 
@@ -1041,14 +950,15 @@ About 2 minutes. Original page 17. Photoelectric effect involves a bound electro
 
 ## Photon cross sections in lead {.full-figure}
 
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.15(b)](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
 :::: {.slide-body}
 
 ::: {.visual}
 ![Photon interaction cross sections versus energy in lead](figures/photon-lead.png)
 
-::: {.credit}
-[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.15(b), lead panel
-:::
 :::
 
 ::: {.take-home}
@@ -1156,6 +1066,10 @@ Section 6 of 6. Then the wrap-up: which process explains a signal, and what a de
 
 ## Cherenkov radiation
 
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.26](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
 :::: {.slide-body}
 
 ::: {.split}
@@ -1173,9 +1087,6 @@ Small energy loss, but a useful **velocity measurement**.
 ::: {.visual}
 ![Cherenkov wavefront construction and emission angle](figures/cherenkov_radiation.png)
 
-::: {.credit}
-[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.26
-:::
 :::
 :::
 
@@ -1284,16 +1195,37 @@ Formulas and additional interaction channels
 
 ::::
 
+## Three bodies: build phase space in two steps {.formula-slide}
+
+:::: {.slide-body}
+
+Group two daughters into $Q=p_1+p_2$, with $Q^2=s_{12}$:
+$$P\to Q+p_3,\qquad Q\to p_1+p_2.$$
+$$d\Phi_3(P;1,2,3)=\frac{ds_{12}}{2\pi}\,
+ d\Phi_2(P;Q,3)\,d\Phi_2(Q;1,2)$$
+$$(m_1+m_2)^2\le s_{12}\le(M-m_3)^2.$$
+
+**An exact kinematic identity:** the pair need not be a resonance.
+
+One pair mass + two directions in each step = **five coordinates**.
+
+::::
+
+::: {.notes}
+Adapted from ESHEP recursive phase space. The second two-body direction is defined in the pair rest frame; the first in the parent rest frame. The two frames are related by a boost.
+:::
+
 ## Many tracks, one detector {.full-figure}
+
+::: {.slide-refs}
+[ALICE / Heidelberg · TPC calibration](https://www.physi.uni-heidelberg.de/~sma/research/tpc.php)
+:::
 
 :::: {.slide-body}
 
 ::: {.visual}
 ![ALICE TPC display of reconstructed particle tracks](figures/tpc-tracks.jpg)
 
-::: {.credit}
-[ALICE / Heidelberg · TPC calibration](https://www.physi.uni-heidelberg.de/~sma/research/tpc.php)
-:::
 :::
 
 ::::

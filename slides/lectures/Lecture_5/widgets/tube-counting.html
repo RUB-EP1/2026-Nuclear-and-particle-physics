@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Counting Collisions</title>
+<style>
+/* Beam's-eye view of a thin target (or of the other bunch): every scattering centre is a disc of area σ, and a beam
+   particle interacts when it lands on one. Light theme, sized to sit beside the derivation on a slide. */
+:root{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#172635;background:#fff;font-size:clamp(14px,2.1vw,24px);
+  --blue:#087bb9;--red:#b8384a;--muted:#536878;--rule:#dbe3ea}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#fff}
+main{height:100vh;display:flex;flex-direction:column;gap:.45em;padding:.5em .7em}
+.stage{position:relative;flex:1 1 auto;min-height:0}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.controls{display:flex;flex-wrap:wrap;gap:.4em 1.1em;align-items:center;flex-shrink:0}
+label{display:flex;align-items:center;gap:.45em;white-space:nowrap}
+input[type=range]{width:7.5em;accent-color:var(--blue)}
+output{font-variant-numeric:tabular-nums;font-weight:600;color:var(--blue);min-width:2.6em}
+button{font:inherit;font-size:.9em;padding:.25em .6em;background:#fff;color:inherit;border:1px solid #adbfcc;border-radius:5px;cursor:pointer}
+button:hover{background:#eef6fb}
+button:focus-visible,input:focus-visible{outline:3px solid #147ebc;outline-offset:2px}
+.readout{font-variant-numeric:tabular-nums;line-height:1.35;flex-shrink:0;font-size:.95em}
+.readout b{color:var(--red)}
+.readout .m{font-family:"STIX Two Text","Times New Roman",serif;font-style:italic}
+</style>
+</head>
+<body>
+<main>
+  <div class="stage"><canvas id="cv" aria-label="Beam's-eye view: discs of area sigma and the beam particles landing on them"></canvas></div>
+  <div class="controls">
+    <label><span id="nLab">centres</span> <input id="n" type="range" min="5" max="120" value="40"><output id="nv"></output></label>
+    <label>σ <input id="s" type="range" min="1" max="10" value="4"><output id="sv"></output></label>
+    <button id="fire1">Fire 1</button><button id="fire">Fire 200</button><button id="reset">Reset</button>
+  </div>
+  <div class="readout" id="ro"></div>
+</main>
+<script>
+'use strict';
+const COLLIDER=new URLSearchParams(location.search).get('mode')==='collider';
+const $=id=>document.getElementById(id),cv=$('cv'),g=cv.getContext('2d');
+const S={n:40,s:4,centres:[],shots:[]};
+// σ in units of the transverse area A = 1
+const sigma=()=>S.s*0.0006;
+function rng(seed){let a=seed>>>0;return()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+let R=rng(20261030);
+function place(){S.centres=[];for(let i=0;i<S.n;i++)S.centres.push([R(),R()]);S.shots=[];}
+function hit(x,y){const r2=sigma()/Math.PI;return S.centres.some(([cx,cy])=>(x-cx)**2+(y-cy)**2<r2);}
+function fire(k){for(let i=0;i<k;i++){const x=R(),y=R();S.shots.push([x,y,hit(x,y)]);}draw();}
+
+function draw(){
+  const dpr=Math.min(2,devicePixelRatio||1),r=cv.getBoundingClientRect();
+  cv.width=Math.round(r.width*dpr);cv.height=Math.round(r.height*dpr);g.setTransform(dpr,0,0,dpr,0,0);
+  const w=r.width,h=r.height,fs=parseFloat(getComputedStyle(document.documentElement).fontSize);
+  g.clearRect(0,0,w,h);
+  // left: side view of the beam and the thin target (or the other bunch)
+  const sw=Math.min(w*0.3,h*0.55),side={x:fs*0.3,y:h*0.18,w:sw,h:h*0.64};
+  g.fillStyle='#536878';g.font=`${fs*0.8}px "Helvetica Neue",Arial,sans-serif`;g.textAlign='left';g.textBaseline='alphabetic';
+  g.fillText('side view',side.x,side.y-fs*0.6);
+  const slabX=side.x+side.w*0.55,slabW=COLLIDER?side.w*0.22:side.w*0.12;
+  if(COLLIDER){g.fillStyle='#e6f1f8';g.beginPath();g.ellipse(slabX+slabW/2,side.y+side.h/2,slabW/2,side.h/2,0,0,7);g.fill();
+    g.fillStyle='#e6f1f8';g.beginPath();g.ellipse(side.x+side.w*0.18,side.y+side.h/2,side.w*0.12,side.h/2,0,0,7);g.fill();
+    g.fillStyle='#536878';g.textAlign='center';g.fillText('bunch 1',side.x+side.w*0.18,side.y+side.h+fs*1.1);g.fillText('bunch 2',slabX+slabW/2,side.y+side.h+fs*1.1);}
+  else{g.fillStyle='#e6f1f8';g.fillRect(slabX,side.y,slabW,side.h);g.strokeStyle='#9cc3dd';g.strokeRect(slabX,side.y,slabW,side.h);
+    g.fillStyle='#536878';g.textAlign='center';g.fillText('target, ℓ',slabX+slabW/2,side.y+side.h+fs*1.1);
+    g.fillText('beam',side.x+side.w*0.2,side.y+side.h+fs*1.1);}
+  // beam arrows and the eye
+  g.strokeStyle='#087bb9';g.fillStyle='#087bb9';g.lineWidth=2;
+  for(const f of[0.3,0.5,0.7]){const y=side.y+side.h*f,x0=side.x+(COLLIDER?side.w*0.3:0),x1=slabX-4;g.beginPath();g.moveTo(x0,y);g.lineTo(x1,y);g.stroke();
+    g.beginPath();g.moveTo(x1,y);g.lineTo(x1-8,y-4);g.lineTo(x1-8,y+4);g.fill();}
+  g.fillStyle='#172635';g.textAlign='center';g.fillText('look along the beam →',side.x+side.w/2,side.y-fs*1.9);
+  // right: the transverse area A, seen along the beam
+  const sz=Math.min(w-side.w-fs*2.2,h-fs*2.4),ax=w-sz-fs*0.3,ay=(h-sz)/2+fs*0.4,X=v=>ax+v*sz,Y=v=>ay+v*sz;
+  g.fillStyle='#f6f8fa';g.fillRect(ax,ay,sz,sz);g.strokeStyle='#adbfcc';g.lineWidth=1.5;g.strokeRect(ax,ay,sz,sz);
+  g.fillStyle='#536878';g.textAlign='left';g.fillText('area A, seen along the beam',ax,ay-fs*0.5);
+  const rad=Math.sqrt(sigma()/Math.PI)*sz;
+  for(const[cx,cy]of S.centres){g.fillStyle='rgba(8,123,185,0.22)';g.beginPath();g.arc(X(cx),Y(cy),rad,0,7);g.fill();
+    g.fillStyle='#087bb9';g.beginPath();g.arc(X(cx),Y(cy),Math.max(1.5,fs*0.1),0,7);g.fill();}
+  for(const[x,y,k]of S.shots){g.fillStyle=k?'#b8384a':'rgba(23,38,53,0.35)';const q=k?fs*0.28:fs*0.14;
+    if(k){g.beginPath();g.arc(X(x),Y(y),q,0,7);g.fill();}else g.fillRect(X(x)-q/2,Y(y)-q/2,q,q);}
+  // the formula, in the side panel
+  const fx=side.x,fy=side.y+side.h+fs*3.1;g.textAlign='left';g.fillStyle='#172635';g.font=`${fs*0.95}px "Helvetica Neue",Arial,sans-serif`;
+  g.fillText('disc area = σ',fx,fy);
+}
+function readout(){
+  const s=sigma(),cover=S.n*s,hits=S.shots.filter(x=>x[2]).length,N=S.shots.length;
+  $('nv').textContent=S.n;$('sv').textContent=(s*1000).toFixed(1)+'‰ A';
+  const frac=N?(hits/N*100).toFixed(1)+'%':'–';
+  $('ro').innerHTML=COLLIDER
+    ?`Each particle of bunch 1 interacts with probability <span class="m">N</span>₂σ/<span class="m">A</span> = ${(cover*100).toFixed(1)}%.<br>Fired ${N}: <b>${hits} interactions</b> (${frac}) · expected <span class="m">N</span>₁<span class="m">N</span>₂σ/<span class="m">A</span> = ${(N*cover).toFixed(1)}`
+    :`Discs cover <span class="m">N</span><sub>t</sub>σ/<span class="m">A</span> = <span class="m">n</span><sub>t</sub>ℓσ = ${(cover*100).toFixed(1)}% of the area.<br>Fired ${N}: <b>${hits} interactions</b> (${frac}) · expected ${(N*cover).toFixed(1)}`;
+}
+const _draw=draw;draw=()=>{_draw();readout();};
+$('nLab').textContent=COLLIDER?'N₂':'centres';
+$('n').addEventListener('input',e=>{S.n=+e.target.value;place();draw();});
+$('s').addEventListener('input',e=>{S.s=+e.target.value;S.shots=S.shots.map(([x,y])=>[x,y,hit(x,y)]);draw();});
+$('fire1').addEventListener('click',()=>fire(1));
+$('fire').addEventListener('click',()=>fire(200));
+$('reset').addEventListener('click',()=>{R=rng(Math.random()*4294967296);place();draw();});
+new ResizeObserver(()=>draw()).observe(cv);
+place();if(!new URLSearchParams(location.search).has('still'))fire(60);draw();
+</script>
+</body>
+</html>

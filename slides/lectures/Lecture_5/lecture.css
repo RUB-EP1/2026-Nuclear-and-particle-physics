@@ -117,3 +117,14 @@
 .reveal .map-legend {font-size:27px;color:#627383;margin-top:10px;}
 .reveal .slides section.process-map table,.reveal .slides section#what-a-detector-measures table {width:100%!important;}
 .reveal .process-map table td:not(:first-child),.reveal .process-map table th:not(:first-child) {text-align:center;}
+
+/* \overline in MathML: hide the short macron, draw the bar over the whole base (see layout.html). */
+.reveal mover.overbar > mo {color:transparent;}
+.reveal mover.overbar > :first-child {border-top:0.06em solid currentColor;padding-top:0.12em;}
+
+/* Recap: the counting figure fills the slide; derivation beside the beam's-eye widget. */
+.reveal .counting-figure img {height:640px;}
+.reveal .counting-slide .split {grid-template-columns:minmax(0,.4fr) minmax(0,.6fr);gap:40px;}
+.reveal .counting-slide .copy {font-size:33px;}
+.reveal .counting-slide .visual .widget {height:660px;background:#fff;}
+.reveal .counting-slide .widget iframe {max-width:none!important;max-height:none!important;}

@@ -10,6 +10,9 @@ The new material opens with an overview (particle signatures by detector layer,
 and a process-by-particle map) and then runs through six numbered sections, one per
 type of interaction.
 
+The recap of Lecture 4 runs from phase space to cross sections and luminosity; the six
+recall questions are in `recall-questions.md`, not in the deck.
+
 Reserve 40 minutes for the board recap. The new material is a survey for roughly
 50 minutes: ionization and TPC identification; fluctuations; radiation and
 scattering; photon interactions; Cherenkov light. Skip the standalone Cherenkov
