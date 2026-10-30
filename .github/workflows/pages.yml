@@ -40,6 +40,7 @@ jobs:
             resources:
               - exercises/Sheet_*/Sheet_*.pdf
               - slides/lectures/Lecture_*/widgets/**
+              - slides/lectures/Lecture_*/media/**
             render:
               - index.qmd
               - slides/lectures/Lecture_*/Lecture_*.qmd

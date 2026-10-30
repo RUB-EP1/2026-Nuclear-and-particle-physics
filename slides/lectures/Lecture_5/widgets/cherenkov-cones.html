@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Cherenkov Cones</title>
+
+
+<style>
+/* Layout: one wide detector-style scene, a control strip under it, then two working panels (follow-a-photon, derivation). Deliberately single dark theme: Cherenkov blue and photon yellow read best on deep ink. */
+:root{
+  --ink:#060a13; --panel:#0c1322; --panel2:#101a2d; --rule:#1d2a42;
+  --fg:#dce5f1; --muted:#8a9ab3; --faint:#4b5a74;
+  --blue:#4ea8ff; --blue-soft:#9fcbff; --yellow:#ffd34a; --red:#ff5a52;
+  --display:"STIX Two Text","Times New Roman",serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--ink);color:var(--fg)}
+body{font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px;display:flex;flex-direction:column;gap:18px}
+header{display:flex;flex-direction:column;gap:6px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(28px,4.2vw,42px);line-height:1.08;margin:0;letter-spacing:-.01em;text-wrap:balance}
+h1 em{font-style:italic;font-weight:500;color:var(--blue-soft)}
+.lede{color:var(--muted);max-width:68ch;margin:0;text-wrap:pretty}
+.lede b{color:var(--fg);font-weight:500}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:22px;height:3px;border-radius:2px;display:inline-block}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.stage{position:relative;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--ink)}
+#scene{display:block;width:100%;touch-action:manipulation;cursor:crosshair}
+.controls{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:12px 14px}
+.grp{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+.lab{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+button{font:inherit;font-size:13px;color:var(--fg);background:var(--panel2);border:1px solid var(--rule);border-radius:4px;padding:6px 11px;cursor:pointer;line-height:1.2}
+button:hover{border-color:var(--faint)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+button.on{background:#17325a;border-color:var(--blue);color:#fff}
+button.primary{background:var(--yellow);color:#1a1405;border-color:var(--yellow);font-weight:600;min-width:74px}
+.seg{display:inline-flex}
+.seg button{border-radius:0;margin-left:-1px}
+.seg button:first-child{border-radius:4px 0 0 4px;margin-left:0}
+.seg button:last-child{border-radius:0 4px 4px 0}
+input[type=range]{accent-color:var(--blue);width:140px}
+#time{width:min(260px,52vw)}
+.val{font-family:var(--mono);font-size:13px;color:var(--fg);min-width:44px;font-variant-numeric:tabular-nums}
+.chk{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--fg);cursor:pointer}
+.chk input{accent-color:var(--blue)}
+.cols{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:18px}
+@media (max-width:900px){.cols{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+h2{font-family:var(--display);font-weight:600;font-size:22px;margin:0;line-height:1.2}
+h2 small{font-family:var(--body);font-weight:400;font-size:13px;color:var(--muted);margin-left:6px}
+#st{width:100%;display:block;border:1px solid var(--rule);border-radius:4px;background:var(--ink)}
+.cap{font-size:13px;color:var(--muted);margin:0}
+table.ro{width:100%;border-collapse:collapse;font-size:13.5px}
+table.ro td{padding:5px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
+table.ro td:last-child{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:10px}
+.m{font-family:var(--display);font-style:italic;font-size:1.08em}
+.up{font-family:var(--display);font-style:normal}
+.y{color:var(--yellow)} .b{color:var(--blue-soft)} .r{color:var(--red)}
+.answer{border-left:3px solid var(--yellow);padding:4px 0 4px 14px;margin:0;font-size:15.5px}
+.answer b{font-weight:600}
+ol.steps{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:10px}
+ol.steps li{padding-left:4px;max-width:70ch}
+.eq{display:block;font-family:var(--display);font-size:17px;text-align:center;margin:6px 0 2px;color:#fff;overflow-x:auto;white-space:nowrap}
+.eq .m{font-size:1em}
+.note{font-size:13px;color:var(--muted);margin:0;max-width:70ch}
+.track-hint{font-size:12.5px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+
+<script>if(new URLSearchParams(location.search).has('present'))document.documentElement.classList.add('presentation');</script>
+<style>
+.presentation body{overflow:hidden}
+.presentation .wrap{max-width:none;box-sizing:border-box;height:100vh;padding:24px 32px;gap:18px;display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.presentation header{padding-right:210px}
+.presentation h1{font-size:42px}
+.presentation .lede{font-size:21px;max-width:110ch}
+.presentation .legend{font-size:18px}
+.presentation .stage{min-height:0}
+.presentation .controls{font-size:20px;gap:12px 25px;padding:16px}
+.presentation button,.presentation .chk,.presentation .val{font-size:19px}
+.presentation .lab{font-size:16px}
+.presentation input[type=range]{width:180px}
+.presentation #time{width:250px}
+.presentation .cols{display:none}
+.presentation .cols.explanation-open{display:grid;position:fixed;inset:100px 32px 24px;z-index:5;overflow:auto;background:var(--ink);padding:18px;grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:start;box-shadow:0 0 0 100px #060a13e8}
+.presentation .card{padding:25px;font-size:21px}
+.presentation .card h2{font-size:32px}
+.presentation .card .cap,.presentation .card .note,.presentation .card table.ro{font-size:19px}
+.presentation .card .answer{font-size:23px}
+.presentation .card .eq{font-size:23px}
+.presentation .explanation-toggle{display:block;position:fixed;right:32px;top:26px;z-index:6;padding:12px 18px;font-size:20px}
+.explanation-toggle{display:none}
+</style>
+</head>
+<body style="margin:0">
+<button class="explanation-toggle" aria-expanded="false" aria-controls="explanation">Explanation</button>
+<div class="wrap">
+<header>
+  <h1>Two Cherenkov cones: <em>one backward, one forward</em></h1>
+  <p class="lede">A charge moves through a medium faster than light does there, <span class="m">v</span> &gt; <span class="m">c</span>/<span class="m">n</span>. The <b class="b">equal-phase front</b> opens backward like a boat's wake. Every <b class="y">photon</b> on that front moves forward at <span class="m">θ</span><sub>C</sub>. Tap any yellow photon to follow it.</p>
+  <div class="legend">
+    <span><i class="dot" style="background:var(--red)"></i>charged particle, speed <span class="m">v</span></span>
+    <span><i class="sw" style="background:var(--blue)"></i>wavelets and envelope: surfaces of equal phase</span>
+    <span><i class="sw" style="background:var(--yellow)"></i>photons and their velocity <span class="m">c</span>/<span class="m">n</span>: energy flow</span>
+  </div>
+</header>
+
+<div class="stage"><canvas id="scene" aria-label="Animated Cherenkov wavefront and photons"></canvas></div>
+
+<div class="controls">
+  <div class="grp">
+    <button id="play" class="primary">Pause</button>
+    <button id="replay">Replay</button>
+    <input id="time" type="range" min="0" max="1000" value="550" aria-label="Time">
+    <span class="val" id="tps">0 ps</span>
+  </div>
+  <div class="grp"><span class="lab">Speed</span>
+    <div class="seg" id="speed"><button data-v="0.25">¼×</button><button data-v="0.5" class="on">½×</button><button data-v="1">1×</button></div>
+  </div>
+  <div class="grp"><span class="lab">View</span>
+    <div class="seg" id="frame"><button data-v="lab" class="on">Lab</button><button data-v="co">Follow particle</button></div>
+  </div>
+  <div class="grp"><span class="lab">Medium</span>
+    <div class="seg" id="preset"><button data-n="1.33" class="on">Water</button><button data-n="1.46">Fused silica</button><button data-n="1.03">Aerogel</button></div>
+  </div>
+  <div class="grp"><label class="lab" for="n"><span class="m" style="text-transform:none">n</span></label><input id="n" type="range" min="1.00" max="2.00" step="0.01" value="1.33"><span class="val" id="nv">1.33</span></div>
+  <div class="grp"><label class="lab" for="beta"><span class="m" style="text-transform:none">β</span></label><input id="beta" type="range" min="0.50" max="0.999" step="0.001" value="0.99"><span class="val" id="bv">0.990</span></div>
+  <div class="grp">
+    <label class="chk"><input type="checkbox" id="wave" checked>Wavelets</label>
+    <label class="chk"><input type="checkbox" id="tri" checked>Velocity triangle</label>
+  </div>
+  <div class="grp"><span class="lab">Tracked photon</span>
+    <button id="earlier">Earlier</button><button id="later">Later</button><button id="flip">Other branch</button>
+  </div>
+</div>
+
+<div class="cols" id="explanation">
+  <section class="card">
+    <h2>Follow one photon <small id="tname">#4, upper branch</small></h2>
+    <canvas id="st" aria-label="Space-time diagram of particle and tracked photon"></canvas>
+    <p class="cap">Lab-frame worldlines, <span class="m">x</span> across, <span class="m">t</span> up. Both lean right, so both move forward. The particle's leans further, so the gap <span class="m">Δx</span> grows linearly. Dotted lines are the light cone <span class="m">dx</span>/<span class="m">dt</span> = ±<span class="m">c</span>/<span class="m">n</span>.</p>
+    <table class="ro" id="ro"></table>
+  </section>
+
+  <section class="card">
+    <h2>Why both pictures are right</h2>
+    <p class="answer">The backward cone is <b>where</b> the photons emitted at different times are now. The forward cone is <b>which way</b> each of them is going. Old photons are far out on the cone, young ones near its apex.</p>
+    <ol class="steps">
+      <li>A wavelet emitted at time <span class="m">t</span><sub>e</sub> from <span class="m">x</span><sub>e</sub> has radius <span class="m">uτ</span> at <span class="m">τ</span> = <span class="m">t</span> − <span class="m">t</span><sub>e</sub>, with <span class="m">u</span> = <span class="m">c</span>/<span class="m">n</span>. The particle is then <span class="m">vτ</span> ahead of <span class="m">x</span><sub>e</sub>.</li>
+      <li>The envelope runs from the particle, tangent to every circle. Emission point, tangent point and particle form a right triangle with hypotenuse <span class="m">vτ</span> and leg <span class="m">uτ</span>. The angle at the particle is <span class="m">μ</span>, the angle at the emission point is <span class="m">θ</span><sub>C</sub>:
+        <span class="eq"><span class="up">sin</span> <span class="m">μ</span> = <span class="m">uτ</span>/<span class="m">vτ</span> = 1/<span class="m">nβ</span> = <span class="up">cos</span> <span class="m">θ</span><sub>C</sub> &nbsp;⇒&nbsp; <span class="m">μ</span> + <span class="m">θ</span><sub>C</sub> = 90°</span></li>
+      <li>The radius to the tangent point is normal to the front, and it is the path of the photon emitted at <span class="m">t</span><sub>e</sub>:
+        <span class="eq"><b class="m">r</b><sub>γ</sub> = <span class="m">x</span><sub>e</sub><b class="m">x̂</b> + <span class="m">uτ</span> (<span class="up">cos</span> <span class="m">θ</span><sub>C</sub>, ±<span class="up">sin</span> <span class="m">θ</span><sub>C</sub>), &nbsp; <span class="m">v</span><sub>γ,x</sub> = <span class="m">u</span> <span class="up">cos</span> <span class="m">θ</span><sub>C</sub> = <span class="m">u</span>²/<span class="m">v</span> &gt; 0</span>
+        So the photon always moves forward.</li>
+      <li>Subtract the particle position <span class="m">x</span><sub>e</sub> + <span class="m">vτ</span>, using <span class="m">u</span> = <span class="m">v</span> <span class="up">cos</span> <span class="m">θ</span><sub>C</sub>:
+        <span class="eq"><b class="m">r</b><sub>γ</sub> − <b class="m">r</b><sub>p</sub> = <span class="m">vτ</span> <span class="up">sin</span> <span class="m">θ</span><sub>C</sub> (−<span class="up">sin</span> <span class="m">θ</span><sub>C</sub>, ±<span class="up">cos</span> <span class="m">θ</span><sub>C</sub>) = <span class="m">vτ</span> <span class="up">sin</span> <span class="m">θ</span><sub>C</sub> (−<span class="up">cos</span> <span class="m">μ</span>, ±<span class="up">sin</span> <span class="m">μ</span>)</span>
+        The unit vector is the backward direction of the front. The photon sits on the front, a distance <span class="m">vτ</span> sin <span class="m">θ</span><sub>C</sub> behind the apex, and trails the particle by <span class="m">Δx</span> = <span class="m">vτ</span> sin²<span class="m">θ</span><sub>C</sub>.</li>
+      <li>Differentiate: the photon's velocity relative to the particle is <span class="m">v</span> sin <span class="m">θ</span><sub>C</sub> along the front, pointing backward. Turn on the velocity triangle: <span class="y">photon velocity</span> = <span class="r">particle velocity</span> + <span class="b">slide along the front</span>. The front itself translates rigidly at <span class="m">v</span>; its normal speed is <span class="m">v</span> sin <span class="m">μ</span> = <span class="m">u</span>.</li>
+    </ol>
+    <p class="note">The “Follow particle” view only moves the camera with the particle. It is a Galilean shift of the lab picture, not the particle rest frame, and the relative velocity above is a lab-frame closing rate. The medium is taken as non-dispersive, so phase and group velocity are both <span class="m">c</span>/<span class="m">n</span>. Below threshold, <span class="m">nβ</span> ≤ 1, the wavelets nest inside each other and no envelope forms.</p>
+  </section>
+</div>
+</div>
+
+<script>
+(()=>{
+const cv=document.getElementById('scene'), ctx=cv.getContext('2d');
+const stc=document.getElementById('st'), sx=stc.getContext('2d');
+const css=getComputedStyle(document.documentElement);
+const C={ink:css.getPropertyValue('--ink').trim(),rule:css.getPropertyValue('--rule').trim(),fg:css.getPropertyValue('--fg').trim(),muted:css.getPropertyValue('--muted').trim(),faint:css.getPropertyValue('--faint').trim(),blue:css.getPropertyValue('--blue').trim(),blueS:css.getPropertyValue('--blue-soft').trim(),yel:css.getPropertyValue('--yellow').trim(),red:css.getPropertyValue('--red').trim()};
+const SERIF='"STIX Two Text","Times New Roman",serif', SANS='"IBM Plex Sans",system-ui,sans-serif', MONO='"IBM Plex Mono",ui-monospace,monospace';
+const L=100, X0=6, XEND=94, TEND=11, V=(XEND-X0)/TEND, NW=18, DT=TEND/NW;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const S={t:TEND*0.55,playing:!reduce&&!new URLSearchParams(location.search).has('still'),speed:0.5,n:1.33,beta:0.99,frame:'lab',wave:true,tri:true,k:4,s:1,hold:0};
+let dpr=1,W=0,H=0,sc=1,cam=0, sw=0, sh=0;
+
+function geo(){const r=S.n*S.beta,u=V/r,sup=r>1.0005,ct=sup?1/r:1,th=Math.acos(ct);return{r,u,sup,th,mu:Math.PI/2-th,ct,stt:Math.sin(th)};}
+function photon(g,k,s,t){const tk=k*DT,tau=t-tk,xe=X0+V*tk;return{x:xe+g.u*tau*g.ct,y:s*g.u*tau*g.stt,xe,tau,tk};}
+const X=x=>(x-cam)*sc, Y=y=>H/2-y*sc;
+
+function size(){
+  dpr=Math.min(2,window.devicePixelRatio||1);
+  W=cv.parentElement.clientWidth; H=document.documentElement.classList.contains('presentation')?cv.parentElement.clientHeight:Math.round(W*(W<640?0.95:0.52)); sc=W/L;
+  cv.width=W*dpr; cv.height=H*dpr; cv.style.height=H+'px';
+  sw=Math.max(200,stc.parentElement.clientWidth-50); sh=Math.round(Math.min(260,Math.max(190,sw*0.55)));
+  stc.width=sw*dpr; stc.height=sh*dpr; stc.style.height=sh+'px';
+}
+
+function line(c,x1,y1,x2,y2,col,w,dash){c.beginPath();c.setLineDash(dash||[]);c.strokeStyle=col;c.lineWidth=w;c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();c.setLineDash([]);}
+function arrow(c,x1,y1,x2,y2,col,w,hl){const a=Math.atan2(y2-y1,x2-x1),len=Math.hypot(x2-x1,y2-y1);if(len<2)return;hl=Math.min(hl||9,len*0.6);
+  line(c,x1,y1,x2-Math.cos(a)*hl*0.6,y2-Math.sin(a)*hl*0.6,col,w);
+  c.beginPath();c.fillStyle=col;c.moveTo(x2,y2);c.lineTo(x2-hl*Math.cos(a-0.4),y2-hl*Math.sin(a-0.4));c.lineTo(x2-hl*Math.cos(a+0.4),y2-hl*Math.sin(a+0.4));c.closePath();c.fill();}
+function arcW(c,cx,cy,r,a1,a2,col,w){c.beginPath();c.strokeStyle=col;c.lineWidth=w;const n=24;for(let i=0;i<=n;i++){const a=a1+(a2-a1)*i/n,px=cx+r*Math.cos(a),py=cy-r*Math.sin(a);i?c.lineTo(px,py):c.moveTo(px,py);}c.stroke();}
+function text(c,s,x,y,col,font,align,base){c.fillStyle=col;c.font=font;c.textAlign=align||'left';c.textBaseline=base||'middle';c.fillText(s,x,y);}
+function sym(c,main,sub,x,y,col,size){c.fillStyle=col;c.textBaseline='middle';c.textAlign='left';c.font=`italic 500 ${size}px ${SERIF}`;c.fillText(main,x,y);const w=c.measureText(main).width;if(sub){c.font=`500 ${Math.round(size*0.62)}px ${SERIF}`;c.fillText(sub,x+w+1,y+size*0.3);}}
+function halo(c,s,x,y,font,align){c.font=font;c.textAlign=align||'left';c.textBaseline='middle';c.lineWidth=4;c.strokeStyle=C.ink;c.strokeText(s,x,y);}
+
+function draw(){
+  const g=geo(), t=Math.min(S.t,TEND), xp=X0+V*t;
+  cam=S.frame==='lab'?0:xp-0.72*L;
+  const c=ctx; c.setTransform(dpr,0,0,dpr,0,0); c.fillStyle=C.ink; c.fillRect(0,0,W,H);
+  // grid fixed to the medium (scrolls in follow view)
+  const g0=Math.floor(cam/5)*5;
+  for(let x=g0;x<=cam+L+5;x+=5){line(c,X(x),0,X(x),H,x%10===0?'#111b2e':'#0b1323',1);}
+  for(let y=0;y<=H/sc/2+5;y+=5){[1,-1].forEach(s=>{if(y===0&&s<0)return;line(c,0,Y(s*y),W,Y(s*y),y%10===0?'#111b2e':'#0b1323',1);});}
+  line(c,0,Y(0),W,Y(0),'#2a3954',1,[2,5]);
+  const fs=W<640?12:(document.documentElement.classList.contains('presentation')?20:13);
+  text(c,S.frame==='lab'?'LAB FRAME':'CAMERA FOLLOWS PARTICLE (Galilean shift)',12,16,C.muted,`500 ${fs-1}px ${SANS}`);
+  const kmax=Math.floor(t/DT+1e-9);
+  // wavelets
+  for(let k=0;k<=kmax;k++){
+    const tk=k*DT,R=g.u*(t-tk),xe=X0+V*tk; const isT=k===S.k;
+    if(!S.wave&&!isT)continue;
+    c.beginPath();c.arc(X(xe),Y(0),Math.max(0.5,R*sc),0,Math.PI*2);
+    c.strokeStyle=isT?'rgba(110,182,255,.75)':`rgba(78,168,255,${0.12+0.28*(1-(t-tk)/TEND)})`;c.lineWidth=isT?1.6:1;c.stroke();
+    c.beginPath();c.arc(X(xe),Y(0),1.6,0,Math.PI*2);c.fillStyle='rgba(78,168,255,.5)';c.fill();
+  }
+  if(!g.sup){
+    const msg='nβ ≤ 1: below threshold. Wavelets nest, no envelope, no Cherenkov light.';
+    halo(c,msg,W/2,H-22,`500 ${fs}px ${SANS}`,'center');text(c,msg,W/2,H-22,C.fg,`500 ${fs}px ${SANS}`,'center');
+  }
+  const pX=X(xp),pY=Y(0);
+  if(g.sup&&kmax>=0){
+    // envelope
+    [1,-1].forEach(s=>{const p0=photon(g,0,s,t);
+      c.save();c.shadowColor=C.blue;c.shadowBlur=14;line(c,pX,pY,X(p0.x),Y(p0.y),C.blue,3);c.restore();
+      line(c,pX,pY,X(p0.x),Y(p0.y),'#cfe6ff',1);
+    });
+    // all photons
+    const al=Math.min(22,4*sc);
+    for(let k=0;k<=kmax;k++)[1,-1].forEach(s=>{if(k===S.k&&s===S.s)return;const p=photon(g,k,s,t);const x=X(p.x),y=Y(p.y);
+      arrow(c,x,y,x+al*g.ct,y-s*al*g.stt,'rgba(255,211,74,.85)',1.4,6);
+      c.beginPath();c.arc(x,y,2.8,0,Math.PI*2);c.fillStyle=C.yel;c.fill();});
+    // labels on front
+    const p0=photon(g,0,1,t),ex=X(p0.x),ey=Y(p0.y),len=Math.hypot(pX-ex,pY-ey);
+    if(len>170){c.save();c.translate((pX+ex)/2,(pY+ey)/2);c.rotate(Math.atan2(pY-ey,pX-ex));
+      const lbl='equal-phase front (moves right at v)';halo(c,lbl,0,-12,`500 ${fs}px ${SANS}`,'center');text(c,lbl,0,-12,C.blueS,`500 ${fs}px ${SANS}`,'center');c.restore();}
+    // mu arc
+    const ar=Math.min(54,Math.max(30,len*0.35));
+    arcW(c,pX,pY,ar,Math.PI-g.mu,Math.PI,C.blueS,1.5);
+    const am=Math.PI-g.mu/2; sym(c,'μ','',pX+(ar+8)*Math.cos(am)-14,pY-(ar+10)*Math.sin(am),C.blueS,18);
+  }
+  // tracked photon
+  if(g.sup&&S.k<=kmax){
+    const s=S.s,p=photon(g,S.k,s,t),px=X(p.x),py=Y(p.y),ex=X(p.xe),ey=Y(0),rl=p.tau*g.u*sc;
+    // forward cone of directions at emission point (both branches)
+    line(c,ex,ey,X(p.xe+g.u*p.tau*g.ct),Y(-s*g.u*p.tau*g.stt),'rgba(255,211,74,.45)',1.3,[5,5]);
+    line(c,ex,ey,px,py,C.yel,1.6,[6,4]);
+    const tr=Math.min(46,Math.max(22,rl*0.4));
+    arcW(c,ex,ey,tr,0,s*g.th,C.yel,1.5);arcW(c,ex,ey,tr,0,-s*g.th,'rgba(255,211,74,.5)',1.2);
+    line(c,ex,ey,ex+tr+16,ey,'rgba(255,211,74,.6)',1);
+    sym(c,'θ','C',ex+tr+6,ey-s*(tr*0.42+6),C.yel,17);
+    c.beginPath();c.arc(ex,ey,5,0,Math.PI*2);c.strokeStyle=C.yel;c.lineWidth=1.5;c.stroke();
+    const el='emitted here';halo(c,el,ex,ey+s*18,`500 ${fs}px ${SANS}`,'center');text(c,el,ex,ey+s*18,C.yel,`500 ${fs}px ${SANS}`,'center');
+    // projection and gap
+    line(c,px,py,px,ey,'rgba(220,229,241,.35)',1,[3,4]);
+    const gy=ey+s*(fs+14);
+    if(pX-px>8){line(c,px,gy-5,px,gy+5,C.fg,1);line(c,pX,gy-5,pX,gy+5,C.fg,1);arrow(c,(px+pX)/2,gy,pX,gy,C.fg,1,6);arrow(c,(px+pX)/2,gy,px,gy,C.fg,1,6);
+      const gl='Δx = vτ sin²θ_C';const lab2=`Δx ${(V*p.tau*g.stt*g.stt).toFixed(1)} mm`;halo(c,lab2,(px+pX)/2,gy+s*12,`500 ${fs-1}px ${MONO}`,'center');text(c,lab2,(px+pX)/2,gy+s*12,C.fg,`500 ${fs-1}px ${MONO}`,'center');}
+    // right angle
+    const a=9,d1=[g.ct,s*g.stt],d2=[-Math.cos(g.mu),s*Math.sin(g.mu)];
+    c.beginPath();c.strokeStyle='#fff';c.lineWidth=1;c.moveTo(px+a*d1[0],py-a*d1[1]);c.lineTo(px+a*(d1[0]+d2[0]),py-a*(d1[1]+d2[1]));c.lineTo(px+a*d2[0],py-a*d2[1]);c.stroke();
+    // velocity arrows
+    const k=Math.min(13,90/sc)/g.u*sc; // px per unit speed, u-arrow ~13 units
+    const ux=px+k*g.u*g.ct, uy=py-s*k*g.u*g.stt;
+    if(S.tri){
+      const vx=px+k*V;
+      arrow(c,px,py,vx,py,C.red,2,9);
+      arrow(c,vx,py,ux,uy,C.blueS,2,9);
+      sym(c,'v','',(px+vx)/2-4,py+s*13,C.red,17);
+      const mx=(vx+ux)/2,my=(py+uy)/2;sym(c,'v','rel',mx+8,my,C.blueS,16);
+    }
+    c.save();c.shadowColor=C.yel;c.shadowBlur=10;arrow(c,px,py,ux,uy,C.yel,2.6,11);c.restore();
+    halo(c,'c/n',ux,uy-s*12,`italic 500 16px ${SERIF}`,'center');sym(c,'c/n','',ux-12,uy-s*14,C.yel,16);
+    c.beginPath();c.arc(px,py,8,0,Math.PI*2);c.strokeStyle=C.yel;c.lineWidth=1.5;c.stroke();
+    c.save();c.shadowColor=C.yel;c.shadowBlur=12;c.beginPath();c.arc(px,py,4.2,0,Math.PI*2);c.fillStyle='#fff6cf';c.fill();c.restore();
+  } else if(g.sup&&S.k>kmax){
+    const xe=X0+V*S.k*DT;const m=`photon #${S.k} not emitted yet`;
+    c.beginPath();c.arc(X(xe),Y(0),5,0,Math.PI*2);c.strokeStyle='rgba(255,211,74,.6)';c.setLineDash([2,3]);c.stroke();c.setLineDash([]);
+    halo(c,m,X(xe),Y(0)-S.s*18,`500 ${fs}px ${SANS}`,'center');text(c,m,X(xe),Y(0)-S.s*18,'rgba(255,211,74,.85)',`500 ${fs}px ${SANS}`,'center');
+  }
+  // particle
+  c.save();c.shadowColor=C.red;c.shadowBlur=18;c.beginPath();c.arc(pX,pY,6,0,Math.PI*2);c.fillStyle=C.red;c.fill();c.restore();
+  c.beginPath();c.arc(pX,pY,2.2,0,Math.PI*2);c.fillStyle='#ffd9d6';c.fill();
+  drawST(g,t);readouts(g,t,kmax);
+}
+
+function drawST(g,t){
+  const c=sx;c.setTransform(dpr,0,0,dpr,0,0);c.fillStyle=C.ink;c.fillRect(0,0,sw,sh);
+  const l=30,r=10,tp=12,b=26,xs=x=>l+x/L*(sw-l-r),ts=tt=>sh-b-tt/TEND*(sh-b-tp);
+  for(let x=0;x<=L;x+=10)line(c,xs(x),tp,xs(x),sh-b,'#111b2e',1);
+  for(let k=0;k<=4;k++){const tt=TEND*k/4;line(c,l,ts(tt),sw-r,ts(tt),'#111b2e',1);}
+  line(c,l,sh-b,sw-r,sh-b,C.faint,1);line(c,l,tp,l,sh-b,C.faint,1);
+  sym(c,'x','',sw-r-10,sh-b+13,C.muted,14);sym(c,'t','',l-18,tp+6,C.muted,14);
+  // particle worldline
+  line(c,xs(X0),ts(0),xs(X0+V*t),ts(t),C.red,2);line(c,xs(X0+V*t),ts(t),xs(XEND),ts(TEND),'rgba(255,90,82,.35)',1.2,[4,4]);
+  if(g.sup){
+    const tk=S.k*DT,xe=X0+V*tk,vx=g.u*g.ct;
+    if(tk<=TEND){
+      const t2=TEND;
+      [1,-1].forEach(sg=>line(c,xs(xe),ts(tk),xs(xe+sg*g.u*(t2-tk)),ts(t2),'rgba(138,154,179,.45)',1,[1,3]));
+      c.beginPath();c.arc(xs(xe),ts(tk),3.5,0,Math.PI*2);c.strokeStyle=C.yel;c.lineWidth=1.3;c.stroke();
+      if(t>=tk){line(c,xs(xe),ts(tk),xs(xe+vx*(t-tk)),ts(t),C.yel,2.2);}
+      line(c,xs(xe+vx*Math.max(0,t-tk)),ts(Math.max(t,tk)),xs(xe+vx*(t2-tk)),ts(t2),'rgba(255,211,74,.35)',1.2,[4,4]);
+      if(t>tk){const a=xs(xe+vx*(t-tk)),bb=xs(X0+V*t),yy=ts(t);
+        c.fillStyle='rgba(220,229,241,.08)';c.beginPath();c.moveTo(xs(xe),ts(tk));c.lineTo(a,yy);c.lineTo(bb,yy);c.closePath();c.fill();
+        line(c,a,yy,bb,yy,C.fg,1.4);
+        if(bb-a>28)text(c,'Δx',(a+bb)/2,yy-9,C.fg,`italic 500 13px ${SERIF}`,'center');
+        c.beginPath();c.arc(a,yy,3.2,0,Math.PI*2);c.fillStyle=C.yel;c.fill();}
+    }
+  }
+  line(c,l,ts(t),sw-r,ts(t),'rgba(220,229,241,.25)',1,[2,3]);
+  c.beginPath();c.arc(xs(X0+V*t),ts(t),3.6,0,Math.PI*2);c.fillStyle=C.red;c.fill();
+  text(c,'0',l-4,sh-b+11,C.muted,`11px ${MONO}`,'right');text(c,'100 mm',sw-r-14,sh-b+11,C.muted,`11px ${MONO}`,'right');
+}
+
+const ro=document.getElementById('ro');
+function fmt(v,d){return v.toFixed(d);}
+function readouts(g,t,kmax){
+  const deg=x=>(x*180/Math.PI).toFixed(1)+'°';
+  const tps=V*t/(S.beta*0.299792458);
+  document.getElementById('tps').textContent=`t = ${tps.toFixed(0)} ps`;
+  document.getElementById('time').value=Math.round(Math.min(S.t,TEND)/TEND*1000);
+  document.getElementById('tname').textContent=`#${S.k}, ${S.s>0?'upper':'lower'} branch`;
+  let rows=[['<span class="m">v</span>/(<span class="m">c</span>/<span class="m">n</span>) = <span class="m">nβ</span>',fmt(g.r,3)]];
+  if(g.sup){
+    rows.push(['<span class="b">front half-angle</span> <span class="m">μ</span> = arcsin(1/<span class="m">nβ</span>)',deg(g.mu)],
+      ['<span class="y">photon angle</span> <span class="m">θ</span><sub>C</sub> = arccos(1/<span class="m">nβ</span>)',deg(g.th)],
+      ['<span class="m">μ</span> + <span class="m">θ</span><sub>C</sub>',deg(g.mu+g.th)]);
+    if(S.k<=kmax){const tau=t-S.k*DT;const path=V*tau;
+      rows.push(['Photon age <span class="m">τ</span> (lab)',fmt(path/(S.beta*0.299792458),0)+' ps'],
+        ['Particle advance since emission, <span class="m">vτ</span>',fmt(path,1)+' mm'],
+        ['<span class="y">Photon forward advance</span>, <span class="m">uτ</span> cos <span class="m">θ</span><sub>C</sub>',fmt(path*g.ct*g.ct,1)+' mm'],
+        ['Gap behind particle, <span class="m">Δx</span> = <span class="m">vτ</span> sin²<span class="m">θ</span><sub>C</sub>',fmt(path*g.stt*g.stt,1)+' mm'],
+        ['Slide along front from apex, <span class="m">vτ</span> sin <span class="m">θ</span><sub>C</sub>',fmt(path*g.stt,1)+' mm'],
+        ['Photon <span class="m">v<sub>x</sub></span> / particle <span class="m">v</span> = cos²<span class="m">θ</span><sub>C</sub>',fmt(g.ct*g.ct,3)]);
+    } else rows.push(['Tracked photon','not emitted yet']);
+  } else rows.push(['Cherenkov threshold <span class="m">β</span> &gt; 1/<span class="m">n</span>',fmt(1/S.n,3)]);
+  const slow=(1/S.speed)/(V/(S.beta*0.299792458)*1e-12);
+  rows.push(['Slow-motion factor','≈ '+(slow/Math.pow(10,Math.floor(Math.log10(slow)))).toFixed(1)+'×10'+sup(Math.floor(Math.log10(slow)))]);
+  ro.innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
+}
+function sup(n){return String(n).split('').map(ch=>'⁰¹²³⁴⁵⁶⁷⁸⁹'['0123456789'.indexOf(ch)]).join('');}
+
+// controls
+const $=id=>document.getElementById(id);
+const playB=$('play');
+function setPlay(p){S.playing=p;playB.textContent=p?'Pause':'Play';}
+setPlay(S.playing);
+playB.onclick=()=>{if(!S.playing&&S.t>=TEND){S.t=0;S.hold=0;}setPlay(!S.playing);};
+$('replay').onclick=()=>{S.t=0;S.hold=0;setPlay(true);};
+$('time').oninput=e=>{S.t=e.target.value/1000*TEND;S.hold=0;setPlay(false);draw();};
+function seg(id,fn){const el=$(id);el.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;el.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));fn(b);draw();});}
+seg('speed',b=>S.speed=+b.dataset.v);
+seg('frame',b=>S.frame=b.dataset.v);
+seg('preset',b=>{S.n=+b.dataset.n;$('n').value=S.n;$('nv').textContent=S.n.toFixed(2);});
+$('n').oninput=e=>{S.n=+e.target.value;$('nv').textContent=S.n.toFixed(2);$('preset').querySelectorAll('button').forEach(x=>x.classList.toggle('on',Math.abs(+x.dataset.n-S.n)<1e-6));draw();};
+$('beta').oninput=e=>{S.beta=+e.target.value;$('bv').textContent=S.beta.toFixed(3);draw();};
+$('wave').onchange=e=>{S.wave=e.target.checked;draw();};
+$('tri').onchange=e=>{S.tri=e.target.checked;draw();};
+$('earlier').onclick=()=>{S.k=Math.max(0,S.k-1);draw();};
+$('later').onclick=()=>{S.k=Math.min(NW,S.k+1);draw();};
+$('flip').onclick=()=>{S.s=-S.s;draw();};
+cv.addEventListener('pointerdown',e=>{
+  const g=geo();if(!g.sup)return;const r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
+  const t=Math.min(S.t,TEND),kmax=Math.floor(t/DT+1e-9);let best=null,bd=26;
+  for(let k=0;k<=kmax;k++)[1,-1].forEach(s=>{const p=photon(g,k,s,t);const d=Math.hypot(X(p.x)-mx,Y(p.y)-my);if(d<bd){bd=d;best=[k,s];}});
+  if(best){S.k=best[0];S.s=best[1];draw();}
+});
+
+let last=performance.now();
+function tick(now){const dt=Math.min(0.05,(now-last)/1000);last=now;
+  if(S.playing){if(S.t<TEND)S.t=Math.min(TEND,S.t+dt*S.speed);else{S.hold+=dt;if(S.hold>2.2){S.t=0;S.hold=0;}}}
+  draw();requestAnimationFrame(tick);}
+const explanationButton=document.querySelector('.explanation-toggle');
+function toggleExplanation(force){
+ const el=document.getElementById('explanation');
+ const open=force===undefined?!el.classList.contains('explanation-open'):force;
+ el.classList.toggle('explanation-open',open);
+ explanationButton.setAttribute('aria-expanded',String(open));
+ explanationButton.textContent=open?'Back to animation':'Explanation';
+ if(open)setPlay(false);
+ size();draw();
+}
+explanationButton.addEventListener('click',()=>toggleExplanation());
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('explanation').classList.contains('explanation-open')){e.preventDefault();e.stopPropagation();toggleExplanation(false);}},true);
+window.addEventListener('resize',()=>{size();draw();});
+size();draw();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>draw());
+requestAnimationFrame(tick);
+})();
+</script>
+</body>
+
+</html>

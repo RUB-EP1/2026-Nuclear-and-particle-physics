@@ -1,0 +1,1207 @@
+---
+pagetitle: "KT1 · Lecture 5 · Interaction of Particles with Matter"
+format:
+  revealjs:
+    theme: simple
+    controls: false
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    css: [../../styles.css, ../../lecture-styles.css, lecture.css]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    min-scale: 0.2
+    max-scale: 2.0
+    auto-stretch: false
+    html-math-method: mathml
+    include-in-header:
+      - file: layout.html
+      - file: ../../scripts/frames.html
+      - file: ../../scripts/widget.html
+---
+
+## Lecture 5 {.title-card}
+
+:::: {.slide-body}
+
+::: {.subtitle}
+Interaction of Particles with Matter
+:::
+
+Mikhail Mikhasenko · 30 October 2026
+
+::::
+
+## Recall: from an interaction to an event 
+
+:::: {.slide-body}
+
+$$d\Gamma=\frac{\overline{|\mathcal M|^2}}{2M}\,d\Phi_n,
+\qquad d\sigma=\frac{\overline{|\mathcal M|^2}}{F}\,d\Phi_n$$
+
+**Matrix element:** how the interaction connects the initial and final states.
+
+**Phase space:** the available final momenta, subject to conservation laws.
+
+**Flux:** normalize scattering to the incident particles.
+
+Decay formula: parent rest frame. Throughout: $\hbar=c=1$ unless restored.
+
+::::
+
+::: {.notes}
+About 40 minutes including discussion and six questions. Kinematics adapted from ESHEP Lecture 2, section 20-kinematics; no spin or exotic-hadron material. The bar denotes the appropriate sum/average over unobserved spin states, not a topic for this recap.
+:::
+
+## Phase space: what does each factor count? {.phase-space-components}
+
+:::: {.slide-body}
+
+::: {.ps-formula}
+::: {.ps-term .ps-lhs}
+$$d\Phi_n\;=$$
+:::
+::: {.ps-term .ps-measure}
+$$\prod_{i=1}^{n}\frac{d^3\mathbf p_i}{(2\pi)^3\,2E_i}$$
+:::
+::: {.ps-term .ps-delta}
+$$(2\pi)^4\,\delta^{(4)}\Big(P-\sum_{i=1}^{n}p_i\Big)$$
+:::
+:::
+
+::: {.ps-cards}
+::: {.ps-card .ps-measure}
+<p class="ps-card-title">Each particle</p>
+
+Three momentum components $\mathbf p_i$. Dividing by $2E_i$ counts states the same way in every frame.
+:::
+::: {.ps-card .ps-shell}
+<p class="ps-card-title">On the mass shell</p>
+
+$E_i=\sqrt{m_i^2+|\mathbf p_i|^2}$: the energy is fixed by the mass, not a new number.
+:::
+::: {.ps-card .ps-delta}
+<p class="ps-card-title">Conservation</p>
+
+Total energy and momentum equal the parent's: four constraints remove **4** numbers.
+:::
+:::
+
+
+::: {.take-home}
+The measure counts states; **the matrix element weights them**.
+:::
+::::
+
+::: {.notes}
+Adapted directly from the AEPSHEP Lecture 2 coloured phase-space layout. Fixed external masses and fixed total four-momentum. Identical-particle symmetry factors are required when integrating labelled momenta for identical daughters.
+:::
+
+## How many numbers describe one decay? 
+
+:::: {.slide-body}
+
+For fixed parent four-momentum and daughter masses:
+$$3n\text{ momentum components}-4\text{ constraints}=3n-4.$$
+
+| Final state | Independent coordinates | In the parent rest frame |
+|---|---|---|
+| Two bodies | $2$ | Two angles; momentum magnitude fixed |
+| Three bodies | $5$ | Two shape variables + three orientation angles |
+
+For a generic $n\ge3$ configuration, removing overall rotations leaves $3n-7$ shape variables.
+
+::::
+
+::: {.notes}
+Do not apply 3n−7 to two bodies: rotations about their common axis do not change the configuration. At threshold the generic counting degenerates. Orientation coordinates are not additional invariant masses.
+:::
+
+## Collider and decay: which rotations matter? {.counting-figure}
+
+:::: {.slide-body}
+
+![Counting kinematic variables for scattering and decay](figures/hm-counting.png)
+
+**Collider:** the beam defines an axis. Remove one overall azimuth; allow the collision energy to vary: $(3n-4)-1+1=3n-4$.
+
+**Decay:** at fixed parent mass, remove three overall orientation angles: $(3n-4)-3=3n-7$ shape variables, for generic $n\ge3$.
+
+::: {.credit}
+Counting figure from AEPSHEP Lecture 2 · Hanhart & Mikhasenko. Here $n$ counts final particles; these are amplitude variables after removing overall rotations.
+:::
+::::
+
+::: {.notes}
+Distinguish the full final-state phase-space dimension 3n−4 at fixed incoming four-momenta from the reduced kinematic variables of an amplitude. For scattering at fixed s, after removing azimuth, the count is 3n−5; allowing s to vary restores one. The decay reduction assumes no preferred external orientation. Do not apply 3n−7 to a two-body decay: rotations around its common momentum axis act trivially. No spin or pentaquark material is needed here.
+:::
+
+## Two bodies: one fixed momentum {.formula-slide}
+
+:::: {.slide-body}
+
+$$\mathbf p_1^*=-\mathbf p_2^*,\qquad
+E_1^*+E_2^*=M,\qquad
+q=\frac{\sqrt{\lambda(M^2,m_1^2,m_2^2)}}{2M}$$
+$$\lambda(a,b,c)=a^2+b^2+c^2-2ab-2ac-2bc$$
+$$d\Phi_2=\frac{q}{16\pi^2M}\,d\Omega,
+\qquad\Phi_2=\frac{q}{4\pi M}$$
+
+At threshold $M=m_1+m_2$: $q=0$. For massless daughters: $q=M/2$.
+
+Phase space is uniform in solid angle; the **amplitude can introduce angular dependence**.
+
+::::
+
+::: {.notes}
+Board derivation: the spatial delta function sets p2=−p1. The radial integral is q² dq δ(M−E1−E2)/(16π²E1E2). Its Jacobian is q(1/E1+1/E2)=qM/(E1E2), giving q/(16π²M).
+:::
+
+## Three bodies: build phase space in two steps {.formula-slide}
+
+:::: {.slide-body}
+
+Group two daughters into $Q=p_1+p_2$, with $Q^2=s_{12}$:
+$$P\to Q+p_3,\qquad Q\to p_1+p_2.$$
+$$d\Phi_3(P;1,2,3)=\frac{ds_{12}}{2\pi}\,
+ d\Phi_2(P;Q,3)\,d\Phi_2(Q;1,2)$$
+$$(m_1+m_2)^2\le s_{12}\le(M-m_3)^2.$$
+
+**An exact kinematic identity:** the pair need not be a resonance.
+
+One pair mass + two directions in each step = **five coordinates**.
+
+::::
+
+::: {.notes}
+Adapted from ESHEP recursive phase space. The second two-body direction is defined in the pair rest frame; the first in the parent rest frame. The two frames are related by a boost.
+:::
+
+## Three pair masses, only two independent 
+
+:::: {.slide-body}
+
+$$s_{ij}=(p_i+p_j)^2,\qquad P=p_1+p_2+p_3$$
+$$s_{12}+s_{13}+s_{23}=M^2+m_1^2+m_2^2+m_3^2.$$
+
+Two pair masses fix the momentum triangle's **shape**.
+
+Three angles specify its **orientation** in the parent rest frame.
+
+A rotation changes the orientation; a Lorentz boost changes energies and momenta. **Neither changes the pair masses.**
+
+::::
+
+::: {.notes}
+Board: expand all three pair squares and compare with P². Ask students why adding particle masses would not give a pair invariant mass.
+:::
+
+## Shape and orientation of one event {.widget-slide}
+
+:::: {.slide-body}
+
+::: {.widget data-src="widgets/eshep/shape-orientation.html?rot=35" data-poster="widgets/eshep/w-shape.png" data-alt="Shape and orientation of one event"}
+:::
+
+::::
+
+::: {.notes}
+ESHEP widget: Λb → p K− J/ψ is only a kinematic example. Rotate the triangle, then change its pair mass and angle. One rotation slider illustrates one of the three orientation angles; it is not a Lorentz boost. No resonances or spin analysis.
+:::
+
+## The Dalitz plot: flat measure, curved boundary {.formula-slide}
+
+:::: {.slide-body}
+
+After integrating the overall orientation:
+$$d\Phi_3=\frac{ds_{12}\,ds_{13}}{128\pi^3M^2}
+\quad\text{inside the allowed boundary}.$$
+
+A constant matrix element and uniform efficiency give a **uniform density in squared pair masses**.
+
+A one-dimensional projection need not be flat: each bin contains a different amount of allowed phase space.
+
+Changing from $s=m^2$ to $m$ adds a Jacobian: $dN/dm=2m\,dN/ds$.
+
+::::
+
+::: {.notes}
+The measure shown is orientation-integrated. If the amplitude depends on orientation, integrate that dependence too; one cannot simply drop it. Derive the boundary by cos θ between −1 and +1 in the pair frame.
+:::
+
+## Uniform phase space and its projection {.widget-slide}
+
+:::: {.slide-body}
+
+::: {.widget data-src="widgets/eshep/dalitz-phasespace.html?n=4000&mass=m2" data-poster="widgets/eshep/w-phsp-fill.png" data-alt="Uniform phase space and its projection"}
+:::
+
+::::
+
+::: {.notes}
+Increase the event count. Switch from m² to m. Ask whether the broad peak in the projection proves a resonance: it does not.
+:::
+
+## One pair mass and one angle {.widget-slide}
+
+:::: {.slide-body}
+
+::: {.widget data-src="widgets/eshep/dalitz-phasespace.html?view=slice&m=1.9&cos=0.4" data-poster="widgets/eshep/w-phsp-slice.png" data-alt="One pair mass and one angle"}
+:::
+
+::::
+
+::: {.notes}
+At fixed s12, move cos θ from −1 to +1: the point spans the allowed vertical slice. The angle is measured in the pair rest frame. This is a kinematic coordinate, without spin interpretation.
+:::
+
+## Partial widths, branching fractions and lifetime {.formula-slide}
+
+:::: {.slide-body}
+
+$$\Gamma_i=\frac{1}{2M}\int_i\overline{|\mathcal M_i|^2}\,d\Phi_i,
+\qquad \Gamma_{\mathrm{tot}}=\sum_i\Gamma_i$$
+$$B_i=\frac{\Gamma_i}{\Gamma_{\mathrm{tot}}},\qquad
+\tau=\frac{\hbar}{\Gamma_{\mathrm{tot}}},\qquad\sum_i B_i=1.$$
+
+The **total width** sets the lifetime; a **partial width** sets a channel's share.
+
+In natural units: $[\Gamma]=\mathrm{GeV}$, $[\tau]=\mathrm{GeV}^{-1}$.
+
+Restore seconds with $\hbar=6.582\times10^{-25}\,\mathrm{GeV\,s}$.
+
+::::
+
+## Fixed target: derive the cross section from counts {.formula-slide}
+
+:::: {.slide-body}
+
+A beam has number density $n_b$, speed $v_b$, and area $A$.
+
+Its particle flux is $j_b=n_bv_b$; $\dot N_b=j_bA$ particles arrive per second.
+
+A thin target of thickness $\ell$ and density $n_t$ has $N_t=n_tA\ell$ scattering centres.
+
+$$R=j_b\,\sigma N_t
+=\dot N_b\,(n_t\ell)\,\sigma
+\equiv\mathcal L_{\mathrm{fixed}}\sigma.$$
+$$\boxed{\sigma=\frac{R}{\dot N_b\,n_t\ell}},\qquad
+P_{\mathrm{interaction}}\simeq n_t\ell\,\sigma\ll1.$$
+
+::::
+
+::: {.notes}
+Uniform beam covering the target area, independent target scatterers, negligible attenuation, fixed incident energy. R is the interaction rate corrected for efficiency and background. j has dimensions area⁻¹ time⁻¹; luminosity has the same dimensions but includes the number of targets.
+:::
+
+## Collider: derive luminosity from beam overlap {.formula-slide}
+
+:::: {.slide-body}
+
+For two head-on beams with densities $n_1(\mathbf x,t)$ and $n_2(\mathbf x,t)$:
+$$R=\sigma\,(v_1+v_2)\int n_1n_2\,d^3x
+\equiv\sigma\mathcal L(t).$$
+
+One crossing of uniform bunches, populations $N_1,N_2$, transverse area $A$:
+$$N_{\mathrm{events/crossing}}=\sigma\frac{N_1N_2}{A}.$$
+At crossing frequency $f$:
+$$\boxed{\mathcal L=\frac{fN_1N_2}{A}}.$$
+
+::::
+
+::: {.notes}
+Collinear opposite velocities, fixed collision energy. Derive per crossing by integrating the longitudinal overlap in time: the factor v1+v2 cancels the crossing duration. For identical round/elliptic Gaussian transverse beams A_eff=4πσxσy; crossing angles and hourglass effects reduce the overlap. v1+v2 is the flux velocity here, not the speed of one particle measured in the rest frame of the other.
+:::
+
+## The invariant flux connects both experiments {.formula-slide}
+
+:::: {.slide-body}
+
+$$F=4\sqrt{(p_1\!\cdot p_2)^2-m_1^2m_2^2},
+\qquad d\sigma=\frac{\overline{|\mathcal M|^2}}{F}\,d\Phi_n.$$
+
+**Fixed target:** $p_2=(m_2,\mathbf0)$, so $F=4m_2|\mathbf p_{\mathrm{beam}}|$.
+
+**Centre of mass:** $\mathbf p_1^*=-\mathbf p_2^*$, so $F=4p_i^*\sqrt s$.
+
+With $d\Phi_2=p_f^*d\Omega/(16\pi^2\sqrt s)$:
+$$\boxed{\frac{d\sigma}{d\Omega}=\frac{1}{64\pi^2s}
+\frac{p_f^*}{p_i^*}\overline{|\mathcal M|^2}}.$$
+
+::::
+
+::: {.notes}
+Relativistic state normalization gives F=4E1E2 v_flux. v_flux=√[(p1·p2)²−m1²m2²]/(E1E2), reducing to beam speed for a stationary target and v1+v2 for head-on beams. F is the invariant normalization in the microscopic cross section; luminosity counts actual beam overlap. Distinguishable final particles.
+:::
+
+## Instantaneous luminosity versus accumulated data 
+
+:::: {.slide-body}
+
+$$R(t)=\mathcal L(t)\sigma,\qquad
+\mathcal L_{\mathrm{int}}=\int\mathcal L(t)\,dt,\qquad
+N=\sigma\mathcal L_{\mathrm{int}}.$$
+
+| Quantity | Meaning | Typical units |
+|---|---|---|
+| $\mathcal L$ | Collision opportunity per second | $\mathrm{cm^{-2}s^{-1}}$ |
+| $\mathcal L_{\mathrm{int}}$ | Accumulated exposure | $\mathrm{pb^{-1}}$ or $\mathrm{fb^{-1}}$ |
+| $\sigma$ | Process cross section | $\mathrm{pb}$ or $\mathrm{fb}$ |
+
+A selected decay sample: $N_{\mathrm{selected}}=\mathcal L_{\mathrm{int}}\sigma B\varepsilon$.
+
+::::
+
+::: {.notes}
+Constant cross section at a fixed collision energy; otherwise integrate σ(t)L(t). Branching fraction and efficiency are separate factors.
+:::
+
+## Question 1 — Amplitude, phase space or flux? {.recap-question}
+
+:::: {.slide-body}
+
+In $d\sigma=\overline{|\mathcal M|^2}d\Phi/F$, which statement is correct?
+
+**A.** $d\Phi$ describes interaction strength; $\mathcal M$ counts states.
+
+**B.** $\mathcal M$ describes the interaction; $d\Phi$ counts final states; $F$ normalizes incident flux.
+
+**C.** Doubling beam intensity doubles the cross section.
+
+**D.** Branching fraction is another name for incident flux.
+
+::::
+
+::: {.notes}
+Answer: B. Intensity changes the rate, not the cross section for independent collisions at fixed energy.
+:::
+
+## Question 2 — What happens at a two-body threshold? {.recap-question}
+
+:::: {.slide-body}
+
+Let $M\to m_1+m_2$ from above, with a finite, constant matrix element and nonzero daughter masses. What happens to the width?
+
+**A.** It stays constant because the interaction is unchanged.
+
+**B.** It diverges because the particles move slowly.
+
+**C.** It tends to zero because $q\to0$ and $\Phi_2\propto q/M$.
+
+**D.** It vanishes only if a conservation law forbids the decay.
+
+::::
+
+::: {.notes}
+Answer: C. Γ=q|M|²/(8πM²) for an angle-independent amplitude and distinguishable daughters.
+:::
+
+## Question 3 — Which width determines the lifetime? {.recap-question}
+
+:::: {.slide-body}
+
+A particle has $\tau=6.58\times10^{-22}\,\mathrm s$ and a channel with $B=0.20$.
+Use $\hbar=6.58\times10^{-22}\,\mathrm{MeV\,s}$. What are $(\Gamma_{\mathrm{tot}},\Gamma_i)$?
+
+**A.** $(1,\ 0.2)\,\mathrm{MeV}$
+
+**B.** $(0.2,\ 1)\,\mathrm{MeV}$
+
+**C.** $(1,\ 5)\,\mathrm{MeV}$
+
+**D.** $(5,\ 1)\,\mathrm{MeV}$
+
+::::
+
+::: {.notes}
+Answer: A. Total width ℏ/τ=1 MeV; partial width BΓtot=0.2 MeV.
+:::
+
+## Question 4 — Luminosity and event counts {.recap-question}
+
+:::: {.slide-body}
+
+A process has $\sigma=2\,\mathrm{pb}$ and the sample has $\mathcal L_{\mathrm{int}}=10\,\mathrm{pb^{-1}}$.
+If instantaneous luminosity doubles, which statement is correct?
+
+**A.** The cross section becomes $4\,\mathrm{pb}$.
+
+**B.** The same integrated luminosity now gives 40 produced events.
+
+**C.** The event rate stays fixed, but the sample grows faster.
+
+**D.** The sample gives 20 produced events; twice the luminosity collects it in half the time.
+
+::::
+
+::: {.notes}
+Answer: D. Assume steady running at fixed energy, no branching or efficiency cuts.
+:::
+
+## Question 5 — How many coordinates survive? {.recap-question}
+
+:::: {.slide-body}
+
+For a three-body decay with fixed masses, which statement is correct?
+
+**A.** Nine independent coordinates remain after conservation laws.
+
+**B.** Five remain: two describe shape and three orientation. Pair masses are unchanged by a Lorentz boost.
+
+**C.** Three pair masses are independent, and change when the event is rotated.
+
+**D.** A boost to the laboratory creates a sixth independent decay coordinate.
+
+::::
+
+::: {.notes}
+Answer: B. 9−4=5 at fixed parent four-momentum. Three pair invariants obey one sum rule. Changing the parent lab motion is not an extra internal decay coordinate.
+:::
+
+## Question 6 — Does a peak prove a resonance? {.recap-question}
+
+:::: {.slide-body}
+
+A constant matrix element generates a uniform Dalitz plot in $(s_{12},s_{13})$. Its projection onto $s_{12}$ has a broad maximum. What can explain it?
+
+**A.** A resonance is required.
+
+**B.** Lorentz invariance has been violated.
+
+**C.** The allowed interval in $s_{13}$ varies with $s_{12}$.
+
+**D.** A uniform two-dimensional density must have a uniform projection.
+
+::::
+
+::: {.notes}
+Answer: C. Pure phase space can produce a broad maximum. Compare with the kinematic projection before interpreting structure as dynamics.
+:::
+
+## From cross section to matter 
+
+:::: {.slide-body}
+
+For a thin layer, the target derivation gave
+$$P_{\mathrm{interaction}}\simeq n\sigma\,\Delta x.$$
+
+For successive layers, only particles that have not yet interacted remain in the incident beam:
+$$dI=-n\sigma I\,dx\quad\Longrightarrow\quad
+I(x)=I_0e^{-n\sigma x}.$$
+
+The mean free path is $\lambda=1/(n\sigma)$.
+
+**Now: which interactions produce the signals in a detector?**
+
+::::
+
+::: {.notes}
+Bridge to the existing matter section. Independent interactions, homogeneous material and fixed cross section; attenuation of the uncollided beam.
+:::
+
+## Interaction of particles with matter {.section-title}
+
+:::: {.slide-body}
+
+What happens between a particle entering a detector
+and a signal reaching the readout?
+
+**Ionization · radiation · scattering · conversion**
+
+::::
+
+## Cross section and mean free path
+
+:::: {.slide-body}
+
+For number density $n$ and a cross section $\sigma$:
+
+$$dP=n\sigma\,dx,\qquad \lambda=\frac{1}{n\sigma}.$$
+
+The unscattered beam intensity decreases as
+
+$$I(x)=I_0e^{-x/\lambda}.$$
+
+::: {.take-home}
+A cross section becomes an interaction probability once we specify the material and its thickness.
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Independent interactions in a homogeneous medium; a fixed cross section at fixed incident energy. For mixtures, λ⁻¹ = Σ n_i σ_i. Attenuation here refers to removal from the uncollided beam, not necessarily absorption of all its energy.
+:::
+
+## Charged particles: interactions in matter {#charged-particles-three-visible-effects .process-overview}
+
+:::: {.slide-body}
+
+::::: {.process-grid}
+::: {.process-box .process-ionization}
+### Excitation and ionization
+
+Transfer energy to **atomic electrons**.
+
+Light and free charges → detector signals
+:::
+
+::: {.process-box .process-scattering}
+### Coulomb scattering
+
+Deflect in the electric field of **nuclei**.
+
+Repeated deflections → a track changes direction
+:::
+
+::: {.process-box .process-radiation}
+### Bremsstrahlung
+
+Radiate a **photon** when deflected.
+
+Radiative energy loss → electromagnetic showers
+:::
+
+::: {.process-box .process-nuclear}
+### Nuclear interactions
+
+Hadrons interact strongly with **nuclei**.
+
+Nuclear breakup and secondary particles → hadronic showers
+:::
+:::::
+
+::: {.process-summary}
+Energy transfer · deflection · radiation · nuclear reactions
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Overview of the main processes developed in this lecture, not an exhaustive list. The first three are electromagnetic; the nuclear box applies to hadrons. Coulomb scattering also occurs on electrons; nuclei dominate the small-angle deflections discussed here. Elastic nuclear recoil transfers some energy. Bremsstrahlung is especially important for electrons and positrons. Excitation may yield light; ionization yields free charge and can also lead to light. Cherenkov radiation is introduced separately later.
+:::
+
+## Stopping power
+
+:::: {.slide-body}
+
+The mean energy lost per unit path length is
+
+$$S=-\left\langle\frac{dE}{dx}\right\rangle\qquad [\mathrm{MeV/cm}].$$
+
+Dividing by the material density gives the **mass stopping power**:
+
+$$S_m=\frac{S}{\rho}\qquad [\mathrm{MeV\,cm^2/g}].$$
+
+For a thin layer, $\langle\Delta E\rangle\simeq S_m\,\rho\,\ell$.
+
+::::
+
+::: {.notes}
+About 2 minutes. Use x for geometric path length throughout, rather than alternating between length and mass thickness. The layer must be thin enough that the stopping power does not change much along the path. Energy lost by the primary need not all be deposited locally: energetic secondary electrons and photons can escape.
+:::
+
+## Ionization: the Bethe–Bloch curve
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+**Heavy charged particles** transfer energy to atomic electrons.
+
+- At low velocity: approximately $z^2/\beta^2$.
+- A broad minimum near $\beta\gamma\sim3$–$4$.
+- A relativistic rise, moderated by polarization of the medium.
+
+The horizontal variable is $\beta\gamma=p/(Mc)$.
+:::
+::: {.visual}
+![Mass stopping power versus beta gamma for several materials](figures/dedx_table_98.png)
+
+::: {.credit}
+[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.2
+:::
+:::
+:::
+
+::::
+
+::: {.notes}
+About 4 minutes. Original pages 4–5. The Bethe equation is for moderately relativistic heavy charged particles, not for electrons or the very-low-velocity end. The minimum depends somewhat on material; quote βγ, not simply γ. I is the mean excitation energy, δ the density correction. Full formula in backup.
+:::
+
+## Minimum-ionizing particles
+
+:::: {.slide-body}
+
+Near the minimum, a singly charged particle loses roughly
+
+$$S_m\simeq1\text{–}2\ \mathrm{MeV\,cm^2/g}$$
+
+in many detector materials.
+
+**Example:** $300\,\mu\mathrm m$ of silicon, $\rho=2.33\,\mathrm{g/cm^3}$, $S_m\simeq1.7\,\mathrm{MeV\,cm^2/g}$:
+
+$$\langle\Delta E\rangle\simeq1.7\times2.33\times0.030\ \mathrm{MeV}\simeq0.12\ \mathrm{MeV}.$$
+
+::: {.take-home}
+“MIP” describes a velocity regime, not a particle species.
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 5. The 1–2 range is a practical rule of thumb, not universal (hydrogen is an exception). This is a mean loss estimate; the most probable deposit is lower. Silicon density and stopping-power scale: PDG Atomic and Nuclear Properties, https://pdg.lbl.gov/AtomicNuclearProperties/HTML/silicon_Si.html .
+:::
+
+## Energy-loss regimes {.full-figure}
+
+:::: {.slide-body}
+
+::: {.visual}
+![Muon mass stopping power in copper across nine orders of magnitude in beta gamma](figures/rpp_icru49_cu_col.png)
+
+::: {.credit}
+[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.1
+:::
+:::
+
+::: {.take-home}
+Locate the minimum, the Bethe region, and the onset of radiative losses.
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 6. The central overview plot uses positive muons on copper. Do not apply its energy boundaries to electrons. Radiative losses for muons include pair production and photonuclear interactions as well as bremsstrahlung.
+:::
+
+## Time projection chamber
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+1. The particle **ionizes the gas** along its path.
+2. Released electrons **drift** towards the readout plane.
+3. Pads measure transverse position; **drift time** gives the third coordinate.
+
+A magnetic field bends the track, providing the momentum.
+:::
+::: {.visual}
+![Time projection chamber showing ionization electrons drifting to the readout plane](figures/tpc-principle.jpg)
+
+::: {.credit}
+[LCTPC · Working principle](https://www.lctpc.org/e8/e57671)
+:::
+:::
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. Original page 8. A noble-gas mixture with quencher is typical. Fields are of order hundreds of V/cm, not one universal value. z = v_d(t−t_0); timing and drift calibration matter. Momentum comes from curvature, not ionization alone. Source: LCTPC page cited on slide.
+:::
+
+
+## A TPC event, step by step {.media-slide}
+
+::: {.widget data-src="widgets/tpc.html?present=1" data-poster="widgets/tpc-poster.png" data-alt="Interactive three-dimensional TPC: a track, drifting ionization electrons, pad hits and dE/dx versus momentum"}
+:::
+
+::: {.notes}
+About 5 minutes. Pick a pion at 0.5 GeV/c and press Drift: the track crosses in nanoseconds, then the electron clouds drift to the nearer end plate for up to about 100 µs. Ask which electrons arrive first (those nearest the pads) and how z follows from the arrival time; drag the time slider to show it. Switch to End: the circle gives p_T = 0.3 B R (B = 0.5 T). Switch to Side: the slope gives the dip angle and hence p. Pad colour shows the charge per row: a few rows are much brighter (Landau tail), which is why the truncated mean is used. Then drag the momentum slider for a kaon and a proton to trace their bands, and press Spray 200 to fill the plot. Bands separate at low p (1/β² rise) and merge near minimum ionization; the pion band is brightest because pions are most abundant in the spray. The Explanation button lists formulas and model assumptions: ALICE-like geometry, 80 pad rows, ALEPH-type Bethe–Bloch, diffusion drawn ×12. The next slide shows the measured ALICE bands.
+:::
+
+## Particle identification with ionization
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+At the same momentum,
+
+$$\beta\gamma=\frac{p}{Mc}.$$
+
+Different masses therefore sample different parts of the ionization curve.
+
+**Read the plot:**
+
+- Why are the bands separated?
+- What sets their brightness?
+- What sets their width?
+:::
+::: {.visual}
+![ALICE measured TPC energy-loss bands versus momentum](figures/tpc-dedx.jpg)
+
+::: {.credit}
+[ALICE / Heidelberg](https://www.physi.uni-heidelberg.de/~sma/research/tpc.php)
+:::
+:::
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. Original page 10. Band position: mass and charge through βγ and z². Brightness: number of entries on the plot, also affected by acceptance and selection, not the brightness of a single track. Width: ionization fluctuations, number of samples, path-length corrections and detector resolution. Truncated-mean estimators suppress large deposits; no exact truncation fraction is assumed.
+:::
+
+## Energy-loss fluctuations
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+A particle does not lose exactly the mean energy on every passage.
+
+**Many small transfers** form the peak. Rare energetic secondary electrons make a long tail.
+
+The **most-probable loss** $\Delta_p$ lies below $\langle\Delta E\rangle$.
+:::
+::: {.visual}
+![Skewed energy deposit distribution for a 10 GeV muon traversing 1.7 mm silicon](figures/bichsel_thick.png)
+
+::: {.credit}
+[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.7
+:::
+:::
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. Original page 11. This is the PDG Landau–Vavilov/Bichsel comparison, not a Gaussian. A physical distribution has a finite maximum energy transfer and finite mean; the ideal Landau approximation has no finite mean. The measured mean is sensitive to rare large transfers and cuts. Very thin gas samples need more detailed modeling; do not claim a single universal Landau shape.
+:::
+
+## Bremsstrahlung and radiation length
+
+:::: {.slide-body}
+
+A charged particle accelerated in a nuclear electric field can emit a photon:
+
+$$e^-+Z\longrightarrow e^-+Z+\gamma.$$
+
+For a high-energy electron in the bremsstrahlung-dominated regime,
+
+$$-\left\langle\frac{dE}{dx}\right\rangle_{\mathrm{rad}}\simeq\frac{E}{X_0},
+\qquad \langle E(x)\rangle\simeq E_0e^{-x/X_0}.$$
+
+::: {.take-home}
+After one radiation length, the mean electron energy is approximately $E_0/e$.
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 12. X0 is used here as a length; material tables also quote ρX0 in g/cm². This describes mean radiative energy loss, not an identical fractional loss in every event. Nuclear recoil conserves momentum. Bremsstrahlung is suppressed roughly as inverse mass squared for otherwise comparable charged leptons; X0 remains a conventional material property defined for electrons.
+:::
+
+## Electrons and positrons
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+Their small mass makes radiation important at modest energies.
+
+- **Ionization and excitation** at low energies.
+- Electron–electron (**Møller**) and positron–electron (**Bhabha**) scattering.
+- **Bremsstrahlung** at high energies.
+- Positrons can **annihilate** with electrons.
+:::
+::: {.visual}
+![Fractional energy loss per radiation length for electrons and positrons in lead](figures/elossfrac_06.png)
+
+::: {.credit}
+[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.11
+:::
+:::
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 13. The electron is identical to target electrons; the positron has distinct scattering and annihilation channels. Heavy-particle Bethe–Bloch cannot simply be used without electron-specific corrections.
+:::
+
+## Critical energy
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+The electron critical energy marks the crossover:
+
+$$S_{\mathrm{rad}}(E_c)\simeq S_{\mathrm{coll}}(E_c).$$
+
+**Below:** collision losses dominate.
+
+**Above:** radiation dominates.
+
+For electrons in copper, the scale is about **20 MeV**.
+:::
+::: {.visual}
+![Copper electron energy loss showing ionization, bremsstrahlung and critical energy definitions](figures/encrit_cu.png)
+
+::: {.credit}
+[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.13
+:::
+:::
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 14. Two conventions are shown in the source figure: exact equality and Rossi’s approximation E_c/X0 = ionization loss. Do not identify their numerical values as exactly equal. Muon critical energies are much higher (hundreds of GeV for many solids), with several radiative processes; avoid presenting the old ~100 GeV copper estimate as precise.
+:::
+
+## Multiple Coulomb scattering
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+Many small deflections accumulate while a particle traverses matter.
+
+The central angular distribution is approximately Gaussian:
+
+$$\theta_0\propto\frac{|z|}{\beta p}\sqrt{\frac{x}{X_0}}.$$
+
+**Low momentum** and **more material** degrade the direction measurement.
+:::
+::: {.visual}
+![Geometry of projected multiple-scattering angle and transverse displacement](figures/multscat.png)
+
+::: {.credit}
+[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.10
+:::
+:::
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 15. θ0 is the RMS of the central Gaussian approximation in one projected plane. Large-angle single-scattering tails are not Gaussian. For fixed momentum and material, the variance grows approximately linearly with thickness; a logarithmic correction is in backup. More material also creates secondary interactions and losses.
+:::
+
+## Photons in matter {.section-title}
+
+:::: {.slide-body}
+
+Photons make themselves visible
+by transferring energy to **charged particles**.
+
+::::
+
+## Three main photon interactions
+
+:::: {.slide-body}
+
+| Process | Reaction (schematic) | What happens to the photon? |
+|---|---|---|
+| **Photoelectric effect** | $\gamma+\mathrm{atom}\to\mathrm{ion}+e^-$ | Absorbed |
+| **Compton scattering** | $\gamma+e^-\to\gamma+e^-$ | Scattered, with changed energy |
+| **Pair production** | $\gamma+Z\to e^-+e^++Z$ | Converted |
+
+Relative importance depends on **photon energy** and **material**.
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 17. Photoelectric effect involves a bound electron and the atom absorbs recoil; the electron kinetic energy is roughly Eγ minus binding energy. Compton equation shown for a free electron, with bound-electron effects in materials. Pair production requires recoil from a nucleus or electron. Additional channels in backup.
+:::
+
+## Photon cross sections in lead {.full-figure}
+
+:::: {.slide-body}
+
+::: {.visual}
+![Photon interaction cross sections versus energy in lead](figures/photon-lead.png)
+
+::: {.credit}
+[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.15(b), lead panel
+:::
+:::
+
+::: {.take-home}
+Follow the energy axis: photoelectric absorption, Compton scattering, then pair production.
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. Original page 17. Read photoelectric, Compton and pair-production curves. Rayleigh is coherent elastic scattering; photonuclear interactions include giant dipole resonances. Avoid the blanket claim that all nuclear gamma rays are photoelectric-dominated: their energy and absorber composition matter.
+:::
+
+## Pair production and electromagnetic showers
+
+:::: {.slide-body}
+
+In a nuclear field, conversion is possible above approximately
+
+$$E_\gamma\simeq 2m_ec^2=1.022\ \mathrm{MeV}.$$
+
+The nucleus carries recoil: a real photon cannot create a pair in vacuum.
+
+At high energy, two processes alternate:
+
+$$e^\pm\ \xrightarrow{\ \mathrm{bremsstrahlung}\ }\ e^\pm+\gamma,
+\qquad \gamma\ \xrightarrow{\ \mathrm{conversion}\ }\ e^-+e^+.$$
+
+Multiplication slows when particle energies fall towards $E_c$.
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 18, with a short synthesis of pages 12–18. Nuclear recoil makes the exact threshold slightly larger than 2m_e c²; triplet production on a free stationary electron has threshold 4m_e c². At high energy in the complete-screening regime, pair-production mean free path ≈9X0/7. Not every photon converts immediately above threshold.
+:::
+
+## Cherenkov radiation
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+A charged particle emits Cherenkov light when
+
+$$\beta n>1,\qquad v>\frac{c}{n}.$$
+
+The emission angle obeys
+
+$$\cos\theta_C=\frac{1}{\beta n}.$$
+
+Small energy loss, but a useful **velocity measurement**.
+:::
+::: {.visual}
+![Cherenkov wavefront construction and emission angle](figures/cherenkov_radiation.png)
+
+::: {.credit}
+[PDG 2024](https://pdg.lbl.gov/2024/figures/figures.html), CC BY 4.0 · Fig. 34.26
+:::
+:::
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. Original page 19. c/n is the phase velocity at the emitted wavelength, not vacuum c. n is dispersive, so specify a wavelength or approximate effective index. The particle remains subluminal in vacuum. Combining momentum with a velocity estimate enables particle identification.
+:::
+
+## Two Cherenkov cones {.media-slide .cherenkov-widget}
+
+::: {.widget data-src="widgets/cherenkov-cones.html?present=1" data-poster="widgets/cherenkov-cones-poster.png" data-alt="Interactive Cherenkov wavefront and photon cones"}
+:::
+
+::: {.notes}
+Use the supplied interactive explanation to distinguish the backward equal-phase envelope from the forward photon directions. Pause, change refractive index and beta, switch to Follow particle, and track a photon. The Explanation button opens the original spacetime diagram, readouts and full derivation. The camera-following view is a Galilean translation of the lab coordinates, not a Lorentz-transformed rest frame. The model assumes a nondispersive medium. Below n beta = 1 there is no Cherenkov envelope. Supplied by the lecturer as cherenkov-cones.html; local presentation mode changes layout only. Escape closes the explanation; slide-navigation keys remain available outside controls.
+:::
+
+## Check: a Cherenkov threshold
+
+:::: {.slide-body}
+
+A radiator has $n=1.50$ at the detected wavelength.
+
+**1.** What is the minimum speed for Cherenkov emission?
+
+**2.** What angle does an ultrarelativistic particle produce?
+
+**3.** At the same momentum, can a pion radiate while a proton does not?
+
+::: {.fragment}
+$$\beta_{\mathrm{th}}=1/n=0.667,\qquad \theta_C(\beta\simeq1)=\arccos(1/1.50)\simeq48.2^\circ.$$
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes if time permits. Yes: p_th = mc/sqrt(n²−1), about 0.125 GeV/c for a charged pion and 0.839 GeV/c for a proton at n=1.5. At p=0.5 GeV/c the pion emits but the proton does not. Derive the threshold on the board if useful.
+:::
+
+## Which process explains the signal?
+
+:::: {.slide-body}
+
+**An X-ray image of a foot**
+
+What are the incident particles? Why do bone and soft tissue transmit different intensities?
+
+**A 100 GeV cosmic proton crossing matter**
+
+Which processes produce a track? Which can produce a shower?
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 20. X-rays are photons; contrast arises from differing energy-dependent attenuation (photoelectric absorption and Compton scattering, with relative contributions depending on photon energy and material). This is a physics discussion, not medical interpretation. The personal radiograph from the old PDF is retained only in tmp. For the proton: electronic ionization/excitation along the path, elastic scattering, and inelastic nuclear interactions leading to hadronic showers. Bremsstrahlung is strongly suppressed relative to electrons; Cherenkov light is possible in a suitable radiator.
+:::
+
+## What a detector measures
+
+:::: {.slide-body}
+
+| Physical process | Signal or consequence |
+|---|---|
+| **Ionization** | Charge collection, $dE/dx$, tracking and particle identification |
+| **Bremsstrahlung + conversion** | Electromagnetic showers and calorimetry |
+| **Multiple scattering** | Uncertainty in the reconstructed trajectory |
+| **Photon interactions** | Secondary charged particles |
+| **Cherenkov radiation** | Velocity-sensitive light emission |
+
+::: {.take-home}
+The detector signal is the result of an interaction with matter.
+:::
+
+::::
+
+::: {.notes}
+About 1 minute. Summary of the new material. The default pace is approximately 50 minutes; skip the standalone Cherenkov exercise if discussion runs long.
+:::
+
+## At home: Explore LHCb
+
+:::: {.slide-body}
+
+[**explore-lhcb.web.cern.ch**](https://explore-lhcb.web.cern.ch/): an interactive LHCb explorer that runs in the browser and on a phone.
+
+Before the next lecture, play:
+
+1. [**RICH get richer**](https://explore-lhcb.web.cern.ch/#/en/game/rich): name pions, kaons and protons from their Cherenkov rings, then with the calorimeters and muon stations.
+2. [**Track fitter**](https://explore-lhcb.web.cern.ch/#/en/game/tf): fit tracks through the detector hits and read off the momentum from the bending.
+
+Optional: the story [**How LHCb simulates a collision**](https://explore-lhcb.web.cern.ch/#/en/story/sim).
+
+::::
+
+::: {.notes}
+About 1 minute. Homework, not graded. RICH get richer uses the real LHCb RICH parameters (RICH1 C4F10 n = 1.0014, RICH2 CF4 n = 1.0005): ask students at which momentum pion and kaon rings become hard to tell apart, and why a proton below threshold makes no ring. Track fitter: the magnet gives a kick of about 1.2/p rad (p in GeV/c), so low-momentum tracks bend more. The story follows one simulated event through the detector: deposits, Cherenkov light and showers. At the time of writing the site was marked as a preview, so check the links before the lecture.
+:::
+
+## Backup {.section-title}
+
+:::: {.slide-body}
+
+Formulas and additional interaction channels
+
+::::
+
+## Many tracks, one detector {.full-figure}
+
+:::: {.slide-body}
+
+::: {.visual}
+![ALICE TPC display of reconstructed particle tracks](figures/tpc-tracks.jpg)
+
+::: {.credit}
+[ALICE / Heidelberg · TPC calibration](https://www.physi.uni-heidelberg.de/~sma/research/tpc.php)
+:::
+:::
+
+::::
+
+::: {.notes}
+About 1 minute. Replaces the old page 9 event image with the time-frame display from the original Heidelberg source. This is a many-track/time-frame visualization; do not label it as one collision.
+:::
+
+
+## How the ALICE TPC works (video) {.media-slide}
+
+```{=html}
+<video class="lecture-film" controls playsinline preload="metadata" poster="media/alice-tpc-poster.jpg" aria-label="ALICE TPC operating principle, 75-second animation">
+  <source src="media/alice-tpc.webm" type="video/webm">
+  <source src="media/alice-tpc.mp4" type="video/mp4">
+  <a href="media/alice-tpc.mp4">Play the ALICE TPC animation</a>
+</video>
+<div class="media-credit"><a href="https://physicsmasterclasses.org/exercises/ALICE-2013/MasterClassSupportMaterials.html" target="_blank" rel="noopener">ALICE Masterclass · TPC operating principle · 1:15</a></div>
+```
+
+::: {.notes}
+Play manually, fullscreen if desired. The animation follows ionization, electron drift, segmented readout, and reconstruction of a track from transverse position and arrival time. Ask students to identify which coordinate comes from time. This is the historical ALICE TPC: quoted pad counts and acquisition rates refer to the pre-upgrade detector. The current TPC uses GEM readout and continuous acquisition; the drift/reconstruction principle remains the same. Source: ALICE Masterclass Support Materials, item 5, https://physicsmasterclasses.org/exercises/ALICE-2013/TPC_xvid.avi . Silent, 75 seconds. Converted from Xvid to H.264 without trimming or changes to content.
+:::
+
+## Bethe–Bloch: formula and assumptions {.formula-slide}
+
+:::: {.slide-body}
+
+For a heavy particle of charge $ze$ in a material of atomic number $Z$,
+
+$$S_m=Kz^2\frac{Z}{A}\frac{1}{\beta^2}\left[\frac12\ln\!\left(\frac{2m_ec^2\beta^2\gamma^2W_{\max}}{I^2}\right)-\beta^2-\frac{\delta(\beta\gamma)}2\right].$$
+
+- $K\simeq0.307\ \mathrm{MeV\,cm^2/mol}$; $A$ is the molar mass in $\mathrm{g/mol}$.
+- $I$: mean excitation energy; $W_{\max}$: largest single-collision energy transfer.
+- $\delta$: density-effect correction from polarization of the medium.
+
+Valid in the Bethe region; additional corrections matter at low velocity.
+
+::::
+
+::: {.notes}
+Original page 4. PDG passage through matter Eq. 34.5. S_m is positive mass stopping power. For a projectile of mass M, Wmax = 2m_e c² β² γ²/[1+2γm_e/M+(m_e/M)²]. Heavy means M much larger than m_e; electron/positron formulas differ.
+:::
+
+## Multiple scattering: projected RMS angle
+
+:::: {.slide-body}
+
+For a singly charged particle, a commonly used approximation is
+
+$$\theta_0\simeq\frac{13.6\ \mathrm{MeV}}{\beta pc}\sqrt{\frac{x}{X_0}}\left[1+0.038\ln\!\left(\frac{x}{X_0}\right)\right].$$
+
+- $x$ and $X_0$ must use the same thickness units.
+- $\theta_0$ is a **one-plane** RMS angle, in radians.
+- For small angles, $\theta_{\mathrm{space,rms}}\simeq\sqrt2\,\theta_0$.
+- Describes the central distribution; rare large deflections form tails.
+
+::::
+
+::: {.notes}
+Original page 15. Familiar simplified Highland form for unit charge; the more detailed PDG logarithm includes charge and beta dependence. This approximation is not valid for arbitrarily thin layers; use dedicated transport modeling where precision is needed.
+:::
+
+## Other photon interaction channels
+
+:::: {.slide-body}
+
+**Rayleigh scattering**
+
+Coherent elastic scattering on the atom; no atomic excitation or ionization.
+
+**Pair production on an electron**
+
+$\gamma+e^-\to e^-+e^-+e^+$; free-electron threshold $4m_ec^2$.
+
+**Photonuclear interactions**
+
+Energy transferred to the nucleus; resonant absorption and nuclear breakup can occur.
+
+::::
+
+::: {.notes}
+Original page 17. The photon cross-section plot contains these additional channels. Giant dipole resonances are collective nuclear excitations, not electron-shell processes.
+:::
+
+## Image sources and further reading
+
+:::: {.slide-body}
+
+**Particle Data Group**
+
+[Passage of particles through matter](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-passage-particles-matter.pdf) · [Original figures, CC BY 4.0](https://pdg.lbl.gov/2024/figures/figures.html)
+
+S. Navas et al. (Particle Data Group), *Phys. Rev. D* **110**, 030001 (2024).
+
+**Detector illustrations and data**
+
+[LCTPC: Working principle of a TPC](https://www.lctpc.org/e8/e57671)
+
+[ALICE / Heidelberg: TPC calibration and particle identification](https://www.physi.uni-heidelberg.de/~sma/research/tpc.php)
+
+[ALICE Collaboration, *The ALICE TPC*, NIM A 622 (2010) 316](https://arxiv.org/abs/1001.1950) (numbers used in the TPC widget)
+
+[Explore LHCb](https://explore-lhcb.web.cern.ch/)
+
+::::
+
+::: {.notes}
+Prior teaching source: Mikhail Mikhasenko, Lecture 05, 4 November 2025. All formulas and text are editable in this Quarto source; external figures retain their source attribution. See SOURCES.md for individual assets and source-page mapping.
+:::

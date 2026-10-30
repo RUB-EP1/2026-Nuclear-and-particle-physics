@@ -29,3 +29,19 @@
 
 /.quarto/
 **/*.quarto_ipynb
+
+# Lecture 5 source and attributed teaching figures; extraction stays local.
+!slides/lectures/Lecture_5/lecture.css
+!slides/lectures/Lecture_5/figures/*.png
+!slides/lectures/Lecture_5/figures/*.jpg
+!slides/lectures/Lecture_5/README.md
+!slides/lectures/Lecture_5/SOURCES.md
+!slides/lectures/Lecture_5/widgets/*.html
+!slides/lectures/Lecture_5/widgets/*.png
+!slides/lectures/Lecture_5/media/*.mp4
+!slides/lectures/Lecture_5/media/*.jpg
+!slides/lectures/Lecture_5/media/*.webm
+!slides/lectures/Lecture_5/widgets/eshep/*.html
+!slides/lectures/Lecture_5/widgets/eshep/*.js
+!slides/lectures/Lecture_5/widgets/eshep/*.css
+!slides/lectures/Lecture_5/widgets/eshep/*.png

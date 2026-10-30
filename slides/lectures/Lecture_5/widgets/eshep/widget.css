@@ -1,0 +1,14 @@
+* { box-sizing: border-box; }
+/* Widgets are laid out for ~770 px and zoomed to match slide text when embedded. */
+html { zoom: 1.35; }
+html, body { margin: 0; height: 100%; }
+body { display: flex; flex-direction: column; background: white; color: #152b41; font: 22px Helvetica, Arial, sans-serif; }
+h1 { font-size: 26px; font-weight: 600; margin: 4px 24px 6px; color: #152b41; }
+canvas { flex: 1 1 auto; width: 100%; min-height: 0; display: block; }
+#controls { display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: center; padding: 10px 24px; background: #f1f6fa; }
+#controls label { display: flex; gap: 10px; align-items: center; white-space: nowrap; }
+#controls input[type=range] { width: 140px; accent-color: #087bb9; }
+#controls input[type=checkbox] { width: 20px; height: 20px; accent-color: #087bb9; }
+#controls output { min-width: 64px; font-variant-numeric: tabular-nums; color: #087bb9; font-weight: 600; }
+select, button { font: inherit; border: 1px solid #a7b8c5; background: white; border-radius: 4px; padding: 4px 8px; }
+#caption { padding: 6px 20px 4px; font-size: 16px; line-height: 1.3; color: #526677; }

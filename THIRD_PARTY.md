@@ -56,3 +56,22 @@ Original course drawings are covered by MIT where contributor-owned. This
 audit does not establish the ownership of every historical edit or clear the
 third-party assets for redistribution. The remaining source gaps are retained
 explicitly rather than assigning guessed authors or licenses.
+
+## Lecture 5: interaction of particles with matter
+
+Lecture 5 uses eight PDG figures under the library's CC BY 4.0 license,
+credited on the slides to S. Navas et al. (Particle Data Group),
+Phys. Rev. D 110, 030001 (2024). Original figure URLs and transformations are
+listed in [Lecture 5 sources](slides/lectures/Lecture_5/SOURCES.md).
+
+TPC illustrations/data are credited to LCTPC and ALICE / Heidelberg. Their
+source pages do not state an explicit open reuse license; these third-party
+teaching illustrations are not covered by the repository's MIT license.
+The supplied 2025 PDF and its extracted personal radiograph remain in the local,
+ignored Lecture 5 temporary workspace and are not included as teaching assets.
+
+Lecture 5 also includes the 75-second ALICE Masterclass TPC operating-principle
+animation, converted locally to browser-compatible VP9/H.264. Its educational
+source and attribution are listed in Lecture 5's `SOURCES.md`; no explicit open
+license is stated on the source page. The Cherenkov widget was supplied by the
+lecturer and adapted for full-slide display.
