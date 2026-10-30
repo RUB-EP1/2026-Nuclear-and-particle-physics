@@ -6,6 +6,10 @@ interactive TPC widget, a full-slide Cherenkov widget, an Explore LHCb homework
 slide, and backup material. The many-track ALICE image and the ALICE TPC video
 are in backup.
 
+The new material opens with an overview (particle signatures by detector layer,
+and a process-by-particle map) and then runs through six numbered sections, one per
+type of interaction.
+
 Reserve 40 minutes for the board recap. The new material is a survey for roughly
 50 minutes: ionization and TPC identification; fluctuations; radiation and
 scattering; photon interactions; Cherenkov light. Skip the standalone Cherenkov

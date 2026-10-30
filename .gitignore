@@ -34,6 +34,7 @@
 !slides/lectures/Lecture_5/lecture.css
 !slides/lectures/Lecture_5/figures/*.png
 !slides/lectures/Lecture_5/figures/*.jpg
+!slides/lectures/Lecture_5/figures/*.svg
 !slides/lectures/Lecture_5/README.md
 !slides/lectures/Lecture_5/SOURCES.md
 !slides/lectures/Lecture_5/widgets/*.html
