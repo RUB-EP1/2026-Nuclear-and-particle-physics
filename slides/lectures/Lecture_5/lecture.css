@@ -85,7 +85,8 @@
 .reveal .process-overview .slide-body {justify-content:center;gap:32px;}
 .reveal .process-grid {display:grid;grid-template-columns:1fr 1fr;gap:30px;width:100%;}
 .reveal .process-box {border:1px solid #dfe3e7;border-top:7px solid var(--process-color);padding:28px 32px;background:#f8fafc;min-width:0;}
-.reveal .process-box h3 {font-size:39px;line-height:1.15;color:var(--process-color);margin:0 0 24px;}
+/* Titles are spans, not headings: a heading inside a div becomes a nested <section>, which Reveal counts as a slide. */
+.reveal .process-box .process-title {display:block;font-size:39px;font-weight:600;line-height:1.15;color:var(--process-color);margin:0 0 24px;}
 .reveal .process-box p {font-size:32px;line-height:1.3;margin:12px 0;}
 .reveal .process-box strong {color:inherit;}
 .reveal .process-ionization {--process-color:#087bb9;}

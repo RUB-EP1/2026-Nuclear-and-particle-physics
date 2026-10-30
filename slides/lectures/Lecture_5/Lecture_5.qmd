@@ -539,7 +539,7 @@ About 2 minutes. Independent interactions in a homogeneous medium; a fixed cross
 
 ::::: {.process-grid}
 ::: {.process-box .process-ionization}
-### Excitation and ionization
+[Excitation and ionization]{.process-title}
 
 Transfer energy to **atomic electrons**.
 
@@ -547,7 +547,7 @@ Light and free charges → detector signals
 :::
 
 ::: {.process-box .process-scattering}
-### Coulomb scattering
+[Coulomb scattering]{.process-title}
 
 Deflect in the electric field of **nuclei**.
 
@@ -555,7 +555,7 @@ Repeated deflections → a track changes direction
 :::
 
 ::: {.process-box .process-radiation}
-### Bremsstrahlung
+[Bremsstrahlung]{.process-title}
 
 Radiate a **photon** when deflected.
 
@@ -563,7 +563,7 @@ Radiative energy loss → electromagnetic showers
 :::
 
 ::: {.process-box .process-nuclear}
-### Nuclear interactions
+[Nuclear interactions]{.process-title}
 
 Hadrons interact strongly with **nuclei**.
 
