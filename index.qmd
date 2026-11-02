@@ -114,6 +114,12 @@ Thomson problems **1.1, 1.4, 1.10, and 2.16**. Due **October 23, 2026**.
 ### Exercise 2
 Thomson problems **2.6, 2.12, 3.2, and 3.4**. Due **October 30, 2026**.
 
+### Exercise 3
+Thomson problems **1.7, 3.6, and 3.8**. Distributed **November 3, 2026**;
+due **November 10, 2026, at the lecture**.
+Includes class work for **November 6** on phase space, threshold energies, and the Bethe–Bloch curve.
+[Download exercise sheet 3 (PDF)](exercises/Sheet_3/Sheet_3.pdf){.btn-main}
+
 
 ## Schedule {.section-title}
 
