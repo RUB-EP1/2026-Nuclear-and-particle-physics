@@ -29,3 +29,5 @@ complete derivation. Press F outside the widget to make the deck fullscreen.
 See `SOURCES.md` for the old-to-new content map, source URLs and image licenses.
 The requested `tmp/` folder contains per-page PDFs, page renders, text, embedded
 images, downloaded source figures and visual QA. It remains ignored by Git.
+
+The matter section opens with a fullscreen, offline cloud-chamber simulation after its section-title slide. Its controls select an exposure or individual track types; a small note identifies the Geant4 transport and illustrative source/droplet model. A static poster is used for PDF export. The attenuation slide now follows the fixed-target counting derivation in the luminosity recap.

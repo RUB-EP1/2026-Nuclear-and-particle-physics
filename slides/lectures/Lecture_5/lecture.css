@@ -133,3 +133,7 @@
 .reveal .counting-slide .copy p {margin:.25em 0 .45em;}
 /* \boxed becomes <menclose notation="box">, which Chrome's MathML does not draw. */
 .reveal menclose[notation="box"] {border:0.05em solid currentColor;padding:0.15em 0.3em;}
+
+/* Cloud chamber fills the slide even when layout.html adds a slide-body wrapper. */
+.reveal .cloud-chamber-slide .slide-body{position:absolute;inset:0;padding:0;margin:0;width:100%;height:100%;}
+.reveal .cloud-chamber-slide .widget{position:absolute;inset:0;margin:0;width:100%;height:100%;}

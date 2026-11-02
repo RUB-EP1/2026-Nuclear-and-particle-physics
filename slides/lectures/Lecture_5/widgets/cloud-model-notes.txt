@@ -1,0 +1,41 @@
+Ambient cloud chamber: model scope
+
+Transport: Geant4 11.3.2, FTFP_BERT through Geant4.jl 0.2.3 in the saved
+2025 G4Examples environment. Box 200 x 200 x 50 mm, G4_AIR at its standard
+material conditions. No magnetic field. 0.1 mm production range cut.
+Geant4 energy-depositing charged-particle step segments are recorded.
+
+Sources are deliberately simplified, not a calibrated room-background model:
+* Cosmic muons: representative 4 GeV kinetic energy; mu+/mu- mixture 56/44.
+  Horizontal-lid incidence with I(theta) proportional to cos^2(theta),
+  including projected-area weighting. Uniform points on lid; no side-entry
+  flux or building/altitude dependence. Normalization 1/cm2/min = 6.67/s.
+* Rn-222: 5.49 MeV alpha, isotropic, uniform in chamber volume, with assumed
+  100 Bq/m3 concentration. 2 litre full volume -> 0.2 decays/s. No daughter
+  chain equilibrium, plate-out, or recoil modelling; excludes decays outside.
+* Electrons: isotropic, uniform volume, 50 keV to 1 MeV uniform kinetic energy.
+  Pedagogical surrogate for beta and gamma-induced electron tracks, NOT a
+  physical beta spectrum or gamma-conversion calculation. Assumed 0.3/s.
+* Independent Poisson arrivals. Playback uses a finite 50-event bank per
+  source with square-symmetry rotations. Not fresh Geant4 events each time.
+
+Visibility: bottom 10 mm selected by clipping, optionally all 50 mm (idealized).
+Pure-air transport approximates the air/alcohol mixture. No chamber walls,
+thermal gradient, supersaturation, diffusion, optical efficiency or true
+nucleation calculation. Droplet positions/width/fading are illustrative;
+particle traversal is effectively instantaneous, droplets then persist.
+Inspection mode selects a long visible example (selection-biased, not rate data).
+Speed control accelerates event arrival time, not optical trail persistence.
+Neutral gamma rays do not directly make ionization trails; the electron
+surrogate is labelled accordingly. No artificial magnetic spirals.
+
+References:
+https://visits.web.cern.ch/cloud-chamber
+https://www2.lbl.gov/abc/cosmic/SKliewer/Cosmic_Rays/Muons.htm
+https://scoollab.web.cern.ch/sites/default/files/documents/SCoolLAB_CloudChamber_DIYManual_2018_v6.pdf
+
+Display export: adjacent alpha step segments are coalesced in groups of up to four to keep the embedded bank compact. The Julia script regenerates full-resolution raw cloud-events.json; the HTML contains the reduced display bank.
+
+Presentation view: orthonormal camera rotation and a single common x/y/z scale preserve physical proportions (20:20:5 cm). Blue slab marks the visible bottom layer. Dashed paths are teaching overlays, not visible condensation. Labels use each Geant4 track particle name/ID, including secondaries. Changing layer thickness retains the same event and orientation.
+
+Realism review: 2026-10-30. Real-time playback is the default; 10x playback multiplies arrivals per wall-clock second while keeping optical persistence fixed, so it intentionally appears denser. Dashed full paths default off. Physical lid flux remains 400/60 muons/s, not a calibrated observed-track rate. All intersecting depositing segments are rendered without real optical detection inefficiency: short vertical muon traces can be much less noticeable in a real chamber. A single false-colour legend replaces track labels; real droplets are white.

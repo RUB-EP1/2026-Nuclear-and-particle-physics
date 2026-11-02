@@ -308,6 +308,28 @@ About 3 minutes. Equivalent picture: each beam particle drags a tube of cross-se
 :::
 
 
+## From cross section to matter
+
+:::: {.slide-body}
+
+For a thin layer, the target derivation gave
+$$P_{\mathrm{interaction}}\simeq n\sigma\,\Delta x.$$
+
+For successive layers, only particles that have not yet interacted remain in the incident beam:
+$$dI=-n\sigma I\,dx\quad\Longrightarrow\quad
+I(x)=I_0e^{-n\sigma x}.$$
+
+The mean free path is $\lambda=1/(n\sigma)$.
+
+For $N_b$ incident particles, $N_{\mathrm{int}}=N_b(1-e^{-n\sigma\ell})\simeq N_b n\sigma\ell$ in a thin target.
+
+::::
+
+::: {.notes}
+Continuation of the fixed-target luminosity argument: target length and number of interactions. Independent interactions, homogeneous material and fixed cross section; attenuation of the uncollided beam.
+:::
+
+
 ## Collider: the other bunch is the target {.counting-slide}
 
 :::: {.slide-body}
@@ -408,27 +430,6 @@ About 3 minutes. 332 fb⁻¹ is the Run 3 luminosity recorded by ATLAS on the pl
 :::
 
 
-## From cross section to matter 
-
-:::: {.slide-body}
-
-For a thin layer, the target derivation gave
-$$P_{\mathrm{interaction}}\simeq n\sigma\,\Delta x.$$
-
-For successive layers, only particles that have not yet interacted remain in the incident beam:
-$$dI=-n\sigma I\,dx\quad\Longrightarrow\quad
-I(x)=I_0e^{-n\sigma x}.$$
-
-The mean free path is $\lambda=1/(n\sigma)$.
-
-**Now: which interactions produce the signals in a detector?**
-
-::::
-
-::: {.notes}
-Bridge to the existing matter section. Independent interactions, homogeneous material and fixed cross section; attenuation of the uncollided beam.
-:::
-
 ## Quiz: recall Lecture 4 {#recall-quiz}
 
 :::: {.slide-body}
@@ -457,6 +458,16 @@ Presenter: https://www.mentimeter.com/app/presentation/alqqnvak4gfdyz6rcpa729e7t
 Which particles, which processes, which signals?
 
 ::::
+
+
+## Natural radiation in a cloud chamber {.media-slide .cloud-chamber-slide}
+
+::: {.widget data-src="widgets/cloud-chamber.html" data-poster="widgets/cloud-chamber-poster.png" data-alt="Cloud chamber with Geant4 tracks from radon alpha particles, background electrons and cosmic muons"}
+:::
+
+::: {.notes}
+Start a 60-second exposure, or inspect alpha, electron and muon tracks separately. Playback defaults to real time; optional 10× playback accelerates arrivals while optical persistence remains illustrative. A single legend identifies teaching colours (actual trails are white). Drag to rotate; the same scale is used on all three axes. Dashed full paths are optional and off by default. This is a cloud chamber, with condensation around ions in supersaturated vapour, not a bubble chamber. The geometry is 20 × 20 × 5 cm of standard air; the default visible layer is the bottom 1 cm. The optional full-depth view is idealized. Geant4 11.3.2 (FTFP_BERT, through the existing Julia environment) generated 150 events: 5.49 MeV radon-222 alpha particles, 50 keV–1 MeV illustrative background electrons, and representative 4 GeV cosmic muons. Playback samples that bank with random arrival times; it runs offline without Julia or a server. Assumed rates: 100 Bq/m³ radon, approximately 1 muon/cm²/min through the lid, and an illustrative electron rate of 0.3/s in the full volume. No radioactive daughter chain, physical beta spectrum, chamber walls, vapour thermodynamics or calibrated detection efficiency is simulated. Gamma rays would be seen via secondary electrons, not direct photon trails. Full assumptions and regeneration script are in widgets/cloud-model-notes.txt and widgets/cloud-transport.jl.
+:::
 
 
 ## Cross section and mean free path

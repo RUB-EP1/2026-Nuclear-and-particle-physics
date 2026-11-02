@@ -151,3 +151,13 @@ The many-track ALICE illustration and the ALICE TPC video are now in backup.
 Adapted kinematics from the author’s 2026-ESHEP/slides/lectures/Lecture_2/sections/20-kinematics.qmd: invariant measure, counting coordinates, two-body phase space, recursive three-body phase space and Dalitz projections. Local copies of shape-orientation.html, dalitz-phasespace.html, common.js, widget.css and three poster images are in widgets/eshep/. The Λb decay is used solely as a kinematic example; no pentaquark, resonance-model or spin-analysis slides were imported. Fixed-target and collider rate derivations and six recall questions were written for this course.
 
 AEPSHEP layout update: footer script adapted from slides/scripts/layout.html with RUB course metadata; coloured phase-space blocks from Lecture_2/lecture-2.css and sections/20-kinematics.qmd. The original hm-counting.png figure is copied to figures/ with an explanation of the energy/orientation conventions.
+
+## Cloud-chamber demonstration
+
+Original interactive teaching visualization, based on 150 locally generated Geant4 11.3.2 events using Geant4.jl 0.2.3 and FTFP_BERT. `widgets/cloud-chamber.html` embeds the event bank and runs offline; `widgets/cloud-chamber-poster.png` supplies the static export. `widgets/cloud-transport.jl` regenerates raw events using the saved Julia environment, and `widgets/cloud-model-notes.txt` documents the source and visibility approximations. Alpha step segments are coalesced for display; full transport is calculated by Geant4.
+
+- [CERN: Cloud chamber](https://visits.web.cern.ch/cloud-chamber): natural radioactivity and cosmic-particle tracks.
+- [Lawrence Berkeley National Laboratory: Muons](https://www2.lbl.gov/abc/cosmic/SKliewer/Cosmic_Rays/Muons.htm): approximate sea-level muon flux.
+- [CERN S'Cool LAB cloud-chamber manual](https://scoollab.web.cern.ch/sites/default/files/documents/SCoolLAB_CloudChamber_DIYManual_2018_v6.pdf): radon and daughter nuclei as ambient sources.
+
+The illustration models transport in standard air, not condensation thermodynamics. Electron spectra and rates are illustrative; no radon daughter chain or gamma-conversion source calculation is included.

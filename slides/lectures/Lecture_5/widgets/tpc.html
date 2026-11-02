@@ -91,7 +91,7 @@ input[type=range]{accent-color:var(--blue);width:150px}
 </header>
 
 <div class="stage" id="stage">
-  <figure class="pane p-3d"><div class="plot"><canvas id="c3d" aria-label="Three-dimensional TPC: track, drifting ionization electrons and pad hits on the end plates. Drag to rotate."></canvas></div></figure>
+  <figure class="pane p-3d"><div class="plot"><canvas id="c3d" aria-label="Three-dimensional TPC: track, drifting ionization electrons and pad hits on the end plates. Electric field arrows point toward the central electrode; the magnetic field points along positive z. Drag to rotate."></canvas></div></figure>
   <figure class="pane p-band"><figcaption>d<span class="m">E</span>/d<span class="m">x</span> versus momentum</figcaption><div class="plot"><canvas id="cBand" aria-label="Measured dE/dx versus momentum for all recorded tracks"></canvas></div></figure>
 </div>
 
@@ -106,7 +106,7 @@ input[type=range]{accent-color:var(--blue);width:150px}
 
 <section class="explain" id="explain" aria-label="Explanation">
   <div class="card"><h2>1 · Drift: time gives <span class="m">z</span></h2>
-    <p>The particle crosses the chamber in nanoseconds. Its ionization electrons then drift parallel to <span class="m">E</span> and <span class="m">B</span> to the end plates at constant speed:</p>
+    <p>The particle crosses the chamber in nanoseconds. Its ionization electrons then drift opposite to the electric field <span class="m">E</span>, away from the negative central electrode and toward the end plates at constant speed. The magnetic field <span class="m">B</span> points along +<span class="m">z</span>, along the chamber axis:</p>
     <span class="eq"><span class="m">z</span> = ±(<span class="m">L</span> − <span class="m">v</span><sub>d</sub>(<span class="m">t</span> − <span class="m">t</span><sub>0</sub>))</span>
     <p>With <span class="m">L</span> = 250 cm and <span class="m">v</span><sub>d</sub> ≈ 2.6 cm/µs the longest drift takes about 100 µs. Electrons from near the central electrode arrive <i>last</i>. Diffusion widens each cloud to a few mm (drawn ×12).</p>
   </div>
@@ -266,6 +266,25 @@ function projector(w,h){
 function poly(g,P,pts){g.beginPath();pts.forEach((p,i)=>{const s=P(p[0],p[1],p[2]);i?g.lineTo(s[0],s[1]):g.moveTo(s[0],s[1]);});g.stroke();}
 const ring=(r,z,n=96)=>Array.from({length:n+1},(_,i)=>[r*Math.cos(2*Math.PI*i/n),r*Math.sin(2*Math.PI*i/n),z]);
 
+// Project field vectors with the chamber; use dot/cross notation when viewed end-on.
+function fieldArrow(g,P,from,to,text,col,fs){
+  const a=P(...from),b=P(...to),dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy);
+  g.save();g.strokeStyle=col;g.fillStyle=col;g.lineWidth=2.5;
+  if(len<fs){
+    const x=(a[0]+b[0])/2,y=(a[1]+b[1])/2,r=fs*0.42;
+    g.beginPath();g.arc(x,y,r,0,2*Math.PI);g.stroke();
+    if(b[2]<a[2]){g.beginPath();g.arc(x,y,2,0,2*Math.PI);g.fill();}
+    else{g.beginPath();g.moveTo(x-r*.55,y-r*.55);g.lineTo(x+r*.55,y+r*.55);g.moveTo(x-r*.55,y+r*.55);g.lineTo(x+r*.55,y-r*.55);g.stroke();}
+    label(g,text,x+r+5,y,col,fs,'left','middle');
+  }else{
+    const ux=dx/len,uy=dy/len,head=fs*.65;
+    g.beginPath();g.moveTo(...a.slice(0,2));g.lineTo(...b.slice(0,2));g.stroke();
+    g.beginPath();g.moveTo(b[0],b[1]);g.lineTo(b[0]-head*ux+head*.5*uy,b[1]-head*uy-head*.5*ux);g.lineTo(b[0]-head*ux-head*.5*uy,b[1]-head*uy+head*.5*ux);g.closePath();g.fill();
+    label(g,text,(a[0]+b[0])/2+uy*fs,(a[1]+b[1])/2-ux*fs,col,fs,'center','middle');
+  }
+  g.restore();
+}
+
 function draw3d(){
   const{g,w,h}=ctx.d3,fs=FS();g.clearRect(0,0,w,h);
   const P=projector(w,h);g.lineWidth=1;
@@ -299,6 +318,11 @@ function draw3d(){
     for(let i=0;i<=100;i++){const s=sMax*i/100,a=a0-ev.o.q*s/F.R;pts.push([F.cx+F.R*Math.cos(a),F.cy+F.R*Math.sin(a),F.z0+F.tl*s]);}
     g.strokeStyle='#fff';g.setLineDash([6,5]);g.lineWidth=1.3;poly(g,P,pts);g.setLineDash([]);g.lineWidth=1;}
   const v0=P(0,0,0);g.fillStyle='#fff';g.beginPath();g.arc(v0[0],v0[1],2.5,0,7);g.fill();
+  // E points inward in both drift volumes; B is uniform along +z.
+  fieldArrow(g,P,[-110,-140,-210],[-110,-140,-35],'E','#72dfca',fs);
+  fieldArrow(g,P,[110,-140,210],[110,-140,35],'E','#72dfca',fs);
+  fieldArrow(g,P,[0,-200,-150],[0,-200,150],'B (+z)','#c49bff',fs);
+  label(g,'E → central electrode · electrons drift opposite E',fs*.8,h-fs*2.1,'#72dfca',fs*.8);
   // two lines of readout
   const lx=fs*0.8;let y=fs*1.7;
   label(g,sp.label[ev.o.q>0?0:1],lx,y,sp.col,fs*1.15);

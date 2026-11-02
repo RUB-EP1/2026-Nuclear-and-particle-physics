@@ -48,3 +48,5 @@
 !slides/lectures/Lecture_5/widgets/eshep/*.js
 !slides/lectures/Lecture_5/widgets/eshep/*.css
 !slides/lectures/Lecture_5/widgets/eshep/*.png
+!slides/lectures/Lecture_5/widgets/cloud-transport.jl
+!slides/lectures/Lecture_5/widgets/cloud-model-notes.txt
