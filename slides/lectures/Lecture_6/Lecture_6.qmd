@@ -1,0 +1,1222 @@
+---
+pagetitle: "KT1 · Lecture 6 · Interaction of Particles with Matter"
+format:
+  revealjs:
+    theme: simple
+    controls: false
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    css: [../../styles.css, ../../lecture-styles.css, lecture.css]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    min-scale: 0.2
+    max-scale: 2.0
+    auto-stretch: false
+    html-math-method: mathml
+    include-in-header:
+      - file: layout.html
+      - file: ../../scripts/frames.html
+      - file: ../../scripts/widget.html
+---
+
+## Lecture 6 {.title-card}
+
+:::: {.slide-body}
+
+::: {.subtitle}
+Interaction of Particles with Matter
+:::
+
+Mikhail Mikhasenko · 3 November 2026
+
+::::
+
+## Interaction of particles with matter {.section-title}
+
+:::: {.slide-body}
+
+Which particles, which processes, which signals?
+
+::::
+
+
+## Cross section and mean free path
+
+:::: {.slide-body}
+
+For number density $n$ and a cross section $\sigma$:
+
+$$dP=n\sigma\,dx,\qquad \lambda=\frac{1}{n\sigma}.$$
+
+The unscattered beam intensity decreases as
+
+$$I(x)=I_0e^{-x/\lambda}.$$
+
+::: {.take-home}
+A cross section becomes an interaction probability once we specify the material and its thickness.
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Independent interactions in a homogeneous medium; a fixed cross section at fixed incident energy. For mixtures, λ⁻¹ = Σ n_i σ_i. Attenuation here refers to removal from the uncollided beam, not necessarily absorption of all its energy.
+:::
+
+## Each particle leaves its own signature {.full-figure}
+
+::: {.slide-refs}
+Redrawn after C. Lippmann (2003)
+:::
+
+:::: {.slide-body}
+
+::: {.visual}
+![Signatures of photons, electrons, muons, charged and neutral hadrons in the layers of a detector](figures/detector-layers.svg)
+
+:::
+
+::: {.take-home}
+Only charged particles ionize. Photons and neutral hadrons are seen through the charged particles they produce.
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. The question of the lecture: why does each particle stop in a different layer? Photons and electrons shower in the electromagnetic calorimeter (bremsstrahlung and pair production), hadrons in the much deeper hadron calorimeter (nuclear interactions), muons only ionize and cross everything. Neutrinos (not drawn) leave nothing. Colours of the signatures follow the process colours used in the section titles. Own drawing, after the well-known figure by C. Lippmann (2003).
+:::
+
+
+## Charged particles: interactions in matter {#charged-particles-three-visible-effects .process-overview}
+
+:::: {.slide-body}
+
+::::: {.process-grid}
+::: {.process-box .process-ionization}
+[Excitation and ionization]{.process-title}
+
+Transfer energy to **atomic electrons**.
+
+Light and free charges → detector signals
+:::
+
+::: {.process-box .process-radiation}
+[Bremsstrahlung]{.process-title}
+
+Radiate a **photon** when deflected.
+
+Radiative energy loss → electromagnetic showers
+:::
+
+::: {.process-box .process-scattering}
+[Coulomb scattering]{.process-title}
+
+Deflect in the electric field of **nuclei**.
+
+Repeated deflections → a track changes direction
+:::
+
+::: {.process-box .process-nuclear}
+[Nuclear interactions]{.process-title}
+
+Hadrons interact strongly with **nuclei**.
+
+Nuclear breakup and secondary particles → hadronic showers
+:::
+:::::
+
+::: {.process-summary}
+Energy transfer · radiation · deflection · nuclear reactions
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Overview of the main processes developed in this lecture, not an exhaustive list. The first three are electromagnetic; the nuclear box applies to hadrons. Coulomb scattering also occurs on electrons; nuclei dominate the small-angle deflections discussed here. Elastic nuclear recoil transfers some energy. Bremsstrahlung is especially important for electrons and positrons. Excitation may yield light; ionization yields free charge and can also lead to light. Cherenkov radiation is introduced separately later.
+:::
+
+## Processes and particles: the map of this lecture {.process-map}
+
+:::: {.slide-body}
+
+| | e^±^ | μ^±^ | π^±^, K^±^, p | γ | n, K^0^~L~ |
+|---|:-:|:-:|:-:|:-:|:-:|
+| [1 · Ionization]{.proc .process-ionization} | ● | ● | ● | | |
+| [2 · Bremsstrahlung]{.proc .process-radiation} | ● | ○ | | | |
+| [3 · Multiple scattering]{.proc .process-scattering} | ● | ● | ● | | |
+| [4 · Photon interactions]{.proc .process-photon} | | | | ● | |
+| [5 · Nuclear interactions]{.proc .process-nuclear} | | | ● | | ● |
+| [6 · Cherenkov light]{.proc .process-cherenkov} | ● | ● | ● | | |
+
+::: {.map-legend}
+● important · ○ only at very high energy
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. One row per section of the lecture; read the columns as "what happens to this particle". Charged particles: ionization always, multiple scattering always, Cherenkov light only above threshold. Bremsstrahlung matters for electrons above the critical energy; for muons only at hundreds of GeV (m² suppression). Photons interact only through photoelectric effect, Compton scattering and pair production. Hadrons, charged or neutral, also interact strongly with nuclei. Rare processes (photonuclear, muon nuclear interactions, δ-electrons) are left out on purpose.
+:::
+
+
+## 1 · Ionization {.section-title .process-section .process-ionization}
+
+:::: {.slide-body}
+
+::: {.section-who}
+**Particles:** every charged particle
+
+**Process:** energy transferred to atomic electrons
+
+**Signal:** free charge and light: tracks, d*E*/d*x*, identification
+:::
+
+::: {.roadmap}
+[1 · Ionization]{.step .process-ionization .here} [2 · Bremsstrahlung]{.step .process-radiation} [3 · Multiple scattering]{.step .process-scattering} [4 · Photon interactions]{.step .process-photon} [5 · Nuclear interactions]{.step .process-nuclear} [6 · Cherenkov light]{.step .process-cherenkov}
+:::
+
+::::
+
+::: {.notes}
+Section 1 of 6. Review mean loss (Bethe–Bloch) and how a TPC turns ionization into tracks and particle identification. Energy-loss fluctuations were skipped in Lecture 5 and will be taught in this lecture.
+:::
+
+
+## Stopping power
+
+:::: {.slide-body}
+
+The mean energy lost per unit path length is
+
+$$S=-\left\langle\frac{dE}{dx}\right\rangle\qquad [\mathrm{MeV/cm}].$$
+
+Dividing by the material density gives the **mass stopping power**:
+
+$$S_m=\frac{S}{\rho}\qquad [\mathrm{MeV\,cm^2/g}].$$
+
+For a thin layer, $\langle\Delta E\rangle\simeq S_m\,\rho\,\ell$.
+
+::::
+
+::: {.notes}
+About 2 minutes. Use x for geometric path length throughout, rather than alternating between length and mass thickness. The layer must be thin enough that the stopping power does not change much along the path. Energy lost by the primary need not all be deposited locally: energetic secondary electrons and photons can escape.
+:::
+
+## Ionization: the Bethe–Bloch curve
+
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.2](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+**Heavy charged particles** transfer energy to atomic electrons.
+
+- At low velocity: approximately $z^2/\beta^2$.
+- A broad minimum near $\beta\gamma\sim3$–$4$.
+- A relativistic rise, moderated by polarization of the medium.
+
+The horizontal variable is $\beta\gamma=p/(Mc)$.
+:::
+::: {.visual}
+![Mass stopping power versus beta gamma for several materials](figures/dedx_table_98.png)
+
+:::
+:::
+
+::::
+
+::: {.notes}
+About 4 minutes. Original pages 4–5. The Bethe equation is for moderately relativistic heavy charged particles, not for electrons or the very-low-velocity end. The minimum depends somewhat on material; quote βγ, not simply γ. I is the mean excitation energy, δ the density correction. Full formula in backup.
+:::
+
+## Minimum-ionizing particles
+
+:::: {.slide-body}
+
+Near the minimum, a singly charged particle loses roughly
+
+$$S_m\simeq1\text{–}2\ \mathrm{MeV\,cm^2/g}$$
+
+in many detector materials.
+
+**Example:** $300\,\mu\mathrm m$ of silicon, $\rho=2.33\,\mathrm{g/cm^3}$, $S_m\simeq1.7\,\mathrm{MeV\,cm^2/g}$:
+
+$$\langle\Delta E\rangle\simeq1.7\times2.33\times0.030\ \mathrm{MeV}\simeq0.12\ \mathrm{MeV}.$$
+
+::: {.take-home}
+“MIP” describes a velocity regime, not a particle species.
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 5. The 1–2 range is a practical rule of thumb, not universal (hydrogen is an exception). This is a mean loss estimate; the most probable deposit is lower. Silicon density and stopping-power scale: PDG Atomic and Nuclear Properties, https://pdg.lbl.gov/AtomicNuclearProperties/HTML/silicon_Si.html .
+:::
+
+## Energy-loss regimes {.full-figure}
+
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.1](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
+:::: {.slide-body}
+
+::: {.visual}
+![Muon mass stopping power in copper across nine orders of magnitude in beta gamma](figures/rpp_icru49_cu_col.png)
+
+:::
+
+::: {.take-home}
+Locate the minimum, the Bethe region, and the onset of radiative losses.
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 6. The central overview plot uses positive muons on copper. Do not apply its energy boundaries to electrons. Radiative losses for muons include pair production and photonuclear interactions as well as bremsstrahlung.
+:::
+
+## Energy-loss fluctuations
+
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.7](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+A particle does not lose exactly the mean energy on every passage.
+
+**Many small transfers** form the peak. Rare energetic secondary electrons make a long tail.
+
+The **most-probable loss** $\Delta_p$ lies below $\langle\Delta E\rangle$.
+:::
+::: {.visual}
+![Skewed energy deposit distribution for a 10 GeV muon traversing 1.7 mm silicon](figures/bichsel_thick.png)
+
+:::
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. Original page 11. This is the PDG Landau–Vavilov/Bichsel comparison, not a Gaussian. A physical distribution has a finite maximum energy transfer and finite mean; the ideal Landau approximation has no finite mean. The measured mean is sensitive to rare large transfers and cuts. Very thin gas samples need more detailed modeling; do not claim a single universal Landau shape.
+:::
+
+## Time projection chamber
+
+::: {.slide-refs}
+[LCTPC · Working principle](https://www.lctpc.org/e8/e57671)
+:::
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+1. The particle **ionizes the gas** along its path.
+2. Released electrons **drift** towards the readout plane.
+3. Pads measure transverse position; **drift time** gives the third coordinate.
+
+A magnetic field bends the track, providing the momentum.
+:::
+::: {.visual}
+![Time projection chamber showing ionization electrons drifting to the readout plane](figures/tpc-principle.jpg)
+
+:::
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. Original page 8. A noble-gas mixture with quencher is typical. Fields are of order hundreds of V/cm, not one universal value. z = v_d(t−t_0); timing and drift calibration matter. Momentum comes from curvature, not ionization alone. Source: LCTPC page cited on slide.
+:::
+
+
+## A TPC event, step by step {.media-slide}
+
+::: {.widget data-src="widgets/tpc.html?present=1" data-poster="widgets/tpc-poster.png" data-alt="Interactive three-dimensional TPC: a track, drifting ionization electrons, pad hits and dE/dx versus momentum"}
+:::
+
+::: {.notes}
+About 5 minutes. Pick a pion at 0.5 GeV/c and press Drift: the track crosses in nanoseconds, then the electron clouds drift to the nearer end plate for up to about 100 µs. Ask which electrons arrive first (those nearest the pads) and how z follows from the arrival time; drag the time slider to show it. Switch to End: the circle gives p_T = 0.3 B R (B = 0.5 T). Switch to Side: the slope gives the dip angle and hence p. Pad colour shows the charge per row: a few rows are much brighter (Landau tail), which is why the truncated mean is used. Then drag the momentum slider for a kaon and a proton to trace their bands, and press Spray 200 to fill the plot. Bands separate at low p (1/β² rise) and merge near minimum ionization; the pion band is brightest because pions are most abundant in the spray. The Explanation button lists formulas and model assumptions: ALICE-like geometry, 80 pad rows, ALEPH-type Bethe–Bloch, diffusion drawn ×12. The next slide shows the measured ALICE bands.
+:::
+
+## Particle identification with ionization
+
+::: {.slide-refs}
+[ALICE / Heidelberg](https://www.physi.uni-heidelberg.de/~sma/research/tpc.php)
+:::
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+At the same momentum,
+
+$$\beta\gamma=\frac{p}{Mc}.$$
+
+Different masses therefore sample different parts of the ionization curve.
+
+**Read the plot:**
+
+- Why are the bands separated?
+- What sets their brightness?
+- What sets their width?
+:::
+::: {.visual}
+![ALICE measured TPC energy-loss bands versus momentum](figures/tpc-dedx.jpg)
+
+:::
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. Original page 10. Band position: mass and charge through βγ and z². Brightness: number of entries on the plot, also affected by acceptance and selection, not the brightness of a single track. Width: ionization fluctuations, number of samples, path-length corrections and detector resolution. Truncated-mean estimators suppress large deposits; no exact truncation fraction is assumed.
+:::
+
+## 2 · Bremsstrahlung {.section-title .process-section .process-radiation}
+
+:::: {.slide-body}
+
+::: {.section-who}
+**Particles:** electrons and positrons; muons only at very high energy
+
+**Process:** a photon radiated in the field of a nucleus
+
+**Signal:** energy loss over the radiation length *X*~0~; the start of a shower
+:::
+
+::: {.roadmap}
+[1 · Ionization]{.step .process-ionization} [2 · Bremsstrahlung]{.step .process-radiation .here} [3 · Multiple scattering]{.step .process-scattering} [4 · Photon interactions]{.step .process-photon} [5 · Nuclear interactions]{.step .process-nuclear} [6 · Cherenkov light]{.step .process-cherenkov}
+:::
+
+::::
+
+::: {.notes}
+Section 2 of 6. Defines the radiation length X0, used again for multiple scattering and showers.
+:::
+
+
+## Bremsstrahlung and radiation length
+
+:::: {.slide-body}
+
+A charged particle accelerated in a nuclear electric field can emit a photon:
+
+$$e^-+Z\longrightarrow e^-+Z+\gamma.$$
+
+For a high-energy electron in the bremsstrahlung-dominated regime,
+
+$$-\left\langle\frac{dE}{dx}\right\rangle_{\mathrm{rad}}\simeq\frac{E}{X_0},
+\qquad \langle E(x)\rangle\simeq E_0e^{-x/X_0}.$$
+
+::: {.take-home}
+After one radiation length, the mean electron energy is approximately $E_0/e$.
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 12. X0 is used here as a length; material tables also quote ρX0 in g/cm². This describes mean radiative energy loss, not an identical fractional loss in every event. Nuclear recoil conserves momentum. Bremsstrahlung is suppressed roughly as inverse mass squared for otherwise comparable charged leptons; X0 remains a conventional material property defined for electrons.
+:::
+
+## Electrons and positrons
+
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.11](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+Their small mass makes radiation important at modest energies.
+
+- **Ionization and excitation** at low energies.
+- Electron–electron (**Møller**) and positron–electron (**Bhabha**) scattering.
+- **Bremsstrahlung** at high energies.
+- Positrons can **annihilate** with electrons.
+:::
+::: {.visual}
+![Fractional energy loss per radiation length for electrons and positrons in lead](figures/elossfrac_06.png)
+
+:::
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 13. The electron is identical to target electrons; the positron has distinct scattering and annihilation channels. Heavy-particle Bethe–Bloch cannot simply be used without electron-specific corrections.
+:::
+
+## Critical energy
+
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.13](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+The electron critical energy marks the crossover:
+
+$$S_{\mathrm{rad}}(E_c)\simeq S_{\mathrm{coll}}(E_c).$$
+
+**Below:** collision losses dominate.
+
+**Above:** radiation dominates.
+
+For electrons in copper, the scale is about **20 MeV**.
+:::
+::: {.visual}
+![Copper electron energy loss showing ionization, bremsstrahlung and critical energy definitions](figures/encrit_cu.png)
+
+:::
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 14. Two conventions are shown in the source figure: exact equality and Rossi’s approximation E_c/X0 = ionization loss. Do not identify their numerical values as exactly equal. Muon critical energies are much higher (hundreds of GeV for many solids), with several radiative processes; avoid presenting the old ~100 GeV copper estimate as precise.
+:::
+
+## Quiz: interactions with matter {#recall-quiz}
+
+:::: {.slide-body}
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 120px;">
+<a href="https://www.menti.com/?code=83692732"><img src="figures/menti-join-qr.jpg" alt="QR code to join the Lecture 6 quiz" style="width: 620px; height: 620px; max-height: none; image-rendering: pixelated;"></a>
+<div>
+<p>Scan the QR code or visit <a href="https://www.menti.com/?code=83692732">menti.com</a></p>
+<p style="font-size: 2em; font-weight: 700;">8369 2732</p>
+<p>Six questions · one answer per question</p>
+</div>
+</div>
+
+::::
+
+::: {.notes}
+QR code captured from the live Menti joining panel on 2 November 2026.
+Joining code: 8369 2732. Check code validity before the lecture.
+Untimed Multiple Choice; presenter advances manually.
+Presenter: https://www.mentimeter.com/app/presentation/al8jv63eexfyiaybx3iinwohyfwqcrwk/present
+Scope: original Lecture 5 slides 19–37, excluding Energy-loss fluctuations.
+Allow students to vote, then ask for a reason before discussing the answer.
+The six questions and answer explanations are in quiz-questions.md for transfer to Mentimeter.
+Present the questions in Mentimeter, then continue with 3 · Multiple scattering.
+:::
+
+## 3 · Multiple scattering {.section-title .process-section .process-scattering}
+
+:::: {.slide-body}
+
+::: {.section-who}
+**Particles:** every charged particle
+
+**Process:** many small deflections by nuclei
+
+**Signal:** a blurred direction: limits momentum and vertex resolution
+:::
+
+::: {.roadmap}
+[1 · Ionization]{.step .process-ionization} [2 · Bremsstrahlung]{.step .process-radiation} [3 · Multiple scattering]{.step .process-scattering .here} [4 · Photon interactions]{.step .process-photon} [5 · Nuclear interactions]{.step .process-nuclear} [6 · Cherenkov light]{.step .process-cherenkov}
+:::
+
+::::
+
+::: {.notes}
+Section 3 of 6. One slide; the full Highland expression is in backup.
+:::
+
+
+## Multiple Coulomb scattering
+
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.10](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+Many small deflections accumulate while a particle traverses matter.
+
+The central angular distribution is approximately Gaussian:
+
+$$\theta_0\propto\frac{|z|}{\beta p}\sqrt{\frac{x}{X_0}}.$$
+
+**Low momentum** and **more material** degrade the direction measurement.
+:::
+::: {.visual}
+![Geometry of projected multiple-scattering angle and transverse displacement](figures/multscat.png)
+
+:::
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 15. θ0 is the RMS of the central Gaussian approximation in one projected plane. Large-angle single-scattering tails are not Gaussian. For fixed momentum and material, the variance grows approximately linearly with thickness; a logarithmic correction is in backup. More material also creates secondary interactions and losses.
+:::
+
+## 4 · Photon interactions {.section-title .process-section .process-photon}
+
+:::: {.slide-body}
+
+::: {.section-who}
+**Particles:** photons
+
+**Process:** photoelectric effect, Compton scattering, pair production
+
+**Signal:** charged secondaries; with bremsstrahlung, electromagnetic showers
+:::
+
+::: {.roadmap}
+[1 · Ionization]{.step .process-ionization} [2 · Bremsstrahlung]{.step .process-radiation} [3 · Multiple scattering]{.step .process-scattering} [4 · Photon interactions]{.step .process-photon .here} [5 · Nuclear interactions]{.step .process-nuclear} [6 · Cherenkov light]{.step .process-cherenkov}
+:::
+
+::::
+
+::: {.notes}
+Section 4 of 6. Photons become visible only by transferring energy to charged particles.
+:::
+
+
+## Three main photon interactions
+
+:::: {.slide-body}
+
+| Process | Reaction (schematic) | What happens to the photon? |
+|---|---|---|
+| **Photoelectric effect** | $\gamma+\mathrm{atom}\to\mathrm{ion}+e^-$ | Absorbed |
+| **Compton scattering** | $\gamma+e^-\to\gamma+e^-$ | Scattered, with changed energy |
+| **Pair production** | $\gamma+Z\to e^-+e^++Z$ | Converted |
+
+Relative importance depends on **photon energy** and **material**.
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 17. Photoelectric effect involves a bound electron and the atom absorbs recoil; the electron kinetic energy is roughly Eγ minus binding energy. Compton equation shown for a free electron, with bound-electron effects in materials. Pair production requires recoil from a nucleus or electron. Additional channels in backup.
+:::
+
+## Photon cross sections in lead {.full-figure}
+
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.15(b)](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
+:::: {.slide-body}
+
+::: {.visual}
+![Photon interaction cross sections versus energy in lead](figures/photon-lead.png)
+
+:::
+
+::: {.take-home}
+Follow the energy axis: photoelectric absorption, Compton scattering, then pair production.
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. Original page 17. Read photoelectric, Compton and pair-production curves. Rayleigh is coherent elastic scattering; photonuclear interactions include giant dipole resonances. Avoid the blanket claim that all nuclear gamma rays are photoelectric-dominated: their energy and absorber composition matter.
+:::
+
+## Pair production and electromagnetic showers
+
+:::: {.slide-body}
+
+In a nuclear field, conversion is possible above approximately
+
+$$E_\gamma\simeq 2m_ec^2=1.022\ \mathrm{MeV}.$$
+
+The nucleus carries recoil: a real photon cannot create a pair in vacuum.
+
+At high energy, two processes alternate:
+
+$$e^\pm\ \xrightarrow{\ \mathrm{bremsstrahlung}\ }\ e^\pm+\gamma,
+\qquad \gamma\ \xrightarrow{\ \mathrm{conversion}\ }\ e^-+e^+.$$
+
+Multiplication slows when particle energies fall towards $E_c$.
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 18, with a short synthesis of pages 12–18. Nuclear recoil makes the exact threshold slightly larger than 2m_e c²; triplet production on a free stationary electron has threshold 4m_e c². At high energy in the complete-screening regime, pair-production mean free path ≈9X0/7. Not every photon converts immediately above threshold.
+:::
+
+## How an electromagnetic shower grows
+
+:::: {.slide-body}
+::: {.split}
+::: {.copy}
+**Bremsstrahlung and pair production** distribute the initial energy among more particles.
+
+In an equal-splitting toy model, after $k$ generations:
+
+$$N=2^k,\qquad E_{\mathrm{particle}}\sim E_0/2^k.$$
+
+Near $E_c$, multiplication gives way to energy loss by ionization and excitation.
+:::
+::: {.visual}
+![Equal-splitting cascade with particle energy halving at each generation](figures/em-shower-branching.svg)
+:::
+:::
+::: {.take-home}
+A larger initial energy gives more shower particles; the depth of the maximum grows roughly logarithmically.
+:::
+::::
+
+::: {.notes}
+About 3 minutes. A schematic Heitler model, not a literal event: particles do not split into equal energies at fixed intervals. Bremsstrahlung produces an electron/positron plus a photon; pair production produces an electron and positron. Both conserve total energy including recoil. From E0/2^k ~ Ec obtain k_max ~ ln(E0/Ec)/ln 2 and N_max ~ E0/Ec. Characteristic branching lengths scale with X0, but do not identify the toy generation number with an exact shower-depth formula. Below Ec, electron collisional losses dominate; shower photons continue to convert, scatter or be absorbed. Ask: if E0 doubles, does the shower become twice as deep? No: the toy model adds one generation. Quantitative calorimetric resolution and construction belong to later lectures.
+:::
+
+## 5 · Nuclear interactions {.section-title .process-section .process-nuclear}
+
+:::: {.slide-body}
+
+::: {.section-who}
+**Particles:** hadrons, charged and neutral
+
+**Process:** strong interactions with nuclei
+
+**Signal:** hadronic showers; the only signal of neutral hadrons
+:::
+
+::: {.roadmap}
+[1 · Ionization]{.step .process-ionization} [2 · Bremsstrahlung]{.step .process-radiation} [3 · Multiple scattering]{.step .process-scattering} [4 · Photon interactions]{.step .process-photon} [5 · Nuclear interactions]{.step .process-nuclear .here} [6 · Cherenkov light]{.step .process-cherenkov}
+:::
+
+::::
+
+::: {.notes}
+Section 5 of 6. One slide.
+:::
+
+
+## Hadrons: nuclear interactions and hadronic showers
+
+:::: {.slide-body}
+
+Hadrons also interact **strongly** with nuclei. The mean distance between such interactions is the **nuclear interaction length** $\lambda_I$.
+
+| Material | $X_0$ | $\lambda_I$ |
+|---|:-:|:-:|
+| Iron | 1.76 cm | 16.8 cm |
+| Lead | 0.56 cm | 17.6 cm |
+
+Each interaction makes secondary hadrons, mostly pions; $\pi^0\to\gamma\gamma$ adds an electromagnetic part.
+
+::: {.take-home}
+$\lambda_I\gg X_0$: hadronic showers are long and wide, so the hadron calorimeter sits behind the electromagnetic one. Neutral hadrons are seen only this way.
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. New slide for the hadronic part of the overview figure. Values from the PDG table of atomic and nuclear properties (iron X0 = 13.84 g/cm², λ_I = 132.1 g/cm²; lead X0 = 6.37 g/cm², λ_I = 199.6 g/cm²) divided by density. λ_I grows roughly as A^(1/3) (σ_inel ∝ A^(2/3)), X0 falls as 1/Z², so the gap is largest in heavy materials. Part of the energy is invisible (nuclear binding, slow neutrons, neutrinos) and the π0 fraction fluctuates, so hadronic energy resolution is worse than electromagnetic. Muons do not shower: they only ionize, which is why they reach the muon system.
+:::
+
+
+## Energy flow in a hadronic shower
+
+:::: {.slide-body}
+::: {.split}
+::: {.copy}
+A hadronic shower contains an **electromagnetic component** from $\pi^0\to\gamma\gamma$.
+
+Other energy feeds charged particles, nuclear breakup and neutrons.
+
+The fractions **fluctuate from event to event**. Not all the initial energy becomes prompt ionization or light.
+:::
+::: {.visual}
+![Energy paths in an inelastic hadron-nucleus collision: electromagnetic subshowers, charged particles and nuclear breakup](figures/hadronic-energy-flow.svg)
+:::
+:::
+::: {.take-home}
+A hadronic shower is more than a larger electromagnetic shower.
+:::
+::::
+
+::: {.notes}
+About 2 minutes. Follow the three branches, without assigning universal fractions. Neutral pions rapidly decay to photons, feeding electromagnetic subshowers. Charged hadrons ionize and may interact again; nuclear fragments can deposit energy at high ionization density. Breaking nuclei consumes binding energy that is not recovered as ordinary prompt ionization. Neutrons can deposit energy through recoils and capture, often later; they are not universally invisible. Escaping particles and neutrinos can remove energy. This is the physical basis for the later discussion of calorimeter response and resolution; technology and compensation are deferred. The original SVG is a conceptual energy-flow diagram, not a quantitative Sankey plot.
+:::
+
+## 6 · Cherenkov light {.section-title .process-section .process-cherenkov}
+
+:::: {.slide-body}
+
+::: {.section-who}
+**Particles:** charged particles faster than light in the medium
+
+**Process:** a cone of light at a fixed angle
+
+**Signal:** velocity: particle identification together with momentum
+:::
+
+::: {.roadmap}
+[1 · Ionization]{.step .process-ionization} [2 · Bremsstrahlung]{.step .process-radiation} [3 · Multiple scattering]{.step .process-scattering} [4 · Photon interactions]{.step .process-photon} [5 · Nuclear interactions]{.step .process-nuclear} [6 · Cherenkov light]{.step .process-cherenkov .here}
+:::
+
+::::
+
+::: {.notes}
+Section 6 of 6. Then the wrap-up: which process explains a signal, and what a detector measures.
+:::
+
+
+## Cherenkov radiation
+
+::: {.slide-refs}
+[PDG 2024 · Fig. 34.26](https://pdg.lbl.gov/2024/figures/figures.html)
+:::
+
+:::: {.slide-body}
+
+::: {.split}
+::: {.copy}
+A charged particle emits Cherenkov light when
+
+$$\beta n>1,\qquad v>\frac{c}{n}.$$
+
+The emission angle obeys
+
+$$\cos\theta_C=\frac{1}{\beta n}.$$
+
+Small energy loss, but a useful **velocity measurement**.
+:::
+::: {.visual}
+![Cherenkov wavefront construction and emission angle](figures/cherenkov_radiation.png)
+
+:::
+:::
+
+::::
+
+::: {.notes}
+About 3 minutes. Original page 19. c/n is the phase velocity at the emitted wavelength, not vacuum c. n is dispersive, so specify a wavelength or approximate effective index. The particle remains subluminal in vacuum. Combining momentum with a velocity estimate enables particle identification.
+:::
+
+## Two Cherenkov cones {.media-slide .cherenkov-widget}
+
+::: {.widget data-src="widgets/cherenkov-cones.html?present=1" data-poster="widgets/cherenkov-cones-poster.png" data-alt="Interactive Cherenkov wavefront and photon cones"}
+:::
+
+::: {.notes}
+Use the supplied interactive explanation to distinguish the backward equal-phase envelope from the forward photon directions. Pause, change refractive index and beta, switch to Follow particle, and track a photon. The Explanation button opens the original spacetime diagram, readouts and full derivation. The camera-following view is a Galilean translation of the lab coordinates, not a Lorentz-transformed rest frame. The model assumes a nondispersive medium. Below n beta = 1 there is no Cherenkov envelope. Supplied by the lecturer as cherenkov-cones.html; local presentation mode changes layout only. Escape closes the explanation; slide-navigation keys remain available outside controls.
+:::
+
+## Check: a Cherenkov threshold
+
+:::: {.slide-body}
+
+A radiator has $n=1.50$ at the detected wavelength.
+
+**1.** What is the minimum speed for Cherenkov emission?
+
+**2.** What angle does an ultrarelativistic particle produce?
+
+**3.** At the same momentum, can a pion radiate while a proton does not?
+
+::: {.fragment}
+$$\beta_{\mathrm{th}}=1/n=0.667,\qquad \theta_C(\beta\simeq1)=\arccos(1/1.50)\simeq48.2^\circ.$$
+:::
+
+::::
+
+::: {.notes}
+About 2 minutes if time permits. Yes: p_th = mc/sqrt(n²−1), about 0.125 GeV/c for a charged pion and 0.839 GeV/c for a proton at n=1.5. At p=0.5 GeV/c the pion emits but the proton does not. Derive the threshold on the board if useful.
+:::
+
+## Which process explains the signal?
+
+:::: {.slide-body}
+
+**An X-ray image of a foot**
+
+What are the incident particles? Why do bone and soft tissue transmit different intensities?
+
+**A 100 GeV cosmic proton crossing matter**
+
+Which processes produce a track? Which can produce a shower?
+
+::::
+
+::: {.notes}
+About 2 minutes. Original page 20. X-rays are photons; contrast arises from differing energy-dependent attenuation (photoelectric absorption and Compton scattering, with relative contributions depending on photon energy and material). This is a physics discussion, not medical interpretation. The personal radiograph from the old PDF is retained only in tmp. For the proton: electronic ionization/excitation along the path, elastic scattering, and inelastic nuclear interactions leading to hadronic showers. Bremsstrahlung is strongly suppressed relative to electrons; Cherenkov light is possible in a suitable radiator.
+:::
+
+## What a detector measures
+
+:::: {.slide-body}
+
+| Process | Particles | Signal or consequence |
+|---|---|---|
+| [1 · Ionization]{.proc .process-ionization} | charged | Charge, $dE/dx$, tracks, identification |
+| [2 · Bremsstrahlung]{.proc .process-radiation} | e^±^ | Radiative loss, start of EM showers |
+| [3 · Multiple scattering]{.proc .process-scattering} | charged | Uncertainty of the trajectory |
+| [4 · Photon interactions]{.proc .process-photon} | γ | Charged secondaries, EM showers |
+| [5 · Nuclear interactions]{.proc .process-nuclear} | hadrons | Hadronic showers |
+| [6 · Cherenkov light]{.proc .process-cherenkov} | fast charged | Velocity, identification |
+
+::: {.take-home}
+The detector signal is the result of an interaction with matter.
+:::
+
+::::
+
+::: {.notes}
+About 1 minute. Summary of the new material. The default pace is approximately 50 minutes; skip the standalone Cherenkov exercise if discussion runs long.
+:::
+
+## At home: Explore LHCb
+
+:::: {.slide-body}
+
+[**explore-lhcb.web.cern.ch**](https://explore-lhcb.web.cern.ch/): an interactive LHCb explorer that runs in the browser and on a phone.
+
+Before the next lecture, play:
+
+1. [**RICH get richer**](https://explore-lhcb.web.cern.ch/#/en/game/rich): name pions, kaons and protons from their Cherenkov rings, then with the calorimeters and muon stations.
+2. [**Track fitter**](https://explore-lhcb.web.cern.ch/#/en/game/tf): fit tracks through the detector hits and read off the momentum from the bending.
+
+Optional: the story [**How LHCb simulates a collision**](https://explore-lhcb.web.cern.ch/#/en/story/sim).
+
+::::
+
+::: {.notes}
+About 1 minute. Homework, not graded. RICH get richer uses the real LHCb RICH parameters (RICH1 C4F10 n = 1.0014, RICH2 CF4 n = 1.0005): ask students at which momentum pion and kaon rings become hard to tell apart, and why a proton below threshold makes no ring. Track fitter: the magnet gives a kick of about 1.2/p rad (p in GeV/c), so low-momentum tracks bend more. The story follows one simulated event through the detector: deposits, Cherenkov light and showers. At the time of writing the site was marked as a preview, so check the links before the lecture.
+:::
+
+## Making particle tracks visible {.section-title}
+
+:::: {.slide-body}
+
+Historical notes: photographic images, light flashes, grains, bubbles and droplets.
+
+::::
+
+## Photographic plates: radiation leaves a trace
+
+::: {.slide-refs}
+From Lecture 6 (2025) · historical illustrations
+:::
+
+:::: {.slide-body}
+::: {.split}
+::: {.copy}
+**1895–1896 · X-rays and radioactivity**
+
+Röntgen: X-rays reveal structures inside the body.
+
+Becquerel: uranium salts expose a photographic plate without illumination.
+
+Radiation produces a **lasting chemical record**.
+:::
+::: {.visual}
+![Historical X-ray of a hand, reproduced from the previous lecture](figures/historic-xray.png)
+:::
+:::
+::::
+
+::: {.notes}
+About 1 minute. Adapted from previous Lecture 6, page 30; the source caption identifies the hand as Albert von Koelliker’s (1896). Distinguish X-ray discovery in 1895 from this image in 1896 and Becquerel’s radioactivity discovery in 1896. Photographic darkening records radiation-induced chemical changes. Do not identify all radiation from uranium salts as beta electrons. The image’s original external provenance is not supplied by the old deck.
+:::
+
+## Scattering measured one flash at a time
+
+::: {.slide-refs}
+From Lecture 6 (2025) · historical illustrations
+:::
+
+:::: {.slide-body}
+::: {.split}
+::: {.copy}
+**Geiger–Marsden experiments → Rutherford’s nuclear atom (1911)**
+
+Alpha particles scatter from a thin foil.
+
+A **zinc-sulfide screen scintillates** when a particle deposits energy.
+
+Count flashes at different angles to measure the scattering distribution.
+:::
+::: {.visual}
+![Historical Geiger apparatus for measuring alpha-particle scattering](figures/historic-rutherford.png)
+:::
+:::
+::::
+
+::: {.notes}
+About 1 minute. Previous Lecture 6, page 32. The drawing is identified there as an original illustration by Hans Geiger. The experiments preceded Rutherford’s 1911 interpretation. Connect the observed flash to excitation and light emission. No electronics are needed for the conceptual measurement: a microscope and observer count flashes. Avoid implying that this one drawing represents every version of the experiment.
+:::
+
+## Nuclear emulsion: a permanent particle trail
+
+::: {.slide-refs}
+From Lecture 6 (2025) · historical illustrations
+:::
+
+:::: {.slide-body}
+::: {.split}
+::: {.copy}
+A charged particle leaves a **latent image** in silver-halide crystals.
+
+Chemical development turns affected crystals into **silver grains**.
+
+The grains reveal a track under a microscope.
+
+**1947:** pion discovery using nuclear emulsions.
+:::
+::: {.visual}
+![Microscopic particle tracks in nuclear emulsion from the previous lecture](figures/historic-emulsion-tracks.png)
+:::
+:::
+::::
+
+::: {.notes}
+About 1 minute. Previous Lecture 6, pages 33 and 35. Ionization initiates the photographic process; developed grains provide a persistent spatial record. Grain density can carry information on ionization, but depends on emulsion response and development. Powell received the 1950 Nobel Prize for the photographic method and discoveries made with it. The original external image source is not specified in the supplied deck.
+:::
+
+## Bubble chamber: trails in a liquid
+
+::: {.slide-refs}
+From Lecture 6 (2025) · historical illustrations
+:::
+
+:::: {.slide-body}
+::: {.split}
+::: {.copy}
+**Big European Bubble Chamber · CERN, 1970s**
+
+A pressure drop makes the liquid **superheated**.
+
+Energy deposited along a charged particle’s path seeds **vapour bubbles**.
+
+Photographs record the trails; a magnetic field bends charged tracks.
+:::
+::: {.visual}
+![Big European Bubble Chamber at CERN, reproduced from the previous lecture](figures/historic-bebc.png)
+:::
+:::
+::::
+
+::: {.notes}
+About 1 minute. Previous Lecture 6, page 36. Correct the old phrase “condensation of gas bubbles”: these are vapour bubbles growing in a superheated liquid. The liquid is metastable after expansion. Contrast with the following cloud chamber: liquid droplets condense in a supersaturated vapour. Avoid treating the old slide’s hydrogen example as the only BEBC fill. Glaser received the 1960 Nobel Prize for the bubble chamber. Photo reproduced from the user’s teaching source; original external attribution remains unresolved.
+:::
+
+## Cloud chamber: making ionization visible
+
+:::: {.slide-body}
+::: {.split}
+::: {.copy}
+1. Alcohol vapour cools above a **cold base**.
+2. A charged particle **ionizes the gas**.
+3. In the supersaturated layer, **droplets grow around ions**.
+
+We see the droplets left behind by the particle.
+:::
+::: {.visual}
+![Diffusion cloud chamber: warm alcohol source, cold base and droplets in the supersaturated layer](figures/cloud-chamber-formation.svg)
+:::
+:::
+::::
+
+::: {.notes}
+About 2 minutes. A diffusion cloud chamber maintains a temperature gradient: alcohol evaporates above and diffuses towards the cold base. Near the base, vapour can be supersaturated, meaning its partial pressure exceeds the equilibrium saturation pressure at the local temperature. Ions provide condensation nuclei. The particle crosses quickly; droplets grow and remain visible afterwards. This is condensation of liquid droplets in vapour, not gas bubbles in a superheated liquid. The diagram is schematic, not a thermodynamic simulation. Background: CERN S'Cool LAB cloud-chamber manual, linked in SOURCES.md. The following demonstration simulates particle transport, with illustrative droplet visibility.
+:::
+
+## Cloud chambers: the first track photographs {.history-gallery}
+
+::: {.slide-refs}
+From Lecture 6 (2025), p. 34
+:::
+
+:::: {.slide-body}
+<div class="history-pictures">
+<div><img src="figures/historic-wilson-tracks.png" alt="Early cloud-chamber photographs attributed to Wilson in the previous lecture"><p>Wilson · X-ray-induced tracks, 1912</p></div>
+<div><img src="figures/historic-wilson-chamber.png" alt="Historical cloud-chamber image from the previous lecture"><p>Wilson · cloud-chamber image, 1912</p></div>
+<div><img src="figures/historic-electron-track.png" alt="Historical curved electron trail in a magnetic field"><p>Electron track in a magnetic field</p></div>
+</div>
+
+::: {.take-home}
+Photons become visible through charged secondaries; a magnetic field can bend charged tracks.
+:::
+::::
+
+::: {.notes}
+About 2 minutes. Reuse the three pictures from previous Lecture 6, page 34. The first two retain that slide’s Wilson/1912 attribution, which has not been independently verified. The third retains only the descriptive caption: the old “Bevatron, 1940” location/date is not reused because its provenance is uncertain. Wilson developed the expansion cloud chamber; expansion cools the vapour to supersaturation. The preceding diagram and following demonstration use the diffusion-chamber arrangement, which maintains a cold layer continuously. Both reveal ionization through droplet formation. Wilson received the 1927 Nobel Prize for the cloud-chamber method. These are historical photographs, whereas the following demo is a transport-based visualization. Ask students to distinguish charged tracks from the incident X-rays that produce secondary electrons.
+:::
+
+## Reading a cloud-chamber trail
+
+:::: {.slide-body}
+::: {.split}
+::: {.copy}
+**Density:** how much ionization along the path?
+
+**Length:** does the particle stop, leave the chamber, or leave the visible layer?
+
+**Shape:** how strongly is the particle scattered?
+
+A track gives clues, not a unique particle label.
+:::
+::: {.visual}
+![Schematic alpha, electron and muon trails, comparing density, length and scattering](figures/cloud-chamber-tracks.svg)
+:::
+:::
+::: {.take-home}
+Before the demonstration: which tracks do you expect to be short and dense?
+:::
+::::
+
+::: {.notes}
+About 2 minutes, then open the demonstration. Typical ambient alpha particles give short dense trails; low-energy electrons often scatter visibly; energetic cosmic muons usually traverse the chamber with little deflection. These are tendencies, dependent on energy and viewing geometry, not a particle-identification rule. A short visible trail need not mean that the particle stopped. The illustration uses teaching colours; real droplets are white. There is no magnetic field in this demonstration, so bends are not a measurement of charge sign. Photons leave no direct ionization trail; charged secondaries can make them visible. Ask for a prediction before revealing the demonstration labels.
+:::
+
+## Natural radiation in a cloud chamber {.media-slide .cloud-chamber-slide}
+
+::: {.widget data-src="widgets/cloud-chamber.html" data-poster="widgets/cloud-chamber-poster.png" data-alt="Cloud chamber with Geant4 tracks from radon alpha particles, background electrons and cosmic muons"}
+:::
+
+::: {.notes}
+Start a 60-second exposure, or inspect alpha, electron and muon tracks separately. Playback defaults to real time; optional 10× playback accelerates arrivals while optical persistence remains illustrative. A single legend identifies teaching colours (actual trails are white). Drag to rotate; the same scale is used on all three axes. Dashed full paths are optional and off by default. This is a cloud chamber, with condensation around ions in supersaturated vapour, not a bubble chamber. The geometry is 20 × 20 × 5 cm of standard air; the default visible layer is the bottom 1 cm. The optional full-depth view is idealized. Geant4 11.3.2 (FTFP_BERT, through the existing Julia environment) generated 150 events: 5.49 MeV radon-222 alpha particles, 50 keV–1 MeV illustrative background electrons, and representative 4 GeV cosmic muons. Playback samples that bank with random arrival times; it runs offline without Julia or a server. Assumed rates: 100 Bq/m³ radon, approximately 1 muon/cm²/min through the lid, and an illustrative electron rate of 0.3/s in the full volume. No radioactive daughter chain, physical beta spectrum, chamber walls, vapour thermodynamics or calibrated detection efficiency is simulated. Gamma rays would be seen via secondary electrons, not direct photon trails. Full assumptions and regeneration script are in widgets/cloud-model-notes.txt and widgets/cloud-transport.jl.
+:::
+
+
+## Backup {.section-title}
+
+:::: {.slide-body}
+
+Formulas and additional interaction channels
+
+::::
+
+## Many tracks, one detector {.full-figure}
+
+::: {.slide-refs}
+[ALICE / Heidelberg · TPC calibration](https://www.physi.uni-heidelberg.de/~sma/research/tpc.php)
+:::
+
+:::: {.slide-body}
+
+::: {.visual}
+![ALICE TPC display of reconstructed particle tracks](figures/tpc-tracks.jpg)
+
+:::
+
+::::
+
+::: {.notes}
+About 1 minute. Replaces the old page 9 event image with the time-frame display from the original Heidelberg source. This is a many-track/time-frame visualization; do not label it as one collision.
+:::
+
+
+## How the ALICE TPC works (video) {.media-slide}
+
+```{=html}
+<video class="lecture-film" controls playsinline preload="metadata" poster="media/alice-tpc-poster.jpg" aria-label="ALICE TPC operating principle, 75-second animation">
+  <source src="media/alice-tpc.webm" type="video/webm">
+  <source src="media/alice-tpc.mp4" type="video/mp4">
+  <a href="media/alice-tpc.mp4">Play the ALICE TPC animation</a>
+</video>
+<div class="media-credit"><a href="https://physicsmasterclasses.org/exercises/ALICE-2013/MasterClassSupportMaterials.html" target="_blank" rel="noopener">ALICE Masterclass · TPC operating principle · 1:15</a></div>
+```
+
+::: {.notes}
+Play manually, fullscreen if desired. The animation follows ionization, electron drift, segmented readout, and reconstruction of a track from transverse position and arrival time. Ask students to identify which coordinate comes from time. This is the historical ALICE TPC: quoted pad counts and acquisition rates refer to the pre-upgrade detector. The current TPC uses GEM readout and continuous acquisition; the drift/reconstruction principle remains the same. Source: ALICE Masterclass Support Materials, item 5, https://physicsmasterclasses.org/exercises/ALICE-2013/TPC_xvid.avi . Silent, 75 seconds. Converted from Xvid to H.264 without trimming or changes to content.
+:::
+
+## Bethe–Bloch: formula and assumptions {.formula-slide}
+
+:::: {.slide-body}
+
+For a heavy particle of charge $ze$ in a material of atomic number $Z$,
+
+$$S_m=Kz^2\frac{Z}{A}\frac{1}{\beta^2}\left[\frac12\ln\!\left(\frac{2m_ec^2\beta^2\gamma^2W_{\max}}{I^2}\right)-\beta^2-\frac{\delta(\beta\gamma)}2\right].$$
+
+- $K\simeq0.307\ \mathrm{MeV\,cm^2/mol}$; $A$ is the molar mass in $\mathrm{g/mol}$.
+- $I$: mean excitation energy; $W_{\max}$: largest single-collision energy transfer.
+- $\delta$: density-effect correction from polarization of the medium.
+
+Valid in the Bethe region; additional corrections matter at low velocity.
+
+::::
+
+::: {.notes}
+Original page 4. PDG passage through matter Eq. 34.5. S_m is positive mass stopping power. For a projectile of mass M, Wmax = 2m_e c² β² γ²/[1+2γm_e/M+(m_e/M)²]. Heavy means M much larger than m_e; electron/positron formulas differ.
+:::
+
+## Multiple scattering: projected RMS angle
+
+:::: {.slide-body}
+
+For a singly charged particle, a commonly used approximation is
+
+$$\theta_0\simeq\frac{13.6\ \mathrm{MeV}}{\beta pc}\sqrt{\frac{x}{X_0}}\left[1+0.038\ln\!\left(\frac{x}{X_0}\right)\right].$$
+
+- $x$ and $X_0$ must use the same thickness units.
+- $\theta_0$ is a **one-plane** RMS angle, in radians.
+- For small angles, $\theta_{\mathrm{space,rms}}\simeq\sqrt2\,\theta_0$.
+- Describes the central distribution; rare large deflections form tails.
+
+::::
+
+::: {.notes}
+Original page 15. Familiar simplified Highland form for unit charge; the more detailed PDG logarithm includes charge and beta dependence. This approximation is not valid for arbitrarily thin layers; use dedicated transport modeling where precision is needed.
+:::
+
+## Other photon interaction channels
+
+:::: {.slide-body}
+
+**Rayleigh scattering**
+
+Coherent elastic scattering on the atom; no atomic excitation or ionization.
+
+**Pair production on an electron**
+
+$\gamma+e^-\to e^-+e^-+e^+$; free-electron threshold $4m_ec^2$.
+
+**Photonuclear interactions**
+
+Energy transferred to the nucleus; resonant absorption and nuclear breakup can occur.
+
+::::
+
+::: {.notes}
+Original page 17. The photon cross-section plot contains these additional channels. Giant dipole resonances are collective nuclear excitations, not electron-shell processes.
+:::
+
+## Image sources and further reading
+
+:::: {.slide-body}
+
+**Particle Data Group**
+
+[Passage of particles through matter](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-passage-particles-matter.pdf) · [Original figures, CC BY 4.0](https://pdg.lbl.gov/2024/figures/figures.html)
+
+S. Navas et al. (Particle Data Group), *Phys. Rev. D* **110**, 030001 (2024).
+
+**Detector illustrations and data**
+
+[LCTPC: Working principle of a TPC](https://www.lctpc.org/e8/e57671)
+
+[ALICE / Heidelberg: TPC calibration and particle identification](https://www.physi.uni-heidelberg.de/~sma/research/tpc.php)
+
+[ALICE Collaboration, *The ALICE TPC*, NIM A 622 (2010) 316](https://arxiv.org/abs/1001.1950) (numbers used in the TPC widget)
+
+[Explore LHCb](https://explore-lhcb.web.cern.ch/)
+
+::::
+
+::: {.notes}
+Prior teaching source: Mikhail Mikhasenko, Lecture 05, 4 November 2025. All formulas and text are editable in this Quarto source; external figures retain their source attribution. See SOURCES.md for individual assets and source-page mapping.
+:::

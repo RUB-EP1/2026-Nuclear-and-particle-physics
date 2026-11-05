@@ -50,3 +50,24 @@
 !slides/lectures/Lecture_5/widgets/eshep/*.png
 !slides/lectures/Lecture_5/widgets/cloud-transport.jl
 !slides/lectures/Lecture_5/widgets/cloud-model-notes.txt
+
+# Lecture 6 source and attributed teaching figures; extraction stays local.
+!slides/lectures/Lecture_6/lecture.css
+!slides/lectures/Lecture_6/layout.html
+!slides/lectures/Lecture_6/quiz-questions.md
+!slides/lectures/Lecture_6/figures/*.png
+!slides/lectures/Lecture_6/figures/*.jpg
+!slides/lectures/Lecture_6/figures/*.svg
+!slides/lectures/Lecture_6/README.md
+!slides/lectures/Lecture_6/SOURCES.md
+!slides/lectures/Lecture_6/widgets/*.html
+!slides/lectures/Lecture_6/widgets/*.png
+!slides/lectures/Lecture_6/media/*.mp4
+!slides/lectures/Lecture_6/media/*.jpg
+!slides/lectures/Lecture_6/media/*.webm
+!slides/lectures/Lecture_6/widgets/eshep/*.html
+!slides/lectures/Lecture_6/widgets/eshep/*.js
+!slides/lectures/Lecture_6/widgets/eshep/*.css
+!slides/lectures/Lecture_6/widgets/eshep/*.png
+!slides/lectures/Lecture_6/widgets/cloud-transport.jl
+!slides/lectures/Lecture_6/widgets/cloud-model-notes.txt

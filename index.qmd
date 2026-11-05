@@ -92,13 +92,25 @@ differential cross sections.
 
 ### Interaction of particles with matter
 
-Recap of cross sections and luminosity; ionization and dE/dx, bremsstrahlung,
-multiple scattering, photon and nuclear interactions, Cherenkov light,
-and a 3D time projection chamber.
+Recap of phase space, cross sections and luminosity; ionization, the TPC,
+bremsstrahlung and multiple scattering.
 
 [Open slides](slides/lectures/Lecture_5/Lecture_5.qmd){.btn-main}
 [Download PDF](slides/lectures/Lecture_5/Lecture_5.pdf){.chip download="Lecture_5.pdf"}
 :::
+
+::: {.course-card}
+[Lecture 6 · Matter]{.card-tag}
+
+### Interaction of particles with matter
+
+Ionization review, bremsstrahlung, multiple scattering, photon and nuclear
+interactions, Cherenkov light, and a 3D time projection chamber.
+
+[Open slides](slides/lectures/Lecture_6/Lecture_6.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_6/Lecture_6.pdf){.chip download="Lecture_6.pdf"}
+:::
+
 
 ::::
 
