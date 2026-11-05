@@ -133,6 +133,12 @@ Includes class work for **November 6** on phase space, threshold energies, and t
 [Download exercise sheet 3 (PDF)](exercises/Sheet_3/Sheet_3.pdf){.btn-main}
 
 
+### Exercise 4
+Thomson problems **1.8, 1.9, 2.7, and 3.1**. Distributed **November 6, 2026**;
+due **November 13, 2026, at the lecture**.
+[Download exercise sheet 4 (PDF)](exercises/Sheet_4/Sheet_4.pdf){.btn-main}
+
+
 ## Schedule {.section-title}
 
 Lectures start **16 October 2026**.
