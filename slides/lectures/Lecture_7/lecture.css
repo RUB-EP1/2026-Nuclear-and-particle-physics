@@ -1,0 +1,204 @@
+/* Lecture 5: course typography, large figures and quiet source credits. */
+.reveal strong{color:#007dc5}
+.reveal .slide-body{padding:22px 0 18px;font-size:39px;line-height:1.3;gap:12px}
+.reveal .slide-body>p{margin:.35em 0}
+.reveal .split{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:54px;align-items:center;width:100%}
+.reveal .copy{font-size:36px;line-height:1.28}
+.reveal .copy p{margin:.35em 0 .65em}
+.reveal .copy ul{margin-left:.8em}
+.reveal .copy li{margin:.35em 0}
+.reveal .visual{min-width:0;text-align:center}
+.reveal .visual>p{margin:0}
+.reveal .visual img{width:100%;height:590px;object-fit:contain;display:block;margin:0 auto;max-width:100%;max-height:none}
+.reveal .credit{font-size:21px;line-height:1.25;color:#627383;margin-top:14px}
+.reveal .credit p{margin:0}
+.reveal .credit a{color:#627383}
+.reveal .take-home{border-left:5px solid #007dc5;padding:10px 0 10px 25px;margin-top:22px;font-size:35px;line-height:1.25}
+.reveal .take-home p{margin:0}
+.reveal .full-figure .slide-body{justify-content:center;gap:8px}
+.reveal .full-figure .visual img{height:650px;width:100%}
+.reveal .full-figure .take-home{margin-top:8px;font-size:30px}
+.reveal .slides section table{width:100%;table-layout:fixed;font-size:34px;line-height:1.25}
+.reveal .slides section th,.reveal .slides section td{padding:19px 20px;vertical-align:top;border-bottom:1px solid #dfe3e7}
+.reveal .slides section th{color:#007dc5}
+.reveal math[display="block"]{font-size:1.05em;margin:.45em 0}
+.reveal .formula-slide .slide-body{font-size:34px}
+.reveal .formula-slide math[display="block"]{font-size:.95em}
+.reveal .title-card .slide-body{flex:none;display:block;padding:10px 0}
+.reveal .title-card .subtitle{font-size:52px;margin:20px 0 90px}
+.reveal .title-card .slide-body>p{font-size:30px;color:#627383}
+.reveal .section-title .slide-body{font-size:45px;display:block;margin-top:60px}
+
+.reveal .visual figcaption{display:none}
+.reveal .visual figure{margin:0}
+.reveal .split .visual img{height:650px}
+
+/* Media takes the complete 1920 x 1080 slide; keep the native aspect ratio. */
+.reveal .slides>section.media-slide{padding:0!important;width:1920px!important;height:1080px!important;left:0!important;top:0!important;background:#000;display:block!important}
+.reveal .media-slide>h2{display:none}
+.reveal .media-slide .lecture-film{display:block;width:100%;height:100%;max-width:none;max-height:none;margin:0;object-fit:contain;background:#000}
+.reveal .media-slide>.widget{position:absolute;inset:0;width:100%;height:100%;margin:0;background:#060a13}
+.reveal .media-credit{position:absolute;top:16px;left:22px;max-width:360px;font-size:18px;line-height:1.35;color:#bfcbd9;text-align:left}
+.reveal .media-credit a{color:inherit}
+.reveal:has(.media-slide.present) .slide-number{display:none}
+.reveal .media-slide .widget iframe{max-width:none!important;max-height:none!important}
+.reveal:has(.media-slide.present) .slide-number{display:none!important}
+
+/* AEPSHEP layout: footer is part of the scaled slide canvas. */
+.reveal .deck-footer {
+  position:absolute; left:var(--gutter-x); right:var(--gutter-x); bottom:28px;
+  display:flex; justify-content:space-between; gap:28px;
+  box-sizing:border-box; padding:12px 100px 0 0; border-top:1px solid var(--line);
+  color:var(--muted); font-family:var(--deck-font); font-size:20px; font-weight:400; letter-spacing:0; line-height:1.2; z-index:20;
+  pointer-events:none;
+}
+
+.reveal .slide-number {font-family:var(--deck-font)!important;font-size:20px!important;font-weight:400;bottom:28px!important;}
+.reveal:has(.media-slide.present) .deck-footer {display:none!important;}
+/* Phase space: the formula in coloured blocks, one explanation card under each idea. */
+.reveal .ps-formula { display:flex; justify-content:center; align-items:center; gap:20px; font-size:44px; margin:0 0 26px; }
+.reveal .ps-term { padding:6px 22px; border-radius:12px; }
+.reveal .ps-term math[display="block"] { margin:0; }
+.reveal .ps-term.ps-measure { background:#e6f1f8; color:#087bb9; border:3px solid #087bb9; }
+.reveal .ps-term.ps-delta { background:#fbeaec; color:#b8384a; border:3px solid #d1495b; }
+.reveal .ps-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.reveal .ps-card { font-size:27px; line-height:1.3; padding:14px 22px; border-top:8px solid; background:#f7f9fb; }
+.reveal .ps-card p { margin:0 0 10px; }
+.reveal .ps-card.ps-measure { border-color:#087bb9; }
+.reveal .ps-card.ps-shell { border-color:#2a9d74; }
+.reveal .ps-card.ps-delta { border-color:#d1495b; }
+.reveal .ps-card-title { font-size:30px; font-weight:700; }
+.reveal .ps-card.ps-measure .ps-card-title { color:#087bb9; }
+.reveal .ps-card.ps-shell .ps-card-title { color:#2a9d74; }
+.reveal .ps-card.ps-delta .ps-card-title { color:#d1495b; }
+
+.reveal .phase-space-components .slide-body {justify-content:center;gap:28px;}
+.reveal .phase-space-components .ps-term math {color:inherit;}
+.reveal .phase-space-components .ps-card {font-size:32px;}
+.reveal .phase-space-components .ps-card-title {font-size:34px;}
+.reveal .counting-figure .slide-body {font-size:32px;gap:18px;}
+.reveal .counting-figure img {width:100%;height:440px;object-fit:contain;margin:0;}
+.reveal .counting-figure figure {margin:0;}
+.reveal .counting-figure figcaption {display:none;}
+
+/* Process overview: four distinct mechanisms, no table. */
+.reveal .process-overview .slide-body {justify-content:center;gap:32px;}
+.reveal .process-grid {display:grid;grid-template-columns:1fr 1fr;gap:30px;width:100%;}
+.reveal .process-box {border:1px solid #dfe3e7;border-top:7px solid var(--process-color);padding:28px 32px;background:#f8fafc;min-width:0;}
+/* Titles are spans, not headings: a heading inside a div becomes a nested <section>, which Reveal counts as a slide. */
+.reveal .process-box .process-title {display:block;font-size:39px;font-weight:600;line-height:1.15;color:var(--process-color);margin:0 0 24px;}
+.reveal .process-box p {font-size:32px;line-height:1.3;margin:12px 0;}
+.reveal .process-box strong {color:inherit;}
+.reveal .process-ionization {--process-color:#087bb9;}
+.reveal .process-scattering {--process-color:#2a9d74;}
+.reveal .process-radiation {--process-color:#b8384a;}
+.reveal .process-nuclear {--process-color:#8660a5;}
+.reveal .process-summary {font-size:30px;color:#627383;text-align:center;}
+.reveal .process-photon {--process-color:#c9761a;}
+.reveal .process-cherenkov {--process-color:#4357c9;}
+
+/* Six process sections: the title in the process colour, who/what/signal, and a roadmap with the current section marked. */
+.reveal section.section-title.process-section h2 {color:var(--process-color);}
+.reveal .process-section .slide-body {margin-top:44px;font-size:36px;}
+.reveal .section-who {display:inline-block;text-align:left;line-height:1.3;}
+.reveal .section-who p {margin:.35em 0;}
+.reveal .section-who strong {color:var(--process-color);}
+.reveal .roadmap {margin-top:70px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+.reveal .roadmap p {margin:0;display:contents;}
+.reveal .roadmap .step {font-size:23px;padding:7px 14px;border-top:5px solid var(--process-color);color:#8a949e;background:#f6f8fa;}
+.reveal .roadmap .step.here {color:#fff;background:var(--process-color);font-weight:600;}
+
+/* The map: processes against particles, rows coloured like the sections. */
+.reveal .proc {color:var(--process-color);font-weight:600;}
+.reveal .process-map .slide-body {justify-content:center;}
+.reveal .process-map table th:first-child {width:40%;}
+.reveal .process-map table td,.reveal .process-map table th {padding:13px 18px;}
+.reveal .process-map table td:not(:first-child) {font-size:40px;color:#33414e;}
+.reveal .map-legend {font-size:27px;color:#627383;margin-top:10px;}
+.reveal .slides section.process-map table,.reveal .slides section#what-a-detector-measures table {width:100%!important;}
+.reveal .process-map table td:not(:first-child),.reveal .process-map table th:not(:first-child) {text-align:center;}
+
+/* \overline in MathML: hide the short macron, draw the bar over the whole base (see layout.html). */
+.reveal mover.overbar > mo {color:transparent;}
+.reveal mover.overbar > :first-child {border-top:0.06em solid currentColor;padding-top:0.12em;}
+
+/* Recap: the counting figure fills the slide; derivation beside the beam's-eye widget. */
+.reveal .counting-figure img {height:640px;}
+.reveal .counting-slide .split {grid-template-columns:minmax(0,.4fr) minmax(0,.6fr);gap:40px;}
+.reveal .counting-slide .copy {font-size:33px;}
+.reveal .counting-slide .visual .widget {height:660px;background:#fff;}
+.reveal .counting-slide .widget iframe {max-width:none!important;max-height:none!important;}
+.reveal .notation {display:grid;grid-template-columns:1fr 1fr;gap:4px 26px;margin-top:20px;padding-top:12px;border-top:1px solid #dfe3e7;font-size:23px;line-height:1.3;color:#4a5560;}
+.reveal .notation p {margin:0;}
+.reveal .counting-slide .copy p {margin:.25em 0 .45em;}
+/* \boxed becomes <menclose notation="box">, which Chrome's MathML does not draw. */
+.reveal menclose[notation="box"] {border:0.05em solid currentColor;padding:0.15em 0.3em;}
+
+/* Cloud chamber fills the slide even when layout.html adds a slide-body wrapper. */
+.reveal .cloud-chamber-slide .slide-body{position:absolute;inset:0;padding:0;margin:0;width:100%;height:100%;}
+.reveal .cloud-chamber-slide .widget{position:absolute;inset:0;margin:0;width:100%;height:100%;}
+
+/* Shopping list: seven detector types in one table, tagged with the lecture that covers them. */
+.reveal .shopping-list .slide-body {justify-content:center;gap:10px;}
+.reveal .slides section.shopping-list table {width:100%!important;font-size:27px;line-height:1.22;}
+.reveal .shopping-list table th,.reveal .shopping-list table td {padding:10px 14px;}
+.reveal .shopping-list table th:nth-child(1) {width:19%;}
+.reveal .shopping-list table th:nth-child(2) {width:31%;}
+.reveal .shopping-list table th:nth-child(3) {width:25%;}
+.reveal .shopping-list table th:nth-child(4) {width:25%;}
+.reveal .lec {font-size:.7em;font-weight:600;padding:1px 9px;border-radius:9px;color:#fff;margin-left:8px;white-space:nowrap;}
+.reveal .lec7 {background:#087bb9;}
+.reveal .lec8 {background:#5b6b7a;}
+.reveal .shopping-list table td,.reveal .shopping-list table th {white-space:normal;overflow-wrap:break-word;}
+.reveal .shopping-list.short table {font-size:32px!important;}
+.reveal .measure-list table {font-size:34px;}
+.reveal .measure-list table td:first-child {font-weight:600;color:#007dc5;}
+.reveal .slides section table td,.reveal .slides section table th {white-space:normal;overflow-wrap:break-word;}
+.reveal .split.fig-wide {grid-template-columns:minmax(0,.36fr) minmax(0,.64fr);}
+.reveal .slides section table {table-layout:fixed;width:100%!important;}
+.reveal .split.fig-wide .copy {font-size:31px;line-height:1.25;}
+.reveal .split.fig-wide .copy li {margin:.22em 0;}
+.reveal .widget-slide .slide-body{padding:.25em 0 0;justify-content:stretch}
+.reveal .widget-slide .widget{flex:1;min-height:0}
+.reveal .widget-slide .widget iframe{max-width:none!important;max-height:none!important}
+
+/* Photo slides: a row of captioned images; CERN images that may not be redistributed load from figures/local only. */
+.reveal .photo-slide .slide-body{justify-content:center;}
+.reveal .photos{display:grid;gap:34px;width:100%;align-items:start;}
+.reveal .photos.cols3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.reveal .photos.cols2{grid-template-columns:repeat(2,minmax(0,1fr));}
+.reveal .photo{min-width:0;}
+.reveal .photo figure,.reveal .photo p{margin:0;}
+.reveal .photo figcaption{display:none;}
+.reveal .photo img,.reveal .local-photo img{display:block;width:100%;height:520px;object-fit:contain;margin:0;background:#f4f6f8;}
+.reveal .photos.cols2 .photo img,.reveal .photos.cols2 .local-photo img{height:560px;}
+.reveal .photo .cap{font-size:25px;line-height:1.25;margin-top:12px;color:#627383;}
+.reveal .photo .cap strong{color:#1d2733;font-size:29px;}
+.reveal .local-photo.missing{height:520px;display:flex;align-items:center;justify-content:center;text-align:center;background:#f4f6f8;border:2px dashed #c9d1d9;color:#8a949e;font-size:26px;padding:20px;box-sizing:border-box;}
+.reveal .photos.cols2 .local-photo.missing{height:560px;}
+.reveal .schematics .photo img{background:#fff;border:1px solid #dfe3e7;}
+.reveal .photos.cols1{grid-template-columns:minmax(0,1fr);}
+.reveal .photos.cols1 .local-photo img,.reveal .photos.cols1 .photo img{height:auto;max-height:360px;margin:0 auto;}
+.reveal .photos.cols1 .local-photo.missing{height:300px;}
+.reveal .photos.cols1 .photo .cap{text-align:center;}
+.reveal .photo-slide.short .photos.cols2 .photo img,.reveal .photo-slide.short .photos.cols2 .local-photo img{height:440px;}
+.reveal .photo-slide.short .photos.cols2 .local-photo.missing{height:440px;}
+.reveal .photo-slide.short .take-home{font-size:30px;margin-top:14px;}
+.reveal .photo-slide.tall-cap .photo .cap{font-size:24px;}
+.reveal .photo-slide.tall-cap .photo .cap strong{font-size:26px;}
+.reveal .photo-slide.tall-cap .photos.cols2 .photo img{height:380px;}
+.reveal .challenges table{font-size:30px;}
+.reveal .challenges td:first-child{width:21%;}
+/* Recap slides: three short bullets and one row of figures from Lecture 6. */
+.reveal .recap .slide-body{font-size:33px;justify-content:flex-start;gap:6px;}
+.reveal .recap .slide-body>ul{margin:0 0 4px 1em;}
+.reveal .recap .slide-body li{margin:.18em 0;}
+.reveal .recap .photos{margin-top:6px;}
+.reveal .recap .photos .photo img{height:430px;}
+.reveal .recap .photos .photo .cap{font-size:22px;margin-top:6px;}
+.reveal .recap .photos .photo .cap strong{font-size:25px;}
+.reveal .recap .photos.cols3 .photo img{height:380px;}
+.reveal .take-fig .slide-body{font-size:33px;justify-content:flex-start;gap:4px;}
+.reveal .take-fig .slide-body>ul{margin:0 0 4px 1em;}
+.reveal .take-fig .slide-body li{margin:.2em 0;}
+.reveal .take-fig .visual img{height:520px;width:100%;object-fit:contain;}

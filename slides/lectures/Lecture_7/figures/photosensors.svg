@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 880" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<text x="330.0" y="40.0" font-size="38" fill="#1d2733" text-anchor="middle" font-weight="700">Photomultiplier tube (PMT)</text>
+<g transform="translate(0,60)">
+<path d="M150,90 h360 v470 h-360 Z" fill="#f7f9fb" stroke="#9aa5b1" stroke-width="4"/>
+<rect x="160" y="100" width="340" height="16" rx="0" fill="#cfe9de" stroke="#2a9d74" stroke-width="3"/>
+<text x="520.0" y="115.0" font-size="26" fill="#2a9d74" text-anchor="start" font-weight="400">photocathode</text>
+<line x1="260" y1="22" x2="260.0" y2="82.0" stroke="#087bb9" stroke-width="5"/><path d="M260,98 L268.0,82.0 L252.0,82.0 Z" fill="#087bb9"/>
+<text x="236.0" y="52.0" font-size="28" fill="#087bb9" text-anchor="end" font-weight="400">photon</text>
+<rect x="190" y="170" width="120" height="16" rx="0" fill="#fbeaec" stroke="#b8384a" stroke-width="3"/>
+<rect x="290" y="230" width="120" height="16" rx="0" fill="#fbeaec" stroke="#b8384a" stroke-width="3"/>
+<rect x="190" y="290" width="120" height="16" rx="0" fill="#fbeaec" stroke="#b8384a" stroke-width="3"/>
+<rect x="290" y="350" width="120" height="16" rx="0" fill="#fbeaec" stroke="#b8384a" stroke-width="3"/>
+<rect x="190" y="410" width="120" height="16" rx="0" fill="#fbeaec" stroke="#b8384a" stroke-width="3"/>
+<text x="520.0" y="238.0" font-size="26" fill="#b8384a" text-anchor="start" font-weight="400">dynodes</text>
+<rect x="250" y="490" width="160" height="16" rx="0" fill="#d5dbe1" stroke="#8a949e" stroke-width="3"/>
+<text x="520.0" y="505.0" font-size="26" fill="#71787f" text-anchor="start" font-weight="400">anode</text>
+<path d="M250,116 L250,170 L330,230 L250,290 L330,350 L250,410 L330,495" fill="none" stroke="#c9761a" stroke-width="3" stroke-dasharray="3 9" stroke-linecap="round"/>
+<circle cx="243.5" cy="196" r="5.5" fill="#c9761a"/><circle cx="256.5" cy="196" r="5.5" fill="#c9761a"/><circle cx="310.5" cy="256" r="5.5" fill="#c9761a"/><circle cx="323.5" cy="256" r="5.5" fill="#c9761a"/><circle cx="336.5" cy="256" r="5.5" fill="#c9761a"/><circle cx="349.5" cy="256" r="5.5" fill="#c9761a"/><circle cx="204.5" cy="316" r="5.5" fill="#c9761a"/><circle cx="217.5" cy="316" r="5.5" fill="#c9761a"/><circle cx="230.5" cy="316" r="5.5" fill="#c9761a"/><circle cx="243.5" cy="316" r="5.5" fill="#c9761a"/><circle cx="256.5" cy="316" r="5.5" fill="#c9761a"/><circle cx="269.5" cy="316" r="5.5" fill="#c9761a"/><circle cx="282.5" cy="316" r="5.5" fill="#c9761a"/><circle cx="295.5" cy="316" r="5.5" fill="#c9761a"/><text x="350" y="396" font-size="26" fill="#c9761a" text-anchor="middle" font-weight="700">16</text><text x="250" y="455" font-size="26" fill="#c9761a" text-anchor="middle" font-weight="700">32</text>
+</g>
+<circle cx="112" cy="132" r="0" fill="none"/>
+<text x="120.0" y="732.0" font-size="28" fill="#1d2733" text-anchor="start" font-weight="600">1 photon → 1 photoelectron → δⁿ electrons at the anode</text>
+<text x="120.0" y="772.0" font-size="26" fill="#71787f" text-anchor="start" font-weight="400">drawn here: each dynode doubles (δ = 2); real dynodes: δ ≈ 3–5</text>
+<text x="120.0" y="806.0" font-size="26" fill="#71787f" text-anchor="start" font-weight="400">so n ≈ 8–12 dynodes at about 100 V per step give 10⁶–10⁷</text>
+<circle cx="132" cy="842" r="7" fill="#c9761a"/><text x="150.0" y="850.0" font-size="24" fill="#71787f" text-anchor="start" font-weight="400">= electrons (a number where dots would crowd)</text>
+<text x="1270.0" y="40.0" font-size="38" fill="#1d2733" text-anchor="middle" font-weight="700">Silicon photomultiplier (SiPM)</text>
+<rect x="1026" y="86" width="522" height="522" rx="8" fill="#e6f1f8" stroke="#7fb2d4" stroke-width="3"/>
+<rect x="1040" y="100" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1112" y="100" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1184" y="100" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1256" y="100" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1328" y="100" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1400" y="100" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1472" y="100" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1040" y="172" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1112" y="172" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1184" y="172" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1256" y="172" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1328" y="172" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1400" y="172" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1472" y="172" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1040" y="244" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1112" y="244" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1184" y="244" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1256" y="244" width="62" height="62" rx="6" fill="#fbe0e4" stroke="#c95a6b" stroke-width="3"/>
+<circle cx="1287.0" cy="275.0" r="12" fill="#b8384a"/>
+<rect x="1328" y="244" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1400" y="244" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1472" y="244" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1040" y="316" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1112" y="316" width="62" height="62" rx="6" fill="#fbe0e4" stroke="#c95a6b" stroke-width="3"/>
+<circle cx="1143.0" cy="347.0" r="12" fill="#b8384a"/>
+<rect x="1184" y="316" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1256" y="316" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1328" y="316" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1400" y="316" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1472" y="316" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1040" y="388" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1112" y="388" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1184" y="388" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1256" y="388" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1328" y="388" width="62" height="62" rx="6" fill="#fbe0e4" stroke="#c95a6b" stroke-width="3"/>
+<circle cx="1359.0" cy="419.0" r="12" fill="#b8384a"/>
+<rect x="1400" y="388" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1472" y="388" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1040" y="460" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1112" y="460" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1184" y="460" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1256" y="460" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1328" y="460" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1400" y="460" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1472" y="460" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1040" y="532" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1112" y="532" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1184" y="532" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1256" y="532" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1328" y="532" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1400" y="532" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<rect x="1472" y="532" width="62" height="62" rx="6" fill="#fff" stroke="#9bc4de" stroke-width="3"/>
+<text x="1292.0" y="648.0" font-size="28" fill="#71787f" text-anchor="middle" font-weight="400">each square: one diode + resistor</text>
+<text x="1292.0" y="684.0" font-size="28" fill="#71787f" text-anchor="middle" font-weight="400">a photon makes its cell fire (red): a full pulse</text>
+<line x1="1560" y1="460" x2="1890" y2="460" stroke="#1d2733" stroke-width="3"/><line x1="1560" y1="460" x2="1560" y2="240" stroke="#1d2733" stroke-width="3"/>
+<path d="M1590,460 L1590,410 L1650,410 L1650,460" fill="#087bb9" fill-opacity="0.25" stroke="#087bb9" stroke-width="3"/>
+<text x="1620.0" y="496.0" font-size="24" fill="#71787f" text-anchor="middle" font-weight="400">1</text>
+<path d="M1690,460 L1690,360 L1750,360 L1750,460" fill="#087bb9" fill-opacity="0.25" stroke="#087bb9" stroke-width="3"/>
+<text x="1720.0" y="496.0" font-size="24" fill="#71787f" text-anchor="middle" font-weight="400">2</text>
+<path d="M1790,460 L1790,310 L1850,310 L1850,460" fill="#087bb9" fill-opacity="0.25" stroke="#087bb9" stroke-width="3"/>
+<text x="1820.0" y="496.0" font-size="24" fill="#71787f" text-anchor="middle" font-weight="400">3</text>
+<text x="1725.0" y="530.0" font-size="24" fill="#71787f" text-anchor="middle" font-weight="400">photons detected at once</text>
+<text x="1725.0" y="212.0" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="600">pulse height =</text>
+<text x="1725.0" y="244.0" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="600">number of fired cells</text>
+<text x="1270.0" y="744.0" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="600">gain about 10⁶, works in a magnetic field, small, cheap</text>
+<text x="1270.0" y="782.0" font-size="28" fill="#71787f" text-anchor="middle" font-weight="400">weakness: dark counts, rise with temperature and radiation</text>
+</svg>

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Momentum resolution of a barrel tracker</title>
+<script>if(new URLSearchParams(location.search).has('present'))document.documentElement.classList.add('presentation');</script>
+<style>
+:root{--ink:#1d2733;--muted:#627383;--line:#dfe3e7;--panel:#f7f9fb;--blue:#087bb9;--red:#b8384a;--orange:#c9761a;--green:#2a9d74;
+  --body:"Helvetica Neue",Helvetica,Arial,sans-serif;--mono:ui-monospace,"SFMono-Regular",Menlo,monospace}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--body)}
+body{font-size:15px;line-height:1.4}
+.wrap{max-width:1280px;margin:0 auto;padding:18px 20px 28px;display:flex;flex-direction:column;gap:12px}
+h1{font-size:28px;margin:0;font-weight:700}
+.lede{color:var(--muted);margin:0}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;aspect-ratio:16/7.6}
+.pane{margin:0;border:1px solid var(--line);border-radius:6px;background:var(--panel);display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.pane figcaption{font-size:14px;color:var(--muted);padding:8px 12px 0;font-weight:600}
+.plot{position:relative;flex:1 1 auto;min-height:0}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 22px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 14px}
+label{display:flex;flex-direction:column;gap:2px;font-size:14px;color:var(--muted)}
+label output{font-family:var(--mono);font-size:14px;color:var(--ink);text-transform:none;letter-spacing:0;float:right}
+label span.h{display:flex;justify-content:space-between;align-items:baseline}label span.h i{font-style:normal}
+input[type=range]{width:100%;accent-color:var(--blue)}
+.row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+button{font:inherit;font-size:14px;border:1px solid #b8c2cc;background:#fff;border-radius:4px;padding:6px 14px;cursor:pointer}
+button.primary{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600}
+button:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.readout{font-family:var(--mono);font-size:14px;display:flex;flex-wrap:wrap;gap:6px 26px}
+.readout b{color:var(--blue)}
+.key{display:flex;gap:18px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.key i{display:inline-block;width:22px;height:4px;vertical-align:middle;margin-right:6px;border-radius:2px}
+.presentation html,.presentation body{overflow:hidden}
+.presentation .wrap{max-width:none;box-sizing:border-box;height:100vh;padding:14px 26px;gap:10px;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto auto}
+.presentation h1{font-size:34px}
+.presentation .lede{font-size:20px}
+.presentation .stage{aspect-ratio:auto}
+.presentation .pane figcaption{font-size:19px}
+.presentation label{font-size:18px}
+.presentation label output{font-size:19px}
+.presentation button{font-size:19px;padding:8px 18px}
+.presentation .readout{font-size:20px}
+.presentation .key{font-size:17px}
+.presentation .controls{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px 20px;padding:8px 14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Momentum resolution of a barrel tracker</h1>
+<p class="lede">Toy tracker in a solenoid: N layers up to radius L, hit error σ<sub>x</sub> across the track, multiple scattering in a material budget x/X<sub>0</sub>. A circle is fitted to the hits.</p>
+</header>
+<div class="stage">
+<figure class="pane"><figcaption>One event: deviation from the straight line (vertical scale magnified)</figcaption><div class="plot"><canvas id="ev"></canvas></div></figure>
+<figure class="pane"><figcaption>Resolution σ(p<sub>T</sub>)/p<sub>T</sub> against p<sub>T</sub></figcaption><div class="plot"><canvas id="res"></canvas></div></figure>
+</div>
+<div class="controls">
+<label><span class="h"><i>Track p<sub>T</sub></i><output id="pTv"></output></span><input id="pT" type="range" min="0" max="1000" value="646"></label>
+<label><span class="h"><i>Field B</i><output id="Bv"></output></span><input id="B" type="range" min="0.5" max="4" step="0.1" value="3.8"></label>
+<label><span class="h"><i>Lever arm L</i><output id="Lv"></output></span><input id="L" type="range" min="0.3" max="1.5" step="0.05" value="1.1"></label>
+<label><span class="h"><i>Hit error σ<sub>x</sub></i><output id="sxv"></output></span><input id="sx" type="range" min="0" max="1000" value="404"></label>
+<label><span class="h"><i>Layers N</i><output id="Nv"></output></span><input id="N" type="range" min="3" max="20" step="1" value="10"></label>
+<label><span class="h"><i>Material x/X<sub>0</sub></i><output id="mv"></output></span><input id="m" type="range" min="0.5" max="10" step="0.5" value="2"></label>
+</div>
+<div class="row">
+<button class="primary" id="new">New event</button>
+<button id="toys">Run toy experiments</button>
+<div class="key"><span><i style="background:#087bb9"></i>hit resolution</span><span><i style="background:#b8384a"></i>multiple scattering</span><span><i style="background:#1d2733"></i>quadratic sum</span><span><i style="background:#c9761a"></i>toy experiments (200 tracks per point)</span></div>
+</div>
+<div class="readout" id="readout"></div>
+</div>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const S={pT:50,B:3.8,L:1.1,sx:10,N:10,m:2,toys:null};
+const P_MIN=1.5,P_MAX=1000,SX_MIN=1,SX_MAX=300;
+const logmap=(v,lo,hi)=>lo*Math.pow(hi/lo,v/1000);
+function readControls(){
+  S.pT=logmap(+$('pT').value,P_MIN,P_MAX); S.B=+$('B').value; S.L=+$('L').value;
+  S.sx=logmap(+$('sx').value,SX_MIN,SX_MAX); S.N=+$('N').value; S.m=+$('m').value;
+  $('pTv').textContent=S.pT.toFixed(S.pT<10?1:0)+' GeV/c'; $('Bv').textContent=S.B.toFixed(1)+' T'; $('Lv').textContent=S.L.toFixed(2)+' m';
+  $('sxv').textContent=S.sx.toFixed(S.sx<10?1:0)+' µm'; $('Nv').textContent=S.N; $('mv').textContent=S.m.toFixed(1)+' %';
+}
+function randn(){let u=0,v=0;while(!u)u=Math.random();v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+
+// Propagate a charged track through N thin scattering layers; return hits and the path.
+function simulate(pT,B,L,sxum,N,mpct,keepPath){
+  const r=pT/(0.3*B), kappa=1/r, ds=Math.min(0.002,L/400);
+  const th0=0.0136/pT*Math.sqrt(mpct/100/N);          // rms kink per layer (beta = 1, p = pT in the barrel)
+  const sx=sxum*1e-6;
+  let x=0,y=0,a=0,rad=0,next=1,path=keepPath?[[0,0]]:null; const hits=[];
+  const maxSteps=Math.ceil(2*Math.PI*r/ds)+10;
+  for(let i=0;i<maxSteps&&next<=N;i++){
+    const nx=x+ds*Math.cos(a), ny=y+ds*Math.sin(a); a+=kappa*ds;
+    const R=L*next/N, r0=Math.hypot(x,y), r1=Math.hypot(nx,ny);
+    if(r0<R&&r1>=R){
+      const f=(R-r0)/(r1-r0), hx=x+f*(nx-x), hy=y+f*(ny-y), tx=-hy/R, ty=hx/R, e=sx*randn();
+      hits.push({x:hx+tx*e,y:hy+ty*e,xt:hx,yt:hy,R}); a+=th0*randn(); next++;
+    }
+    x=nx;y=ny; if(keepPath)path.push([x,y]);
+  }
+  return {hits,path,r};
+}
+// Algebraic (Kasa) circle fit: x^2+y^2+D x+E y+F=0
+function fitCircle(h){
+  if(h.length<3)return null;
+  let Sxx=0,Sxy=0,Syy=0,Sx=0,Sy=0,Sz=0,Sxz=0,Syz=0;const n=h.length;
+  for(const p of h){const z=p.x*p.x+p.y*p.y;Sxx+=p.x*p.x;Sxy+=p.x*p.y;Syy+=p.y*p.y;Sx+=p.x;Sy+=p.y;Sz+=z;Sxz+=p.x*z;Syz+=p.y*z;}
+  // normal equations for [D E F]: minimize sum (z + D x + E y + F)^2
+  const A=[[Sxx,Sxy,Sx],[Sxy,Syy,Sy],[Sx,Sy,n]],b=[-Sxz,-Syz,-Sz];
+  const sol=solve3(A,b); if(!sol)return null;
+  const [D,E,F]=sol, xc=-D/2, yc=-E/2, r2=xc*xc+yc*yc-F; if(!(r2>0))return null;
+  return {xc,yc,r:Math.sqrt(r2),kappa:(yc>0?1:-1)/Math.sqrt(r2)};
+}
+function solve3(A,b){
+  const M=A.map((r,i)=>[...r,b[i]]);
+  for(let c=0;c<3;c++){let p=c;for(let r=c+1;r<3;r++)if(Math.abs(M[r][c])>Math.abs(M[p][c]))p=r;
+    if(Math.abs(M[p][c])<1e-30)return null;[M[c],M[p]]=[M[p],M[c]];
+    for(let r=c+1;r<3;r++){const f=M[r][c]/M[c][c];for(let k=c;k<4;k++)M[r][k]-=f*M[c][k];}}
+  const x=[0,0,0];for(let r=2;r>=0;r--){let s=M[r][3];for(let k=r+1;k<3;k++)s-=M[r][k]*x[k];x[r]=s/M[r][r];}return x;
+}
+// Textbook estimates: Gluckstern hit-resolution term, and the multiple-scattering term.
+const resMeas=(pT,B,L,sxum,N)=>sxum*1e-6*pT/(0.3*B*L*L)*Math.sqrt(720/(N+4));
+const resMS=(B,L,mpct)=>0.0136/0.3*Math.sqrt(mpct/100)/(B*L);
+const resTot=(pT)=>Math.hypot(resMeas(pT,S.B,S.L,S.sx,S.N),resMS(S.B,S.L,S.m));
+
+// Toy experiment: relative spread of the fitted curvature.
+function toySigma(pT,n){
+  const vals=[];
+  for(let i=0;i<n;i++){const ev=simulate(pT,S.B,S.L,S.sx,S.N,S.m,false);const f=fitCircle(ev.hits);if(f)vals.push(f.kappa*ev.r-1);}
+  if(vals.length<20)return null; vals.sort((a,b)=>a-b);
+  const q=p=>vals[Math.min(vals.length-1,Math.floor(p*vals.length))];
+  return (q(0.8413)-q(0.1587))/2;              // half-width of the central 68 %
+}
+
+let ev=null;
+function newEvent(){ev=simulate(S.pT,S.B,S.L,S.sx,S.N,S.m,true);ev.fit=fitCircle(ev.hits);draw();}
+
+// ---------- drawing helpers ----------
+function setup(c){const d=window.devicePixelRatio||1,w=c.clientWidth,h=c.clientHeight;if(c.width!==Math.round(w*d)||c.height!==Math.round(h*d)){c.width=Math.round(w*d);c.height=Math.round(h*d);}
+  const g=c.getContext('2d');g.setTransform(d,0,0,d,0,0);g.clearRect(0,0,w,h);return {g,w,h};}
+function nice(lo,hi,n){const span=hi-lo,raw=span/n,p=Math.pow(10,Math.floor(Math.log10(raw))),f=raw/p,s=(f<1.5?1:f<3?2:f<7?5:10)*p;const t=[];for(let v=Math.ceil(lo/s)*s;v<=hi+1e-12;v+=s)t.push(+v.toFixed(12));return t;}
+const FS=()=>document.documentElement.classList.contains('presentation')?20:13;
+
+function drawEvent(){
+  const {g,w,h}=setup($('ev')); const fs=FS(); const ml=Math.round(fs*4.4),mr=14,mt=12,mb=Math.round(fs*2.6);
+  const L=S.L, rr=ev.path, sag=S.L*S.L/(2*ev.r); // m, parabola estimate at the outer layer
+  let ymax=0;for(const p of rr)ymax=Math.max(ymax,Math.abs(p[1]));for(const p of ev.hits)ymax=Math.max(ymax,Math.abs(p.y));ymax=Math.max(ymax,1e-4)*1.25;
+  const X=x=>ml+(x/(L*1.04))*(w-ml-mr), Y=y=>h-mb-(y/ymax)*(h-mt-mb);
+  g.font=fs+'px Helvetica,Arial,sans-serif';g.fillStyle='#627383';g.strokeStyle='#e3e8ec';g.lineWidth=1;
+  const unit=ymax<0.02?1e3:1e3, ylab='y (mm)';
+  for(const t of nice(0,ymax*1e3,5)){const y=Y(t/1e3);g.beginPath();g.moveTo(ml,y);g.lineTo(w-mr,y);g.stroke();g.textAlign='right';g.fillText(t<10?+t.toFixed(2):t.toFixed(0),ml-6,y+fs*.35);}
+  for(const t of nice(0,L,5)){const x=X(t);g.beginPath();g.moveTo(x,mt);g.lineTo(x,h-mb);g.stroke();g.textAlign='center';g.fillText(t.toFixed(1),x,h-mb+fs*1.15);}
+  g.textAlign='center';g.fillText('x along the initial direction (m)',(ml+w-mr)/2,h-4);
+  g.save();g.translate(fs*.9,(mt+h-mb)/2);g.rotate(-Math.PI/2);g.fillText(ylab,0,0);g.restore();
+  // layers
+  g.strokeStyle='#c9d1d9';g.setLineDash([4,5]);for(let i=1;i<=S.N;i++){const x=X(S.L*i/S.N);g.beginPath();g.moveTo(x,mt);g.lineTo(x,h-mb);g.stroke();}g.setLineDash([]);
+  // true path
+  g.strokeStyle='#087bb9';g.lineWidth=2.5;g.beginPath();rr.forEach((p,i)=>{i?g.lineTo(X(p[0]),Y(p[1])):g.moveTo(X(p[0]),Y(p[1]));});g.stroke();
+  // fit
+  if(ev.fit){const f=ev.fit;g.strokeStyle='#c9761a';g.lineWidth=2;g.setLineDash([9,6]);g.beginPath();let first=true;
+    for(let k=0;k<=120;k++){const x=L*1.0*k/120,d=f.r*f.r-(x-f.xc)*(x-f.xc);if(d<0)continue;const y=f.yc-Math.sign(f.yc)*Math.sqrt(d);first?g.moveTo(X(x),Y(y)):g.lineTo(X(x),Y(y));first=false;}
+    g.stroke();g.setLineDash([]);}
+  // hits
+  g.fillStyle='#b8384a';for(const p of ev.hits){g.beginPath();g.arc(X(p.x),Y(p.y),Math.max(4,fs*.3),0,7);g.fill();}
+  // legend
+  g.textAlign='left';g.fillStyle='#087bb9';g.fillText('true track',ml+10,mt+fs*1.1);g.fillStyle='#b8384a';g.fillText('hits',ml+10+fs*7,mt+fs*1.1);g.fillStyle='#c9761a';g.fillText('fitted circle',ml+10+fs*11,mt+fs*1.1);
+}
+
+function drawRes(){
+  const {g,w,h}=setup($('res')); const fs=FS(); const ml=Math.round(fs*4.2),mr=16,mt=12,mb=Math.round(fs*2.6);
+  const x0=Math.log10(P_MIN),x1=Math.log10(P_MAX),y0=-4,y1=0.6;
+  const X=p=>ml+(Math.log10(p)-x0)/(x1-x0)*(w-ml-mr),Y=v=>h-mb-(Math.log10(v)-y0)/(y1-y0)*(h-mt-mb);
+  g.font=fs+'px Helvetica,Arial,sans-serif';g.fillStyle='#627383';g.strokeStyle='#e3e8ec';g.lineWidth=1;
+  for(let e=Math.ceil(y0);e<=y1;e++){const y=Y(Math.pow(10,e));g.beginPath();g.moveTo(ml,y);g.lineTo(w-mr,y);g.stroke();g.textAlign='right';
+    g.fillText(e===0?'100 %':e===-1?'10 %':e===-2?'1 %':e===-3?'0.1 %':'0.01 %',ml-6,y+fs*.35);}
+  for(const p of [2,5,10,20,50,100,200,500,1000]){const x=X(p);g.beginPath();g.moveTo(x,mt);g.lineTo(x,h-mb);g.stroke();g.textAlign=p===1000?'right':'center';g.fillText(p,x+(p===1000?4:0),h-mb+fs*1.15);}
+  g.textAlign='center';g.fillText('pT (GeV/c)',(ml+w-mr)/2,h-4);
+  g.save();g.beginPath();g.rect(ml,mt,w-ml-mr,h-mt-mb);g.clip();
+  const curve=(f,col,wd)=>{g.strokeStyle=col;g.lineWidth=wd;g.beginPath();for(let k=0;k<=160;k++){const p=Math.pow(10,x0+(x1-x0)*k/160),v=f(p);k?g.lineTo(X(p),Y(v)):g.moveTo(X(p),Y(v));}g.stroke();};
+  curve(p=>resMeas(p,S.B,S.L,S.sx,S.N),'#087bb9',2.5);
+  curve(p=>resMS(S.B,S.L,S.m),'#b8384a',2.5);
+  curve(resTot,'#1d2733',3.5);
+  // marker
+  g.strokeStyle='#8a949e';g.setLineDash([6,5]);g.lineWidth=1.5;g.beginPath();g.moveTo(X(S.pT),mt);g.lineTo(X(S.pT),h-mb);g.stroke();g.setLineDash([]);
+  g.fillStyle='#1d2733';g.beginPath();g.arc(X(S.pT),Y(resTot(S.pT)),Math.max(5,fs*.38),0,7);g.fill();
+  if(S.toys){g.fillStyle='#c9761a';for(const t of S.toys){if(t.s>0){g.beginPath();g.arc(X(t.p),Y(t.s),Math.max(5,fs*.38),0,7);g.fill();}}}
+  g.restore();
+}
+
+function readout(){
+  const r=ev.r, sag=S.L*S.L/(8*r)*1e3;
+  const m=resMeas(S.pT,S.B,S.L,S.sx,S.N),s=resMS(S.B,S.L,S.m),t=Math.hypot(m,s);
+  const f=ev.fit,pf=f?0.3*S.B*f.r:null,pct=x=>x>=0.1?(x*100).toFixed(0)+' %':x>=0.001?(x*100).toFixed(1)+' %':(x*100).toFixed(2)+' %';
+  const hitsN=ev.hits.length;
+  $('readout').innerHTML=`<span>radius r = <b>${r<10?r.toFixed(2):r.toFixed(0)} m</b></span><span>sagitta s = L²/8r ≈ <b>${sag.toFixed(sag<1?2:1)} mm</b></span>`+
+    `<span>hits: <b>${hitsN}</b></span><span>fitted p<sub>T</sub> = <b>${pf?pf.toFixed(pf<10?2:1)+' GeV/c':'no fit'}</b> (true ${S.pT.toFixed(S.pT<10?2:1)})</span>`+
+    `<span>expected σ(p<sub>T</sub>)/p<sub>T</sub> = <b>${pct(t)}</b> (hits ${pct(m)}, scattering ${pct(s)})</span>`;
+}
+function draw(){drawEvent();drawRes();readout();}
+function changed(){S.toys=null;readControls();newEvent();}
+for(const id of ['pT','B','L','sx','N','m'])$(id).addEventListener('input',changed);
+$('new').addEventListener('click',newEvent);
+$('toys').addEventListener('click',()=>{
+  $('toys').disabled=true;$('toys').textContent='Running…';
+  setTimeout(()=>{const pts=[];for(let k=0;k<=9;k++){const p=P_MIN*Math.pow(P_MAX/P_MIN,k/9);pts.push({p,s:toySigma(p,200)});}
+    S.toys=pts;$('toys').disabled=false;$('toys').textContent='Run toy experiments';draw();},30);
+});
+window.addEventListener('resize',draw);
+readControls();newEvent();
+// URL parameters for the poster / start values, e.g. ?pT=100&toys=1
+(function(){const q=new URLSearchParams(location.search);const setv=(id,v,inv)=>{if(q.has(id)){$(id).value=inv(+q.get(id));}};
+  setv('pT',0,v=>1000*Math.log(v/P_MIN)/Math.log(P_MAX/P_MIN));setv('B',0,v=>v);setv('L',0,v=>v);setv('sx',0,v=>1000*Math.log(v/SX_MIN)/Math.log(SX_MAX/SX_MIN));setv('N',0,v=>v);setv('m',0,v=>v);
+  readControls();newEvent();if(q.has('toys'))$('toys').click();})();
+</script>
+</body>
+</html>

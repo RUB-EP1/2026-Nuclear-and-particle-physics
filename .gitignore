@@ -71,3 +71,13 @@
 !slides/lectures/Lecture_6/widgets/eshep/*.png
 !slides/lectures/Lecture_6/widgets/cloud-transport.jl
 !slides/lectures/Lecture_6/widgets/cloud-model-notes.txt
+
+# Lecture 7: source, layout and attributed or redrawn teaching figures.
+!slides/lectures/Lecture_7/lecture.css
+!slides/lectures/Lecture_7/layout.html
+!slides/lectures/Lecture_7/figures/*.png
+!slides/lectures/Lecture_7/figures/*.jpg
+!slides/lectures/Lecture_7/figures/*.svg
+!slides/lectures/Lecture_7/widgets/*.html
+!slides/lectures/Lecture_7/widgets/*.png
+# Lecture 7: CERN photographs (CDS terms of use) stay in figures/local and are never committed.

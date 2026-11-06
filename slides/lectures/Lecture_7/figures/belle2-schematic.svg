@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1330 780" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<path fill-rule="evenodd" fill="#e6f1f8" d="M270,330 a40,40 0 1,0 80,0 a40,40 0 1,0 -80,0 M298,330 a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0"/>
+<path fill-rule="evenodd" fill="#8cc4e8" stroke="#1d6fa5" stroke-width="3" d="M160,330 a150,150 0 1,0 300,0 a150,150 0 1,0 -300,0 M270,330 a40,40 0 1,0 80,0 a40,40 0 1,0 -80,0"/>
+<path fill-rule="evenodd" fill="#fcf3d9" d="M142,330 a168,168 0 1,0 336,0 a168,168 0 1,0 -336,0 M160,330 a150,150 0 1,0 300,0 a150,150 0 1,0 -300,0"/>
+<path fill-rule="evenodd" fill="#fbeaec" d="M95,330 a215,215 0 1,0 430,0 a215,215 0 1,0 -430,0 M142,330 a168,168 0 1,0 336,0 a168,168 0 1,0 -336,0"/>
+<path fill-rule="evenodd" fill="#c9761a" d="M81,330 a229,229 0 1,0 458,0 a229,229 0 1,0 -458,0 M95,330 a215,215 0 1,0 430,0 a215,215 0 1,0 -430,0"/>
+<path fill-rule="evenodd" fill="#cfe9de" d="M10,330 a300,300 0 1,0 600,0 a300,300 0 1,0 -600,0 M81,330 a229,229 0 1,0 458,0 a229,229 0 1,0 -458,0"/>
+<circle cx="310" cy="330" r="12" fill="#fff" stroke="#9aa5b1" stroke-width="2"/>
+<rect x="660" y="66" width="46" height="34" fill="#cfe9de" stroke="#c9d1d9" stroke-width="2"/>
+<text x="726.0" y="92.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="400">muon and K-long detector</text>
+<rect x="660" y="130" width="46" height="34" fill="#c9761a" stroke="#c9d1d9" stroke-width="2"/>
+<text x="726.0" y="156.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="400">solenoid, 1.5 T</text>
+<rect x="660" y="194" width="46" height="34" fill="#fbeaec" stroke="#c9d1d9" stroke-width="2"/>
+<text x="726.0" y="220.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="400">CsI(Tl) calorimeter</text>
+<rect x="660" y="258" width="46" height="34" fill="#fcf3d9" stroke="#c9d1d9" stroke-width="2"/>
+<text x="726.0" y="284.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="400">PID (Cherenkov)</text>
+<rect x="660" y="322" width="46" height="34" fill="#8cc4e8" stroke="#1d6fa5" stroke-width="4"/>
+<text x="726.0" y="348.0" font-size="38" fill="#1d6fa5" text-anchor="start" font-weight="700">central drift chamber</text>
+<text x="726.0" y="378.0" font-size="29" fill="#71787f" text-anchor="start" font-weight="400">r = 16 – 113 cm</text>
+<rect x="660" y="412" width="46" height="34" fill="#e6f1f8" stroke="#c9d1d9" stroke-width="2"/>
+<text x="726.0" y="438.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="400">silicon pixels, strips</text>
+<text x="726.0" y="468.0" font-size="29" fill="#71787f" text-anchor="start" font-weight="400">r = 1.4 – 14 cm</text>
+<text x="310.0" y="685.0" font-size="40" fill="#1d2733" text-anchor="middle" font-weight="700">Belle II</text>
+<text x="310.0" y="722.0" font-size="25" fill="#71787f" text-anchor="middle" font-weight="400">end view, schematic, not to scale</text>
+</svg>

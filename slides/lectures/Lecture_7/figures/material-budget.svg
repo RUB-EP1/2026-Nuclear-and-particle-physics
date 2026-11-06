@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 670" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<text x="600.0" y="76.0" font-size="32" fill="#1d2733" text-anchor="end" font-weight="600">Silicon alone, 50 µm</text>
+<text x="600.0" y="112.0" font-size="25" fill="#71787f" text-anchor="end" font-weight="400">calculated: 0.005 cm / 9.4 cm</text>
+<rect x="620" y="40" width="165.5" height="54" fill="#087bb9" rx="4"/>
+<text x="799.5" y="78.0" font-size="32" fill="#1d2733" text-anchor="start" font-weight="700">0.053 % X₀</text>
+<text x="600.0" y="186.0" font-size="32" fill="#1d2733" text-anchor="end" font-weight="600">ITS3 design goal per layer</text>
+<text x="600.0" y="222.0" font-size="25" fill="#71787f" text-anchor="end" font-weight="400">thin, bent, no cooling pipes</text>
+<rect x="620" y="150" width="212.8" height="54" fill="#2a9d74" rx="4"/>
+<text x="846.8" y="188.0" font-size="32" fill="#1d2733" text-anchor="start" font-weight="700">0.07 % X₀</text>
+<text x="600.0" y="296.0" font-size="32" fill="#1d2733" text-anchor="end" font-weight="600">Silicon sensor alone, 300 µm</text>
+<text x="600.0" y="332.0" font-size="25" fill="#71787f" text-anchor="end" font-weight="400">calculated: 0.03 cm / 9.4 cm</text>
+<rect x="620" y="260" width="471.0" height="54" fill="#087bb9" rx="4"/>
+<text x="1105.0" y="298.0" font-size="32" fill="#1d2733" text-anchor="start" font-weight="700">0.32 % X₀</text>
+<text x="600.0" y="406.0" font-size="32" fill="#1d2733" text-anchor="end" font-weight="600">ALICE ITS2, inner layers</text>
+<text x="600.0" y="442.0" font-size="25" fill="#71787f" text-anchor="end" font-weight="400">monolithic sensors, approx.</text>
+<rect x="620" y="370" width="486.2" height="54" fill="#2a9d74" rx="4"/>
+<text x="1120.2" y="408.0" font-size="32" fill="#1d2733" text-anchor="start" font-weight="700">0.35 % X₀</text>
+<text x="600.0" y="516.0" font-size="32" fill="#1d2733" text-anchor="end" font-weight="600">Hybrid pixel layer at the LHC</text>
+<text x="600.0" y="552.0" font-size="25" fill="#71787f" text-anchor="end" font-weight="400">sensor, chip, cooling, cables, approx.</text>
+<rect x="620" y="480" width="733.4" height="54" fill="#c9761a" rx="4"/>
+<text x="1367.4" y="518.0" font-size="32" fill="#1d2733" text-anchor="start" font-weight="700">1.5 % X₀</text>
+<line x1="620.0" y1="12" x2="620.0" y2="568" stroke="#e3e8ec" stroke-width="2"/><text x="620.0" y="600.0" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">0.02</text>
+<line x1="893.4" y1="12" x2="893.4" y2="568" stroke="#e3e8ec" stroke-width="2"/><text x="893.4" y="600.0" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">0.1</text>
+<line x1="1284.5" y1="12" x2="1284.5" y2="568" stroke="#e3e8ec" stroke-width="2"/><text x="1284.5" y="600.0" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">1</text>
+<line x1="1520.0" y1="12" x2="1520.0" y2="568" stroke="#e3e8ec" stroke-width="2"/><text x="1520.0" y="600.0" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">4</text>
+<text x="1070.0" y="648.0" font-size="27" fill="#71787f" text-anchor="middle" font-weight="400">material per layer, in % of a radiation length (log scale)</text>
+</svg>

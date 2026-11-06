@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<circle cx="290" cy="200" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="290" cy="276" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="290" cy="352" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="290" cy="428" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="290" cy="504" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="366" cy="200" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="366" cy="276" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="366" cy="352" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="366" cy="428" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="366" cy="504" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="442" cy="200" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="442" cy="276" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="442" cy="352" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="442" cy="428" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="442" cy="504" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="518" cy="200" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="518" cy="276" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="518" cy="352" r="17" fill="none" stroke="#b8384a" stroke-width="3" stroke-dasharray="6 5"/>
+<circle cx="518" cy="428" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="518" cy="504" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="594" cy="200" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="594" cy="276" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="594" cy="352" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="594" cy="428" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="594" cy="504" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="670" cy="200" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="670" cy="276" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="670" cy="352" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="670" cy="428" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="670" cy="504" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="746" cy="200" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="746" cy="276" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="746" cy="352" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="746" cy="428" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="746" cy="504" r="17" fill="#9bc4de" stroke="#6aa3c8" stroke-width="2"/>
+<circle cx="632.0" cy="390.0" r="14" fill="#b8384a"/>
+<line x1="40" y1="262" x2="484" y2="346" stroke="#1d2733" stroke-width="6"/><path d="M490,348 l-26,-2 l10,-22 z" fill="#1d2733"/>
+<text x="20.0" y="238.0" font-size="28" fill="#1d2733" text-anchor="start" font-weight="600">neutron or hadron</text>
+<text x="518.0" y="566.0" font-size="26" fill="#b8384a" text-anchor="middle" font-weight="400">vacancy</text>
+<text x="660.0" y="462.0" font-size="26" fill="#b8384a" text-anchor="start" font-weight="400">displaced atom</text>
+<text x="518.0" y="150.0" font-size="30" fill="#1d2733" text-anchor="middle" font-weight="700">silicon crystal</text>
+<rect x="1010" y="150" width="640" height="130" rx="10" fill="#f7f9fb" stroke="#b8384a" stroke-width="4"/>
+<text x="1038.0" y="205.0" font-size="36" fill="#b8384a" text-anchor="start" font-weight="700">More leakage current</text>
+<text x="1038.0" y="250.0" font-size="30" fill="#1d2733" text-anchor="start" font-weight="400">noise and heat: sensors must be cooled</text>
+<path d="M802,352 C890,352 900,215 1002,215" fill="none" stroke="#9aa5b1" stroke-width="3"/><path d="M1002,215 l-16,-9 v18 z" fill="#9aa5b1"/>
+<rect x="1010" y="320" width="640" height="130" rx="10" fill="#f7f9fb" stroke="#c9761a" stroke-width="4"/>
+<text x="1038.0" y="375.0" font-size="36" fill="#c9761a" text-anchor="start" font-weight="700">Charge trapping</text>
+<text x="1038.0" y="420.0" font-size="30" fill="#1d2733" text-anchor="start" font-weight="400">less signal is collected</text>
+<path d="M802,352 C890,352 900,385 1002,385" fill="none" stroke="#9aa5b1" stroke-width="3"/><path d="M1002,385 l-16,-9 v18 z" fill="#9aa5b1"/>
+<rect x="1010" y="490" width="640" height="130" rx="10" fill="#f7f9fb" stroke="#087bb9" stroke-width="4"/>
+<text x="1038.0" y="545.0" font-size="36" fill="#087bb9" text-anchor="start" font-weight="700">Changed depletion voltage</text>
+<text x="1038.0" y="590.0" font-size="30" fill="#1d2733" text-anchor="start" font-weight="400">higher bias voltage is needed</text>
+<path d="M802,352 C890,352 900,555 1002,555" fill="none" stroke="#9aa5b1" stroke-width="3"/><path d="M1002,555 l-16,-9 v18 z" fill="#9aa5b1"/>
+</svg>
