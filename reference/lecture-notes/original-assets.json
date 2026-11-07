@@ -1,0 +1,110 @@
+[
+  {
+    "file": "originals/acts-tracking.svg",
+    "url": "https://acts.readthedocs.io/en/latest/_images/tracking.svg",
+    "description": "L08 p16 / L09 p3 tracking overview; matches the cited ACTS source",
+    "status": "Original SVG; website latest version as retrieved; per-asset reuse terms not independently checked",
+    "accessed": "2026-11-07",
+    "sha256": "c2db14e670343eec7fe974baa6c221c316559b9b4ebb853c0d7e974848039900",
+    "bytes": 5752
+  },
+  {
+    "file": "originals/acts-perigee.svg",
+    "url": "https://acts.readthedocs.io/en/latest/_images/perigee.svg",
+    "description": "L08 p17 / L09 p4 perigee parameters",
+    "status": "Original SVG; compare with archived slide for version differences; per-asset terms unverified",
+    "accessed": "2026-11-07",
+    "sha256": "3b93cd7d093e567d64ffc9c749d26ebfd8ca16f60fd61bd2aca961d888b47a1f",
+    "bytes": 5086
+  },
+  {
+    "file": "originals/acts-kalman.svg",
+    "url": "https://acts.readthedocs.io/en/latest/_images/kalman.svg",
+    "description": "Supporting diagram for L08 p18 / L09 p5; not asserted to be the original thesis drawing",
+    "status": "Original SVG; per-asset terms unverified",
+    "accessed": "2026-11-07",
+    "sha256": "b169d0d5d2f4c075e95b7044f0cb2dc273eb04a7ffe6c388b1955888321fa557",
+    "bytes": 7277
+  },
+  {
+    "file": "originals/acts-seeding.svg",
+    "url": "https://acts.readthedocs.io/en/latest/_images/seeding.svg",
+    "description": "Supporting diagram for tracking/seeding",
+    "status": "Original SVG; per-asset terms unverified",
+    "accessed": "2026-11-07",
+    "sha256": "fb4c325132dbb09440467df67aea7b884c4a5e55f5cebd2c185f82ac0dcc5586",
+    "bytes": 9477
+  },
+  {
+    "file": "originals/atlas-run2-trigger.pdf",
+    "url": "https://arxiv.org/pdf/2007.12539",
+    "description": "ATLAS Collaboration, Operation of the ATLAS trigger system in Run 2; JINST 15 P10004. Figure 1 on PDF page 6 matches L08 p11",
+    "status": "Publisher/arXiv record links CC BY 4.0; preserve collaboration credit and Run-2 label",
+    "accessed": "2026-11-07",
+    "sha256": "01f2e35105b509c8c4a1b7aa7ff11ded434012d149d87ae5e7de3bc287674065",
+    "bytes": 5443658
+  },
+  {
+    "file": "originals/neufeld-daq-2009.pdf",
+    "url": "https://indico.cern.ch/event/43007/contributions/1065030/attachments/927884/1313738/trigger-daq-analysis-esi09-neufeld1.pdf",
+    "description": "N. Neufeld; source pp16\u201319 contain trivial DAQ and successive trigger/buffer examples used on L08 pp8,10",
+    "status": "Downloaded original teaching PDF; no explicit reuse license verified",
+    "accessed": "2026-11-07",
+    "sha256": "0d55bed528bae3a0d9c59e911a1e6521d1005b944931bac93e81278be231f2a5",
+    "bytes": 5305544
+  },
+  {
+    "file": "originals/pdg2024-statistics.pdf",
+    "url": "https://pdg.lbl.gov/2024/reviews/rpp2024-rev-statistics.pdf",
+    "description": "G. Cowan, Statistics review, PDG 2024; L09 p21 and correction reference for pp22\u201323",
+    "status": "Original review downloaded; retain PDG citation; per-figure terms not independently checked",
+    "accessed": "2026-11-07",
+    "sha256": "d35843b111784cda5bf9f825ac61bf9a26c9fdbc02723f5697164a9e34e65f33",
+    "bytes": 512320
+  },
+  {
+    "file": "originals/masciocchi-hadronic-calorimeters.pdf",
+    "url": "https://www.physi.uni-heidelberg.de/~sma/teaching/ParticleDetectors2/sma_HadronicCalorimeters.pdf",
+    "description": "Silvia Masciocchi; general source credited on L07 title page",
+    "status": "Original teaching PDF downloaded; individual figure matches and reuse licenses remain to be established",
+    "accessed": "2026-11-07",
+    "sha256": "52351a8db39fe20fea4572429c07b1723e731898bcbfbebf6a7035a53edfc9b4",
+    "bytes": 15596084
+  },
+  {
+    "file": "originals/lista-statistics-2023.pdf",
+    "url": "https://www.ggi.infn.it/ggilectures/ggilectures2023/img/Lista_GGI-school-2023.pdf",
+    "description": "Luca Lista, GGI school 2023; source linked on L09 p19",
+    "status": "Original teaching PDF downloaded; individual figure matches and reuse licenses not all verified",
+    "accessed": "2026-11-07",
+    "sha256": "8b5f0fec992a154d2ceaff78497c7301113e65f8371dec15421f72aa64118832",
+    "bytes": 52750600
+  },
+  {
+    "file": "originals/gluex-spectrometer.png",
+    "url": "https://arxiv.org/html/2505.14706v2/Figures/GlueX_Spectrometer2.png",
+    "description": "Figure 1 of Particle identification in the GlueX detector with machine learning, arXiv:2505.14706v2; supporting detector view, not the identical TOF wall image on L07 p13",
+    "status": "Original upstream PNG; per-image reuse terms unverified",
+    "accessed": "2026-11-07",
+    "sha256": "45ea513c02b63fbf070f022d77694e2502931b811072e84538c79ef46ca2a294",
+    "bytes": 624348
+  },
+  {
+    "file": "originals/gluex-charged-confusion.png",
+    "url": "https://arxiv.org/html/2505.14706v2/Figures/MLP/charged_cm.png",
+    "description": "Figure 4(a), charged-particle MLP confusion matrix in arXiv:2505.14706v2; candidate source for L07 p13 confusion matrix, exact crop match unconfirmed",
+    "status": "Original upstream PNG; classifier result, not a TOF-only separation plot; per-image terms unverified",
+    "accessed": "2026-11-07",
+    "sha256": "b31005c0b62a18d18a3100f13e48fb1316e00b7ec0def7f95488e8fbdfbe5e98",
+    "bytes": 71228
+  },
+  {
+    "file": "originals/lhcb-xib-mass-2019.pdf",
+    "url": "https://inspirehep.net/files/8ff2bdafb72a644a0095f2fcf40eefc3",
+    "description": "LHCb, PRD 99 052006 (2019), arXiv:1901.07075; Figure 1 on PDF page 4 contains L09 p22 spectrum",
+    "status": "Original publisher PDF from SCOAP3 via INSPIRE; CC BY 4.0; source page rendered without cropping",
+    "accessed": "2026-11-07",
+    "sha256": "bd52822c22e4189a0c17a169f72ee331601abcc8199aaafbef911e9e9b2b0ecb",
+    "bytes": 353558
+  }
+]

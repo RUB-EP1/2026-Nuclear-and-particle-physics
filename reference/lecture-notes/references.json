@@ -1,0 +1,373 @@
+[
+  {
+    "id": "R001",
+    "url": "https://pdg.lbl.gov/2025/AtomicNuclearProperties/index.html",
+    "locations": [
+      "L07 p6"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R002",
+    "url": "https://www-zeuthen.desy.de/~jknapp/fs/proton-showers.html",
+    "locations": [
+      "L07 p6"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R003",
+    "url": "https://commons.wikimedia.org/w/index.php?curid=2557072",
+    "locations": [
+      "L07 p14"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R004",
+    "url": "https://link.springer.com/book/10.1007/978-3-662-45350-6",
+    "locations": [
+      "L08 p2"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R005",
+    "url": "https://doi.org/10.1016/j.nima.2011.03.009",
+    "locations": [
+      "L08 p4",
+      "L09 p2",
+      "L09 p8",
+      "L09 p18"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R006",
+    "url": "https://iopscience.iop.org/article/10.1088/1748-0221/3/08/S08004",
+    "locations": [
+      "L08 p4",
+      "L09 p18"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R007",
+    "url": "https://display.belle2.org/#/event-display",
+    "locations": [
+      "L08 p4",
+      "L09 p18"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R008",
+    "url": "https://doi.org/10.1016/j.physletb.2012.08.020",
+    "locations": [
+      "L08 p4",
+      "L09 p18"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R009",
+    "url": "http://dx.doi.org/10.1103/RevModPhys.93.015006",
+    "locations": [
+      "L08 p5"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R010",
+    "url": "https://cds.cern.ch/record/2929353",
+    "locations": [
+      "L08 p6"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R011",
+    "url": "https://indico.cern.ch/event/43007/contributions/1065030/attachments/927884/1313738/trigger-daq-analysis-esi09-neufeld1.pdf",
+    "locations": [
+      "L08 p8",
+      "L08 p10"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R012",
+    "url": "https://wdr2021.worldbank.org/stories/crossing-borders/",
+    "locations": [
+      "L08 p9"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R013",
+    "url": "https://arxiv.org/abs/2011.01638",
+    "locations": [
+      "L08 p9"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R014",
+    "url": "http://dx.doi.org/10.1088/1748-0221/15/10/P10004",
+    "locations": [
+      "L08 p11"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R015",
+    "url": "https://link.springer.com/book/10.1007/978-3-030-65771-0",
+    "locations": [
+      "L08 p14"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R016",
+    "url": "https://cds.cern.ch/images/ATLAS-PHOTO-2020-031-1",
+    "locations": [
+      "L08 p15"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R017",
+    "url": "https://acts.readthedocs.io/en/latest/tracking.html",
+    "locations": [
+      "L08 p16",
+      "L08 p17",
+      "L09 p3",
+      "L09 p4"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R018",
+    "url": "https://repository.cern/records/8axnk-w9f84",
+    "locations": [
+      "L08 p18",
+      "L09 p5"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R019",
+    "url": "https://indico.cern.ch/event/867266/contributions/4582191/attachments/2340945/3990883/ATHIC_ver5.pdf",
+    "locations": [
+      "L08 p19"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R020",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0168900208017567",
+    "locations": [
+      "L09 p7"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R021",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0168900213001861",
+    "locations": [
+      "L09 p7"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R022",
+    "url": "https://inspirehep.net/literature/2958467",
+    "locations": [
+      "L09 p9"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R023",
+    "url": "https://iopscience.iop.org/article/10.1088/0954-3899/39/12/123001",
+    "locations": [
+      "L09 p9"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R024",
+    "url": "https://link.springer.com/article/10.1140/epjp/i2016-16168-5",
+    "locations": [
+      "L09 p10"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R025",
+    "url": "https://indico.gsi.de/event/20387/contributions/90417/attachments/51821/79016/Conf_20250918_RICH2025_Upgrade2.pdf",
+    "locations": [
+      "L09 p11"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R026",
+    "url": "https://cds.cern.ch/record/2937714/",
+    "locations": [
+      "L09 p12"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R027",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0168900217309981",
+    "locations": [
+      "L09 p13"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R028",
+    "url": "https://doi.org/10.1088/1748-0221/15/12/T12005",
+    "locations": [
+      "L09 p15"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R029",
+    "url": "https://doi.org/10.1140/epjc/s10052-025-14627-7",
+    "locations": [
+      "L09 p16"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R030",
+    "url": "https://indico.cern.ch/event/689514/contributions/2928355/attachments/1630712/2599360/ilten.pdf",
+    "locations": [
+      "L09 p17"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R031",
+    "url": "https://doi.org/10.1007/s41781-023-00099-5",
+    "locations": [
+      "L09 p17"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R032",
+    "url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9783527653416",
+    "locations": [
+      "L09 p19"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R033",
+    "url": "https://academic.oup.com/book/54868",
+    "locations": [
+      "L09 p19"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R034",
+    "url": "https://www.ggi.infn.it/ggilectures/ggilectures2023/img/Lista_GGI-school-2023.pdf",
+    "locations": [
+      "L09 p19"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R035",
+    "url": "https://pdg.lbl.gov/2024/reviews/rpp2024-rev-statistics.pdf",
+    "locations": [
+      "L09 p21"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R036",
+    "url": "http://dx.doi.org/10.1103/PhysRevD.99.052006",
+    "locations": [
+      "L09 p22"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R037",
+    "url": "https://indico.cern.ch/event/147827/contributions/178945/attachments/144140/204420/01-Detectors-2.pdf",
+    "locations": [
+      "L07 p1: Christoph Rembser"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R038",
+    "url": "https://www.physi.uni-heidelberg.de/~sma/teaching/ParticleDetectors2/sma_HadronicCalorimeters.pdf",
+    "locations": [
+      "L07 p1: Silvia Masciocchi"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R039",
+    "url": "https://www.mpp.mpg.de/~menke/elss/anim_OPAL_EB_1GeV.shtml",
+    "locations": [
+      "L07 p5"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R040",
+    "url": "https://inspirehep.net/literature/796248",
+    "locations": [
+      "L07 p10"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R041",
+    "url": "https://arxiv.org/html/2505.14706v2",
+    "locations": [
+      "L07 p13"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R042",
+    "url": "https://inspirehep.net/literature/1775496",
+    "locations": [
+      "L07 p16"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R043",
+    "url": "https://en.wikipedia.org/wiki/Cherenkov_radiation",
+    "locations": [
+      "L07 p17"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R044",
+    "url": "https://www.youtube.com/watch?v=YoBFjD5tn_E&t=643s",
+    "locations": [
+      "L07 p18"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  },
+  {
+    "id": "R045",
+    "url": "https://www.hzdr.de/db/Cms?pOid=72803&pNid=0",
+    "locations": [
+      "L07 p19"
+    ],
+    "status": "citation recovered; see SOURCES.md for individual verification"
+  }
+]
