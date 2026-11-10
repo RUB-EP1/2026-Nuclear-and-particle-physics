@@ -51,9 +51,11 @@ def widget_refs(widget):
     return found
 
 
-def check_files(root, site):
+def check_files(root, site, excluded_lectures=()):
     errors, widgets = [], []
     for qmd in sorted(root.glob("slides/lectures/Lecture_*/Lecture_*.qmd")):
+        if qmd.parent.name in excluded_lectures:
+            continue
         folder = qmd.parent
         out = site / folder.relative_to(root)
         wanted = {(folder / r).resolve(): r for r in lecture_refs(qmd)}
@@ -110,11 +112,13 @@ def main():
     ap.add_argument("--site", default="_site", help="rendered website (default: _site)")
     ap.add_argument("--root", default=".", help="repository root (default: .)")
     ap.add_argument("--browser", action="store_true", help="also load every widget in headless Chromium")
+    ap.add_argument("--exclude-lecture", action="append", default=[],
+                    help="lecture folder intentionally excluded from this site build (repeatable)")
     args = ap.parse_args()
     root, site = Path(args.root), Path(args.site)
     if not site.is_dir():
         sys.exit(f"{site} does not exist: render the website first")
-    errors, widgets = check_files(root, site)
+    errors, widgets = check_files(root, site, args.exclude_lecture)
     if args.browser:
         errors += check_browser(root, site, widgets)
     for e in errors:

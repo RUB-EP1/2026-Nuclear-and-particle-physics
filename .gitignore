@@ -77,3 +77,18 @@
 !slides/lectures/Lecture_6/widgets/eshep/*.png
 !slides/lectures/Lecture_6/widgets/cloud-transport.jl
 !slides/lectures/Lecture_6/widgets/cloud-model-notes.txt
+
+# Lecture 8 draft sources and offline widgets; rendered output stays local.
+!slides/lectures/Lecture_8/lecture.css
+!slides/lectures/Lecture_8/layout.html
+!slides/lectures/Lecture_8/README.md
+!slides/lectures/Lecture_8/SOURCES.md
+!slides/lectures/Lecture_8/figures/*.png
+!slides/lectures/Lecture_8/figures/*.svg
+!slides/lectures/Lecture_8/widgets/*.html
+!slides/lectures/Lecture_8/widgets/*.js
+!slides/lectures/Lecture_8/widgets/*.css
+!slides/lectures/Lecture_8/widgets/*-poster.png
+!slides/lectures/Lecture_8/tests/*.cjs
+!slides/lectures/Lecture_8/tests/*.py
+!slides/lectures/Lecture_8/scripts/*.py

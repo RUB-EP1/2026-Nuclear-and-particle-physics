@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DAQ · Event queue</title><link rel="stylesheet" href="widget.css">
+<header><h1>Dead time and event buffers</h1><p>Predict the losses, then replay the same arrivals</p></header>
+<div class="layout"><aside>
+<label>Model<select id="mode"><option value="buffer">ADC → FIFO → processor</option><option value="dead">One busy stage · no buffer</option></select></label>
+<label>Mean arrival rate <output id="rateValue"></output><input id="rate" aria-label="Mean arrival rate in kHz" type="range" min="0" max="30" step="1" value="8"></label>
+<label>ADC time <output id="adcValue"></output><input id="adc" aria-label="ADC conversion time in microseconds" type="range" min="0" max="100" step="5" value="20"></label>
+<label>Processing time <output id="cpuValue"></output><input id="cpu" aria-label="Processing time in microseconds" type="range" min="20" max="200" step="10" value="100"></label>
+<label id="capacityLabel">Waiting slots <output id="capacityValue"></output><input id="capacity" aria-label="FIFO waiting slots" type="range" min="0" max="32" step="1" value="8"></label>
+<label>Arrivals<select id="burst"><option value="steady">Steady Poisson rate</option><option value="burst">Bursts · same mean rate</option></select></label>
+<div class="actions"><button id="play" class="primary">Replay</button><button id="reset">Reset</button></div>
+<p class="hint">200 ms of simulated time. Replay is slowed down; it does not show a real detector clock.</p>
+</aside><main>
+<div class="metrics"><div class="metric"><strong id="out">—</strong><span>completed output</span></div><div class="metric"><strong id="loss">—</strong><span>arrival losses</span></div><div class="metric"><strong id="busy">—</strong><span>processor busy time</span></div><div class="metric"><strong id="pending">—</strong><span>events still in system</span></div></div>
+<canvas id="timeline" class="timeline" role="img" aria-label="Snapshot of ADC, waiting queue and processor"></canvas>
+<canvas id="chart" class="chart" role="img" aria-label="FIFO occupancy over simulated time"></canvas>
+<label>Replay time <output id="timeValue"></output><input id="time" aria-label="Replay time in milliseconds" type="range" min="0" max="200" value="200" step="0.1"></label>
+<div id="counts" class="stats" aria-live="polite"></div><div id="theory" class="stats"></div>
+<p id="assumptions" class="assumptions"></p>
+</main></div><footer>Teaching model · fixed random seed 821 · finite FIFO and independent ADC/processor stages; no detector-specific rates</footer>
+<script src="models.js"></script><script src="draw.js"></script><script src="queue.js"></script></html>

@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DAQ · Trigger threshold</title><link rel="stylesheet" href="widget.css">
+<header><h1>A trigger selects a physics sample</h1><p>Keep events with candidate p<sub>T</sub> ≥ threshold</p></header>
+<div class="layout"><aside>
+<label>Threshold <output id="cutValue"></output><input id="cut" aria-label="Trigger threshold in GeV per c" type="range" min="0" max="22" step="0.1" value="7"></label>
+<label>Signal input <output id="signalValue"></output><input id="signal" aria-label="Signal input rate in Hz" type="range" min="0" max="1000" step="20" value="100"></label>
+<label>Background input <output id="backgroundValue"></output><input id="background" aria-label="Background input rate in kHz" type="range" min="0" max="200" step="5" value="100"></label>
+<label>Event size <output id="sizeValue"></output><input id="size" aria-label="Stored event size in kB" type="range" min="20" max="1000" step="20" value="200"></label>
+<label>Storage budget <output id="budgetValue"></output><input id="budget" aria-label="Storage bandwidth budget in MB per second" type="range" min="20" max="1000" step="20" value="200"></label>
+<div class="actions"><button id="reset">Reset</button></div>
+<p class="hint">The same 30,000 signal and 30,000 background candidates are reweighted to the chosen rates. Moving the threshold never resamples them.</p>
+</aside><main>
+<div class="metrics"><div class="metric"><strong id="effS">—</strong><span>signal efficiency</span></div><div class="metric"><strong id="effB">—</strong><span>background acceptance</span></div><div class="metric"><strong id="purity">—</strong><span>selected signal fraction</span></div><div class="metric"><strong id="output">—</strong><span>accepted event rate</span></div></div>
+<div class="legend"><span class="signal">● Signal · Gaussian-like spectrum</span><span class="background">● Background · falling spectrum</span></div>
+<canvas id="chart" class="chart" role="img" aria-label="Signal and background rates per momentum bin, with trigger threshold"></canvas>
+<div class="comparison"><p id="signalOut"></p><p id="backgroundOut"></p></div>
+<canvas id="bandwidth" style="height:100px" role="img" aria-label="Required storage bandwidth compared with budget"></canvas>
+<div id="budgetStatus" class="budget" aria-live="polite"></div>
+<p class="assumptions">Synthetic spectra, not experimental data: signal N(8, 2²) restricted to p<sub>T</sub> ≥ 0; background exponential mean 1.5 GeV/c. One candidate per event, exact measured p<sub>T</sub>, fixed event size. Decimal kB and MB. No detector turn-on smearing.</p>
+<details><summary>Reading the curves and zero counts</summary>Vertical axis is logarithmic in weighted event rate per bin; the faint region is rejected. The 20+ bin includes overflow. A zero surviving sample means zero in this finite toy sample, not a bound on a physical tail. Purity is undefined if no events are selected.</details>
+</main></div><footer>Teaching model · fixed seed 809 · rates and bandwidth are illustrative</footer>
+<script src="models.js"></script><script src="draw.js"></script><script src="threshold.js"></script></html>

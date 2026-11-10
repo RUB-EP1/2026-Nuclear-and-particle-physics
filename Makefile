@@ -2,7 +2,8 @@ PYTHON ?= python3
 PDF_PYTHON ?= .venv-pdf/bin/python
 HTML_ROOT ?= .
 PDF_ROOT ?= $(HTML_ROOT)
-LECTURES := $(basename $(notdir $(wildcard slides/lectures/Lecture_*/Lecture_*.qmd)))
+EXCLUDE_LECTURES ?=
+LECTURES := $(filter-out $(EXCLUDE_LECTURES),$(basename $(notdir $(wildcard slides/lectures/Lecture_*/Lecture_*.qmd))))
 
 .PHONY: html pdf pdf-deps
 

@@ -42,9 +42,12 @@ jobs:
               - exercises/Sheet_*/Sheet_*.pdf
               - slides/lectures/Lecture_*/widgets/**
               - slides/lectures/Lecture_*/media/**
+              # Lecture 8 is a local draft until explicitly approved for publication.
+              - "!slides/lectures/Lecture_8/**"
             render:
               - index.qmd
               - slides/lectures/Lecture_*/Lecture_*.qmd
+              - "!slides/lectures/Lecture_8/**"
           website:
             title: Nuclear and Particle Physics
             site-url: https://rub-ep1.github.io/2026-Nuclear-and-particle-physics/
@@ -65,9 +68,11 @@ jobs:
           python -m pip install -r scripts/requirements-pdf.txt
           python -m playwright install --with-deps chromium
       - name: Check widgets in the built site
-        run: python scripts/check_site.py --site _site --browser
+        run: |
+          test ! -e _site/slides/lectures/Lecture_8
+          python scripts/check_site.py --site _site --browser --exclude-lecture Lecture_8
       - name: Build lecture PDFs
-        run: make pdf HTML_ROOT=_site PDF_PYTHON=python
+        run: make pdf HTML_ROOT=_site PDF_PYTHON=python EXCLUDE_LECTURES=Lecture_8
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
