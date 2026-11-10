@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 745" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<g transform="translate(0,45)">
+<path d="M130.0,560.0 L730.0,560.0 L895.0,434.0 L295.0,434.0 Z" fill="#e6f1f8" stroke="#9aa5b1" stroke-width="2.5"/>
+<line x1="130.0" y1="560.0" x2="295.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="164.0" y1="560.0" x2="329.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="198.0" y1="560.0" x2="363.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="232.0" y1="560.0" x2="397.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="266.0" y1="560.0" x2="431.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="300.0" y1="560.0" x2="465.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="334.0" y1="560.0" x2="499.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="368.0" y1="560.0" x2="533.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="402.0" y1="560.0" x2="567.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="436.0" y1="560.0" x2="601.0" y2="434.0" stroke="#c9761a" stroke-width="5"/>
+<line x1="470.0" y1="560.0" x2="635.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="504.0" y1="560.0" x2="669.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="538.0" y1="560.0" x2="703.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="572.0" y1="560.0" x2="737.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="606.0" y1="560.0" x2="771.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="640.0" y1="560.0" x2="805.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="674.0" y1="560.0" x2="839.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="708.0" y1="560.0" x2="873.0" y2="434.0" stroke="#6d7b88" stroke-width="2"/>
+<text x="118.0" y="592.0" font-size="33" fill="#1d2733" text-anchor="start" font-weight="600">x layer: wires along the depth axis</text>
+<path d="M130.0,350.0 L730.0,350.0 L895.0,224.0 L295.0,224.0 Z" fill="#f1ebf6" stroke="#9aa5b1" stroke-width="2.5"/>
+<line x1="240.3" y1="265.8" x2="314.6" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="185.6" y1="307.5" x2="350.8" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="131.0" y1="349.3" x2="387.0" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="165.5" y1="350.0" x2="423.2" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="201.7" y1="350.0" x2="459.4" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="237.9" y1="350.0" x2="495.6" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="274.1" y1="350.0" x2="531.7" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="310.3" y1="350.0" x2="567.9" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="346.4" y1="350.0" x2="604.1" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="382.6" y1="350.0" x2="640.3" y2="231.6" stroke="#c9761a" stroke-width="5"/>
+<line x1="418.8" y1="350.0" x2="676.5" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="455.0" y1="350.0" x2="712.6" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="491.2" y1="350.0" x2="748.8" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="527.4" y1="350.0" x2="785.0" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="563.5" y1="350.0" x2="821.2" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="599.7" y1="350.0" x2="857.4" y2="231.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="635.9" y1="350.0" x2="872.2" y2="241.4" stroke="#6d7b88" stroke-width="2"/>
+<line x1="672.1" y1="350.0" x2="817.5" y2="283.2" stroke="#6d7b88" stroke-width="2"/>
+<line x1="708.3" y1="350.0" x2="762.8" y2="324.9" stroke="#6d7b88" stroke-width="2"/>
+<text x="118.0" y="382.0" font-size="33" fill="#1d2733" text-anchor="start" font-weight="600">u layer: tilted by +α</text>
+<path d="M130.0,140.0 L730.0,140.0 L895.0,14.0 L295.0,14.0 Z" fill="#fbeaec" stroke="#9aa5b1" stroke-width="2.5"/>
+<line x1="165.5" y1="140.0" x2="183.7" y2="99.0" stroke="#6d7b88" stroke-width="2"/>
+<line x1="201.7" y1="140.0" x2="238.4" y2="57.2" stroke="#6d7b88" stroke-width="2"/>
+<line x1="237.9" y1="140.0" x2="290.3" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="274.1" y1="140.0" x2="326.5" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="310.3" y1="140.0" x2="362.7" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="346.4" y1="140.0" x2="398.9" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="382.6" y1="140.0" x2="435.1" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="418.8" y1="140.0" x2="471.3" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="455.0" y1="140.0" x2="507.4" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="491.2" y1="140.0" x2="543.6" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="527.4" y1="140.0" x2="579.8" y2="21.6" stroke="#c9761a" stroke-width="5"/>
+<line x1="563.5" y1="140.0" x2="616.0" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="599.7" y1="140.0" x2="652.2" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="635.9" y1="140.0" x2="688.3" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="672.1" y1="140.0" x2="724.5" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="708.3" y1="140.0" x2="760.7" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="751.8" y1="123.3" x2="796.9" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="806.5" y1="81.6" x2="833.1" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<line x1="861.2" y1="39.8" x2="869.3" y2="21.6" stroke="#6d7b88" stroke-width="2"/>
+<text x="118.0" y="172.0" font-size="33" fill="#1d2733" text-anchor="start" font-weight="600">v layer: tilted by −α</text>
+<line x1="490.9" y1="648.7" x2="595.7" y2="-88.1" stroke="#1d2733" stroke-width="5"/>
+<circle cx="512.5" cy="497.0" r="9" fill="#b8384a" stroke="#fff" stroke-width="2.5"/>
+<circle cx="543.3" cy="280.3" r="9" fill="#b8384a" stroke="#fff" stroke-width="2.5"/>
+<circle cx="574.1" cy="63.6" r="9" fill="#b8384a" stroke="#fff" stroke-width="2.5"/>
+</g>
+<g transform="translate(0,45)">
+<text x="1080.0" y="150.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="700">Each layer measures</text>
+<text x="1080.0" y="188.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="700">only the distance</text>
+<text x="1080.0" y="226.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="700">perpendicular to its wires.</text>
+<line x1="1050" y1="262" x2="1340" y2="262" stroke="#dfe3e7" stroke-width="2"/>
+<text x="1080.0" y="305.0" font-size="33" fill="#71787f" text-anchor="start" font-weight="400">x gives one coordinate,</text>
+<text x="1080.0" y="342.0" font-size="33" fill="#71787f" text-anchor="start" font-weight="400">u and v (tilted by a small</text>
+<text x="1080.0" y="379.0" font-size="33" fill="#71787f" text-anchor="start" font-weight="400">stereo angle α) give the other.</text>
+<line x1="1050" y1="415" x2="1340" y2="415" stroke="#dfe3e7" stroke-width="2"/>
+<text x="1080.0" y="458.0" font-size="33" fill="#71787f" text-anchor="start" font-weight="400">Resolution along the wires:</text>
+<text x="1080.0" y="495.0" font-size="33" fill="#1d2733" text-anchor="start" font-weight="600">σ ≈ σ_wire / sin α,</text>
+<text x="1080.0" y="532.0" font-size="33" fill="#71787f" text-anchor="start" font-weight="400">about 10× worse for α = 5°.</text>
+<circle cx="1060" cy="590" r="9" fill="#b8384a"/><text x="1112.0" y="599.0" font-size="31" fill="#71787f" text-anchor="start" font-weight="400">hit</text><line x1="1150" y1="590" x2="1196" y2="590" stroke="#c9761a" stroke-width="5"/><text x="1238.0" y="599.0" font-size="31" fill="#71787f" text-anchor="start" font-weight="400">wire that fired</text>
+</g>
+</svg>

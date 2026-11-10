@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 720" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<text x="275.0" y="44.0" font-size="36" fill="#1d2733" text-anchor="middle" font-weight="700">Strip sensor</text>
+<text x="825.0" y="44.0" font-size="36" fill="#1d2733" text-anchor="middle" font-weight="700">Hybrid pixel sensor</text>
+<text x="1375.0" y="44.0" font-size="36" fill="#1d2733" text-anchor="middle" font-weight="700">Monolithic CMOS sensor</text>
+<rect x="40" y="70" width="470" height="300" rx="0" fill="#e6f1f8" stroke="#7fb2d4" stroke-width="3"/>
+<rect x="60" y="86" width="26" height="268" rx="0" fill="#9bc4de"/>
+<rect x="110" y="86" width="26" height="268" rx="0" fill="#9bc4de"/>
+<rect x="160" y="86" width="26" height="268" rx="0" fill="#9bc4de"/>
+<rect x="210" y="86" width="26" height="268" rx="0" fill="#9bc4de"/>
+<rect x="260" y="86" width="26" height="268" rx="0" fill="#c95a6b"/>
+<rect x="310" y="86" width="26" height="268" rx="0" fill="#9bc4de"/>
+<rect x="360" y="86" width="26" height="268" rx="0" fill="#9bc4de"/>
+<rect x="410" y="86" width="26" height="268" rx="0" fill="#9bc4de"/>
+<rect x="460" y="86" width="26" height="268" rx="0" fill="#9bc4de"/>
+<circle cx="273" cy="240" r="12" fill="#1d2733"/>
+<text x="275.0" y="400.0" font-size="29" fill="#71787f" text-anchor="middle" font-weight="400">long strips: one coordinate (x)</text>
+<rect x="590" y="70" width="470" height="300" rx="0" fill="#e6f1f8" stroke="#7fb2d4" stroke-width="3"/>
+<rect x="1140" y="70" width="470" height="300" rx="0" fill="#e6f1f8" stroke="#7fb2d4" stroke-width="3"/>
+<text x="825.0" y="400.0" font-size="29" fill="#71787f" text-anchor="middle" font-weight="400">small pixels: two coordinates (x, y)</text>
+<text x="1375.0" y="400.0" font-size="29" fill="#71787f" text-anchor="middle" font-weight="400">also pixels, electronics inside</text>
+<rect x="40" y="510" width="360" height="60" rx="0" fill="#e6f1f8" stroke="#7fb2d4" stroke-width="3"/>
+<rect x="62" y="496" width="18" height="14" rx="0" fill="#c95a6b"/>
+<rect x="110" y="496" width="18" height="14" rx="0" fill="#c95a6b"/>
+<rect x="158" y="496" width="18" height="14" rx="0" fill="#c95a6b"/>
+<rect x="206" y="496" width="18" height="14" rx="0" fill="#c95a6b"/>
+<rect x="254" y="496" width="18" height="14" rx="0" fill="#c95a6b"/>
+<rect x="302" y="496" width="18" height="14" rx="0" fill="#c95a6b"/>
+<rect x="350" y="496" width="18" height="14" rx="0" fill="#c95a6b"/>
+<rect x="435" y="510" width="75" height="60" rx="0" fill="#d5dbe1" stroke="#8a949e" stroke-width="3"/>
+<text x="472.0" y="600.0" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">chip</text>
+<path d="M119,496 Q170,460 440,506" fill="none" stroke="#c9761a" stroke-width="3"/>
+<path d="M215,496 Q266,460 440,514" fill="none" stroke="#c9761a" stroke-width="3"/>
+<path d="M311,496 Q362,460 440,522" fill="none" stroke="#c9761a" stroke-width="3"/>
+<text x="220.0" y="605.0" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">sensor, readout chip beside it</text>
+<text x="275.0" y="480.0" font-size="24" fill="#c9761a" text-anchor="middle" font-weight="400">wire bonds</text>
+<rect x="590" y="480" width="470" height="50" rx="0" fill="#e6f1f8" stroke="#7fb2d4" stroke-width="3"/>
+<circle cx="616.0" cy="546" r="9" fill="#c9761a"/>
+<circle cx="668.2" cy="546" r="9" fill="#c9761a"/>
+<circle cx="720.5" cy="546" r="9" fill="#c9761a"/>
+<circle cx="772.8" cy="546" r="9" fill="#c9761a"/>
+<circle cx="825.0" cy="546" r="9" fill="#c9761a"/>
+<circle cx="877.2" cy="546" r="9" fill="#c9761a"/>
+<circle cx="929.5" cy="546" r="9" fill="#c9761a"/>
+<circle cx="981.8" cy="546" r="9" fill="#c9761a"/>
+<circle cx="1034.0" cy="546" r="9" fill="#c9761a"/>
+<rect x="590" y="556" width="470" height="50" rx="0" fill="#d5dbe1" stroke="#8a949e" stroke-width="3"/>
+<text x="825.0" y="645.0" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">sensor + bump bonds + readout chip</text>
+<text x="1070.0" y="514.0" font-size="20" fill="#1d2733" text-anchor="middle" font-weight="400"></text>
+<rect x="1140" y="500" width="470" height="34" rx="0" fill="#bcdcf0" stroke="#7fb2d4" stroke-width="3"/>
+<rect x="1140" y="534" width="470" height="40" rx="0" fill="#e6f1f8" stroke="#7fb2d4" stroke-width="3"/>
+<rect x="1160" y="506" width="30" height="22" rx="0" fill="#8a949e"/>
+<rect x="1216" y="506" width="30" height="22" rx="0" fill="#8a949e"/>
+<rect x="1272" y="506" width="30" height="22" rx="0" fill="#8a949e"/>
+<rect x="1328" y="506" width="30" height="22" rx="0" fill="#8a949e"/>
+<rect x="1384" y="506" width="30" height="22" rx="0" fill="#8a949e"/>
+<rect x="1440" y="506" width="30" height="22" rx="0" fill="#8a949e"/>
+<rect x="1496" y="506" width="30" height="22" rx="0" fill="#8a949e"/>
+<rect x="1552" y="506" width="30" height="22" rx="0" fill="#8a949e"/>
+<text x="1375.0" y="645.0" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">one chip: sensor and electronics together</text>
+<text x="1604.0" y="488.0" font-size="24" fill="#71787f" text-anchor="end" font-weight="400">transistors</text>
+<rect x="688.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="728.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="768.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="808.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="848.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="888.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="928.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="688.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="728.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="768.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="808.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="848.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="888.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="928.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="688.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="728.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="768.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="808.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="848.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="888.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="928.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="688.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="728.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="768.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="808.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="848.0" y="203.0" width="34" height="34" fill="#c95a6b"/>
+<rect x="888.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="928.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="688.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="728.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="768.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="808.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="848.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="888.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="928.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="688.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="728.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="768.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="808.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="848.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="888.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="928.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="688.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="728.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="768.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="808.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="848.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="888.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="928.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<circle cx="865.0" cy="220.0" r="9" fill="#1d2733"/>
+<rect x="1238.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1278.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1318.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1358.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1398.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1438.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1478.0" y="83.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1238.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1278.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1318.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1358.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1398.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1438.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1478.0" y="123.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1238.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1278.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1318.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1358.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1398.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1438.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1478.0" y="163.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1238.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1278.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1318.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1358.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1398.0" y="203.0" width="34" height="34" fill="#c95a6b"/>
+<rect x="1438.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1478.0" y="203.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1238.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1278.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1318.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1358.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1398.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1438.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1478.0" y="243.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1238.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1278.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1318.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1358.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1398.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1438.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1478.0" y="283.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1238.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1278.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1318.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1358.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1398.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1438.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<rect x="1478.0" y="323.0" width="34" height="34" fill="#9bc4de"/>
+<circle cx="1415.0" cy="220.0" r="9" fill="#1d2733"/>
+</svg>

@@ -111,6 +111,18 @@ interactions, Cherenkov light, and a 3D time projection chamber.
 [Download PDF](slides/lectures/Lecture_6/Lecture_6.pdf){.chip download="Lecture_6.pdf"}
 :::
 
+::: {.course-card}
+[Lecture 7 · Detectors]{.card-tag}
+
+### Particle detectors I
+
+Recap of interactions with matter; magnets and momentum, gas detectors, silicon
+sensors, scintillators and photosensors, and a momentum-resolution explorer.
+
+[Open slides](slides/lectures/Lecture_7/Lecture_7.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_7/Lecture_7.pdf){.chip download="Lecture_7.pdf"}
+:::
+
 
 ::::
 

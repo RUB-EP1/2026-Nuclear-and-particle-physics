@@ -75,3 +75,30 @@ animation, converted locally to browser-compatible VP9/H.264. Its educational
 source and attribution are listed in Lecture 5's `SOURCES.md`; no explicit open
 license is stated on the source page. The Cherenkov widget was supplied by the
 lecturer and adapted for full-slide display.
+
+## Lecture 7: particle detectors I
+
+Images were collected on 5 November 2026. Licences were read from the Wikimedia
+Commons file metadata, from the arXiv abstract page (link to the Creative
+Commons licence) or from the paper itself; credits are printed on each slide.
+Share-alike images (CC BY-SA) are shown unmodified except for cropping and
+resizing. The original drawings (layer figure, sagitta, drift tube, silicon
+strip) and the momentum-resolution widget are course-generated.
+
+| Slide image | Source / attribution | Licence and verification |
+| --- | --- | --- |
+| CMS solenoid (`cms-solenoid.jpg`); triple GEM (`gem-triple.png`) | CMS Collaboration, JINST 19 (2024) P05064, [arXiv:2309.05466](https://arxiv.org/abs/2309.05466), Figs. 2 and 76. | CC BY 4.0: arXiv abstract page and “© 2024 CERN for the benefit of the CMS Collaboration. CC-BY-4.0 license” on page 1. The captions say “from Ref. […]”; the earlier papers were not checked. |
+| Micromegas (`micromegas.png`) | S. Aune et al. (sPHENIX), [arXiv:2403.13789](https://arxiv.org/abs/2403.13789), Fig. 3. | CC BY 4.0 on the arXiv abstract page. |
+| Bent ALPIDE sensors (`alpide-bent.png`) | B.-M. Blidaru et al., JINST 17 (2022) C09006, [arXiv:2112.10414](https://arxiv.org/abs/2112.10414), Fig. 2a,b. | CC BY 4.0 on the arXiv abstract page. |
+| LHCb VELO module, ATLAS SCT module, ATLAS straw-tube prototype (`velo-module.jpg`, `sct-module.jpg`, `straw-wheel.jpg`) | Rama, Wikimedia Commons (photographs at the CERN Microcosm exhibition). | CC BY-SA 3.0 fr (Commons licence field). |
+| Belle II central drift chamber (`belle2-cdc.jpg`) | N. Taniguchi / Belle II Collaboration, Wikimedia Commons. | CC BY-SA 4.0 (Commons licence field). |
+| MOSS sensor (`moss.jpg`) | M. Suljic, Wikimedia Commons. | CC BY-SA 4.0 (Commons licence field). |
+| Photomultiplier (`pmt.jpg`) | ScAvenger, Wikimedia Commons (Hamamatsu R446). | CC BY-SA 4.0 (Commons licence field). |
+| Silicon photomultiplier (`sipm.jpg`) | Wikimedia Commons, user GLevi (IRST Trento device). | CC BY-SA 3.0 (Commons licence field); the author credit is assumed by Commons. |
+| Lecture 7 recap: PDG figures 34.2, 34.7, 34.13, 34.15(b), 34.26 and two own drawings (shower cascade, hadronic energy flow) | Reused from Lecture 6 (`dedx_table_98.png`, `bichsel_thick.png`, `encrit_cu.png`, `photon-lead.png`, `cherenkov_radiation.png`); S. Navas et al. (Particle Data Group), Phys. Rev. D 110, 030001 (2024). | CC BY 4.0, as listed for Lecture 5 and 6. The two SVGs are course drawings. |
+| ATLAS inner detector material map (`atlas-id-material-map.png`) | ATLAS Collaboration, JINST 12 (2017) P12009, [arXiv:1707.02826](https://arxiv.org/abs/1707.02826), Fig. 4, rendered from the arXiv PDF and cropped. | CC BY 3.0 on the [IOP journal page](https://iopscience.iop.org/article/10.1088/1748-0221/12/12/P12009); the arXiv listing carries only the arXiv licence, and the arXiv figures were not compared with the published ones. |
+| ATLAS ITk material against η (`itk-material-eta.png`) | ATLAS Collaboration, JINST 20 (2025) P02018, [arXiv:2412.15090](https://arxiv.org/abs/2412.15090), Fig. 5. | CC BY 4.0 (arXiv abstract page and a note in the PDF). |
+| LHCb VELO fluence against radius (`velo-fluence.png`) | LHCb VELO group, JINST 8 (2013) P08002, [arXiv:1302.5259](https://arxiv.org/abs/1302.5259), Fig. 4a (cropped to the left panel). | CC BY 3.0 on the arXiv abstract page (Crossref lists the same). |
+| MWPC schematic (`mwpc-schematic.png`) | Michael Schmid, Wikimedia Commons, “Wire chamber schematic.svg”, rendered and cropped. | CC BY-SA 3.0 (Commons licence field). |
+| Plastic scintillator (`plastic-scintillator.jpg`) | Fermilab, via Wikimedia Commons. | Public domain (Commons licence field). Low resolution. |
+| CERN photographs and figures: ATLAS toroid (CDS 910381), LHCb magnet (P. Ginter, CDS 1124307), Georges Charpak and his multiwire chamber (CERN-HI-7008008, CDS 39073), LHCb VELO timing figure (CERN Courier, March/April 2023, “LHCb looks forward to the 2030s”, credit LHCb) | CERN / LHCb. | **Not redistributed.** [CERN’s terms for audiovisual media](https://copyright.web.cern.ch/) allow free use for educational and informational purposes with credit to CERN, but not distribution to third parties. The files live in the git-ignored `figures/local/` folder; the public deck shows a placeholder. The Courier page states only “Copyright © CERN” with no open licence. The CC BY 4.0 that Commons states for two of the photographs could not be confirmed on CDS (the server blocks automated access). |

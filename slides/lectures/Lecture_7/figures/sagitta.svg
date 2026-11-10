@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 580" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<rect x="30" y="30" width="1040" height="520" fill="#f7f9fb" stroke="#dfe3e7" stroke-width="2"/>
+<rect x="145" y="150" width="10" height="320" fill="#c9d1d9"/>
+<rect x="545" y="150" width="10" height="320" fill="#c9d1d9"/>
+<rect x="945" y="150" width="10" height="320" fill="#c9d1d9"/>
+<text x="150" y="138" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">layer 1</text>
+<text x="550" y="138" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">layer 2</text>
+<text x="950" y="138" font-size="26" fill="#71787f" text-anchor="middle" font-weight="400">layer 3</text>
+<path d="M150,430 Q550,270 950,430" fill="none" stroke="#087bb9" stroke-width="5"/>
+<line x1="150" y1="430" x2="950" y2="430" stroke="#71787f" stroke-width="3" stroke-dasharray="10 9"/>
+<circle cx="150" cy="430" r="10" fill="#b8384a"/>
+<circle cx="550" cy="350" r="10" fill="#b8384a"/>
+<circle cx="950" cy="430" r="10" fill="#b8384a"/>
+<line x1="550" y1="350" x2="550" y2="430" stroke="#1d2733" stroke-width="3"/>
+<path d="M550,350 l-6,12 h12 z M550,430 l-6,-12 h12 z" fill="#1d2733"/>
+<text x="580" y="396" font-size="36" fill="#1d2733" text-anchor="start" font-weight="600">s</text>
+<line x1="150" y1="490" x2="950" y2="490" stroke="#1d2733" stroke-width="3"/>
+<path d="M150,490 l12,-6 v12 z M950,490 l-12,-6 v12 z" fill="#1d2733"/>
+<text x="550" y="530" font-size="36" fill="#1d2733" text-anchor="middle" font-weight="600">L</text>
+<text x="60" y="270" font-size="30" fill="#087bb9" text-anchor="start" font-weight="600">track</text>
+<text x="60" y="430" font-size="28" fill="#b8384a" text-anchor="start" font-weight="600">hits</text>
+<circle cx="300" cy="200" r="16" fill="none" stroke="#71787f" stroke-width="2.5"/><path d="M292,192 L308,208 M308,192 L292,208" stroke="#71787f" stroke-width="2.5"/>
+<circle cx="800" cy="200" r="16" fill="none" stroke="#71787f" stroke-width="2.5"/><path d="M792,192 L808,208 M808,192 L792,208" stroke="#71787f" stroke-width="2.5"/>
+<text x="60" y="90" font-size="26" fill="#71787f" text-anchor="start" font-weight="400">⊗ : B into the page</text>
+</svg>

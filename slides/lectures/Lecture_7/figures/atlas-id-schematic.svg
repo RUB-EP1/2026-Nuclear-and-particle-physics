@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1330 780" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<path fill-rule="evenodd" fill="#e6f1f8" d="M280,330 a30,30 0 1,0 60,0 a30,30 0 1,0 -60,0 M300,330 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0"/>
+<path fill-rule="evenodd" fill="#e6f1f8" d="M240,330 a70,70 0 1,0 140,0 a70,70 0 1,0 -140,0 M280,330 a30,30 0 1,0 60,0 a30,30 0 1,0 -60,0"/>
+<path fill-rule="evenodd" fill="#8cc4e8" stroke="#1d6fa5" stroke-width="3" d="M170,330 a140,140 0 1,0 280,0 a140,140 0 1,0 -280,0 M240,330 a70,70 0 1,0 140,0 a70,70 0 1,0 -140,0"/>
+<path fill-rule="evenodd" fill="#c9761a" d="M158,330 a152,152 0 1,0 304,0 a152,152 0 1,0 -304,0 M170,330 a140,140 0 1,0 280,0 a140,140 0 1,0 -280,0"/>
+<path fill-rule="evenodd" fill="#fbeaec" d="M75,330 a235,235 0 1,0 470,0 a235,235 0 1,0 -470,0 M158,330 a152,152 0 1,0 304,0 a152,152 0 1,0 -304,0"/>
+<path fill-rule="evenodd" fill="#cfe9de" d="M10,330 a300,300 0 1,0 600,0 a300,300 0 1,0 -600,0 M75,330 a235,235 0 1,0 470,0 a235,235 0 1,0 -470,0"/>
+<circle cx="310" cy="330" r="10" fill="#fff" stroke="#9aa5b1" stroke-width="2"/>
+<rect x="660" y="66" width="46" height="34" fill="#cfe9de" stroke="#c9d1d9" stroke-width="2"/>
+<text x="726.0" y="92.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="400">muon spectrometer</text>
+<rect x="660" y="130" width="46" height="34" fill="#fbeaec" stroke="#c9d1d9" stroke-width="2"/>
+<text x="726.0" y="156.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="400">calorimeters</text>
+<rect x="660" y="194" width="46" height="34" fill="#c9761a" stroke="#c9d1d9" stroke-width="2"/>
+<text x="726.0" y="220.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="400">solenoid, 2 T</text>
+<rect x="660" y="258" width="46" height="34" fill="#8cc4e8" stroke="#1d6fa5" stroke-width="4"/>
+<text x="726.0" y="284.0" font-size="38" fill="#1d6fa5" text-anchor="start" font-weight="700">transition rad. tracker</text>
+<text x="726.0" y="314.0" font-size="29" fill="#71787f" text-anchor="start" font-weight="400">straws, r = 56 – 108 cm</text>
+<rect x="660" y="348" width="46" height="34" fill="#e6f1f8" stroke="#c9d1d9" stroke-width="2"/>
+<text x="726.0" y="374.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="400">silicon strips (SCT)</text>
+<text x="726.0" y="404.0" font-size="29" fill="#71787f" text-anchor="start" font-weight="400">r = 30 – 52 cm</text>
+<rect x="660" y="438" width="46" height="34" fill="#e6f1f8" stroke="#c9d1d9" stroke-width="2"/>
+<text x="726.0" y="464.0" font-size="36" fill="#1d2733" text-anchor="start" font-weight="400">silicon pixels</text>
+<text x="726.0" y="494.0" font-size="29" fill="#71787f" text-anchor="start" font-weight="400">r = 3 – 12 cm</text>
+<text x="310.0" y="685.0" font-size="40" fill="#1d2733" text-anchor="middle" font-weight="700">ATLAS</text>
+<text x="310.0" y="722.0" font-size="25" fill="#71787f" text-anchor="middle" font-weight="400">end view, schematic, not to scale</text>
+</svg>
