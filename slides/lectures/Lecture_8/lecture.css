@@ -98,3 +98,5 @@
 .reveal .visual .local-photo.missing{height:640px}
 .reveal .picture-visual .local-photo.missing{height:610px}
 .reveal .magnet-photos .local-photo.missing{height:340px;font-size:20px}
+.reveal .tall-figure .picture-visual .local-photo img{height:730px;object-fit:contain}
+.reveal .tall-figure .picture-visual .local-photo.missing{height:700px}
