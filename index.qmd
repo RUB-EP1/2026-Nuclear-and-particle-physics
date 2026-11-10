@@ -123,6 +123,19 @@ sensors, scintillators and photosensors, and a momentum-resolution explorer.
 [Download PDF](slides/lectures/Lecture_7/Lecture_7.pdf){.chip download="Lecture_7.pdf"}
 :::
 
+::: {.course-card}
+[Lecture 8 · Accelerators]{.card-tag}
+
+### Particle accelerators
+
+Why accelerate, electrostatic machines and RF cavities, magnets and focusing,
+emittance, synchrotron radiation, and six interactive demos from a voltage
+ladder to a collider designer.
+
+[Open slides](slides/lectures/Lecture_8/Lecture_8.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_8/Lecture_8.pdf){.chip download="Lecture_8.pdf"}
+:::
+
 
 ::::
 

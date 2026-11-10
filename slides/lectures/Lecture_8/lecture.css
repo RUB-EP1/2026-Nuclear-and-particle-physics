@@ -1,0 +1,100 @@
+/* Lecture 8: typography and spacing matched to Lecture 6. */
+.reveal strong{color:#007dc5}
+.reveal .slide-body{padding:22px 0 18px;font-size:40px;line-height:1.3;gap:20px;justify-content:center}
+.reveal .slide-body>p{margin:.35em 0}
+.reveal .split{display:grid;grid-template-columns:minmax(0,.44fr) minmax(0,.56fr);gap:54px;align-items:center;width:100%}
+.reveal .copy{font-size:37px;line-height:1.28}
+.reveal .copy p{margin:.35em 0 .65em}
+.reveal .copy li{margin:.35em 0}
+.reveal .visual{min-width:0;text-align:center}
+.reveal .visual>p,.reveal .visual figure{margin:0}
+.reveal .visual img{width:100%;height:610px;object-fit:contain;display:block;margin:0 auto;max-width:100%;max-height:none}
+.reveal .visual figcaption{display:none}
+.reveal .take-home{border-left:5px solid #007dc5;padding:10px 0 10px 25px;margin-top:22px;font-size:35px;line-height:1.25}
+.reveal .take-home p{margin:0}
+.reveal .full-figure .visual img{height:690px}
+.reveal .full-figure .take-home{font-size:29px;margin-top:0}
+.reveal .slides section table{width:100%;font-size:34px;line-height:1.25}
+.reveal .slides section td,.reveal .slides section th{padding:18px 22px;border-bottom:1px solid #dfe3e7;vertical-align:top}
+.reveal .slides section th{color:#007dc5}
+.reveal math[display="block"]{font-size:1.05em;margin:.45em 0}
+.reveal .title-card .slide-body{flex:none;display:block;padding:10px 0}
+.reveal .title-card .subtitle{font-size:60px;margin:20px 0 90px}
+.reveal .title-card .slide-body>p{font-size:30px;color:#627383}
+.reveal .section-title .slide-body{font-size:46px;display:block;margin-top:60px}
+.reveal .deck-footer{position:absolute;left:var(--gutter-x);right:var(--gutter-x);bottom:28px;display:flex;justify-content:space-between;gap:28px;box-sizing:border-box;padding:12px 100px 0 0;border-top:1px solid var(--line);color:var(--muted);font-family:var(--deck-font);font-size:20px;font-weight:400;line-height:1.2;z-index:20;pointer-events:none}
+.reveal .slide-number{font-family:var(--deck-font)!important;font-size:20px!important;font-weight:400;bottom:28px!important}
+.reveal .pipeline{font-size:42px;line-height:1.8;text-align:center;padding:25px 0;border-top:2px solid #dfe3e7;border-bottom:2px solid #dfe3e7}
+.reveal .prompt{font-size:54px;line-height:1.25;max-width:1450px}
+.reveal .subtle{color:#627383;font-size:30px}
+.reveal .number{font-size:100px;line-height:1.2;color:#007dc5;font-weight:600}
+.reveal .slide-refs{font-size:22px}
+.reveal .slides>section.demo-slide{padding:0!important;width:1920px!important;height:1080px!important;left:0!important;top:0!important;background:#fff;display:flex!important}
+.reveal .demo-slide>h2{display:none}
+.reveal .demo-slide>.slide-body{padding:0;width:100%;height:100%;display:flex}
+.reveal .demo-slide .widget{width:100%;height:100%;min-height:100%;margin:0}
+.reveal .demo-slide .widget iframe{max-width:none!important;max-height:none!important}
+.reveal:has(.demo-slide.present) .deck-footer,.reveal:has(.demo-slide.present) .slide-number{display:none!important}
+.reveal .references .slide-body{font-size:29px;gap:10px}
+.reveal .references p{margin:.3em 0}
+
+/* Plot-led explanatory slides: short reading column, large evidence panel. */
+.reveal .picture-layout{display:grid;grid-template-columns:minmax(0,.33fr) minmax(0,.67fr);gap:42px;align-items:center;width:100%}
+.reveal .picture-copy{font-size:36px;line-height:1.3}
+.reveal .picture-copy p{margin:0 0 28px}
+.reveal .picture-copy math[display="block"]{font-size:.82em}
+.reveal .picture-visual{min-width:0;width:100%}
+.reveal .picture-visual img{display:block;width:100%;height:610px;max-height:none;max-width:100%;object-fit:contain;margin:0}
+.reveal .picture-visual figure,.reveal .picture-visual figure>p{margin:0;width:100%}
+.reveal .picture-visual figcaption{display:none}
+.reveal .plot-caption{font-size:24px;line-height:1.25;color:#627383;margin-top:12px;text-align:center}
+.reveal .plot-caption p{margin:0}
+.reveal .picture-layout+.take-home{font-size:30px;margin-top:0}
+
+/* Give canonical source plots enough height to read axes and legends. */
+.reveal .landmark .picture-layout{grid-template-columns:minmax(0,.36fr) minmax(0,.64fr)}
+.reveal .landmark .picture-visual img{height:680px}
+.reveal .landmark .picture-copy{font-size:35px}
+.reveal .section-title .subtle{margin-top:55px;font-size:34px}
+
+/* Tall, narrow landmark figures (Stirling hierarchy): use the full slide height. */
+.reveal .tall-figure .slide-body{padding:0}
+.reveal .tall-figure .picture-layout{grid-template-columns:minmax(0,.42fr) minmax(0,.58fr)}
+.reveal .tall-figure .picture-visual img{height:790px}
+.reveal .tall-figure .plot-caption{margin-top:4px;font-size:22px}
+/* Tables inside the plot column. */
+.reveal .picture-visual table{font-size:31px}
+.reveal .picture-visual td,.reveal .picture-visual th{padding:16px 14px}
+.reveal .compare-table table{font-size:30px}
+.reveal .compare-table td,.reveal .compare-table th{padding:12px 18px}
+.reveal .compare-table td:first-child{color:#007dc5;font-weight:600;white-space:nowrap}
+
+/* Photographs: show the whole picture, slightly rounded, no stretching. */
+.reveal .photo img{object-fit:contain;border-radius:6px}
+.reveal .photo-hook .slide-body{padding-top:0}
+.reveal .photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:40px;width:100%;align-items:end}
+.reveal .photo-pair img{display:block;width:100%;height:600px;object-fit:cover;border-radius:6px;margin:0}
+.reveal .photo-pair figure,.reveal .photo-pair figure>p{margin:0}
+.reveal .photo-pair figcaption{display:none}
+
+/* Dipoles and quadrupoles: copy with two real magnets underneath, field sketch on the right. */
+.reveal .magnet-layout{grid-template-columns:minmax(0,.4fr) minmax(0,.6fr);gap:36px}
+.reveal .magnet-layout .picture-copy{font-size:32px}
+.reveal .magnet-layout .picture-copy p{margin:0 0 20px}
+.reveal .magnet-photos{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin-top:6px}
+.reveal .magnet-photos p,.reveal .magnet-photos figure{margin:0}
+.reveal .magnet-photos img{display:block;width:100%;height:340px;object-fit:cover;border-radius:6px;margin:0}
+.reveal .magnet-photos figcaption{display:none}
+.reveal .magnet-photo-labels{margin-top:-14px}
+.reveal .magnet-photo-labels p{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;font-size:22px;color:#5e6e7b;margin:0}
+.reveal .magnet-layout .picture-visual img{height:600px}
+
+/* Local-only photographs (not redistributed): real image locally, labelled placeholder on the public site. */
+.reveal .local-photo img{display:block;width:100%;height:600px;object-fit:cover;border-radius:6px;margin:0}
+.reveal .visual .local-photo img{height:690px;object-fit:contain;background:#fff}
+.reveal .picture-visual .local-photo img{height:610px;object-fit:contain}
+.reveal .magnet-photos .local-photo img{height:340px;object-fit:cover}
+.reveal .local-photo.missing{height:600px;display:flex;align-items:center;justify-content:center;text-align:center;background:#f4f6f8;border:2px dashed #c9d1d9;color:#8a949e;font-size:28px;padding:20px;box-sizing:border-box;border-radius:6px}
+.reveal .visual .local-photo.missing{height:640px}
+.reveal .picture-visual .local-photo.missing{height:610px}
+.reveal .magnet-photos .local-photo.missing{height:340px;font-size:20px}

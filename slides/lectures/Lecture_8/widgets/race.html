@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Accelerators · A lap of the LHC</title><link rel="stylesheet" href="widget.css">
+<style>.ring{height:600px}.metrics{grid-template-columns:repeat(4,1fr)}.story{font-size:20px;line-height:1.45}.story p{margin:0 0 12px}@media(min-width:1700px){.ring{height:680px}.story{font-size:24px}}.grid2{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start}</style>
+<header><h1>A lap of the LHC: 26.7 km</h1><p>Who gets round first?</p></header>
+<div class="layout"><aside>
+<label>Time speed-up <output id="kValue"></output><input id="k" aria-label="Simulation speed-up factor, logarithmic" type="range" min="1" max="3.3" step="0.01" value="2.3"></label>
+<div class="actions"><button id="play" class="primary">Start race</button><button id="reset">Reset</button></div>
+<p class="hint">Proton laps keep counting even when the dot is just a blur.</p>
+</aside><main>
+<div class="metrics"><div class="metric"><strong id="clock">—</strong><span>race time</span></div><div class="metric"><strong id="cyc">—</strong><span>pro cyclist laps</span></div><div class="metric"><strong id="run">—</strong><span>marathon runner laps</span></div><div class="metric"><strong id="pro">—</strong><span>proton laps</span></div></div>
+<div class="grid2"><canvas id="ring" class="ring" role="img" aria-label="LHC ring with a cyclist, a runner and a proton racing"></canvas>
+<div class="story"><p><b>Cyclist</b> at time-trial pace, ~50 km/h: one lap in about <b>32 min</b>.</p><p><b>Marathon runner</b>, ~20 km/h: about <b>1 h 20 min</b>.</p><p><b>Proton</b> at 0.999 999 99 c: one lap in <b>89 µs</b> — <b>11 245 laps every second</b>.</p><p>While the cyclist does one lap, a proton does about <b>22 million</b>.</p><p>3 August 2026: the Tour de France Femmes peloton raced past LHC Point 5 (CMS). CERN has bid for a 27 km time trial around the ring in 2029.</p></div></div>
+<p class="assumptions">Speeds: cyclist 50 km/h, runner 20 km/h, proton c. Circumference 26.659 km. The ring is drawn as a circle; the LHC has eight arcs and eight straight sections.</p>
+</main></div><footer>Teaching widget</footer>
+<script src="race.js"></script></html>

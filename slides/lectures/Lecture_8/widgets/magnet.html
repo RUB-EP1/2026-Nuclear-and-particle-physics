@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Accelerators · Inside an LHC dipole</title><link rel="stylesheet" href="widget.css">
+<style>
+.mag{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:34px;margin-top:18px;align-items:start}
+svg{width:100%;height:auto;max-height:820px;display:block}
+.part{cursor:pointer;transition:opacity .15s}.part:hover{opacity:.8}.part.sel{stroke:#152d40!important;stroke-width:5!important}
+.card h2{font-size:34px;margin:0 0 4px}.card .temp{color:var(--blue);font-weight:600;font-size:20px;margin:0 0 16px}.card p{font-size:21px;line-height:1.45;margin:0 0 14px}.card .fact{border-left:4px solid #cf741b;padding:6px 0 6px 16px;background:#fdf6ef}
+.list{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.list button{font-size:16px;padding:6px 10px}.list button.on{background:#007dc5;color:#fff;border-color:#007dc5}
+@media(min-width:1700px){.card h2{font-size:40px}.card p{font-size:25px}.card .temp{font-size:24px}.list button{font-size:19px}}
+</style>
+<header><h1>Inside an LHC dipole</h1><p>Click any part · schematic cross-section, not to scale</p></header>
+<div class="mag"><div>
+<svg id="svg" viewBox="0 0 800 800" role="img" aria-label="Schematic cross-section of an LHC dipole cryomagnet with clickable parts">
+  <circle class="part" data-k="vessel" cx="400" cy="400" r="380" fill="#dfe6ec" stroke="#7c8c97" stroke-width="3"/>
+  <circle class="part" data-k="vacuum" cx="400" cy="400" r="362" fill="#f7f9fb" stroke="#c3ced6" stroke-width="2"/>
+  <circle class="part" data-k="shield" cx="400" cy="400" r="318" fill="#f2f4f6" stroke="#b9a37a" stroke-width="7"/>
+  <circle class="part" data-k="shell" cx="400" cy="400" r="282" fill="#bfc9d1" stroke="#5e6e7b" stroke-width="3"/>
+  <circle class="part" data-k="yoke" cx="400" cy="400" r="270" fill="#8d99a3" stroke="#5e6e7b" stroke-width="2"/>
+  <circle class="part" data-k="hx" cx="400" cy="210" r="34" fill="#cfe8f7" stroke="#007dc5" stroke-width="3"/>
+  <g class="part" data-k="busbar"><rect x="380" y="560" width="40" height="22" fill="#c87533"/><rect x="380" y="590" width="40" height="22" fill="#c87533"/><rect x="380" y="620" width="40" height="22" fill="#c87533"/></g>
+  <ellipse class="part" data-k="collar" cx="400" cy="400" rx="205" ry="118" fill="#d9dee2" stroke="#7c8c97" stroke-width="2"/>
+  <g class="part" data-k="coil">
+    <circle cx="303" cy="400" r="70" fill="#c87533"/><circle cx="497" cy="400" r="70" fill="#c87533"/>
+    <circle cx="303" cy="400" r="46" fill="#d9dee2"/><circle cx="497" cy="400" r="46" fill="#d9dee2"/>
+    <path d="M303 330v22M303 448v22M497 330v22M497 448v22" stroke="#d9dee2" stroke-width="10"/>
+  </g>
+  <circle class="part" data-k="coldbore" cx="303" cy="400" r="40" fill="#e9eef2" stroke="#5e6e7b" stroke-width="5"/><circle class="part" data-k="coldbore" cx="497" cy="400" r="40" fill="#e9eef2" stroke="#5e6e7b" stroke-width="5"/>
+  <rect class="part" data-k="screen" x="273" y="378" width="60" height="44" rx="18" fill="#fff" stroke="#c87533" stroke-width="5"/><rect class="part" data-k="screen" x="467" y="378" width="60" height="44" rx="18" fill="#fff" stroke="#c87533" stroke-width="5"/>
+  <circle class="part" data-k="beam" cx="303" cy="400" r="7" fill="#bd3249"/><circle class="part" data-k="beam" cx="497" cy="400" r="7" fill="#007dc5"/>
+  <path class="part" data-k="post" d="M340 782 L360 690 L440 690 L460 782 Z" fill="#e8d9a8" stroke="#a8925a" stroke-width="3"/>
+  <g font-family="Helvetica,Arial,sans-serif" font-size="20" fill="#152d40" pointer-events="none">
+    <text x="303" y="500" text-anchor="middle">beam 1</text><text x="497" y="500" text-anchor="middle">beam 2</text>
+    <text x="400" y="40" text-anchor="middle" fill="#526675">Ø 914 mm</text>
+  </g>
+</svg></div>
+<div class="card" aria-live="polite"><h2 id="name"></h2><p class="temp" id="temp"></p><p id="what"></p><p class="fact" id="fact"></p><div class="list" id="list"></div></div></div>
+<p class="assumptions">Schematic after the LHC Design Report (CERN-2004-003), Vol. I, ch. 7. Proportions simplified for clicking; the real cold mass is about 570 mm across inside a 914 mm vacuum vessel.</p>
+<footer>Teaching widget · facts rounded</footer>
+<script src="magnet.js"></script></html>

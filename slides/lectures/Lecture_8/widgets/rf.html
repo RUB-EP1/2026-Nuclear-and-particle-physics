@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Accelerators · RF cavity</title><link rel="stylesheet" href="widget.css">
+<style>.cavity{height:330px}.gaincurve{height:230px}.metrics{grid-template-columns:repeat(3,1fr)}.two{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;align-items:start}.explain{font-size:19px;line-height:1.45}.explain p{margin:0 0 12px}@media(min-width:1700px){.cavity{height:400px}.gaincurve{height:260px}.explain{font-size:22px}}</style>
+<header><h1>How an RF cavity accelerates</h1><p>ΔW = qV<sub>0</sub>·T·cos φ · cells half a wavelength long (π mode)</p></header>
+<div class="layout"><aside>
+<label>Cells<select id="cells" aria-label="Number of cavity cells"><option value="1">1 cell</option><option value="3">3 cells</option><option value="9" selected>9 cells (TESLA)</option></select></label>
+<label>Arrival phase φ <output id="phiValue"></output><input id="phi" aria-label="Arrival phase in degrees" type="range" min="-180" max="180" step="1" value="0"></label>
+<label>Speed<select id="speed" aria-label="Animation speed"><option value="0.25">Slow</option><option value="0.6" selected>Normal</option><option value="1.5">Fast</option></select></label>
+<div class="actions"><button id="play" class="primary">Send a bunch</button><button id="reset">Reset</button></div>
+<p class="hint">Try φ = 0 (crest), ±90° (zero crossing) and 180° (decelerating). Then 1 cell vs 9 cells.</p>
+</aside><main>
+<div class="metrics"><div class="metric"><strong id="gain">—</strong><span>gained so far (% of crest)</span></div><div class="metric"><strong id="freq">1.3 GHz</strong><span>RF frequency</span></div><div class="metric"><strong id="len">—</strong><span>cavity length</span></div></div>
+<canvas id="cavity" class="cavity" role="img" aria-label="Chain of cavity cells with oscillating electric-field arrows and a particle bunch crossing"></canvas>
+<div class="two"><canvas id="curve" class="gaincurve" role="img" aria-label="Energy gain versus arrival phase"></canvas>
+<div class="explain"><p><b>E</b> (arrows) points along the beam and flips every half period. Cells are <b>λ/2 = 11.5 cm</b>, so a bunch at v ≈ c sees a forward field in <b>every</b> cell.</p><p><b>Where the field comes from:</b> no coil — the cavity itself is the resonator. A klystron feeds RF power through a coupler; currents oscillate on the walls (a one-turn "coil") and make the circling <b>B</b> (green). Changing B induces E on axis (Faraday), changing E regenerates B: the energy sloshes between them, 90° apart.</p></div></div>
+<p class="assumptions">Model: on-axis field E<sub>z</sub> = E<sub>0</sub>(−1)<sup>k</sup>cos(ωt − π/2 + φ) in cell k, particle at v = c. Gains in units of E<sub>0</sub>·λ/2 per cell; the single-cell maximum 2/π is the transit-time factor. Real cavities have a smooth field profile; TESLA cavities run at about 20–35 MV/m.</p>
+</main></div><footer>Teaching model · analytic field, numerical path integral</footer>
+<script src="physics.js"></script><script src="rf.js"></script></html>

@@ -81,3 +81,20 @@
 !slides/lectures/Lecture_7/widgets/*.html
 !slides/lectures/Lecture_7/widgets/*.png
 # Lecture 7: CERN photographs (CDS terms of use) stay in figures/local and are never committed.
+
+# Lecture 8: source, layout, course-generated and openly licensed figures, offline widgets and tests.
+!slides/lectures/Lecture_8/lecture.css
+!slides/lectures/Lecture_8/layout.html
+!slides/lectures/Lecture_8/README.md
+!slides/lectures/Lecture_8/SOURCES.md
+!slides/lectures/Lecture_8/figures/*.png
+!slides/lectures/Lecture_8/figures/*.svg
+!slides/lectures/Lecture_8/figures/*.jpg
+!slides/lectures/Lecture_8/widgets/*.html
+!slides/lectures/Lecture_8/widgets/*.js
+!slides/lectures/Lecture_8/widgets/*.css
+!slides/lectures/Lecture_8/widgets/*-poster.png
+!slides/lectures/Lecture_8/tests/*.cjs
+!slides/lectures/Lecture_8/tests/*.py
+!slides/lectures/Lecture_8/scripts/*.py
+# Lecture 8: CERN photographs and figures without a confirmed open licence stay in figures/local and are never committed.
