@@ -938,6 +938,39 @@ Luminosity and pile-up · fixed-target invariant mass · synchrotron-radiation f
 
 :::
 
+## Backup · The cross-section hierarchy {.landmark .tall-figure}
+
+::: {.slide-refs}
+[W. J. Stirling · 2010 lecture, p22](https://indico.cern.ch/event/94815/contributions/1282690/attachments/1106827/1579062/LBLMIT_Stirling_v2.pdf)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+Read vertically at one collider energy.
+
+**Interesting processes sit 6–11 orders of magnitude below the total.**
+
+The right axis turns each cross section into events per second at $\mathcal{L}=10^{33}\,\mathrm{cm^{-2}s^{-1}}$.
+
+Tevatron → LHC: heavy final states (top, Higgs) **grow fastest** with energy.
+:::
+:::: {.picture-visual}
+<div class="local-photo" data-local="figures/local/stirling-cross-sections.png" data-alt="Stirling's plot of proton–(anti)proton cross sections versus collision energy: total, b-quark, jets, W, Z, top and Higgs, with event rates on the right axis"></div>
+
+::: {.plot-caption}
+W. J. Stirling, proton–(anti)proton cross sections (WJS2009); historical predictions.
+:::
+::::
+:::::
+
+::::
+
+::: {.notes}
+3 minutes, optional. The classic Stirling plot: x is √s, left y the cross section in nb, both logarithmic; the right axis converts to rates at L = 10³³ cm⁻²s⁻¹. Locate total, b, W/Z, top and Higgs at the LHC line. Higgs curves assume masses 120/200/500 GeV: historical predictions, not the measured 125 GeV cross section. Steeply rising curves (top, Higgs) show why energy matters for heavy final states. Image: local only — its reuse licence is not confirmed, so the public deck shows a placeholder with the credit (see THIRD_PARTY.md).
+:::
+
 ## Backup · Luminosity from beam parameters
 
 :::: {.slide-body}
