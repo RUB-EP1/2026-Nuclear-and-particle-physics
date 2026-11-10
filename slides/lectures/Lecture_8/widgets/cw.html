@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Accelerators · Cockcroft–Walton</title><link rel="stylesheet" href="widget.css">
+<style>.ladder{height:560px}.trace{height:200px}.metrics{grid-template-columns:repeat(4,1fr)}.cw-main{display:grid;grid-template-columns:1.05fr 1fr;gap:26px;align-items:start}.explain{font-size:19px;line-height:1.45;margin:0}.explain p{margin:0 0 12px}@media(min-width:1700px){.ladder{height:640px}.trace{height:250px}.explain{font-size:23px}}</style>
+<header><h1>Cockcroft–Walton: a voltage ladder</h1><p>Each stage adds 2V<sub>0</sub> · V<sub>out</sub> → 2N·V<sub>0</sub></p></header>
+<div class="layout"><aside>
+<label>Stages N <output id="nValue"></output><input id="n" aria-label="Number of stages" type="range" min="1" max="6" step="1" value="3"></label>
+<label>Input amplitude V₀ <output id="v0Value"></output><input id="v0" aria-label="AC input amplitude in kilovolts" type="range" min="50" max="200" step="10" value="100"></label>
+<label>Load<select id="load" aria-label="Output load"><option value="0" selected>None (open circuit)</option><option value="400">Light beam current</option><option value="80">Heavy beam current</option></select></label>
+<label>Speed<select id="speed" aria-label="Animation speed"><option value="0.15">Slow</option><option value="0.5" selected>Normal</option><option value="2">Fast</option></select></label>
+<div class="actions"><button id="play" class="primary">Play</button><button id="half">½ cycle</button><button id="reset">Reset</button></div>
+<p class="hint">Watch which diodes light up in each half cycle: charge is passed up the ladder like water in a bucket brigade.</p>
+</aside><main>
+<div class="metrics"><div class="metric"><strong id="vout">—</strong><span>output voltage</span></div><div class="metric"><strong id="ideal">—</strong><span>ideal 2N·V₀</span></div><div class="metric"><strong id="cyc">—</strong><span>AC cycles so far</span></div><div class="metric"><strong id="srcv">—</strong><span>source now</span></div></div>
+<div class="cw-main"><canvas id="ladder" class="ladder" role="img" aria-label="Ladder of capacitors and diodes with node voltages; conducting diodes highlighted"></canvas>
+<div><canvas id="trace" class="trace" role="img" aria-label="Output voltage versus number of AC cycles"></canvas>
+<div class="explain"><p><b>No DC wire reaches the top:</b> capacitors block DC. Charge gets up only through the <b>diodes</b> (lit, with moving dots), one rung per half cycle — a bucket brigade.</p><p><b>Left column</b> (orange) passes the AC swing ±V<sub>0</sub> upward, each node sitting 2V<sub>0</sub> higher than the one below.</p><p><b>Right column</b> (blue) stores the charge as DC: 0, 2V<sub>0</sub>, 4V<sub>0</sub>, … Without load V<sub>out</sub> → 2N·V<sub>0</sub>; a beam current makes it sag and ripple.</p></div></div></div>
+<p class="assumptions">Circuit model: equal capacitors, ideal diodes with a small series resistance, sinusoidal source of amplitude V₀, resistive load. Voltages shown in kV. Same circuit as the 1932 machine; real generators add stray capacitance and corona losses.</p>
+</main></div><footer>Teaching model · numerical circuit integration, no random numbers</footer>
+<script src="physics.js"></script><script src="cw.js"></script></html>

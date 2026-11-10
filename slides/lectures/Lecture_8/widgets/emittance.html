@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Accelerators · Emittance</title><link rel="stylesheet" href="widget.css">
+<style>.panels{display:grid;grid-template-columns:1.25fr 1fr;gap:28px}.phase{height:560px}.profile{height:250px}.metrics{grid-template-columns:repeat(4,1fr)}.log{font-size:18px;color:var(--muted);margin:10px 0 0;min-height:52px}.explain{font-size:19px;line-height:1.45}.explain p{margin:0 0 10px}@media(min-width:1700px){.phase{height:620px}.profile{height:270px}.explain{font-size:22px}.log{font-size:21px}}</style>
+<header><h1>Emittance: the area a beam occupies</h1><p>Horizontal position x and angle x′ of every particle</p></header>
+<div class="layout"><aside>
+<div class="actions" style="flex-direction:column;align-items:stretch">
+<button id="drift">Drift 1 m</button><button id="focus">Focusing lens</button><button id="defocus">Defocusing lens</button><button id="squeeze" class="primary">Squeeze to a focus</button><button id="accel">Accelerate: p × 2</button><button id="reset">Reset</button></div>
+<p class="hint">Can any lens or drift make the cloud's <b>area</b> smaller? Watch ε while you try. Then accelerate.</p>
+</aside><main>
+<div class="metrics"><div class="metric"><strong id="sx">—</strong><span>beam size σ<sub>x</sub></span></div><div class="metric"><strong id="sp">—</strong><span>angular spread σ<sub>x′</sub></span></div><div class="metric"><strong id="eps">—</strong><span>emittance ε (area / π)</span></div><div class="metric"><strong id="mom">—</strong><span>momentum</span></div></div>
+<div class="panels"><canvas id="phase" class="phase" role="img" aria-label="Phase-space scatter of particles in position and angle, with rms ellipse"></canvas>
+<div><canvas id="profile" class="profile" role="img" aria-label="Beam profile: histogram of particle positions"></canvas>
+<div class="explain"><p><b>Drift:</b> particles with an angle move sideways — the cloud shears.</p><p><b>Lens:</b> kicks the angle in proportion to x — the cloud shears the other way.</p><p><b>Area is conserved</b> (Liouville): you can trade size for angle, never both. A tiny spot needs a large angular spread — like focusing a flashlight.</p><p><b>Acceleration</b> raises p but not p<sub>x</sub>, so angles x′ = p<sub>x</sub>/p shrink: ε ∝ 1/p.</p></div>
+<p class="log" id="log"></p></div></div>
+<p class="assumptions">Model: 600 particles, Gaussian beam; thin lenses (f = ±1.25 m) and drifts are linear maps that conserve area; acceleration divides x′ by the momentum ratio. Units mm and mrad, illustrative.</p>
+</main></div><footer>Teaching model · fixed seed</footer>
+<script src="physics.js"></script><script src="emittance.js"></script></html>

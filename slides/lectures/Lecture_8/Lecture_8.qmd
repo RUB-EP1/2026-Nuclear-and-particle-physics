@@ -34,7 +34,7 @@ Mikhail Mikhasenko · KT1 · Winter semester 2026/27
 ::::
 
 ::: {.notes}
-90-minute session following Lecture 7 (tracking, light and charge). Section budget: why accelerate 0–15; electric fields 15–35; magnetic fields 35–52; synchrotron radiation and demo 52–67; luminosity 67–80; from collisions to experiments 80–90. The next lecture (DAQ and trigger) starts from the last two slides: 40 MHz of crossings, far too many to record.
+90-minute session following Lecture 7 (tracking, light and charge). Section budget: why accelerate 0–12; electric fields 12–35 (two demos); magnetic fields 35–62 (three demos); synchrotron radiation 62–80; from collisions to experiments 80–90. Luminosity was covered in Lecture 4 and sits in the backup. With six demos the deck is full: keep each demo to 3–4 minutes. The next lecture (DAQ and trigger) starts from the last two slides: 40 MHz of crossings, far too many to record.
 :::
 
 ## Ninety years of accelerators {.photo-hook}
@@ -46,7 +46,7 @@ Mikhail Mikhasenko · KT1 · Winter semester 2026/27
 ![Lawrence's 27-inch cyclotron, 1935: the two D-shaped electrodes ("dees") of a machine that accelerated deuterons to a few MeV](figures/cyclotron-27inch-1935.jpg)
 
 ::: {.plot-caption}
-1935 · Berkeley 27-inch cyclotron: a few MeV, fits on a table.
+1935 · Berkeley 27-inch cyclotron: a few MeV; the vacuum chamber fits on a table. Photo: J. B. Livingood, public domain.
 :::
 :::
 
@@ -54,7 +54,7 @@ Mikhail Mikhasenko · KT1 · Winter semester 2026/27
 ![The LHC tunnel: blue cryostats of superconducting dipole magnets stretching along a curved tunnel](figures/lhc-tunnel.jpg)
 
 ::: {.plot-caption}
-2008 · LHC tunnel: 7 TeV design, 27 km, 1232 dipoles.
+2008 · LHC tunnel: 7 TeV design, 27 km, 1232 dipoles. Photo: M. Brice/CERN, CC BY-SA 3.0.
 :::
 :::
 :::::
@@ -69,21 +69,20 @@ A factor of about a million in energy. Today: what each step required, and what 
 2 minutes. Hook, not history. Ask: what physical principle is the same in both machines? (Electric fields give energy, magnetic fields steer.) What changed? (Superconductivity, RF, strong focusing, synchrotron principle.) Photo credits: 27-inch cyclotron dees, John B. Livingood, 1935, public domain via Wikimedia Commons; LHC tunnel sector 3-4, Maximilien Brice, CERN, CC BY-SA 3.0 via Wikimedia Commons. Full credits in SOURCES.md.
 :::
 
-## The lecture in six questions
+## The lecture in five questions
 
 :::: {.slide-body}
 
 1. **Motivation:** why do we need high energy?
 2. **Acceleration:** how do electric fields add energy?
-3. **Guidance:** how do magnets keep a beam on track?
+3. **Guidance:** how do magnets steer and focus a beam?
 4. **Limits:** why do electrons and protons need different machines?
-5. **Luminosity:** how many collisions do we get?
-6. **Experiments:** what does this mean for detectors?
+5. **Experiments:** what does the machine mean for detectors?
 
 ::::
 
 ::: {.notes}
-1 minute. Each section answers one question; return to the list at section boundaries.
+1 minute. Each section answers one question; return to the list at section boundaries. Luminosity (Lecture 4) is in the backup.
 :::
 
 ## 1 · Why accelerate? {.section-title}
@@ -209,7 +208,7 @@ Magnetic forces are perpendicular to velocity and do no work: dE/dt = q v·E.
 ## Electrostatic machines: $\Delta E=qV$
 
 ::: {.slide-refs}
-[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cockcroft%E2%80%93Walton_generator_2012.JPG)
+[Geni · CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Cockcroft%E2%80%93Walton_generator_2012.JPG)
 :::
 
 :::: {.slide-body}
@@ -218,11 +217,11 @@ Magnetic forces are perpendicular to velocity and do no work: dE/dt = q v·E.
 ::: {.picture-copy}
 One potential difference, crossed **once**.
 
-1932: Cockcroft and Walton split lithium with **~0.7 MeV** protons.
+1932: Cockcroft and Walton split lithium with protons of **a few hundred keV**.
 
 Limit: electrical **breakdown** — a few to ~25 MV.
 
-Still used today as **injectors** and for ion beams.
+Still used for **ion beams**, e.g. radiocarbon dating.
 :::
 
 ::: {.picture-visual .photo}
@@ -237,7 +236,20 @@ Cockcroft–Walton generator, Science Museum London: diode–capacitor stages mu
 ::::
 
 ::: {.notes}
-3 minutes. p + ⁷Li → 2 α was the first nuclear reaction induced by artificially accelerated particles (Nobel Prize 1951). Van de Graaff and tandem accelerators reach higher voltages (tandems effectively double by changing the ion charge). A static field cannot be reused: the particle must return to ground potential, which is why the next idea is a time-dependent field. Photo: Cockcroft–Walton generator in the Science Museum, London; Geni, CC BY-SA 4.0, via Wikimedia Commons.
+3 minutes. p + ⁷Li → 2 α was the first nuclear reaction induced by artificially accelerated particles (Nobel Prize 1951); the generator reached about 700 kV, and the reaction was seen with protons from about 125 keV up to a few hundred keV. As linac injectors, Cockcroft–Walton generators were replaced by radio-frequency quadrupoles (at CERN in 1993); electrostatic tandems remain workhorses for ion beams and accelerator mass spectrometry. Van de Graaff and tandem accelerators reach higher voltages (tandems effectively double by changing the ion charge). A static field cannot be reused: the particle must return to ground potential, which is why the next idea is a time-dependent field. Photo: Cockcroft–Walton generator in the Science Museum, London; Geni, CC BY-SA 4.0, via Wikimedia Commons.
+:::
+
+## Cockcroft–Walton demo {.demo-slide}
+
+:::: {.slide-body}
+
+::: {.widget data-src="widgets/cw.html" data-poster="widgets/cw-poster.png" data-alt="Interactive Cockcroft–Walton ladder: capacitors and diodes with node voltages, conducting diodes highlighted, output voltage rising towards 2N times the input"}
+:::
+
+::::
+
+::: {.notes}
+4 minutes. Press ½ cycle a few times with N = 3 and point at the diodes that light up: on the negative half cycle charge moves from the right column into the left; on the positive half cycle from the left into the right, one rung higher. The right column builds up a DC staircase 0, 2V₀, 4V₀, 6V₀. Then Play: the output approaches 2N·V₀ = 600 kV. Switch on a load: the output sags and ripples — the droop grows roughly as N³, which is why practical ladders stop at a few stages and about 1 MV. The 1932 machine reached about 700 kV.
 :::
 
 ## Reuse the field: the cyclotron
@@ -274,10 +286,30 @@ Lawrence's patent: spiral orbit between two "dees".
 4 minutes. Derive on the board: qvB = γmv²/r ⇒ ω=qB/(γm). As γ grows the particle arrives late; classical cyclotrons stop near ~20 MeV for protons. Fixes: vary the frequency (synchrocyclotron), shape the field (isochronous cyclotron), or keep the radius fixed and ramp B (synchrotron, next slides). Medical cyclotrons today: 11–18 MeV for PET isotopes, ~230–250 MeV isochronous or superconducting cyclotrons for proton therapy. Patent drawing is public domain.
 :::
 
+## The synchrotron: fixed radius, rising field
+
+:::: {.slide-body}
+
+A cyclotron's magnet fills the whole orbit, and $\gamma$ spoils its timing.
+
+**Synchrotron:** keep the orbit radius $\rho$ **fixed**.
+
+- Ramp the dipole field with the momentum: $B=p/(0.3\,\rho)$.
+- Lock the RF frequency to the revolution frequency.
+- Magnets only around a thin pipe → rings of **kilometres**.
+
+LHC: 0.54 T at 450 GeV → 8.33 T at 7 TeV, in about 20 minutes.
+
+::::
+
+::: {.notes}
+3 minutes. Phase stability (Veksler 1944, McMillan 1945) made synchrotrons possible: particles slightly off energy or timing oscillate around the synchronous particle instead of being lost. Every circular collider is a synchrotron; the ramp is why each machine covers only a limited energy range and needs injectors (the CERN chain at the end of this section). 450/(0.3 × 2804 m) = 0.535 T. Today the LHC ramps to 6.8 TeV (about 8.1 T).
+:::
+
 ## Radio-frequency cavities
 
 ::: {.slide-refs}
-[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG)
+[Z22 · CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG)
 :::
 
 :::: {.slide-body}
@@ -308,6 +340,19 @@ Nine-cell 1.3 GHz niobium cavity (TESLA type, about 1 m long).
 5 minutes. Linac vs ring trade-off: a linac crosses each cavity once, so the gradient sets the length; a ring crosses the same cavities every turn, so modest voltage suffices. LHC: 8 superconducting 400 MHz cavities per beam, 16 MV per beam per turn; ramping 450 GeV → 6.8 TeV in about 20 minutes needs only ≈0.5 MeV of net gain per turn (6.35 TeV / (1200 s × 11 245 Hz)). TESLA/XFEL-type cavities reach ≈25–35 MV/m in operation. Normal-conducting cavities (e.g. CLIC design, 100 MV/m) work in short pulses. Photo: nine-cell 1.3 GHz niobium cavity at Fermilab; Z22, CC BY-SA 4.0, via Wikimedia Commons.
 :::
 
+## RF cavity demo {.demo-slide}
+
+:::: {.slide-body}
+
+::: {.widget data-src="widgets/rf.html" data-poster="widgets/rf-poster.png" data-alt="Interactive RF cavity: chain of cells with oscillating electric field, a particle crossing, and energy gain versus arrival phase"}
+:::
+
+::::
+
+::: {.notes}
+4 minutes. Send a bunch at φ = 0: it meets a forward field in every cell because each cell is half a wavelength long and the field flips each half period (π mode). Then φ = 90°: it gains nothing; 180°: it is decelerated (this is how energy-recovery linacs and beam dumps by RF work). Compare 1 cell and 9 cells: the gain adds up. The B field (circles near the wall) is 90° out of phase: energy sloshes between electric and magnetic field like in an LC circuit. Transit-time factor: a single gap crossed during half a period gets 2/π of the peak voltage.
+:::
+
 ## RF makes bunches
 
 ::: {.slide-refs}
@@ -331,7 +376,7 @@ That is the **40 MHz** clock of the experiments.
 ![Sinusoidal cavity voltage with early, synchronous and late particles receiving smaller, nominal and larger energy gains](figures/rf-phase-stability.svg)
 
 ::: {.plot-caption}
-Phase stability (below transition energy).
+Phase stability at low energy. Ultra-relativistic rings (LHC) work on the mirror-image slope.
 :::
 :::
 :::::
@@ -412,6 +457,46 @@ Energy reach = field × size. Field is the expensive part.
 4 minutes. Derive 0.3 from p=qBρ with q=e: p[GeV/c]=e·B·ρ·c/(10⁹ e V) = 0.2998 Bρ. In a spectrometer we measure ρ to get p; in an accelerator we choose p and ρ and need B. LHC: 1232 dipoles × 14.3 m ≈ 17.6 km of the 26.7 km circumference. Iron saturates near 2 T, so higher fields need superconducting coils: Nb–Ti at 1.9 K for 8.33 T; Nb₃Sn for HL-LHC interaction-region quadrupoles and the 14–16 T studies for FCC-hh.
 :::
 
+## Dipoles and quadrupoles
+
+::: {.slide-refs}
+Original teaching model · Photos: [CERN PhotoLab · CC BY 4.0](https://commons.wikimedia.org/wiki/File:LEAR_magnet.jpg), [Unnerving duck · CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:CERN_type_QW_magnet.jpg)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout .magnet-layout}
+:::: {.picture-copy}
+**Dipole:** uniform field → **bends** the beam.
+
+**Quadrupole:** force grows with distance from the axis → a **lens**, but **in** in one plane and **out** in the other.
+
+::: {.magnet-photos}
+![A curved bending dipole magnet of CERN's LEAR ring with its copper coil ends, a technician alongside for scale](figures/lear-dipole.jpg)
+
+![Face-on view of a CERN QW quadrupole: four coils around four iron poles on a red yoke](figures/cern-qw-quadrupole.jpg)
+:::
+
+::: {.magnet-photo-labels}
+[Dipole (LEAR, CERN)]{} [Quadrupole (QW, CERN)]{}
+:::
+::::
+
+::: {.picture-visual}
+![Field lines and forces in a dipole (uniform, sideways force) and a quadrupole (force growing with distance, inward in one plane and outward in the other)](figures/magnet-fields.svg)
+
+::: {.plot-caption}
+Force F = qv × B on a proton entering the page.
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+3 minutes. Dipole: two poles, B uniform in the gap, F = q v B sideways: the ring's "steering". Quadrupole: four poles N-S-N-S, B_y = g x, B_x = g y; the restoring force grows linearly with offset, exactly what a lens does to light rays (deflection ∝ distance from the axis → focal length). Why one plane only: inside the aperture ∇·B = 0 and ∇×B = 0, so a field that pushes inward in x must push outward in y. The fix (alternating quadrupoles) comes three slides later. Higher multipoles (sextupoles, octupoles) correct chromatic and nonlinear effects — mention only. Photos: one of the four bending magnets of LEAR (Low Energy Antiproton Ring), CERN PhotoLab, CC BY 4.0; quadrupole type QW (Tesla Engineering) on display in the CERN Antiproton Decelerator hall, Unnerving duck, CC BY-SA 4.0; both via Wikimedia Commons. Both are normal-conducting (iron-dominated) magnets: the pole shape defines the field, unlike the LHC's superconducting coils shown later.
+:::
+
 ## 27 km of magnets {.full-figure}
 
 ::: {.slide-refs}
@@ -425,7 +510,7 @@ Energy reach = field × size. Field is the expensive part.
 :::
 
 ::: {.take-home}
-1232 dipoles at 1.9 K · two beams in one magnet · 11 kA · ~9 GJ stored magnetic energy.
+1232 dipoles at 1.9 K · two beams in one magnet · 11.85 kA · ~9 GJ stored magnetic energy.
 :::
 
 ::::
@@ -446,7 +531,7 @@ Energy reach = field × size. Field is the expensive part.
 ::: {.picture-copy}
 **Two beams, one magnet:** opposite fields in two apertures, 19 cm apart.
 
-Copper-coloured **Nb–Ti coils** carry 11.8 kA; the field shape comes from the **current distribution**, not iron poles.
+Copper-coloured **Nb–Ti coils** carry 11.85 kA; the field shape comes from the **current distribution**, not iron poles.
 
 Left: dipole (bends). Right: quadrupole (focuses).
 :::
@@ -466,6 +551,19 @@ LHC magnet cross-sections on display: dipole and quadrupole, both "two-in-one".
 3 minutes. A current distribution ∝ cos θ around the aperture gives a pure dipole field; ∝ cos 2θ a quadrupole. The stainless-steel collars hold the coils against the magnetic forces (hundreds of tonnes per metre at full field); the iron yoke returns the flux and is itself cooled to 1.9 K inside the cryostat. Compare with Lecture 7 tracking magnets: a solenoid in a detector bends tracks with the same Lorentz force. Photo: Ajheindel, CC0, via Wikimedia Commons.
 :::
 
+## Magnet explorer {.demo-slide}
+
+:::: {.slide-body}
+
+::: {.widget data-src="widgets/magnet.html" data-poster="widgets/magnet-poster.png" data-alt="Clickable schematic cross-section of an LHC dipole cryomagnet with the name, temperature, purpose and a fact for each part"}
+:::
+
+::::
+
+::: {.notes}
+4 minutes. Let students click from the beam outwards: beam → beam screen → cold bore → coils → collars → yoke → helium vessel → heat exchanger → bus bars → thermal shield → insulation vacuum → vessel → support posts. The thread: everything is about holding 8.33 T and removing heat at 1.9 K. The 2008 bus-bar incident is a memorable story about the stored energy. Schematic after the LHC Design Report Vol. I, ch. 7; facts rounded.
+:::
+
 ## Quadrupoles focus — in one plane at a time
 
 ::: {.slide-refs}
@@ -476,11 +574,11 @@ Original teaching model
 
 ::::: {.picture-layout}
 ::: {.picture-copy}
-Quadrupole: $B_y=g\,x,\ B_x=g\,y$.
-
-Maxwell: focusing in $x$ ⇒ **defocusing** in $y$.
+One quadrupole: focusing in $x$, **defocusing** in $y$.
 
 Alternate them (**FODO**): net focusing in both planes.
+
+Particles oscillate around the orbit: **betatron oscillations**.
 
 Like lenses: $\dfrac{1}{F}=\dfrac{d}{f^2}>0$.
 :::
@@ -500,22 +598,61 @@ Thin lenses, f = 1.2 L; the same particles in both planes.
 4 minutes. ∇×B=0 and ∇·B=0 in the aperture force the quadrupole field pattern; you cannot focus in both planes with one magnet. Strong (alternating-gradient) focusing: Courant, Livingston and Snyder, 1952 (and Christofilos). The particles oscillate around the design orbit: betatron oscillations. Thin-lens doublet: two lenses f and −f separated by d give 1/F = d/f². Stability requires f > L/2 for this symmetric cell (|trace| < 2 of the one-cell transfer matrix).
 :::
 
-## How small is the beam at the collision point?
+## Emittance: how much room the beam needs
 
 :::: {.slide-body}
 
-Beam size from **emittance** $\varepsilon$ and the optics function $\beta$:
+Each particle has a **position** $x$ and an **angle** $x'$. Plot all particles: a cloud.
 
-$$\sigma=\sqrt{\varepsilon\,\beta}\qquad\varepsilon=\frac{\varepsilon_N}{\beta\gamma}$$
+**Emittance** $\varepsilon$ = area of that cloud / π (units: mm·mrad).
 
-LHC design: $\varepsilon_N=3.75\ \mu\mathrm{m}$, $\gamma=7460$, $\beta^*=0.55\ \mathrm{m}$ ⇒ $\sigma^*\approx$ **17 µm**.
+Lenses and drifts **reshape** the cloud but cannot shrink its area (Liouville).
 
-Strong final quadrupoles squeeze the beam just before the experiment.
+A tiny spot needs **large angles** — like focusing a flashlight.
+
+::: {.take-home}
+Only acceleration shrinks the angles: $x'=p_x/p$, so $\varepsilon\propto1/p$.
+:::
 
 ::::
 
 ::: {.notes}
-3 minutes. Emittance is the phase-space area (x, x′) occupied by the beam, conserved by linear optics (Liouville). Acceleration shrinks the geometric emittance as 1/γ (adiabatic damping); the normalized emittance is the invariant. β is a property of the magnet lattice; β* is its value at the interaction point. Run 3 operates with smaller β* (tens of cm). Arithmetic: ε=3.75e-6/7460=5.0e-10 m; σ=sqrt(5.0e-10×0.55)=1.66e-5 m. Compare: a human hair is ~70 µm. This feeds directly into the luminosity formula in section 5.
+2 minutes, then the demo. Liouville: for conservative forces the phase-space density is conserved, so linear optics maps an ellipse to an ellipse of the same area. Analogy: a flashlight beam can be focused to a small spot only with a large cone angle; a laser has small emittance. Emittance can be reduced by non-conservative processes: synchrotron radiation damping in electron rings, stochastic and electron cooling (antiprotons) — mention only.
+:::
+
+## Emittance demo {.demo-slide}
+
+:::: {.slide-body}
+
+::: {.widget data-src="widgets/emittance.html" data-poster="widgets/emittance-poster.png" data-alt="Phase-space widget: particle cloud in position and angle; drifts, lenses, a squeeze to focus and acceleration; emittance shown"}
+:::
+
+::::
+
+::: {.notes}
+4 minutes. Ask a student to try to make ε smaller with drifts and lenses — it never changes. "Squeeze to a focus": the size drops, the angular spread grows. Then accelerate: angles halve, ε halves. This is why beams get smaller as they gain energy, and why the strong final quadrupoles at the experiments produce a tiny spot with a beam that diverges quickly.
+:::
+
+## Squeezing the beam at the collision point
+
+:::: {.slide-body}
+
+$$\sigma^*=\sqrt{\varepsilon\,\beta^*},\qquad \varepsilon\approx\frac{\varepsilon_N}{\gamma}$$
+
+$\beta^*$: how strongly the final quadrupoles squeeze (a length set by the optics).
+
+$\varepsilon_N$: normalized emittance, fixed at the source and kept by the whole chain.
+
+LHC design: $\varepsilon_N=3.75\ \mu\mathrm{m}$, $\gamma=7460$, $\beta^*=0.55\ \mathrm{m}$ ⇒ $\sigma^*\approx$ **17 µm**.
+
+::: {.take-home}
+A proton bunch thinner than a hair (~70 µm) — needed for collisions to happen at all.
+:::
+
+::::
+
+::: {.notes}
+3 minutes. ε=3.75e-6/7460=5.0e-10 m; σ=sqrt(5.0e-10×0.55)=1.66e-5 m. Run 3 uses β* of about 30 cm. The β function is a property of the magnet lattice: large in the arcs, tiny at the collision points. The smaller the spot, the larger the beam angles (the demo), so the final focusing quadrupoles must sit close to the experiment and have huge apertures. Luminosity ∝ 1/σ*² is in the backup (Lecture 4 covered luminosity).
 :::
 
 ## 4 · Limits: synchrotron radiation {.section-title}
@@ -534,7 +671,41 @@ Radiated power · mass to the fourth power · rings, linacs and muons · light s
 
 :::
 
-## A bent charge radiates
+## Why does a bent beam radiate?
+
+::: {.slide-refs}
+Original teaching model
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+Any **accelerated charge** radiates (Larmor): $P\propto q^2a^2$.
+
+**Bremsstrahlung:** sudden kick from a **nucleus**, in matter.
+
+**Synchrotron radiation:** steady $a=c^2/\rho$ from a **magnet**, in vacuum.
+
+Same physics, different force. At $v\to c$: $P\propto\gamma^4a^2$, emitted in a cone of angle $1/\gamma$.
+:::
+
+::: {.picture-visual}
+![Angular pattern of radiation from a charge accelerated sideways, at low speed (dipole pattern), 0.6 c and 0.95 c (narrow forward cone)](figures/radiation-pattern.svg)
+
+::: {.plot-caption}
+Same sideways acceleration a, two speeds: at high speed a forward searchlight.
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. Students often equate synchrotron radiation with bremsstrahlung. Both are radiation from accelerated charges; the difference is the source of the acceleration. Bremsstrahlung (Lectures 5–6): the Coulomb field of a nucleus, random, a ∝ Z e²/m, so the radiated energy scales as 1/m² — why electrons shower and muons do not. Synchrotron radiation: the magnet, steady, transverse acceleration a = v²/ρ. Relativistic (Liénard) for a ⊥ v: P = q² γ⁴ a² / (6π ε₀ c³) with a = c²/ρ gives P ∝ γ⁴/ρ²; at fixed energy γ = E/mc², hence m⁻⁴ — even stronger mass dependence than bremsstrahlung. The cone: in the particle frame the pattern is a dipole; the Lorentz boost folds it into a cone of half-angle ~1/γ along the velocity — a searchlight sweeping round the ring, which is why light sources deliver intense X-ray pulses. Figure: Jackson eq. 14.44 for acceleration perpendicular to velocity, plotted in the orbit plane for β = 0 and 0.9, each normalised to its maximum.
+:::
+
+## How much energy is lost per turn?
 
 ::: {.slide-refs}
 Original teaching model
@@ -563,7 +734,7 @@ $\Delta E[\mathrm{GeV}]=8.85\times10^{-5}\,E^4[\mathrm{GeV}^4]/\rho[\mathrm{m}]$
 ::::
 
 ::: {.notes}
-5 minutes. Connect to bremsstrahlung (Lectures 5–6): any accelerated charge radiates; for radiation in matter the critical energy scales as m², here the circular-orbit loss scales as m⁻⁴ at fixed energy. Radiated power P=(e²c/6πε₀)β⁴γ⁴/ρ²; loss per turn ΔE=(e²/3ε₀)β³γ⁴/ρ. LEP2 at 104.5 GeV with ρ≈3.1 km lost ≈3.4 GeV per turn, replaced by ≈3.6 GV of superconducting RF — LEP was stopped by this wall. The LHC radiates only ~kW per beam, but onto a 1.9 K cold bore, so a beam screen intercepts it.
+3 minutes. Radiated power P=(e²c/6πε₀)β⁴γ⁴/ρ²; loss per turn ΔE=(e²/3ε₀)β³γ⁴/ρ. LEP2 at 104.5 GeV with ρ≈3.1 km lost ≈3.4 GeV per turn, replaced by ≈3.6 GV of superconducting RF — LEP was stopped by this wall. The LHC radiates only ~kW per beam, but onto a 1.9 K cold bore, so a beam screen intercepts it.
 Figure: original analytic curves, electrons at ρ=3096 m (LEP) and protons at ρ=2804 m (LHC dipoles). Above the dotted line the ring cannot store the beam at all.
 :::
 
@@ -625,98 +796,7 @@ For electrons the limit is radiation; for protons it is the magnet.
 3 minutes. Let students estimate with the scaling from LEP2 first: (7000/104.5)⁴ ≈ 2×10⁷ times 3.4 GeV ≈ 7×10⁷ GeV (radius nearly equal). The fragment reveals the full number. Ask what energy an electron ring in the LHC tunnel could reach if the RF could supply ~3–4 GeV per turn: about LEP2, ~100 GeV.
 :::
 
-## 5 · Luminosity: from beams to rates {.section-title}
-
-:::: {.slide-body}
-
-How many collisions per second?
-
-::: {.subtle}
-Beam parameters · rates · integrated luminosity · pile-up
-:::
-
-::::
-
-::: {.notes}
-
-:::
-
-## Luminosity from beam parameters
-
-:::: {.slide-body}
-
-Two bunches of $N_1,N_2$ particles collide with transverse size $\sigma_x,\sigma_y$:
-
-$$\mathcal{L}=\frac{f_{\mathrm{rev}}\,n_b\,N_1N_2}{4\pi\,\sigma_x\sigma_y}\,F$$
-
-LHC design: $f_{\mathrm{rev}}=11.2$ kHz, $n_b=2808$, $N=1.15\times10^{11}$, $\sigma^*=17\ \mu$m, $F\approx0.84$:
-
-$$\mathcal{L}\approx1.0\times10^{34}\ \mathrm{cm^{-2}\,s^{-1}}$$
-
-::::
-
-::: {.notes}
-4 minutes. Interpret each factor: more bunches, more particles per bunch (enters squared), smaller beams. F is the geometric reduction from the crossing angle needed to avoid parasitic collisions between bunches. Arithmetic: 11245 × 2808 × (1.15e11)² / (4π × (16.7e-4 cm)²) ≈ 1.2e34, times 0.84 ≈ 1.0e34. Run 3 levels the luminosity near 2×10³⁴ by adjusting β* during the fill, to limit pile-up. Limits: beam–beam interaction, beam intensity (instabilities, machine protection), and the experiments' tolerance for pile-up.
-:::
-
-## Luminosity turns probability into rate
-
-:::: {.slide-body}
-
-$$R=\mathcal{L}\,\sigma,\qquad N=\sigma\int\mathcal{L}\,dt$$
-
-At $\mathcal{L}=10^{34}\,\mathrm{cm}^{-2}\mathrm{s}^{-1}$:
-
-| Process | Cross section | Rate |
-|---|---:|---:|
-| Inelastic $pp$ | 80 mb | $8\times10^8\ \mathrm{s}^{-1}$ |
-| $W\to\ell\nu$ | 20 nb | $200\ \mathrm{s}^{-1}$ |
-| Higgs | 50 pb | 1 every 2 s |
-
-Integrated: $1\ \mathrm{fb}^{-1}=10^{39}\ \mathrm{cm}^{-2}$. 140 fb⁻¹ (LHC Run 2) → **~7 million Higgs bosons**.
-
-::::
-
-::: {.notes}
-3 minutes. Recall Lecture 4 (cross sections). Cross sections rounded at √s=13 TeV: inelastic ≈ 80 mb; W→ℓν per lepton flavour ≈ 20 nb; total Higgs production ≈ 55 pb. Produced is not recorded: branching fractions, acceptance, trigger and reconstruction efficiency follow (next lecture). 1 b = 10⁻²⁴ cm².
-:::
-
-## One crossing contains many interactions {.landmark}
-
-::: {.slide-refs}
-[CMS · Public luminosity plots, Run 2](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults)
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Mean interactions per crossing:
-
-$$\mu=\frac{\mathcal{L}\,\sigma_{\mathrm{inel}}}{f_{\mathrm{rev}}\,n_b}\approx25$$
-
-at design luminosity.
-
-Run 2 averages reached **30–40**.
-
-What exactly is on the horizontal axis?
-:::
-:::: {.picture-visual}
-![CMS Run 2: recorded luminosity versus mean pile-up.](figures/cms-run2-pileup.png)
-
-::: {.plot-caption}
-CMS Run 2: recorded luminosity versus mean pile-up.
-:::
-::::
-:::::
-
-::::
-
-::: {.notes}
-4 minutes. μ = 1e34 × 8e-26 / (11245 × 2808) ≈ 25. The x axis is the mean interactions per crossing μ, not the measured vertex count of one event; the y axis is recorded luminosity per μ bin. Higher luminosity per bunch means more pile-up, which costs reconstruction and trigger performance; this is why luminosity is levelled. HL-LHC aims for μ≈140–200.
-:::
-
-## 6 · From collisions to experiments {.section-title}
+## 5 · From collisions to experiments {.section-title}
 
 :::: {.slide-body}
 
@@ -746,7 +826,7 @@ Read vertically at one collider energy.
 
 **Interesting processes sit 6–11 orders of magnitude below the total.**
 
-$10^9$ interactions/s; storage takes $\sim10^3$ events/s.
+At $\mathcal{L}=10^{34}\,\mathrm{cm^{-2}s^{-1}}$ (Lecture 4): $10^9$ interactions/s; storage takes $\sim10^3$ events/s.
 
 Next lecture: **how do we choose?**
 :::
@@ -805,11 +885,11 @@ NSLS-II, Brookhaven: a 3 GeV electron ring built to radiate.
 
 :::: {.slide-body}
 
-1. $p=0.3\,B\rho$: **8.33 T** and **2.8 km** for 7 TeV.
-2. **25 ns** bunch spacing → 40 MHz crossings.
-3. $\Delta E_{\mathrm{turn}}\propto E^4/(m^4\rho)$: **3.4 GeV** (LEP2) vs **6.7 keV** (LHC).
-4. $\mathcal{L}\approx10^{34}\ \mathrm{cm^{-2}s^{-1}}$ from **17 µm** beams.
-5. $\mu\approx25$–60 interactions per crossing.
+1. $2N\cdot V_0$: electrostatic ladders stop near **1 MV**; RF reuses fields **11 245 times a second** (LHC).
+2. $p=0.3\,B\rho$: **8.33 T** and **2.8 km** for 7 TeV.
+3. **25 ns** bunch spacing → 40 MHz crossings.
+4. $\Delta E_{\mathrm{turn}}\propto E^4/(m^4\rho)$: **3.4 GeV** (LEP2) vs **6.7 keV** (LHC).
+5. $\varepsilon\propto1/p$: **17 µm** beams at the collision point.
 
 ::::
 
@@ -824,12 +904,13 @@ NSLS-II, Brookhaven: a 3 GeV electron ring built to radiate.
 1. Why does a fixed-target experiment waste most of the beam energy?
 2. Why can a ring use much weaker cavities than a linac?
 3. Why does one quadrupole not focus a beam in both planes?
-4. Double the number of bunches: what happens to $\mathcal{L}$ and to $\mu$?
+4. Why did LEP use a **weak** field (0.11 T) in a 27 km tunnel?
+5. Synchrotron radiation and bremsstrahlung: what is the same, what differs?
 
 ::::
 
 ::: {.notes}
-3 minutes. Answers: 1, momentum conservation: the centre of mass must keep moving, √s∝√E. 2, the ring reuses the same cavities every turn. 3, ∇·B=0 and ∇×B=0 force the field to focus in one plane and defocus in the other. 4, L doubles, μ stays the same (μ ∝ L/n_b); doubling N per bunch instead doubles μ and quadruples L.
+3 minutes. Answers: 1, momentum conservation — the centre of mass keeps moving, √s ∝ √E. 2, the ring reuses the same cavities every turn. 3, ∇·B = 0 and ∇×B = 0 force focusing in one plane to come with defocusing in the other. 4, for electrons the loss ∝ E⁴/ρ: a large radius keeps it manageable, and a large radius at fixed momentum means a weak field. 5, both are radiation from accelerated charges; bremsstrahlung from the Coulomb kick of a nucleus in matter (∝ 1/m²), synchrotron radiation from the steady centripetal acceleration in a magnet (∝ 1/m⁴ at fixed energy), emitted in a 1/γ cone.
 :::
 
 ## Next lecture: DAQ and trigger
@@ -859,13 +940,88 @@ Homework answer: 2808 × 1.15e11 × 7e12 eV × 1.6e-19 J/eV ≈ 362 MJ per beam 
 Derivations and further reading
 
 ::: {.subtle}
-Fixed-target invariant mass · synchrotron-radiation formula · references
+Luminosity and pile-up · fixed-target invariant mass · synchrotron-radiation formula · references
 :::
 
 ::::
 
 ::: {.notes}
 
+:::
+
+## Backup · Luminosity from beam parameters
+
+:::: {.slide-body}
+
+Two bunches of $N_1,N_2$ particles collide with transverse size $\sigma_x,\sigma_y$:
+
+$$\mathcal{L}=\frac{f_{\mathrm{rev}}\,n_b\,N_1N_2}{4\pi\,\sigma_x\sigma_y}\,F$$
+
+LHC design: $f_{\mathrm{rev}}=11.2$ kHz, $n_b=2808$, $N=1.15\times10^{11}$, $\sigma^*=17\ \mu$m, $F\approx0.84$:
+
+$$\mathcal{L}\approx1.0\times10^{34}\ \mathrm{cm^{-2}\,s^{-1}}$$
+
+::::
+
+::: {.notes}
+4 minutes. Interpret each factor: more bunches, more particles per bunch (enters squared), smaller beams. F is the geometric reduction from the crossing angle needed to avoid parasitic collisions between bunches. Arithmetic: 11245 × 2808 × (1.15e11)² / (4π × (16.7e-4 cm)²) ≈ 1.2e34, times 0.84 ≈ 1.0e34. Run 3 levels the luminosity near 2×10³⁴ by adjusting β* during the fill, to limit pile-up. Limits: beam–beam interaction, beam intensity (instabilities, machine protection), and the experiments' tolerance for pile-up.
+:::
+
+## Backup · Luminosity turns probability into rate
+
+:::: {.slide-body}
+
+$$R=\mathcal{L}\,\sigma,\qquad N=\sigma\int\mathcal{L}\,dt$$
+
+At $\mathcal{L}=10^{34}\,\mathrm{cm}^{-2}\mathrm{s}^{-1}$:
+
+| Process | Cross section | Rate |
+|---|---:|---:|
+| Inelastic $pp$ | 80 mb | $8\times10^8\ \mathrm{s}^{-1}$ |
+| $W\to\ell\nu$ | 20 nb | $200\ \mathrm{s}^{-1}$ |
+| Higgs | 50 pb | 1 every 2 s |
+
+Integrated: $1\ \mathrm{fb}^{-1}=10^{39}\ \mathrm{cm}^{-2}$. 140 fb⁻¹ (LHC Run 2) → **~7 million Higgs bosons**.
+
+::::
+
+::: {.notes}
+3 minutes. Recall Lecture 4 (cross sections). Cross sections rounded at √s=13 TeV: inelastic ≈ 80 mb; W→ℓν per lepton flavour ≈ 20 nb; total Higgs production ≈ 55 pb. Produced is not recorded: branching fractions, acceptance, trigger and reconstruction efficiency follow (next lecture). 1 b = 10⁻²⁴ cm².
+:::
+
+## Backup · One crossing, many interactions {.landmark}
+
+::: {.slide-refs}
+[CMS · Public luminosity plots, Run 2](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+Mean interactions per crossing:
+
+$$\mu=\frac{\mathcal{L}\,\sigma_{\mathrm{inel}}}{f_{\mathrm{rev}}\,n_b}\approx25$$
+
+at design luminosity.
+
+Run 2 averages reached **30–40**.
+
+What exactly is on the horizontal axis?
+:::
+:::: {.picture-visual}
+![CMS Run 2: recorded luminosity versus mean pile-up.](figures/cms-run2-pileup.png)
+
+::: {.plot-caption}
+CMS Run 2: recorded luminosity versus mean pile-up.
+:::
+::::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. μ = 1e34 × 8e-26 / (11245 × 2808) ≈ 25. The x axis is the mean interactions per crossing μ, not the measured vertex count of one event; the y axis is recorded luminosity per μ bin. Higher luminosity per bunch means more pile-up, which costs reconstruction and trigger performance; this is why luminosity is levelled. HL-LHC aims for μ≈140–200.
 :::
 
 ## Backup · Collision energy, fixed target
@@ -908,6 +1064,23 @@ Critical photon energy $E_c=\tfrac{3}{2}\hbar c\,\gamma^3/\rho$: X-rays for GeV 
 Optional. For a separated-function ring only the dipoles radiate, so ρ is the dipole bending radius, not the average ring radius. E_c explains why light sources at a few GeV produce keV X-rays.
 :::
 
+## Backup · The LHC in a nutshell
+
+::: {.slide-refs}
+[Oxford Sparks: A quick look around the LHC (YouTube)](https://www.youtube.com/watch?v=BEnaEMMAO_s)
+:::
+
+:::: {.slide-body}
+
+::: {.widget data-src="https://www.youtube-nocookie.com/embed/BEnaEMMAO_s?rel=0" data-poster="figures/lhc-video-poster.jpg" data-alt="Oxford Sparks animated video: a quick look around the LHC" data-ratio="1.778"}
+:::
+
+::::
+
+::: {.notes}
+For fun, about 2 minutes. Animated tour of the LHC by Oxford Sparks (University of Oxford): the ring, the magnets, the cavities and the experiments in one go. Needs an internet connection; in the PDF export the poster frame stands in for the video.
+:::
+
 ## Backup · Reference material {.references}
 
 :::: {.slide-body}
@@ -931,3 +1104,4 @@ B. R. Martin and G. Shaw, *Particle Physics*, ch. on experimental methods · M. 
 ::: {.notes}
 Photo and figure credits are in SOURCES.md.
 :::
+

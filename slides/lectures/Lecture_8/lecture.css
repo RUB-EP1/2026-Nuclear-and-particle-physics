@@ -76,3 +76,15 @@
 .reveal .photo-pair img{display:block;width:100%;height:600px;object-fit:cover;border-radius:6px;margin:0}
 .reveal .photo-pair figure,.reveal .photo-pair figure>p{margin:0}
 .reveal .photo-pair figcaption{display:none}
+
+/* Dipoles and quadrupoles: copy with two real magnets underneath, field sketch on the right. */
+.reveal .magnet-layout{grid-template-columns:minmax(0,.4fr) minmax(0,.6fr);gap:36px}
+.reveal .magnet-layout .picture-copy{font-size:32px}
+.reveal .magnet-layout .picture-copy p{margin:0 0 20px}
+.reveal .magnet-photos{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin-top:6px}
+.reveal .magnet-photos p,.reveal .magnet-photos figure{margin:0}
+.reveal .magnet-photos img{display:block;width:100%;height:340px;object-fit:cover;border-radius:6px;margin:0}
+.reveal .magnet-photos figcaption{display:none}
+.reveal .magnet-photo-labels{margin-top:-14px}
+.reveal .magnet-photo-labels p{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;font-size:22px;color:#5e6e7b;margin:0}
+.reveal .magnet-layout .picture-visual img{height:600px}

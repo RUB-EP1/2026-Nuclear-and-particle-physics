@@ -101,7 +101,7 @@ save(f, 'synchrotron-loss')
 f, a = plot('Collision energy of colliders')
 ee = [('ADONE', 1969, 3), ('SPEAR', 1972, 8), ('PETRA', 1978, 46.8), ('TRISTAN', 1986, 64), ('LEP', 1989, 91), ('LEP2', 2000, 209)]
 hh = [('ISR', 1971, 63), ('SppS', 1981, 630), ('Tevatron', 1987, 1800), ('RHIC pp', 2009, 500), ('LHC', 2010, 7000), ('LHC', 2015, 13000), ('LHC', 2022, 13600)]
-ep = [('HERA', 1992, 300)]
+ep = [('HERA', 1992, 318)]
 for data, c, mk, lab in [(ee, R, 'o', 'e⁺e⁻'), (hh, B, 's', 'Hadron (pp, pp̄)'), (ep, G, 'D', 'ep')]:
     a.semilogy([d[1] for d in data], [d[2] for d in data], mk, color=c, ms=11, label=lab)
     for name, yr, e in data:
@@ -112,4 +112,44 @@ a.text(1966, 900, '×10 every 15 years', color=GR, fontsize=15)
 a.set(xlabel='Year', ylabel='√s [GeV]', xlim=(1965, 2030), ylim=(1, 5e4)); a.legend(loc='lower right')
 save(f, 'collider-history')
 
-print('6 reproducible plots generated.')
+# 7. Dipole and quadrupole: field lines B and force on a positive particle moving into the page (v along -z).
+f, axes = plt.subplots(1, 2, figsize=(12.4, 6.4), layout='constrained')
+f.get_layout_engine().set(h_pad=0.25)
+gg = np.linspace(-1.05, 1.05, 200); XX, YY = np.meshgrid(gg, gg)
+g = np.linspace(-.8, .8, 5); X, Y = np.meshgrid(g, g); inside = X**2 + Y**2 <= .8
+for a, kind in zip(axes, ['dipole', 'quadrupole']):
+    BXX, BYY = (np.zeros_like(XX), np.ones_like(XX)) if kind == 'dipole' else (YY, XX)
+    a.streamplot(gg, gg, BXX, BYY, color='#7fb8de', density=1.0, linewidth=1.6, arrowsize=1.3)
+    Bx, By = (np.zeros_like(X), np.ones_like(X)) if kind == 'dipole' else (Y, X)
+    Fx, Fy = By, -Bx      # (-z) x B
+    a.quiver(X[inside], Y[inside], Fx[inside], Fy[inside], color=O, scale=10, width=.007, zorder=3)
+    a.add_patch(plt.Circle((0, 0), 1.05, fill=False, color='#9aabb6', lw=2))
+    if kind == 'dipole':
+        for yy, lab in ((1.3, 'S'), (-1.3, 'N')):  # field points up: leaves N (bottom), enters S (top)
+            a.add_patch(plt.Rectangle((-1.1, yy - .12), 2.2, .24, color='#c87533' if lab == 'N' else '#7c8c97')); a.text(1.25, yy - .06, lab, fontsize=17)
+        a.set_title('Dipole: same force everywhere → bends', loc='left', fontsize=18)
+    else:
+        for ang, lab in zip([45, 135, 225, 315], ['S', 'N', 'S', 'N']):  # B = (y, x) leaves the 135° and 315° poles
+            r = np.radians(ang); a.add_patch(plt.Circle((1.3 * np.cos(r), 1.3 * np.sin(r)), .16, color='#c87533' if lab == 'N' else '#7c8c97')); a.text(1.55 * np.cos(r) - .05, 1.55 * np.sin(r) - .07, lab, fontsize=16)
+        a.set_title('Quadrupole: force ∝ distance → a lens', loc='left', fontsize=18)
+        a.text(0, -1.72, 'here: pushes out in x, in towards the axis in y', ha='center', fontsize=15, color=GR)
+    a.set_aspect('equal'); a.set_xlim(-1.8, 1.8); a.set_ylim(-1.85, 1.75); a.axis('off')
+axes[0].plot([], [], color='#7fb8de', lw=3, label='field lines B'); axes[0].plot([], [], color=O, lw=6, label='force on a proton entering the page')
+axes[0].legend(loc='lower left', bbox_to_anchor=(-.02, -.08), fontsize=15)
+save(f, 'magnet-fields')
+
+# 8. Radiation pattern for acceleration perpendicular to velocity (orbit plane), Jackson 14.44:
+# dP/dOmega ∝ [(1 - b cos t)^2 - (1 - b^2) sin^2 t cos^2 phi] / (1 - b cos t)^5, phi = 0 (plane of the orbit).
+f, axes = plt.subplots(1, 2, figsize=(10.6, 5.6), layout='constrained', subplot_kw={'projection': 'polar'})
+th = np.linspace(0, 2 * np.pi, 1440)
+for a, b, lab in zip(axes, [0.0, 0.9], ['v ≪ c: dipole pattern', 'v = 0.9 c: forward cone ~1/γ']):
+    num = (1 - b * np.cos(th))**2 - (1 - b**2) * np.sin(th)**2
+    P = np.clip(num, 0, None) / (1 - b * np.cos(th))**5; P /= P.max()
+    a.plot(th, P, color=R, lw=2.5); a.fill(th, P, color=R, alpha=.15)
+    a.annotate('', xy=(0, 1.15), xytext=(0, 0), arrowprops=dict(arrowstyle='->', color=B, lw=2.5))
+    a.annotate('', xy=(np.pi / 2, .7), xytext=(0, 0), arrowprops=dict(arrowstyle='->', color=G, lw=2.5))
+    a.set_rticks([]); a.set_thetagrids([]); a.set_ylim(0, 1.2); a.set_title(lab, fontsize=17, pad=10)
+axes[0].text(0.05, 1.25, 'v', color=B, fontsize=16); axes[0].text(np.pi / 2 + .25, .8, 'a', color=G, fontsize=16)
+save(f, 'radiation-pattern')
+
+print('8 reproducible plots generated.')
