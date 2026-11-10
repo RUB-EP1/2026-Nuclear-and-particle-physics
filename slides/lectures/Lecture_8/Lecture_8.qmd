@@ -51,7 +51,7 @@ Mikhail Mikhasenko · KT1 · Winter semester 2026/27
 :::
 
 ::: {.photo}
-![The LHC tunnel: blue cryostats of superconducting dipole magnets stretching along a curved tunnel](figures/lhc-tunnel.jpg)
+<div class="local-photo" data-local="figures/local/lhc-tunnel.jpg" data-alt="The LHC tunnel: blue cryostats of superconducting dipole magnets stretching along a curved tunnel"></div>
 
 ::: {.plot-caption}
 2008 · LHC tunnel: 7 TeV design, 27 km, 1232 dipoles. Photo: M. Brice/CERN, CC BY-SA 3.0.
@@ -396,7 +396,7 @@ Phase stability at low energy. Ultra-relativistic rings (LHC) work on the mirror
 :::: {.slide-body}
 
 ::: {.visual}
-![The CERN accelerator complex in 2022: Linac 4, PS Booster, PS, SPS and LHC, with experimental areas and other facilities](figures/cern-accelerator-complex.png)
+<div class="local-photo" data-local="figures/local/cern-accelerator-complex.png" data-alt="The CERN accelerator complex in 2022: Linac 4, PS Booster, PS, SPS and LHC, with experimental areas and other facilities"></div>
 :::
 
 ::: {.take-home}
@@ -472,7 +472,7 @@ Original teaching model · Photos: [CERN PhotoLab · CC BY 4.0](https://commons.
 **Quadrupole:** force grows with distance from the axis → a **lens**, but **in** in one plane and **out** in the other.
 
 ::: {.magnet-photos}
-![A curved bending dipole magnet of CERN's LEAR ring with its copper coil ends, a technician alongside for scale](figures/lear-dipole.jpg)
+<div class="local-photo" data-local="figures/local/lear-dipole.jpg" data-alt="A curved bending dipole magnet of CERN's LEAR ring with its copper coil ends, a technician alongside for scale"></div>
 
 ![Face-on view of a CERN QW quadrupole: four coils around four iron poles on a red yoke](figures/cern-qw-quadrupole.jpg)
 :::
@@ -506,7 +506,7 @@ Force F = qv × B on a proton entering the page.
 :::: {.slide-body}
 
 ::: {.visual}
-![The LHC tunnel in sector 3-4: blue cryostats of the superconducting dipole magnets along the tunnel](figures/lhc-tunnel-wide.jpg)
+<div class="local-photo" data-local="figures/local/lhc-tunnel-wide.jpg" data-alt="The LHC tunnel in sector 3-4: blue cryostats of the superconducting dipole magnets along the tunnel"></div>
 :::
 
 ::: {.take-home}
@@ -812,37 +812,26 @@ Rates · cross-section hierarchy · applications
 
 :::
 
-## The cross-section hierarchy {.landmark .tall-figure}
+## Cross sections and rates: recap {.full-figure}
 
 ::: {.slide-refs}
-[W. J. Stirling · 2010 lecture, p22](https://indico.cern.ch/event/94815/contributions/1282690/attachments/1106827/1579062/LBLMIT_Stirling_v2.pdf)
+Lecture 4 figure (course-generated)
 :::
 
 :::: {.slide-body}
 
-::::: {.picture-layout}
-::: {.picture-copy}
-Read vertically at one collider energy.
-
-**Interesting processes sit 6–11 orders of magnitude below the total.**
-
-At $\mathcal{L}=10^{34}\,\mathrm{cm^{-2}s^{-1}}$ (Lecture 4): $10^9$ interactions/s; storage takes $\sim10^3$ events/s.
-
-Next lecture: **how do we choose?**
+::: {.visual}
+![Total, W, Z, top-pair and Higgs production cross sections of pp collisions versus centre-of-mass energy, with the event rate at 10^34 per square centimetre and second on the right axis](figures/xsec-lhc.svg)
 :::
-:::: {.picture-visual}
-![Stirling’s classic hierarchy; historical predictions (WJS2009).](figures/stirling-cross-sections.png)
 
-::: {.plot-caption}
-Stirling’s classic hierarchy; historical predictions (WJS2009).
+::: {.take-home}
+At 10³⁴ cm⁻²s⁻¹: 10⁹ collisions/s, one Higgs every 2 s — storage takes ~10³ events/s. Next lecture: **how do we choose?**
 :::
-::::
-:::::
 
 ::::
 
 ::: {.notes}
-3 minutes. Read x as √s and left y as cross section in nb; the right axis converts to rates at L=10³³. Higgs curves assume masses 120/200/500 GeV, historical predictions. The bridge: the accelerator delivers 40 MHz of crossings with ~25+ interactions each; the experiment can store about a kHz. The next lecture (DAQ and trigger) is about that selection.
+3 minutes. Recap of the Lecture 4 plot (course-generated from TOTEM, ATLAS, LHC Top WG and LHC HXSWG numbers). Interesting processes sit 6–10 orders of magnitude below the total cross section. The bridge: the accelerator delivers 40 MHz of crossings with ~25+ interactions each; the experiment can store about a kHz. The next lecture (DAQ and trigger) is about that selection.
 :::
 
 ## Accelerators beyond particle physics
@@ -1010,7 +999,7 @@ Run 2 averages reached **30–40**.
 What exactly is on the horizontal axis?
 :::
 :::: {.picture-visual}
-![CMS Run 2: recorded luminosity versus mean pile-up.](figures/cms-run2-pileup.png)
+<div class="local-photo" data-local="figures/local/cms-run2-pileup.png" data-alt="CMS Run 2: recorded luminosity versus mean pile-up"></div>
 
 ::: {.plot-caption}
 CMS Run 2: recorded luminosity versus mean pile-up.
@@ -1072,7 +1061,7 @@ Optional. For a separated-function ring only the dipoles radiate, so ρ is the d
 
 :::: {.slide-body}
 
-::: {.widget data-src="https://www.youtube-nocookie.com/embed/BEnaEMMAO_s?rel=0" data-poster="figures/lhc-video-poster.jpg" data-alt="Oxford Sparks animated video: a quick look around the LHC" data-ratio="1.778"}
+::: {.widget data-src="https://www.youtube-nocookie.com/embed/BEnaEMMAO_s?rel=0" data-poster="widgets/lhc-video-poster.png" data-alt="Oxford Sparks animated video: a quick look around the LHC" data-ratio="1.778"}
 :::
 
 ::::
@@ -1092,8 +1081,6 @@ For fun, about 2 minutes. Animated tour of the LHC by Oxford Sparks (University 
 [O. Brüning et al., LHC Design Report, Vol. I (CERN-2004-003)](https://cds.cern.ch/record/782076) — LHC parameters.
 
 [H. Wiedemann, Particle Accelerator Physics (Springer, open access)](https://doi.org/10.1007/978-3-319-18317-6) — textbook.
-
-[W. J. Stirling, LHC physics lecture (2010)](https://indico.cern.ch/event/94815/contributions/1282690/attachments/1106827/1579062/LBLMIT_Stirling_v2.pdf) — cross-section hierarchy.
 
 [CMS luminosity public results](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults) — Run-2 pile-up.
 

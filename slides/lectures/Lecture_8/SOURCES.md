@@ -10,20 +10,19 @@ All photographs come from Wikimedia Commons, where the licence and author of eac
 |---|---|---|---|
 | `figures/cyclotron-27inch-1935.jpg` | [Lawrence 27 inch cyclotron dees 1935.jpg](https://commons.wikimedia.org/wiki/File:Lawrence_27_inch_cyclotron_dees_1935.jpg) | John B. Livingood | Public domain |
 | `figures/cyclotron-patent.png` | [Cyclotron patent.png](https://commons.wikimedia.org/wiki/File:Cyclotron_patent.png), from US patent 1,948,384 | Ernest O. Lawrence | Public domain |
-| `figures/lhc-tunnel.jpg` | [Views of the LHC tunnel sector 3-4, tirage 1.jpg](https://commons.wikimedia.org/wiki/File:Views_of_the_LHC_tunnel_sector_3-4,_tirage_1.jpg) | Maximilien Brice, CERN | CC BY-SA 3.0 |
-| `figures/lhc-tunnel-wide.jpg` | [Views of the LHC tunnel sector 3-4, tirage 2.jpg](https://commons.wikimedia.org/wiki/File:Views_of_the_LHC_tunnel_sector_3-4,_tirage_2.jpg) | Maximilien Brice, CERN | CC BY-SA 3.0 |
+| `figures/local/lhc-tunnel.jpg` (local only) | [Views of the LHC tunnel sector 3-4, tirage 1.jpg](https://commons.wikimedia.org/wiki/File:Views_of_the_LHC_tunnel_sector_3-4,_tirage_1.jpg) | Maximilien Brice, CERN | CC BY-SA 3.0 |
+| `figures/local/lhc-tunnel-wide.jpg` (local only) | [Views of the LHC tunnel sector 3-4, tirage 2.jpg](https://commons.wikimedia.org/wiki/File:Views_of_the_LHC_tunnel_sector_3-4,_tirage_2.jpg) | Maximilien Brice, CERN | CC BY-SA 3.0 |
 | `figures/srf-cavity.jpg` | [A 1.3 GHz nine-cell superconducting radio frequency.JPG](https://commons.wikimedia.org/wiki/File:A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG) (cavity at Fermilab) | Z22 | CC BY-SA 4.0 |
-| `figures/cern-accelerator-complex.png` | [CERN accelerator complex 2022.png](https://commons.wikimedia.org/wiki/File:CERN_accelerator_complex_2022.png) | CERN (F. Landua); CDS CERN-GRAPHICS-2022-001 | CC BY 4.0 |
+| `figures/local/cern-accelerator-complex.png` (local only) | [CERN accelerator complex 2022.png](https://commons.wikimedia.org/wiki/File:CERN_accelerator_complex_2022.png) | CERN (F. Landua); CDS CERN-GRAPHICS-2022-001 | CC BY 4.0 |
 | `figures/cockcroft-walton.jpg` | [Cockcroft–Walton generator 2012.JPG](https://commons.wikimedia.org/wiki/File:Cockcroft%E2%80%93Walton_generator_2012.JPG) (Science Museum, London) | Geni | CC BY-SA 4.0 |
-| `figures/lear-dipole.jpg` | [LEAR magnet.jpg](https://commons.wikimedia.org/wiki/File:LEAR_magnet.jpg) (one of the four LEAR bending magnets) | CERN PhotoLab | CC BY 4.0 |
+| `figures/local/lear-dipole.jpg` (local only) | [LEAR magnet.jpg](https://commons.wikimedia.org/wiki/File:LEAR_magnet.jpg) (one of the four LEAR bending magnets) | CERN PhotoLab | CC BY 4.0 |
 | `figures/cern-qw-quadrupole.jpg` | [CERN type QW magnet.jpg](https://commons.wikimedia.org/wiki/File:CERN_type_QW_magnet.jpg) (quadrupole on display in the AD hall) | Unnerving duck | CC BY-SA 4.0 |
-| `figures/lhc-video-poster.jpg` | Thumbnail of [Oxford Sparks: A quick look around the LHC](https://www.youtube.com/watch?v=BEnaEMMAO_s), embedded via youtube-nocookie | OxfordSparks | YouTube thumbnail, used only as the link preview and PDF stand-in |
+| `widgets/lhc-video-poster.png` | Course-made title card for the embedded [Oxford Sparks: A quick look around the LHC](https://www.youtube.com/watch?v=BEnaEMMAO_s) video (youtube-nocookie) | Course-generated | The video streams from YouTube and is not redistributed |
 | `figures/lhc-magnet-types.jpg` | [LHC magnet types.jpg](https://commons.wikimedia.org/wiki/File:LHC_magnet_types.jpg) (dipole and quadrupole cross-section exhibits) | Ajheindel | CC0 |
 | `figures/nsls2-light-source.jpg` | [NSLS-II Aerial.jpg](https://commons.wikimedia.org/wiki/File:NSLS-II_Aerial.jpg) | Zxcvbnm789 | CC BY-SA 4.0 |
-| `figures/stirling-cross-sections.png` | W. J. Stirling, [2010 LHC lecture](https://indico.cern.ch/event/94815/contributions/1282690/attachments/1106827/1579062/LBLMIT_Stirling_v2.pdf), slide 22 | W. J. Stirling | Copied from Lecture 9 assets; reuse licence not verified, attribution retained |
-| `figures/cms-run2-pileup.png` | [CMS luminosity public results](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults) | CMS Collaboration | Copied from Lecture 9 assets; CMS public result |
+| `figures/local/cms-run2-pileup.png` (local only) | [CMS luminosity public results](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults) | CMS Collaboration | Copied from Lecture 9 assets; CMS public result |
 
-The CERN Document Server search is protected by a bot check and was not used. The CERN complex graphic is the CC BY 4.0 copy on Commons. CC BY-SA images are shown unmodified, with attribution on the slide and in the notes.
+Files marked "local only" are CERN images whose Commons licence could not be confirmed on CDS, or figures without a confirmed open licence; they are not committed (see `THIRD_PARTY.md`). The cross-section slide reuses the course-generated Lecture 4 figure `figures/xsec-lhc.svg`. The CERN Document Server search is protected by a bot check and was not used. The CERN complex graphic is the CC BY 4.0 copy on Commons. CC BY-SA images are shown unmodified, with attribution on the slide and in the notes.
 
 ## Reproducible teaching plots
 

@@ -102,3 +102,26 @@ strip) and the momentum-resolution widget are course-generated.
 | MWPC schematic (`mwpc-schematic.png`) | Michael Schmid, Wikimedia Commons, “Wire chamber schematic.svg”, rendered and cropped. | CC BY-SA 3.0 (Commons licence field). |
 | Plastic scintillator (`plastic-scintillator.jpg`) | Fermilab, via Wikimedia Commons. | Public domain (Commons licence field). Low resolution. |
 | CERN photographs and figures: ATLAS toroid (CDS 910381), LHCb magnet (P. Ginter, CDS 1124307), Georges Charpak and his multiwire chamber (CERN-HI-7008008, CDS 39073), LHCb VELO timing figure (CERN Courier, March/April 2023, “LHCb looks forward to the 2030s”, credit LHCb) | CERN / LHCb. | **Not redistributed.** [CERN’s terms for audiovisual media](https://copyright.web.cern.ch/) allow free use for educational and informational purposes with credit to CERN, but not distribution to third parties. The files live in the git-ignored `figures/local/` folder; the public deck shows a placeholder. The Courier page states only “Copyright © CERN” with no open licence. The CC BY 4.0 that Commons states for two of the photographs could not be confirmed on CDS (the server blocks automated access). |
+
+## Lecture 8: accelerators
+
+Images were collected on 10 November 2026 via the Wikimedia Commons API. Licences
+were read from the Commons file metadata, and credits are printed on each slide.
+Share-alike images are shown unmodified except for resizing. The plots, the field
+and radiation-pattern drawings, the dipole cross-section schematic and the six
+widgets are course-generated (`slides/lectures/Lecture_8/SOURCES.md` lists the
+models and parameters). The cross-section slide reuses the course-generated
+Lecture 4 figure `xsec-lhc.svg`.
+
+| Slide image | Source / attribution | Licence and verification |
+| --- | --- | --- |
+| Berkeley 27-inch cyclotron, 1935 (`cyclotron-27inch-1935.jpg`) | John B. Livingood, Wikimedia Commons. | Public domain (Commons licence field). |
+| Cyclotron patent drawing (`cyclotron-patent.png`) | E. O. Lawrence, US patent 1,948,384 (1934), Wikimedia Commons. | Public domain (Commons licence field). |
+| Cockcroft–Walton generator, Science Museum London (`cockcroft-walton.jpg`) | Geni, Wikimedia Commons. | CC BY-SA 4.0 (Commons licence field). |
+| 1.3 GHz nine-cell niobium cavity at Fermilab (`srf-cavity.jpg`) | Z22, Wikimedia Commons. | CC BY-SA 4.0 (Commons licence field). |
+| QW quadrupole in the AD hall (`cern-qw-quadrupole.jpg`) | Unnerving duck, Wikimedia Commons. | CC BY-SA 4.0 (Commons licence field). |
+| LHC dipole and quadrupole cross-section exhibits (`lhc-magnet-types.jpg`) | Ajheindel, Wikimedia Commons. | CC0 (Commons licence field). |
+| NSLS-II aerial view (`nsls2-light-source.jpg`) | Zxcvbnm789, Wikimedia Commons. | CC BY-SA 4.0 (Commons licence field). |
+| Video slide, Oxford Sparks “A quick look around the LHC” | [YouTube](https://www.youtube.com/watch?v=BEnaEMMAO_s), embedded via youtube-nocookie. | Streamed from YouTube, not redistributed. The poster `widgets/lhc-video-poster.png` is a course-made title card. |
+| CERN photographs and figures: LHC tunnel sector 3-4 (M. Brice), CERN accelerator complex 2022 (F. Landua), LEAR bending magnet (CERN PhotoLab); CMS Run-2 pile-up plot (CMS luminosity public results) | CERN / CMS. | **Not redistributed.** Commons lists CC BY-SA 3.0 or CC BY 4.0 for the CERN images, but this could not be confirmed on CDS; the CMS plot has no confirmed open licence. As for Lecture 7, the files live in the git-ignored `figures/local/` folder and the public deck shows a placeholder with the credit. |
+

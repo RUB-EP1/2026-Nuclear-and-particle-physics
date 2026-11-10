@@ -34,9 +34,9 @@ Each widget opens on its own from `widgets/`. They are offline and deterministic
 - **`emittance.html`, emittance:** particles in (x, x′) passing through drifts and thin lenses (the area is conserved), a squeeze to a focus, and acceleration (the area shrinks as 1/p).
 - **`designer.html`, ring designer:** bending radius, circumference, synchrotron loss per turn, √s, and muon decay.
 
-## Draft publication guard
+## Publication
 
-Lectures 8 and 9 are excluded from the website `render` and `resources` lists in `.github/workflows/pages.yml`, from the site checker and from the PDF export. Remove those exclusions only when you want to publish.
+Lecture 8 is published on the course website. CERN photographs and figures without a confirmed open licence (LHC tunnel, CERN complex, LEAR dipole, CMS pile-up plot) are loaded from the git-ignored `figures/local/` folder: they show in the lecture room and as a credited placeholder online, following the Lecture 7 rule in `THIRD_PARTY.md`. Keep a local copy of that folder to present the full deck.
 
 ## Assets and validation
 

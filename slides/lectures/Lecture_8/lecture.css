@@ -88,3 +88,13 @@
 .reveal .magnet-photo-labels{margin-top:-14px}
 .reveal .magnet-photo-labels p{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;font-size:22px;color:#5e6e7b;margin:0}
 .reveal .magnet-layout .picture-visual img{height:600px}
+
+/* Local-only photographs (not redistributed): real image locally, labelled placeholder on the public site. */
+.reveal .local-photo img{display:block;width:100%;height:600px;object-fit:cover;border-radius:6px;margin:0}
+.reveal .visual .local-photo img{height:690px;object-fit:contain;background:#fff}
+.reveal .picture-visual .local-photo img{height:610px;object-fit:contain}
+.reveal .magnet-photos .local-photo img{height:340px;object-fit:cover}
+.reveal .local-photo.missing{height:600px;display:flex;align-items:center;justify-content:center;text-align:center;background:#f4f6f8;border:2px dashed #c9d1d9;color:#8a949e;font-size:28px;padding:20px;box-sizing:border-box;border-radius:6px}
+.reveal .visual .local-photo.missing{height:640px}
+.reveal .picture-visual .local-photo.missing{height:610px}
+.reveal .magnet-photos .local-photo.missing{height:340px;font-size:20px}

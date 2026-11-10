@@ -116,3 +116,4 @@
 !slides/lectures/Lecture_9/tests/*.cjs
 !slides/lectures/Lecture_9/tests/*.py
 !slides/lectures/Lecture_9/scripts/*.py
+# Lecture 8: CERN photographs and figures without a confirmed open licence stay in figures/local and are never committed.
