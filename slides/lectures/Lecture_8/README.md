@@ -1,6 +1,8 @@
-# Lecture 8: DAQ and Trigger
+# Lecture 8: Accelerators
 
-Local draft for the KT1 2026/27 course. Built from the internal lecture plan; assumes Lecture 7 calorimetry/PID is already covered. 50 slides: 44 main slides (including six section dividers, a roadmap and two interactive demos), followed by a backup divider and five backup slides. Synchrotron radiation (section 1) and time of flight (section 2) were added because they were not covered in earlier lectures. Speaker notes give a 90-minute pace, questions and answers, model assumptions, and references.
+This is a local draft for the KT1 2026/27 course. It follows Lecture 7 (tracking, light and charge) and comes before Lecture 9 (DAQ and trigger), so the course follows an experiment in order: accelerate → collide → detect → select → measure.
+
+The deck has 38 slides: 32 main slides (including six section dividers, a photo opener, a roadmap and one interactive demo), then a backup divider and three backup slides. Speaker notes give timings for a 90-minute lecture, worked arithmetic and photo credits.
 
 ## Preview
 
@@ -9,50 +11,36 @@ quarto render slides/lectures/Lecture_8/Lecture_8.qmd
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000/slides/lectures/Lecture_8/Lecture_8.html`.
-The generated HTML is local and untracked. Press `S` for Reveal speaker notes. The widgets also open independently:
+Open `http://localhost:8000/slides/lectures/Lecture_8/Lecture_8.html` and press `S` for speaker notes. The widget also opens on its own at `widgets/designer.html`.
 
-- `widgets/queue.html`: ADC, FIFO and processor; one-stage dead-time alternative; replay/scrubber and reset.
-- `widgets/threshold.html`: fixed signal/background samples, selection efficiencies, purity and bandwidth.
+## Teaching sequence (90 min)
 
-No external widget libraries, fonts, data services or network calls. `?export=1` on the deck uses the checked PNG posters, following the existing export convention. Widgets initially show a completed deterministic result rather than starting an animation automatically.
+1. **Why accelerate?** (0–15 min): resolution and thresholds, fixed target vs collider, history of colliders.
+2. **Electric fields** (15–35 min): electrostatic machines, cyclotron, RF cavities, bunches (the 25 ns clock), the CERN injector chain.
+3. **Magnetic fields** (35–52 min): p = 0.3 Bρ, the LHC tunnel, a look inside the magnets, FODO focusing, beam size at the collision point.
+4. **Synchrotron radiation** (52–67 min): E⁴/m⁴ scaling, LEP2 vs LHC, three ways around the limit, ring designer demo, pause question.
+5. **Luminosity** (67–80 min): luminosity from beam parameters, rates and integrated luminosity, pile-up.
+6. **From collisions to experiments** (80–90 min): cross-section hierarchy, which leads into Lecture 9; applications; summary; exit questions.
+
+If time is short, shorten the "inside the magnets" and beam-size slides, and set the backup derivations as reading.
 
 ## Draft publication guard
 
-Lecture 8 is explicitly excluded from both the generated website's `render` and `resources` lists in `.github/workflows/pages.yml`. It has not been added to the course index. The website checker and PDF exporter also skip this draft; a build assertion rejects any Lecture 8 output. Remove the Lecture 8 exclusions and assertion together only when publication is requested. No publishing commands or pushes were performed for this draft.
+Lectures 8 and 9 are excluded from the website `render` and `resources` lists in `.github/workflows/pages.yml`, from the site checker and from the PDF export. Remove those exclusions only when you want to publish.
 
-## Teaching sequence
+## Assets and validation
 
-The six sections are visible as dividers and in the footer throughout. Recommended 90-minute route (timings include transitions and discussion):
-
-- Orientation and physics rates: 0–21 min. Stirling hierarchy, luminosity, synchrotron radiation (why protons), pile-up.
-- Acquiring an event: 21–38 min. Digitization, time of flight, assembly, bandwidth, latency, pipeline storage, then the ATLAS Run-2 architecture as a worked example.
-- Dead time and buffering: 38–50 min. Dead-time formula, FIFO, overload and queue demo.
-- Trigger performance: 50–68 min. Real CMS turn-on, tag-and-probe, threshold demo and bias.
-- Operating a menu: 68–80 min. Overlaps, prescales, CPU, ATLAS rates versus bandwidth.
-- Real-time analysis and synthesis: 80–90 min. LHCb, ATLAS/LHCb comparison, persistence, provenance, exit questions; the ACTS tracking slide is a next-lecture preview.
-
-The expanded deck is also a reference for students. Individual speaker-note times are discussion allowances; use this section budget for a single 90-minute lecture. The deck is over-full for 90 minutes. To make room, defer CPU composition and tag-and-probe details, shorten the demos, show the ACTS preview without discussion, and assign the backup exercises. Keep all five landmark figures and their interpretation.
-
-## Visual teaching material
-
-The first half now pairs short explanations with pulse, digitization, event-fragment, gain, bandwidth, pipeline, dead-time and buffer plots. The trigger section adds spectra, efficiency/purity and selection-bias plots. There are 18 reproducible SVG teaching plots plus an attributed source readout diagram. Section 2 adds a pipeline-buffer plot; section 4 adds tag-and-probe pseudo-data; section 5 adds a threshold-versus-prescale plot. Two simple analytic plots were replaced by tables (rate × size, storage choices) and one by a click-to-reveal calculation (pause and check), alongside the existing experiment figures and both interactive demos.
-
-Regenerate plots from the repository root:
+Photographs come from Wikimedia Commons with stated licences; [SOURCES.md](SOURCES.md) lists each file, author and licence. The six plots are reproducible:
 
 ```sh
 .venv-pdf/bin/python slides/lectures/Lecture_8/scripts/make_plots.py
 ```
 
-Requires NumPy, Matplotlib, Pillow and Node. See `SOURCES.md` for parameters and source transformations.
-
-## Validation
+To run the checks:
 
 ```sh
-node slides/lectures/Lecture_8/tests/models.test.cjs
+node slides/lectures/Lecture_8/tests/ring.test.cjs
 .venv-pdf/bin/python slides/lectures/Lecture_8/tests/check_browser.py
 ```
 
-The first checks event accounting, busy/completion boundaries, finite-buffer overload, the long-run non-paralyzable formula, deterministic samples, threshold limits and bandwidth units. The browser check renders both posters, exercises the actual controls, blocks external requests, checks live iframe mount/unmount, and captures all slides for visual review. Local screenshots and reports go to ignored `tmp/qa/`.
-
-See [SOURCES.md](SOURCES.md) for image credits and the precise toy models. Original source PDFs remain in the internal reference archive; the deck does not link to that archive.
+The browser check renders the widget poster, exercises the widget controls with physics assertions (LHC, LEP2, an impossible electron LHC, muons), and checks every slide for missing images, overflow and maths errors. It also confirms that the live iframe mounts and unmounts, and saves screenshots to the ignored `tmp/qa/` folder.

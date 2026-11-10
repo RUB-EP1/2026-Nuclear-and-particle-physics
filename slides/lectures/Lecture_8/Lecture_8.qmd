@@ -1,5 +1,5 @@
 ---
-pagetitle: "KT1 · Lecture 8 · DAQ and Trigger"
+pagetitle: "KT1 · Lecture 8 · Accelerators"
 format:
   revealjs:
     theme: simple
@@ -26,7 +26,7 @@ format:
 :::: {.slide-body}
 
 ::: {.subtitle}
-DAQ and Trigger
+Accelerators
 :::
 
 Mikhail Mikhasenko · KT1 · Winter semester 2026/27
@@ -34,35 +34,696 @@ Mikhail Mikhasenko · KT1 · Winter semester 2026/27
 ::::
 
 ::: {.notes}
-90-minute session. Lecture 7 calorimetry/PID is assumed covered, except synchrotron radiation and time of flight, which are added here (sections 1 and 2). Follow the section budget in README: rates 0–21, acquisition 21–38, dead time 38–50, trigger performance 50–68, menu 68–80, real-time analysis 80–90. The two demos are paced explorations, not additional topics.
+90-minute session following Lecture 7 (tracking, light and charge). Section budget: why accelerate 0–15; electric fields 15–35; magnetic fields 35–52; synchrotron radiation and demo 52–67; luminosity 67–80; from collisions to experiments 80–90. The next lecture (DAQ and trigger) starts from the last two slides: 40 MHz of crossings, far too many to record.
 :::
 
+## Ninety years of accelerators {.photo-hook}
+
+:::: {.slide-body}
+
+::::: {.photo-pair}
+::: {.photo}
+![Lawrence's 27-inch cyclotron, 1935: the two D-shaped electrodes ("dees") of a machine that accelerated deuterons to a few MeV](figures/cyclotron-27inch-1935.jpg)
+
+::: {.plot-caption}
+1935 · Berkeley 27-inch cyclotron: a few MeV, fits on a table.
+:::
+:::
+
+::: {.photo}
+![The LHC tunnel: blue cryostats of superconducting dipole magnets stretching along a curved tunnel](figures/lhc-tunnel.jpg)
+
+::: {.plot-caption}
+2008 · LHC tunnel: 7 TeV design, 27 km, 1232 dipoles.
+:::
+:::
+:::::
+
+::: {.take-home}
+A factor of about a million in energy. Today: what each step required, and what limits the next.
+:::
+
+::::
+
+::: {.notes}
+2 minutes. Hook, not history. Ask: what physical principle is the same in both machines? (Electric fields give energy, magnetic fields steer.) What changed? (Superconductivity, RF, strong focusing, synchrotron principle.) Photo credits: 27-inch cyclotron dees, John B. Livingood, 1935, public domain via Wikimedia Commons; LHC tunnel sector 3-4, Maximilien Brice, CERN, CC BY-SA 3.0 via Wikimedia Commons. Full credits in SOURCES.md.
+:::
 
 ## The lecture in six questions
 
 :::: {.slide-body}
 
-1. **Physics rates:** why can we not save everything?
-2. **Acquisition:** what constitutes an event?
-3. **Buffers:** what happens while we are busy?
-4. **Selection:** how do we measure trigger performance?
-5. **Operation:** how do many triggers share resources?
-6. **Analysis:** what information must survive?
+1. **Motivation:** why do we need high energy?
+2. **Acceleration:** how do electric fields add energy?
+3. **Guidance:** how do magnets keep a beam on track?
+4. **Limits:** why do electrons and protons need different machines?
+5. **Luminosity:** how many collisions do we get?
+6. **Experiments:** what does this mean for detectors?
 
 ::::
 
 ::: {.notes}
-2 minutes. Return to the corresponding question at each section boundary. By the end students should interpret the landmark figures, not memorize hardware acronyms.
+1 minute. Each section answers one question; return to the list at section boundaries.
 :::
 
-## 1 · Physics rates {.section-title}
+## 1 · Why accelerate? {.section-title}
 
 :::: {.slide-body}
 
-Which collisions are worth recording?
+Energy buys resolution and the mass of new particles.
 
 ::: {.subtle}
-Cross sections · luminosity · bunch crossings · pile-up
+Resolution · thresholds · fixed target or collider · history of colliders
+:::
+
+::::
+
+::: {.notes}
+
+:::
+
+## Energy buys resolution and mass
+
+:::: {.slide-body}
+
+**Resolution:** a probe of momentum $p$ resolves distances $\Delta x\sim\hbar/p$, with $\hbar c\approx197\ \mathrm{MeV\,fm}$.
+
+| Momentum $pc$ | Resolved scale | Structure |
+|---|---:|---|
+| 200 MeV | 1 fm | proton size |
+| 20 GeV | 0.01 fm | quarks inside the proton |
+| 2 TeV | $10^{-4}$ fm | today's frontier |
+
+**Mass:** to produce a final state we need $\sqrt{s}\ \ge\ \sum m_i c^2$, e.g. $Z$: 91 GeV, $t\bar t$: 346 GeV.
+
+::::
+
+::: {.notes}
+4 minutes. Recall Lecture 3 (waves, probes and resolution) and Lecture 2 (collision thresholds); no new derivation. The deep-inelastic electron scattering at SLAC (1968, 20 GeV linac) resolved point-like constituents at roughly the 0.01–0.1 fm scale. Thresholds use invariant mass, which is why the collision geometry on the next slide matters.
+:::
+
+## Fixed target or collider?
+
+::: {.slide-refs}
+Original teaching model
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+Fixed target ($m$ at rest):
+
+$$\sqrt{s}\approx\sqrt{2Emc^2}$$
+
+Head-on beams:
+
+$$\sqrt{s}=2E$$
+
+A 7 TeV proton on a proton at rest: **115 GeV**. Two 7 TeV beams: **14 TeV**.
+:::
+
+::: {.picture-visual}
+![Collision energy versus beam energy: linear for a collider, square-root for a fixed target](figures/fixed-target-collider.svg)
+
+::: {.plot-caption}
+Proton beam; fixed target is a proton at rest.
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. From Lecture 2: s=(p1+p2)², fixed target s=m1²+m2²+2E1m2 (c=1). Ask students where the remaining energy goes in the fixed-target case: into the motion of the centre of mass, required by momentum conservation. Fixed targets still win on luminosity (dense target, many targets per beam) and secondary beams (neutrinos, kaons, muons) — e.g. CERN North Area, NA62, COMPASS/AMBER.
+:::
+
+## Colliders over time {.landmark}
+
+::: {.slide-refs}
+Original compilation
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+Collision energy grew by **a factor 10 every ~15 years**, until about 1990.
+
+Each step used **new technology**: storage rings, superconducting magnets, antiproton cooling.
+
+What does the flattening after the LHC tell you?
+:::
+
+::: {.picture-visual}
+![Centre-of-mass energy of electron-positron, hadron and electron-proton colliders versus first year of operation, on a logarithmic axis](figures/collider-history.svg)
+
+::: {.plot-caption}
+Maximum √s of each collider at its start year; LEP2, RHIC 500 GeV and LHC upgrades at the year reached.
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. This is a Livingston-style plot restricted to colliders. Point out the discoveries: J/ψ at SPEAR (1974), gluon jets at PETRA (1979), W and Z at the SppS (1983), top at the Tevatron (1995), precision Z at LEP/SLC (1989–), Higgs at the LHC (2012). The flattening reflects cost and size limits that the rest of the lecture explains: magnets for protons, synchrotron radiation for electrons. Data: original compilation of well-documented maximum design/operating √s; values are rounded; most points are plotted at the start of collider operation with the maximum energy later reached, LEP2, RHIC pp 500 GeV and the LHC steps at the year reached. Approximate by design: the trend, not the exact year, is the message.
+:::
+
+## 2 · Accelerating: electric fields {.section-title}
+
+:::: {.slide-body}
+
+Only electric fields change a particle's energy.
+
+::: {.subtle}
+Electrostatic · cyclotron · RF cavities · bunches · injector chains
+:::
+
+::::
+
+::: {.notes}
+Magnetic forces are perpendicular to velocity and do no work: dE/dt = q v·E.
+:::
+
+## Electrostatic machines: $\Delta E=qV$
+
+::: {.slide-refs}
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cockcroft%E2%80%93Walton_generator_2012.JPG)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+One potential difference, crossed **once**.
+
+1932: Cockcroft and Walton split lithium with **~0.7 MeV** protons.
+
+Limit: electrical **breakdown** — a few to ~25 MV.
+
+Still used today as **injectors** and for ion beams.
+:::
+
+::: {.picture-visual .photo}
+![A Cockcroft–Walton voltage multiplier: a tall column of stacked capacitors and rectifiers with large polished electrodes](figures/cockcroft-walton.jpg)
+
+::: {.plot-caption}
+Cockcroft–Walton generator, Science Museum London: diode–capacitor stages multiply the voltage.
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+3 minutes. p + ⁷Li → 2 α was the first nuclear reaction induced by artificially accelerated particles (Nobel Prize 1951). Van de Graaff and tandem accelerators reach higher voltages (tandems effectively double by changing the ion charge). A static field cannot be reused: the particle must return to ground potential, which is why the next idea is a time-dependent field. Photo: Cockcroft–Walton generator in the Science Museum, London; Geni, CC BY-SA 4.0, via Wikimedia Commons.
+:::
+
+## Reuse the field: the cyclotron
+
+::: {.slide-refs}
+[E. O. Lawrence, US patent 1,948,384 (1934)](https://patents.google.com/patent/US1948384A)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+A magnetic field bends the ion back to the **same gap** every half turn.
+
+$$f=\frac{qB}{2\pi\gamma m}$$
+
+Independent of radius while $\gamma\approx1$: one fixed RF frequency.
+
+Protons at 1 T: $f\approx15\ \mathrm{MHz}$.
+:::
+
+::: {.picture-visual .photo}
+![Lawrence's 1934 cyclotron patent drawing: two D-shaped electrodes in a magnetic field with a spiral ion path](figures/cyclotron-patent.png)
+
+::: {.plot-caption}
+Lawrence's patent: spiral orbit between two "dees".
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. Derive on the board: qvB = γmv²/r ⇒ ω=qB/(γm). As γ grows the particle arrives late; classical cyclotrons stop near ~20 MeV for protons. Fixes: vary the frequency (synchrocyclotron), shape the field (isochronous cyclotron), or keep the radius fixed and ramp B (synchrotron, next slides). Medical cyclotrons today: 11–18 MeV for PET isotopes, ~230–250 MeV isochronous or superconducting cyclotrons for proton therapy. Patent drawing is public domain.
+:::
+
+## Radio-frequency cavities
+
+::: {.slide-refs}
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+A resonant cavity stores an oscillating field; the bunch crosses when it points **forward**.
+
+Superconducting niobium: **~5–35 MV/m**.
+
+Linac: 1 TeV at 30 MV/m needs **33 km**.
+
+Ring: LHC reuses 16 MV per turn, **11 245 turns/s**.
+:::
+
+::: {.picture-visual .photo}
+![A nine-cell niobium superconducting radio-frequency cavity for 1.3 GHz](figures/srf-cavity.jpg)
+
+::: {.plot-caption}
+Nine-cell 1.3 GHz niobium cavity (TESLA type, about 1 m long).
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+5 minutes. Linac vs ring trade-off: a linac crosses each cavity once, so the gradient sets the length; a ring crosses the same cavities every turn, so modest voltage suffices. LHC: 8 superconducting 400 MHz cavities per beam, 16 MV per beam per turn; ramping 450 GeV → 6.8 TeV in about 20 minutes needs only ≈0.5 MeV of net gain per turn (6.35 TeV / (1200 s × 11 245 Hz)). TESLA/XFEL-type cavities reach ≈25–35 MV/m in operation. Normal-conducting cavities (e.g. CLIC design, 100 MV/m) work in short pulses. Photo: nine-cell 1.3 GHz niobium cavity at Fermilab; Z22, CC BY-SA 4.0, via Wikimedia Commons.
+:::
+
+## RF makes bunches
+
+::: {.slide-refs}
+Original teaching model
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+Late particles get a **larger kick**, early ones a smaller kick: both drift back.
+
+The beam splits into **bunches**.
+
+LHC: 400 MHz → 2.5 ns buckets; bunches every **25 ns**.
+
+That is the **40 MHz** clock of the experiments.
+:::
+
+::: {.picture-visual}
+![Sinusoidal cavity voltage with early, synchronous and late particles receiving smaller, nominal and larger energy gains](figures/rf-phase-stability.svg)
+
+::: {.plot-caption}
+Phase stability (below transition energy).
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. Phase focusing (Veksler 1944, McMillan 1945) made synchrotrons possible. Below transition, faster particles arrive earlier, so the stable phase is on the rising slope as drawn. In ultra-relativistic rings, a higher-energy particle takes a longer orbit and arrives later; the stable phase moves to the falling slope (transition crossing). Keep this as a remark. Particles oscillate around the synchronous phase: synchrotron oscillations. Only every 10th bucket is filled in the LHC. The bunch structure is exactly why detectors and triggers work with a 25 ns clock — next lecture.
+:::
+
+## A chain of accelerators {.full-figure}
+
+::: {.slide-refs}
+[CERN · accelerator complex 2022 (CC BY 4.0)](https://commons.wikimedia.org/wiki/File:CERN_accelerator_complex_2022.png)
+:::
+
+:::: {.slide-body}
+
+::: {.visual}
+![The CERN accelerator complex in 2022: Linac 4, PS Booster, PS, SPS and LHC, with experimental areas and other facilities](figures/cern-accelerator-complex.png)
+:::
+
+::: {.take-home}
+Linac4 (160 MeV) → PS Booster (2 GeV) → PS (26 GeV) → SPS (450 GeV) → LHC (6.8 TeV).
+:::
+
+::::
+
+::: {.notes}
+3 minutes. Each synchrotron has a limited energy range: magnets need a minimum field quality at injection and a maximum field at top energy, so a ratio of roughly 10–20 per machine. Older machines become injectors and feed fixed-target programmes (ISOLDE, n_TOF, North Area, AD/ELENA antimatter). Linac4 accelerates H⁻ ions, stripped at injection. Figure: CERN, "The CERN accelerator complex, layout in 2022", CC BY 4.0, via Wikimedia Commons.
+:::
+
+## 3 · Guiding: magnetic fields {.section-title}
+
+:::: {.slide-body}
+
+Magnets bend and focus; they set the size of a proton ring.
+
+::: {.subtle}
+Magnetic rigidity · superconducting dipoles · quadrupole focusing · beam size
+:::
+
+::::
+
+::: {.notes}
+
+:::
+
+## Magnetic rigidity: $p=0.3\,B\rho$
+
+::: {.slide-refs}
+Original teaching model
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+$$p\,[\mathrm{GeV}/c]=0.3\;B\,[\mathrm{T}]\;\rho\,[\mathrm{m}]$$
+
+The **same equation** as track bending in Lecture 7.
+
+LHC: 7 TeV at 8.33 T → $\rho=2.8$ km; dipoles fill 2/3 of **26.7 km**.
+:::
+
+::: {.picture-visual}
+![Bending radius versus beam momentum for 1.8, 8.33 and 16 tesla dipoles, with SPS, LHC and FCC-hh marked](figures/bending-radius.svg)
+
+::: {.plot-caption}
+Energy reach = field × size. Field is the expensive part.
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. Derive 0.3 from p=qBρ with q=e: p[GeV/c]=e·B·ρ·c/(10⁹ e V) = 0.2998 Bρ. In a spectrometer we measure ρ to get p; in an accelerator we choose p and ρ and need B. LHC: 1232 dipoles × 14.3 m ≈ 17.6 km of the 26.7 km circumference. Iron saturates near 2 T, so higher fields need superconducting coils: Nb–Ti at 1.9 K for 8.33 T; Nb₃Sn for HL-LHC interaction-region quadrupoles and the 14–16 T studies for FCC-hh.
+:::
+
+## 27 km of magnets {.full-figure}
+
+::: {.slide-refs}
+[M. Brice/CERN · CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Views_of_the_LHC_tunnel_sector_3-4,_tirage_2.jpg)
+:::
+
+:::: {.slide-body}
+
+::: {.visual}
+![The LHC tunnel in sector 3-4: blue cryostats of the superconducting dipole magnets along the tunnel](figures/lhc-tunnel-wide.jpg)
+:::
+
+::: {.take-home}
+1232 dipoles at 1.9 K · two beams in one magnet · 11 kA · ~9 GJ stored magnetic energy.
+:::
+
+::::
+
+::: {.notes}
+3 minutes. "Two-in-one" design: both counter-rotating proton beams share one cryostat and yoke, with opposite fields in the two apertures. Superfluid helium at 1.9 K cools 36 000 tonnes of cold mass. The 2008 incident (a faulty splice between magnets) shows the scale of stored energy: about 9 GJ magnetic energy in total, and ~360 MJ per beam at design intensity. Photo: Maximilien Brice, CERN, CC BY-SA 3.0, via Wikimedia Commons.
+:::
+
+## Inside the magnets
+
+::: {.slide-refs}
+[Wikimedia Commons (CC0)](https://commons.wikimedia.org/wiki/File:LHC_magnet_types.jpg)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+**Two beams, one magnet:** opposite fields in two apertures, 19 cm apart.
+
+Copper-coloured **Nb–Ti coils** carry 11.8 kA; the field shape comes from the **current distribution**, not iron poles.
+
+Left: dipole (bends). Right: quadrupole (focuses).
+:::
+
+::: {.picture-visual .photo}
+![Cross-section exhibits of an LHC main dipole (left) and quadrupole (right), each with two beam apertures surrounded by superconducting coils, collars and iron yoke](figures/lhc-magnet-types.jpg)
+
+::: {.plot-caption}
+LHC magnet cross-sections on display: dipole and quadrupole, both "two-in-one".
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+3 minutes. A current distribution ∝ cos θ around the aperture gives a pure dipole field; ∝ cos 2θ a quadrupole. The stainless-steel collars hold the coils against the magnetic forces (hundreds of tonnes per metre at full field); the iron yoke returns the flux and is itself cooled to 1.9 K inside the cryostat. Compare with Lecture 7 tracking magnets: a solenoid in a detector bends tracks with the same Lorentz force. Photo: Ajheindel, CC0, via Wikimedia Commons.
+:::
+
+## Quadrupoles focus — in one plane at a time
+
+::: {.slide-refs}
+Original teaching model
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+Quadrupole: $B_y=g\,x,\ B_x=g\,y$.
+
+Maxwell: focusing in $x$ ⇒ **defocusing** in $y$.
+
+Alternate them (**FODO**): net focusing in both planes.
+
+Like lenses: $\dfrac{1}{F}=\dfrac{d}{f^2}>0$.
+:::
+
+::: {.picture-visual}
+![Trajectories of three particles through alternating focusing and defocusing lenses stay bounded in both transverse planes](figures/fodo-trajectories.svg)
+
+::: {.plot-caption}
+Thin lenses, f = 1.2 L; the same particles in both planes.
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. ∇×B=0 and ∇·B=0 in the aperture force the quadrupole field pattern; you cannot focus in both planes with one magnet. Strong (alternating-gradient) focusing: Courant, Livingston and Snyder, 1952 (and Christofilos). The particles oscillate around the design orbit: betatron oscillations. Thin-lens doublet: two lenses f and −f separated by d give 1/F = d/f². Stability requires f > L/2 for this symmetric cell (|trace| < 2 of the one-cell transfer matrix).
+:::
+
+## How small is the beam at the collision point?
+
+:::: {.slide-body}
+
+Beam size from **emittance** $\varepsilon$ and the optics function $\beta$:
+
+$$\sigma=\sqrt{\varepsilon\,\beta}\qquad\varepsilon=\frac{\varepsilon_N}{\beta\gamma}$$
+
+LHC design: $\varepsilon_N=3.75\ \mu\mathrm{m}$, $\gamma=7460$, $\beta^*=0.55\ \mathrm{m}$ ⇒ $\sigma^*\approx$ **17 µm**.
+
+Strong final quadrupoles squeeze the beam just before the experiment.
+
+::::
+
+::: {.notes}
+3 minutes. Emittance is the phase-space area (x, x′) occupied by the beam, conserved by linear optics (Liouville). Acceleration shrinks the geometric emittance as 1/γ (adiabatic damping); the normalized emittance is the invariant. β is a property of the magnet lattice; β* is its value at the interaction point. Run 3 operates with smaller β* (tens of cm). Arithmetic: ε=3.75e-6/7460=5.0e-10 m; σ=sqrt(5.0e-10×0.55)=1.66e-5 m. Compare: a human hair is ~70 µm. This feeds directly into the luminosity formula in section 5.
+:::
+
+## 4 · Limits: synchrotron radiation {.section-title}
+
+:::: {.slide-body}
+
+Why electrons and protons need different machines.
+
+::: {.subtle}
+Radiated power · mass to the fourth power · rings, linacs and muons · light sources
+:::
+
+::::
+
+::: {.notes}
+
+:::
+
+## A bent charge radiates
+
+::: {.slide-refs}
+Original teaching model
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+$$\Delta E_{\mathrm{turn}}\propto\frac{\gamma^4}{\rho}=\frac{1}{\rho}\left(\frac{E}{mc^2}\right)^{4}$$
+
+Same $E$ and ring: protons radiate $(m_e/m_p)^4\approx10^{-13}$ as much.
+
+LEP2: **3.4 GeV** per turn. LHC: **6.7 keV** per turn.
+:::
+
+::: {.picture-visual}
+![Energy lost per turn versus beam energy for electrons and protons in a 27 km ring, with LEP2 and LHC marked](figures/synchrotron-loss.svg)
+
+::: {.plot-caption}
+$\Delta E[\mathrm{GeV}]=8.85\times10^{-5}\,E^4[\mathrm{GeV}^4]/\rho[\mathrm{m}]$ for electrons; protons scaled by $(m_e/m_p)^4$.
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+5 minutes. Connect to bremsstrahlung (Lectures 5–6): any accelerated charge radiates; for radiation in matter the critical energy scales as m², here the circular-orbit loss scales as m⁻⁴ at fixed energy. Radiated power P=(e²c/6πε₀)β⁴γ⁴/ρ²; loss per turn ΔE=(e²/3ε₀)β³γ⁴/ρ. LEP2 at 104.5 GeV with ρ≈3.1 km lost ≈3.4 GeV per turn, replaced by ≈3.6 GV of superconducting RF — LEP was stopped by this wall. The LHC radiates only ~kW per beam, but onto a 1.9 K cold bore, so a beam screen intercepts it.
+Figure: original analytic curves, electrons at ρ=3096 m (LEP) and protons at ρ=2804 m (LHC dipoles). Above the dotted line the ring cannot store the beam at all.
+:::
+
+## Three ways around the wall
+
+:::: {.slide-body}
+
+::: {.compare-table}
+| | Idea | Price |
+|---|---|---|
+| Bigger $e^\pm$ ring | $\Delta E\propto1/\rho$ (FCC-ee: 91 km) | Cost; ~200 GeV per beam |
+| Linear collider | No bending, no radiation | One pass per bunch |
+| Muons | $(m_\mu/m_e)^4\approx2\times10^{9}$ less loss | Decay: ~1000 turns |
+| Protons | Magnets set the limit | Partons, pile-up, rates |
+:::
+
+::: {.take-home}
+Leptons give clean collisions; protons give energy reach — and the trigger problem of next lecture.
+:::
+
+::::
+
+::: {.notes}
+4 minutes. Linear colliders: SLC (1989–1998) was the only one built; ILC and CLIC are designs. Muon collider: lab lifetime γτ = 2.2 µs × E/m_μ; at 1.5 TeV that is ~31 ms, and in a ring with ~10 T dipoles the beam survives on the order of a thousand turns — check with the demo. Protons: collide quarks and gluons carrying a fraction of the proton momentum, so the parton √s varies event by event; the price is pile-up and enormous inelastic rates.
+:::
+
+## Ring designer demo {.demo-slide}
+
+:::: {.slide-body}
+
+::: {.widget data-src="widgets/designer.html" data-poster="widgets/designer-poster.png" data-alt="Interactive ring designer: choose particle, beam energy and dipole field; see bending radius, circumference, synchrotron loss per turn and collision energy"}
+:::
+
+::::
+
+::: {.notes}
+6 minutes. Start from the LHC defaults (protons, 7 TeV, 8.33 T): 2.8 km radius, 26.7 km ring, 6.7 keV per turn. Switch to electrons: the same ring would lose more than the beam energy every turn. Lower the electron energy to ~104.5 GeV: still impossible at 8.33 T because the ring is only ~40 m in radius. Lower the field to 0.11 T: 3.1 km radius, about 3.4 GeV per turn — LEP2 in the same tunnel. For electrons a weak field and a large radius are the point. Switch to muons at 1.5 TeV and 10 T: tiny ring, small losses, but only about a thousand turns before decay. Increase the field to 16 T with protons at 50 TeV: FCC-hh scale. The model ignores RF, focusing and beam–beam effects.
+:::
+
+## Pause and check
+
+:::: {.slide-body}
+
+Why not put **7 TeV electrons** in the LHC tunnel?
+
+::: {.fragment}
+$$\Delta E_{\mathrm{turn}}=8.85\times10^{-5}\,\frac{(7000)^4}{2800}\ \mathrm{GeV}\approx8\times10^{7}\ \mathrm{GeV}$$
+
+Ten thousand times the beam energy — **in every turn**.
+
+::: {.take-home}
+For electrons the limit is radiation; for protons it is the magnet.
+:::
+:::
+
+::::
+
+::: {.notes}
+3 minutes. Let students estimate with the scaling from LEP2 first: (7000/104.5)⁴ ≈ 2×10⁷ times 3.4 GeV ≈ 7×10⁷ GeV (radius nearly equal). The fragment reveals the full number. Ask what energy an electron ring in the LHC tunnel could reach if the RF could supply ~3–4 GeV per turn: about LEP2, ~100 GeV.
+:::
+
+## 5 · Luminosity: from beams to rates {.section-title}
+
+:::: {.slide-body}
+
+How many collisions per second?
+
+::: {.subtle}
+Beam parameters · rates · integrated luminosity · pile-up
+:::
+
+::::
+
+::: {.notes}
+
+:::
+
+## Luminosity from beam parameters
+
+:::: {.slide-body}
+
+Two bunches of $N_1,N_2$ particles collide with transverse size $\sigma_x,\sigma_y$:
+
+$$\mathcal{L}=\frac{f_{\mathrm{rev}}\,n_b\,N_1N_2}{4\pi\,\sigma_x\sigma_y}\,F$$
+
+LHC design: $f_{\mathrm{rev}}=11.2$ kHz, $n_b=2808$, $N=1.15\times10^{11}$, $\sigma^*=17\ \mu$m, $F\approx0.84$:
+
+$$\mathcal{L}\approx1.0\times10^{34}\ \mathrm{cm^{-2}\,s^{-1}}$$
+
+::::
+
+::: {.notes}
+4 minutes. Interpret each factor: more bunches, more particles per bunch (enters squared), smaller beams. F is the geometric reduction from the crossing angle needed to avoid parasitic collisions between bunches. Arithmetic: 11245 × 2808 × (1.15e11)² / (4π × (16.7e-4 cm)²) ≈ 1.2e34, times 0.84 ≈ 1.0e34. Run 3 levels the luminosity near 2×10³⁴ by adjusting β* during the fill, to limit pile-up. Limits: beam–beam interaction, beam intensity (instabilities, machine protection), and the experiments' tolerance for pile-up.
+:::
+
+## Luminosity turns probability into rate
+
+:::: {.slide-body}
+
+$$R=\mathcal{L}\,\sigma,\qquad N=\sigma\int\mathcal{L}\,dt$$
+
+At $\mathcal{L}=10^{34}\,\mathrm{cm}^{-2}\mathrm{s}^{-1}$:
+
+| Process | Cross section | Rate |
+|---|---:|---:|
+| Inelastic $pp$ | 80 mb | $8\times10^8\ \mathrm{s}^{-1}$ |
+| $W\to\ell\nu$ | 20 nb | $200\ \mathrm{s}^{-1}$ |
+| Higgs | 50 pb | 1 every 2 s |
+
+Integrated: $1\ \mathrm{fb}^{-1}=10^{39}\ \mathrm{cm}^{-2}$. 140 fb⁻¹ (LHC Run 2) → **~7 million Higgs bosons**.
+
+::::
+
+::: {.notes}
+3 minutes. Recall Lecture 4 (cross sections). Cross sections rounded at √s=13 TeV: inelastic ≈ 80 mb; W→ℓν per lepton flavour ≈ 20 nb; total Higgs production ≈ 55 pb. Produced is not recorded: branching fractions, acceptance, trigger and reconstruction efficiency follow (next lecture). 1 b = 10⁻²⁴ cm².
+:::
+
+## One crossing contains many interactions {.landmark}
+
+::: {.slide-refs}
+[CMS · Public luminosity plots, Run 2](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+Mean interactions per crossing:
+
+$$\mu=\frac{\mathcal{L}\,\sigma_{\mathrm{inel}}}{f_{\mathrm{rev}}\,n_b}\approx25$$
+
+at design luminosity.
+
+Run 2 averages reached **30–40**.
+
+What exactly is on the horizontal axis?
+:::
+:::: {.picture-visual}
+![CMS Run 2: recorded luminosity versus mean pile-up.](figures/cms-run2-pileup.png)
+
+::: {.plot-caption}
+CMS Run 2: recorded luminosity versus mean pile-up.
+:::
+::::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. μ = 1e34 × 8e-26 / (11245 × 2808) ≈ 25. The x axis is the mean interactions per crossing μ, not the measured vertex count of one event; the y axis is recorded luminosity per μ bin. Higher luminosity per bunch means more pile-up, which costs reconstruction and trigger performance; this is why luminosity is levelled. HL-LHC aims for μ≈140–200.
+:::
+
+## 6 · From collisions to experiments {.section-title}
+
+:::: {.slide-body}
+
+What does the machine mean for the detector, and beyond physics?
+
+::: {.subtle}
+Rates · cross-section hierarchy · applications
 :::
 
 ::::
@@ -83,11 +744,11 @@ Cross sections · luminosity · bunch crossings · pile-up
 ::: {.picture-copy}
 Read vertically at one collider energy.
 
-**Strong production dominates; rare processes sit many orders below.**
+**Interesting processes sit 6–11 orders of magnitude below the total.**
 
-$$R=\mathcal{L}\sigma$$
+$10^9$ interactions/s; storage takes $\sim10^3$ events/s.
 
-Why would random recording be inefficient?
+Next lecture: **how do we choose?**
 :::
 :::: {.picture-visual}
 ![Stirling’s classic hierarchy; historical predictions (WJS2009).](figures/stirling-cross-sections.png)
@@ -101,55 +762,35 @@ Stirling’s classic hierarchy; historical predictions (WJS2009).
 ::::
 
 ::: {.notes}
-5 minutes. Read x as centre-of-mass energy and left y as cross section in nb, both logarithmic. Right y converts to rates only at L=10^33 cm^-2 s^-1. Locate total, b, W/Z, top and Higgs at the LHC marker. Higgs curves assume masses 120, 200 and 500 GeV: historical predictions, not the measured 125 GeV cross section. Curves mix inclusive processes and jets with different cuts, so they are not disjoint event categories. The key is the scale hierarchy, not current numerical predictions.
+3 minutes. Read x as √s and left y as cross section in nb; the right axis converts to rates at L=10³³. Higgs curves assume masses 120/200/500 GeV, historical predictions. The bridge: the accelerator delivers 40 MHz of crossings with ~25+ interactions each; the experiment can store about a kHz. The next lecture (DAQ and trigger) is about that selection.
 :::
 
-## Luminosity turns probability into rate
-
-:::: {.slide-body}
-
-$$N=\sigma\int\mathcal{L}(t)\,dt,\qquad R(t)=\mathcal{L}(t)\sigma$$
-
-At an illustrative $\mathcal{L}=10^{34}\,\mathrm{cm}^{-2}\mathrm{s}^{-1}$:
-
-| Cross section | Production rate |
-|---|---:|
-| 80 mb | $8\times10^8\ \mathrm{s}^{-1}$ |
-| 1 nb | $10\ \mathrm{s}^{-1}$ |
-| 1 pb | $0.01\ \mathrm{s}^{-1}$ |
-
-**Production is not recording:** branching fractions, acceptance, trigger efficiency and live time enter next.
-
-::::
-
-::: {.notes}
-3 minutes. Arithmetic examples, not a list of measured process cross sections. 1 barn=10^-24 cm². Distinguish instantaneous from integrated luminosity. A rare production process may have a still rarer observable decay.
-:::
-
-## Why the LHC collides protons
+## Accelerators beyond particle physics
 
 ::: {.slide-refs}
-Original teaching model
+[NSLS-II · CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:NSLS-II_Aerial.jpg)
 :::
 
 :::: {.slide-body}
 
 ::::: {.picture-layout}
 ::: {.picture-copy}
-A bent charge radiates: **synchrotron radiation**.
+**Radiotherapy:** electron linacs, 6–18 MV X-rays.
 
-$$\Delta E_{\mathrm{turn}}\propto\frac{\gamma^4}{\rho}=\frac{1}{\rho}\left(\frac{E}{mc^2}\right)^{4}$$
+**Proton therapy:** 70–250 MeV, uses the **Bragg peak**.
 
-Same $E$ and ring: protons lose $(m_e/m_p)^4\approx10^{-13}$ as much.
+**PET isotopes:** 11–18 MeV cyclotrons.
 
-Price: composite beams, **pile-up and huge rates**.
+**Light sources:** synchrotron radiation as the product.
+
+Most accelerators serve **industry and medicine**.
 :::
 
-::: {.picture-visual}
-![Energy lost per turn versus beam energy for electrons and protons in a 27 km ring, with LEP2 and LHC marked](figures/synchrotron-loss.svg)
+::: {.picture-visual .photo}
+![Aerial view of the NSLS-II synchrotron light source at Brookhaven: a large ring building with experimental beamlines](figures/nsls2-light-source.jpg)
 
 ::: {.plot-caption}
-$\Delta E[\mathrm{GeV}]=8.85\times10^{-5}\,E^4[\mathrm{GeV}^4]/\rho[\mathrm{m}]$ for electrons; protons scaled by $(m_e/m_p)^4$.
+NSLS-II, Brookhaven: a 3 GeV electron ring built to radiate.
 :::
 :::
 :::::
@@ -157,1068 +798,68 @@ $\Delta E[\mathrm{GeV}]=8.85\times10^{-5}\,E^4[\mathrm{GeV}^4]/\rho[\mathrm{m}]$
 ::::
 
 ::: {.notes}
-3 minutes. Synchrotron radiation was not covered earlier; introduce it here as the reason hadron colliders reach the energy frontier. Radiated power P=(e²c/6πε₀)β⁴γ⁴/ρ², energy loss per turn ΔE=(e²/3ε₀)β³γ⁴/ρ. LEP2 at 104.5 GeV with ρ≈3.1 km lost about 3.4 GeV per turn, replaced by RF cavities; the LHC at 7 TeV loses about 6.7 keV per turn per proton. Larger rings (FCC-ee) or linear colliders are the electron answers; protons give energy reach but collide partons, with underlying event and pile-up — which is why this lecture needs triggers at all. Side remarks: synchrotron light is a background that beam pipes and masks must shield in e⁺e⁻ experiments; it is also the useful product of light sources. Hadron machines still radiate: the LHC's ~kW of synchrotron light lands on the cryogenic beam screen.
-Figure: original analytic curves, electrons at ρ=3096 m (LEP) and protons at ρ=2804 m (LHC dipoles). Dotted line marks the full beam energy; above it the formula means a ring cannot hold the beam at all.
+3 minutes. Proton therapy uses the Bragg peak from Lecture 5: the beam energy sets the depth of the dose maximum (≈ 4 cm at 70 MeV, ≈ 38 cm at 250 MeV in water). Light sources are electron rings optimised to produce synchrotron radiation — the same effect that limited LEP — used for protein structures, materials and chemistry; ESRF in Grenoble and PETRA III at DESY are European examples. Free-electron lasers (European XFEL, Hamburg) use the superconducting cavities shown earlier. Ion implanters (keV–MeV) dope every computer chip. There are tens of thousands of accelerators worldwide, the vast majority outside research. Photo: NSLS-II aerial view, Zxcvbnm789, CC BY-SA 4.0, via Wikimedia Commons.
 :::
 
-## One crossing contains many interactions {.landmark}
-
-::: {.slide-refs}
-[CMS · Public luminosity plots, Run 2](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults)
-:::
+## Five numbers to remember
 
 :::: {.slide-body}
 
-::::: {.picture-layout}
-::: {.picture-copy}
-**25 ns spacing → 40 MHz crossing clock.**
-
-A crossing can contain many $pp$ interactions.
-
-More pile-up means more hits, larger events and harder reconstruction.
-
-What exactly is on the horizontal axis?
-:::
-:::: {.picture-visual}
-![CMS Run 2: recorded luminosity versus mean pile-up.](figures/cms-run2-pileup.png)
-
-::: {.plot-caption}
-CMS Run 2: recorded luminosity versus mean pile-up.
-:::
-::::
-:::::
+1. $p=0.3\,B\rho$: **8.33 T** and **2.8 km** for 7 TeV.
+2. **25 ns** bunch spacing → 40 MHz crossings.
+3. $\Delta E_{\mathrm{turn}}\propto E^4/(m^4\rho)$: **3.4 GeV** (LEP2) vs **6.7 keV** (LHC).
+4. $\mathcal{L}\approx10^{34}\ \mathrm{cm^{-2}s^{-1}}$ from **17 µm** beams.
+5. $\mu\approx25$–60 interactions per crossing.
 
 ::::
 
 ::: {.notes}
-4 minutes. The x axis is the mean interactions per crossing μ, not the measured vertex multiplicity of one event. The y axis is recorded luminosity per μ bin, not a normalized probability. Broad distributions reflect changing running conditions. Actual colliding-crossing frequency depends on the filling pattern; 40 MHz is the nominal 25 ns clock. μ=Lσinel/fcolliding; not every slot is filled. Source plot uses σinel=80 mb. Distinguish crossing, interaction and event record.
-:::
-
-## 2 · Acquiring an event {.section-title}
-
-:::: {.slide-body}
-
-How do detector signals become a coherent event record?
-
-::: {.subtle}
-Front end · digitization · event building · bandwidth
-:::
-
-::::
-
-::: {.notes}
-
-:::
-
-## The measurement chain
-
-::: {.slide-refs}
-[N. Neufeld · ESI 2009](https://indico.cern.ch/event/43007/contributions/1065030/attachments/927884/1313738/trigger-daq-analysis-esi09-neufeld1.pdf)
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-**DAQ:** collect and transport data.
-
-**Trigger:** decide what to keep.
-
-Sensor → ADC → processor → storage.
-:::
-
-::: {.picture-visual}
-![Physical readout chain and its logical analogue-to-digital, processing and storage stages](figures/neufeld-readout-chain.png)
-
-::: {.plot-caption}
-Physical and logical views of a simple DAQ.
-:::
-:::
-:::::
-
-::: {.take-home}
-Reconstruction and selection can already happen before permanent storage.
-:::
-
-::::
-
-::: {.notes}
-3 minutes including discussion. This is a logical chain, not the exact temporal ordering for every experiment. Hardware triggers may act on partial information before full readout; software triggers reconstruct before storage. Source: Stahl L08 p4. This distinction is revisited for ATLAS and LHCb.
-Figure: Neufeld p16, complete physical and logical panels cropped from source. The old computer hardware is historical; the functional distinction remains useful.
-:::
-
-
-## Digitization
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-**Sample** at chosen times.
-
-**Quantize** each amplitude to a digital code.
-
-This coarse example has only **8 levels**.
-:::
-
-::: {.picture-visual}
-![Analogue pulse sampled every 10 ns and quantized into eight amplitude levels](figures/adc-sampling.svg)
-
-::: {.plot-caption}
-Toy 3-bit ADC: 10 ns sample spacing, 100 mV code spacing.
-:::
-:::
-:::::
-
-::: {.take-home}
-A digital amplitude is not yet a calibrated energy.
-:::
-
-::::
-
-::: {.notes}
-3 minutes. ADC = analogue-to-digital converter. Timing can also be digitized with a TDC; do not imply that every detector stores a sampled waveform. Zero suppression and pulse integration are alternatives. Source: Stahl L08 p8; Neufeld DAQ lecture, p16.
-Figure uses the same noiseless pulse shape as the opening, sampled every 10 ns and rounded to the nearest 100 mV code (0–7). Staircase is a sample-and-hold display convention, not the continuous voltage sent by an ADC. Ask what is lost in time and amplitude. Real ADC precision is detector-dependent.
-:::
-
-## Timing is a measurement: time of flight
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Same momentum, different mass → **different speed**.
-
-$$t=\frac{L}{c}\sqrt{1+\left(\frac{mc}{p}\right)^{2}}$$
-
-$$m^2=\frac{p^2}{c^2}\left[\left(\frac{ct}{L}\right)^{2}-1\right]$$
-
-Needs a **TDC** and a start time $t_0$ from the crossing clock.
-:::
-
-::: {.picture-visual}
-![Arrival-time peaks for pions, kaons and protons at 2 GeV/c over 5 m, and their separation in units of timing resolution versus momentum](figures/tof-separation.svg)
-
-::: {.plot-caption}
-Separation falls roughly as $1/p^2$: TOF identifies particles at low momentum.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-4 minutes. Time of flight was not covered in the PID lecture; place it here because it is a direct use of digitized timing. Momentum p comes from tracking, path length L from the track and geometry, t from a fast detector (scintillator, MRPC, LGAD) read out by a TDC, with t₀ from the accelerator clock or a start counter. Worked example: L=5 m, p=2 GeV/c gives t(π)≈16.72 ns, t(K)≈17.18 ns, so Δt≈0.46 ns; with σ_t=100 ps this is about 4.6σ. For p≫mc, Δt≈(L/2pc²)(m₁²−m₂²)c², so separation falls as 1/p² and grows with L. Resolution budget: detector time resolution, t₀ uncertainty, path-length and momentum errors. Ask: why does a longer flight path help, and why does TOF stop working at high momentum? (Cherenkov/RICH and dE/dx cover other ranges.) Link to the next lecture: m² from TOF is a reconstructed quantity, not a raw measurement.
-Figure: original analytic calculation, Gaussian timing response σ_t=100 ps, L=5 m (a GlueX-like flight path), exact momenta and paths. Real detectors add tails and momentum/path uncertainties.
-:::
-
-
-## An event is assembled from fragments
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Three detector systems produce fragments.
-
-Match **event IDs and timestamps**, not arrival order.
-
-When is event 1042 complete?
-:::
-
-::: {.picture-visual}
-![Arrival-time raster of fragments for events 1041, 1042 and 1043 in three detector systems](figures/event-fragments.svg)
-
-::: {.plot-caption}
-Colours identify events; each square is one fragment.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-4 minutes. Toy fragment schema; not an experiment data format. Ask what happens if the calorimeter fragment for 1041 arrives after tracker fragment 1042. Arrival order is insufficient; synchronization, identifiers and completeness matter. Missing or corrupt fragments require monitoring and explicit policies. Source: Stahl L08 pp8,15.
-Original illustrative arrival raster. Event 1042 is complete at t=5 arbitrary units, after its calorimeter fragment arrives. Event 1041 completes at t=3. One acquisition event may contain several interactions; retain the discussion of synchronization and missing fragments.
-:::
-
-
-## Rate × event size
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-$$B=R\,S$$
-
-**40 MHz × 1 MB**
-→ 40 TB/s.
-
-**1 kHz × 1 MB**
-→ 1 GB/s.
-:::
-
-::: {.picture-visual}
-| Event rate | 20 kB | 200 kB | 1 MB |
-|---|---:|---:|---:|
-| 40 MHz · crossing clock | 0.8 TB/s | 8 TB/s | **40 TB/s** |
-| 100 kHz · after a hardware trigger | 2 GB/s | 20 GB/s | 100 GB/s |
-| 1 kHz · to storage | 20 MB/s | 200 MB/s | **1 GB/s** |
-
-::: {.plot-caption}
-Decimal units; illustrative event sizes and rates, not one experiment’s specification.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-4 minutes. Have students perform the multiplication before revealing the second row verbally. 40 MHz is a reference bunch-crossing clock, not automatically the rate of filled crossings or interactions. Encoding, event content, compression and protocol overhead affect S. Source: Stahl L08 p9 motivates the rate challenge; numbers here are explicit arithmetic examples.
-Original B=RS grid. Ask students to fill one empty cell before revealing the row. Each row moves down by a factor of 400 or 100 in rate; each column changes the event content. The 40 MHz row is a scale example, not a claim about every filled crossing or real event size.
-:::
-
-
-## Latency and throughput
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Follow **event A** across three stages.
-
-Latency: **3 time units**.
-
-After filling, throughput: **1 event per time unit**.
-:::
-
-::: {.picture-visual}
-![Gantt chart of four events progressing through three pipeline stages](figures/pipeline-timing.svg)
-
-::: {.plot-caption}
-Each colour follows one event; each stage takes one time unit.
-:::
-:::
-:::::
-
-::: {.take-home}
-A long latency can coexist with a high throughput.
-:::
-
-::::
-
-::: {.notes}
-2 minutes. For a single serial processor of fixed service time τ, capacity is 1/τ. A real pipelined system is not restricted to that inverse end-to-end latency. Distinguish decision latency from throughput; raw data may be retained in a pipeline while waiting for a trigger decision. About 33 minutes elapsed.
-Original pipeline timing diagram. Events A–D enter at t=0,1,2,3; three equal-duration stages. Bars have small visual gaps only for readability; stage duration is one unit. Distinguish latency 3 from initiation interval 1.
-:::
-
-
-## A trigger decision arrives later
-
-::: {.slide-refs}
-[ATLAS · Trigger operation, Run 2 (2020)](https://arxiv.org/abs/2007.12539)
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-A new crossing every **25 ns**; the decision takes longer.
-
-Store each crossing in a **pipeline buffer**.
-
-$$N_{\mathrm{pipeline}}\gtrsim\frac{\text{latency}}{25\ \mathrm{ns}}$$
-
-$2.5\ \mu\mathrm{s}$ → at least **100 slots**.
-:::
-
-::: {.picture-visual}
-![Each crossing is stored for 2.5 microseconds until its Level-1 decision; about 100 crossings are stored at any time](figures/pipeline-buffer.svg)
-
-::: {.plot-caption}
-Accept: read out the slot. Reject: release it. Accepts enlarged in frequency for visibility.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-3 minutes. ATLAS Run-2 L1 latency is less than 2.5 μs; 100 slots is a conceptual lower bound for that latency, not a specification of every real detector buffer. Add implementation margins and readout requirements. Distinguish this fixed-latency pipeline from the FIFO of complete events in the next section. A pipelined trigger need not wait idle for each decision.
-Figure: original illustration. Each line is one crossing stored from its arrival until its decision 2.5 µs later; the vertical dashed line crosses 100 stored crossings. Accepted crossings (blue) are far more frequent here than the real ~1 in 400 Level-1 accept fraction, for visibility only.
-:::
-
-## ATLAS Run 2 {.full-figure}
-
-::: {.slide-refs}
-[ATLAS, JINST 15 P10004 (2020)](https://arxiv.org/abs/2007.12539)
-:::
-
-:::: {.slide-body}
-
-::: {.visual}
-![ATLAS Run-2 trigger and data-acquisition diagram: Level-1, readout buffers, high-level trigger and storage](figures/atlas-run2-tdaq.png)
-:::
-
-::: {.take-home}
-40 MHz clock → Level-1 (up to 100 kHz) → readout buffers → HLT → main physics stream (~1 kHz).
-:::
-
-::::
-
-::: {.notes}
-4 minutes. Now that the pipeline is introduced, follow it in a real system: front-end pipelines hold data while Level-1 calo/muon logic decides; Level-1 accept triggers readout into the Read-Out System; the HLT farm requests data and decides again. Do not teach every acronym. This is explicitly the 2015–2018 Run-2 architecture, not a current-run specification. Fast TracKer is drawn in the original diagram but was not used by HLT for trigger decisions in Run 2; the source text says it was under commissioning. Section 6 compares this with LHCb Run 3. Source: ATLAS Collaboration, Operation of the ATLAS trigger system in Run 2, JINST 15 P10004 (2020), arXiv:2007.12539, Fig. 1. CC BY 4.0. Cropped from source page; the printed paper caption is removed and given here instead.
-:::
-
-## 3 · Dead time and buffering {.section-title}
-
-:::: {.slide-body}
-
-Can finite memory make a slow system keep up?
-
-::: {.subtle}
-Busy veto · finite FIFO · burst absorption · sustained overload
-:::
-
-::::
-
-::: {.notes}
-
-:::
-
-## A busy detector loses arrivals
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Blue: accepted. Red: lost while busy.
-
-**Lost arrivals do not extend the busy period.**
-
-Steady Poisson input $R$, busy time $\tau$:
-
-$$r=\frac{R}{1+R\tau}\;\xrightarrow{R\to\infty}\;\frac{1}{\tau}$$
-:::
-
-::: {.picture-visual}
-![Accepted and lost arrivals above fixed shaded busy intervals](figures/deadtime-timeline.svg)
-
-::: {.plot-caption}
-Non-paralyzable toy model; τ = 2 time units.
-:::
-:::
-:::::
-
-::: {.take-home}
-Dead-time fraction = busy time / elapsed time.
-:::
-
-::::
-
-::: {.notes}
-3 minutes. The term non-paralyzable describes a specific model; other detectors can extend the busy interval when an event arrives. For independent steady Poisson arrivals, the mean lost-arrival fraction equals time-busy fraction. This equality need not hold for correlated/burst arrivals. Derive the formula in one line: the mean interval between accepted events is τ+1/R. Live fraction r/R=1/(1+Rτ). Example: τ=120 µs saturates at 8.33 kHz (backup plot). Source: Neufeld pp17–18; added explicit model definition.
-Original deterministic arrival sequence: 0.5,1,1.8,3,3.4,5.2,6,7.7,8.2. Busy intervals start at 0.5,3,5.2,7.7 and last 2 units. The sequence illustrates timing; it is not used to infer a stochastic rate.
-:::
-
-
-## A finite buffer absorbs bursts
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Compare **the same arrivals**.
-
-Waiting slots let the processor catch up after a burst.
-
-The output follows arrivals more closely.
-:::
-
-::: {.picture-visual}
-![Cumulative arrived and completed event counts for zero and eight waiting slots](figures/buffer-bursts.svg)
-
-::: {.plot-caption}
-Same burst arrivals, 8 kHz mean input; 10 kHz processor; ADC time = 0.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-4 minutes. Define FIFO. The demo has one unbuffered ADC and one processor; waiting-slot capacity excludes those two active stages. ADC completion can be dropped at a full FIFO. Real front ends may use pipeline sampling, multiple banks or backpressure. The model is not a complete detector readout simulation. Source: Neufeld pp19–20; Stahl L08 p10.
-Generated with the exact widget model at seed 821 for 60 ms. ADC is instantaneous here to isolate FIFO losses. Vertical gaps include both losses and events pending; labels give separately counted FIFO losses. The widget default ADC time is 20 µs and therefore adds ADC-busy losses.
-:::
-
-
-## Queue experiment: make a prediction
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Try **0 → 8 → 32** slots.
-
-Then raise input from **8 to 15 kHz**.
-
-What limit does the red curve approach?
-:::
-
-::: {.picture-visual}
-![Loss percentage versus FIFO depth at input rates below and above processor capacity](figures/buffer-capacity.svg)
-
-::: {.plot-caption}
-Same queue model; 2 s runs; steady Poisson arrivals; ADC time = 0.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-2 minutes. Capacity of the processor is 10 kHz, ADC capacity at default 20 µs is 50 kHz, but Poisson arrivals still cause ADC-busy losses. At 15 kHz there is sustained pressure; no finite FIFO can guarantee indefinite loss-free operation. Keep the same seed to compare. In burst mode the arrival intensity is 4R for 20% of each 20 ms period and R/4 for the rest; the time-average remains R.
-Original sweep from the widget model. At 15 kHz input and 10 kHz service, the large-buffer long-run lost fraction approaches at least 1−10/15≈33.3% when counting departures and accounting for pending events. A finite observation window shifts exact percentages. This plot isolates service overload; default demo includes ADC conversion too.
-:::
-
-
-## Event queue demo {.demo-slide}
-
-:::: {.slide-body}
-
-::: {.widget data-src="widgets/queue.html" data-poster="widgets/queue-poster.png" data-alt="Interactive event queue with ADC and FIFO states, occupancy history, busy fractions and event accounting"}
-:::
-
-::::
-
-::: {.notes}
-8 minutes. Start from the completed default run so students can inspect counters, then Replay. Change buffer depth without changing the seed. Scrub time to see queued, processing and completed events. A 200 ms simulation is replayed over about 10 seconds; the display is not a detector time scale. Switch to the one-busy-stage model for the non-paralyzable special case. Reset restores all controls. Finite-run fluctuations mean empirical rates will not equal theoretical values exactly.
-:::
-
-
-## Pause and check
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-Input **12 kHz**, service **10 kHz**, buffer **10⁶ events**.
-
-Can the buffer prevent losses forever? When does it fill?
-
-::: {.fragment}
-Backlog grows by $12-10=2\ \mathrm{kHz}$:
-
-$$t_{\mathrm{full}}\approx\frac{10^6}{2\times10^3\ \mathrm{s}^{-1}}=500\ \mathrm{s}$$
-
-::: {.take-home}
-Buffers absorb fluctuations; only service capacity fixes a mean overload.
-:::
-:::
-
-::::
-
-::: {.notes}
-5 minutes including a short pause. No. Even with no other losses, the mean backlog grows by 2000 events/s, so this idealized buffer fills in roughly 500 s from empty under constant rates. Fluctuations, bursts and upstream losses change the exact time. If needed, skip the time-to-fill calculation and keep the qualitative point. About 50 minutes elapsed.
-Original deterministic fluid calculation, starting empty; the answer is a click-to-reveal fragment so students commit to a prediction first. After the buffer fills, losses settle at 2 kHz of the 12 kHz input (about 17%).
-:::
-
-
-## 4 · Trigger performance {.section-title}
-
-:::: {.slide-body}
-
-How do we keep physics while rejecting background?
-
-::: {.subtle}
-Signatures · efficiency · turn-on · calibration · bias
-:::
-
-::::
-
-::: {.notes}
-
-:::
-
-## A trigger is a physics selection
-
-:::: {.slide-body}
-
-Fast signatures can include:
-
-- energetic calorimeter deposits;
-- muon candidates;
-- displaced tracks or vertices.
-
-::: {.take-home}
-A signature useful for one measurement can reject another measurement’s signal.
-:::
-
-::::
-
-::: {.notes}
-3 minutes. Hardware triggers tend to use quickly available information; software can use reconstructed candidates. Give low-momentum hadrons versus energetic muons as contrasting needs. Prescaled or dedicated control streams can help monitor selections, but are not an automatic guarantee against all unknown signals. Sources: Stahl L08 pp9,11–13; LHCb Starterkit Run-3 data flow.
-:::
-
-
-## Efficiency, acceptance and purity
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-$$R_{\mathrm{out}}=\epsilon_S R_S+\epsilon_B R_B$$
-
-A useful cut keeps signal and rejects background.
-
-**Purity also depends on input rates.**
-:::
-
-::: {.picture-visual}
-![Signal efficiency, background acceptance and selected signal fraction versus threshold](figures/efficiency-purity.svg)
-
-::: {.plot-caption}
-Analytic toy spectra; signal 100 Hz, background 100 kHz.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-3 minutes. These equations assume labelled signal/background categories and one event counted once. Real trigger lines overlap; their rates cannot simply be summed without correcting overlaps. In the demo equal sample sizes are used to estimate conditional efficiencies, then reweighted by different physical input rates. Signal fraction is undefined if total selected rate is zero.
-Analytic curves corresponding to the demo distributions: nonnegative N(8,2²) signal and exponential mean 1.5 background. Unlike the finite sample in the demo, these are smooth theoretical expectations. Green is S/(S+B), not signal efficiency. Define each efficiency as kept/input within its class.
-:::
-
-
-## The trigger turn-on curve {.landmark}
-
-::: {.slide-refs}
-[CMS · HLT performance, Run 2 (2024)](https://cms-results.web.cern.ch/cms-results/public-results/publications/TRG-19-001/)
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Read **threshold, turn-on, plateau** separately.
-
-The plateau need not reach 100%.
-
-The lower panel compares **data with simulation**.
-
-Where would you put an offline cut?
-:::
-:::: {.picture-visual}
-![CMS isolated-muon trigger: L1 + HLT efficiency, Run 2.](figures/cms-muon-turnon.png)
-
-::: {.plot-caption}
-CMS isolated-muon trigger: L1 + HLT efficiency, Run 2.
-:::
-::::
-:::::
-
-::::
-
-::: {.notes}
-5 minutes. Fig.7a, isolated single-muon trigger with pT>24 GeV, |ηoffline|<2.4. Horizontal axis is offline muon pT; vertical axis is probability of passing the full L1+HLT selection for the reference sample. Resolution makes the onset gradual; acceptance, reconstruction and isolation can lower the plateau. This differs from the toy demo with exact momentum and a hard step. Read plateau near 0.9, not 1. Data/MC is an efficiency scale-factor diagnostic, not purity. Do not use a universal offline-cut number: choose based on the measured turn-on and analysis requirements.
-:::
-
-## Measuring efficiency: tag and probe
-
-::: {.slide-refs}
-[CMS · HLT performance, Run 2 (2024)](https://cms-results.web.cern.ch/cms-results/public-results/publications/TRG-19-001/)
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Use a known resonance: $Z\to\mu^+\mu^-$.
-
-**Tag:** a muon that fired the trigger.
-
-**Probe:** the other muon, not required to fire.
-
-$$\epsilon=\frac{N_{\mathrm{pass}}}{N_{\mathrm{pass}}+N_{\mathrm{fail}}}$$
-
-Fit signal in each sample; repeat in $(p_T,\eta)$ bins.
-:::
-
-::: {.picture-visual}
-![Tag-probe invariant-mass spectra for passing and failing probes, each with a Z peak above background](figures/tag-and-probe.svg)
-
-::: {.plot-caption}
-Toy pseudo-data: the mass peak counts real probes; background is subtracted in both samples.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-3 minutes. Explain why counting only already-triggered probes gives a biased denominator. Tag selection and correlations matter; independence must be checked rather than assumed. A resonance mass fit can estimate signal yields separately in pass and fail samples. The scale factor εdata/εMC corrects simulated yields within the validated phase space. This is a methodological bridge to data analysis.
-Figure: original toy, seed 91. Gaussian Z peak (σ=2.6 GeV) on exponential background; 18,400 passing and 1,600 failing signal probes, 600 and 900 background pairs. Point out that the failing sample has relatively more background, so simply counting pairs would bias ε downward.
-:::
-
-## Threshold experiment
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-**100 signal events/s** against **100,000 background events/s**.
-
-200 kB/event; 200 MB/s budget.
-
-Find a cut that fits.
-:::
-
-::: {.picture-visual}
-![Large falling background and smaller signal spectrum on a logarithmic rate axis](figures/threshold-spectra.svg)
-
-::: {.plot-caption}
-Toy rate densities; grey region is rejected at 7 GeV/c.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-1 minute setup. All numbers and spectra are synthetic. At default cut 7 GeV/c the output is near the 1 kHz limit; slide the threshold, rather than claiming an exact optimum. The toy has exact observed momentum and a hard threshold; real detectors produce a smooth efficiency turn-on versus true momentum.
-Analytic rate-density curves. Area under each curve gives its input rate; visible heights are not integrated counts. These are the analytic counterpart of the fixed-sample demo and are not experimental cross sections. The signal density is normalized on nonnegative momentum, as in the demo.
-:::
-
-
-## Trigger threshold demo {.demo-slide}
-
-:::: {.slide-body}
-
-::: {.widget data-src="widgets/threshold.html" data-poster="widgets/threshold-poster.png" data-alt="Interactive trigger threshold comparing signal efficiency, background acceptance, sample composition and storage bandwidth"}
-:::
-
-::::
-
-::: {.notes}
-6 minutes. First change only the threshold and compare efficiency, selected fraction and bandwidth. Then reduce event size: the bandwidth changes, selection efficiencies do not. Finally increase background input and see purity worsen without changing conditional efficiencies. Curves show rates per 0.5 GeV/c bin on a log scale; the last bin includes overflow. The fixed sample contains 30,000 candidates per class. Zero counts do not prove zero physical tail probability.
-:::
-
-
-## The saved sample is biased
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-A hard threshold removes the low-momentum part of a spectrum.
-
-**Efficiency depends on kinematics.**
-
-Correct the selected yield within a stated measurement model.
-:::
-
-::: {.picture-visual}
-![Original signal momentum density and the high-momentum portion retained by a threshold](figures/selection-bias.svg)
-
-::: {.plot-caption}
-Kept spectrum is not renormalized: its area is the efficiency.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-2 minutes. Simplified yield equation for a specified process and fiducial definition; branching fractions, backgrounds, acceptance and reconstruction factors may be needed. Efficiency generally depends on kinematics; it is not a universal constant. This is the bridge to analysis, not a full statistical treatment. About 68 minutes elapsed.
-Analytic Gaussian-like illustration from the same signal model. Retain the displaced-track/decay-time analogy verbally. Simplified yield relation N_kept=L_int σ ε_total; include branching fractions, acceptance and backgrounds as appropriate.
-:::
-
-
-## 5 · Operating a trigger menu {.section-title}
-
-:::: {.slide-body}
-
-How does one experiment serve many physics measurements?
-
-::: {.subtle}
-OR of trigger paths · overlaps · prescales · CPU and storage
-:::
-
-::::
-
-::: {.notes}
-
-:::
-
-## A menu serves many physics programmes {.landmark}
-
-::: {.slide-refs}
-[CMS · HLT performance, Run 2 (2024)](https://cms-results.web.cern.ch/cms-results/public-results/publications/TRG-19-001/)
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Electron, muon, jet, missing-energy and specialised paths run together.
-
-**One event may pass several paths.**
-
-Why can we not simply add the inclusive rates?
-:::
-:::: {.picture-visual}
-![CMS Run-2 menu: inclusive, exclusive and shared group rates.](figures/cms-menu-rates.png)
-
-::: {.plot-caption}
-CMS Run-2 menu: inclusive, exclusive and shared group rates.
-:::
-::::
-:::::
-
-::::
-
-::: {.notes}
-3 minutes. Fig.2, menu deployed September 2018. Total is inclusive per physics group; pure means unique to that group; shared allocates a path rate among its owning groups. It is an accounting convention, not a new selection probability. Explain OR overlap with R(A or B)=R(A)+R(B)-R(A and B). Physics groups own/use paths; group names are not mutually exclusive event types.
-:::
-
-## Prescales and control samples
-
-::: {.slide-refs}
-[ATLAS · Trigger operation, Run 2 (2020)](https://arxiv.org/abs/2007.12539)
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-A prescale $P$ keeps **one in $P$** passing events.
-
-$$R_{\mathrm{recorded}}\simeq R_{\mathrm{pass}}/P$$
-
-**A — threshold:** changes which kinematics pass.
-
-**B — prescale:** keeps the low-$p_T$ region, with fewer events.
-:::
-
-::: {.picture-visual}
-![Path rate versus threshold, with and without a prescale of 40, crossing a 100 Hz allocation at two different operating points](figures/prescale-threshold.svg)
-
-::: {.plot-caption}
-Toy power-law path rate. Control and calibration paths are typically operated like B.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-3 minutes. Formula assumes this path alone and ignores dead time. Real OR menus need overlap-aware accounting and time-dependent configuration. A prescaled path has an effective luminosity; do not blindly multiply every multi-trigger event by one P. A zero-bias trigger samples crossings without a physics-object requirement; a minimum-bias trigger still imposes a condition. Control data are needed to measure efficiency and monitor losses.
-Figure: original toy, R_pass=20 kHz×(threshold/10 GeV)^-4. Option A raises the threshold to 38 GeV; option B keeps 15 GeV with P=40. Both record 100 Hz, but only B can measure the turn-on of a higher-threshold trigger or the low-pT spectrum. Ask which a cross-section measurement at 20 GeV would need.
-:::
-
-## The HLT is a reconstruction farm {.landmark}
-
-::: {.slide-refs}
-[CMS · HLT performance, Run 2 (2024)](https://cms-results.web.cern.ch/cms-results/public-results/publications/TRG-19-001/)
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Tracking and particle reconstruction consume computing time.
-
-$$N_{\mathrm{cores}}\gtrsim R_{\mathrm{in}}\langle t_{\mathrm{CPU}}\rangle$$
-
-100 kHz × 0.2 CPU-s/event ≈ **20,000 cores**.
-
-Reject cheaply before expensive reconstruction. Respect tails and headroom.
-:::
-:::: {.picture-visual}
-![CMS HLT CPU-time composition; core estimate is illustrative.](figures/cms-cpu-budget.png)
-
-::: {.plot-caption}
-CMS HLT CPU-time composition; core estimate is illustrative.
-:::
-::::
-:::::
-
-::::
-
-::: {.notes}
-3 minutes. Fig.1: reconstruction algorithm categories and their nested subdivisions; do not teach C++ labels. The numerical core example is an independent capacity estimate, not the measured CMS farm size or timing. CPU time differs from wall latency for parallel code. Mean capacity is necessary but tails, pile-up, I/O, scheduling and resilience require margin. Link back to queue saturation.
-:::
-
-## Event rate is not bandwidth {.landmark}
-
-::: {.slide-refs}
-[ATLAS · Trigger operation, Run 2 (2020)](https://arxiv.org/abs/2007.12539)
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Compare the **same time interval** in both panels.
-
-Trigger-level analysis dominates the event count late in the fill, but not the bytes.
-
-**Save smaller records → record more events.**
-:::
-:::: {.picture-visual}
-![ATLAS September 2018: stream rates above, bandwidth below.](figures/atlas-stream-rate-bandwidth.png)
-
-::: {.plot-caption}
-ATLAS September 2018: stream rates above, bandwidth below.
-:::
-::::
-:::::
-
-::::
-
-::: {.notes}
-5 minutes. Fig.7, full two-panel plot. Upper y kHz, lower y GB/s. Late-fill prescale strategy uses freed resources for lower-threshold trigger-level analysis. Only HLT jet information was saved in this Run-2 TLA stream. Rate jumps therefore need not imply comparable byte jumps. Monitoring is absent from the bandwidth stack because these events are not written to disk. Do not divide total upper by total lower to infer a single universal event size. Ask which colour dominates each panel and what information was sacrificed.
-:::
-
-## 6 · Real-time analysis {.section-title}
-
-:::: {.slide-body}
-
-Where should reconstruction happen, and what must we retain?
-
-::: {.subtle}
-Two architectures · calibration · selective persistence · reproducibility
-:::
-
-::::
-
-::: {.notes}
-
-:::
-
-## LHCb Run 3 {.full-figure}
-
-::: {.slide-refs}
-[LHCb Starterkit · Run-3 design](https://lhcb.github.io/starterkit-lessons/first-analysis-steps/dataflow-run3.html)
-:::
-
-:::: {.slide-body}
-
-::: {.visual}
-![LHCb Run-3 design data flow with full detector readout, GPU HLT1, disk buffer, calibration and CPU HLT2](figures/lhcb-run3-dataflow.png)
-:::
-
-::: {.take-home}
-Full readout → GPU HLT1 → buffer and calibration → CPU HLT2.
-:::
-
-::::
-
-::: {.notes}
-4 minutes. The educational design diagram includes reference rates and bandwidth allocations, not a live operating dashboard. The central structural point is removal of the former L0 hardware physics selection and use of two software stages. There are still front-end electronics, timing and protective controls. Buffering allows calibration before HLT2. Sources: LHCb Starterkit Run-3 data flow and the LHCb CHEP 2024 trigger-performance presentation. Original image copied from Starterkit; no independent image license located.
-:::
-
-
-## Two architectures, one event
-
-:::: {.slide-body}
-
-::: {.compare-table}
-| | ATLAS Run 2 | LHCb Run 3 |
-|---|---|---|
-| First decision | Hardware Level-1 (calo, muon), < 2.5 µs | GPU software (HLT1) on full readout |
-| Rate after it | 40 MHz → ≤ 100 kHz | 30 MHz → ~1 MHz |
-| Data wait in | Front-end pipelines, readout buffers | Disk buffer before HLT2 |
-| Calibration | Mostly after recording | Real time, before HLT2 |
-| Kept | Full raw events (+ TLA objects) | Mostly candidates (Turbo) |
-:::
-
-::: {.take-home}
-Same goal, different place to decide: hardware limits *what* can be seen first; software needs full readout bandwidth.
-:::
-
-::::
-
-::: {.notes}
-4 minutes. Follow one b-hadron decay through each system: in ATLAS a low-pT hadronic B decay rarely fires Level-1 (no high-pT calo/muon object), whereas LHCb can reconstruct its displaced tracks in HLT1. Conversely ATLAS's hardware stage handles a much larger raw event and pile-up at lower cost. Numbers are order-of-magnitude design values from the two sources already shown (ATLAS JINST 15 P10004 Fig. 1 and text; LHCb Starterkit Run-3 data flow), not live operating values. ATLAS also runs a prompt calibration loop before bulk reconstruction; "mostly after recording" refers to the trigger decision using online calibrations. TLA = trigger-level analysis (previous section).
-:::
-
-## What do we keep?
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-At a fixed **200 MB/s** to storage:
-
-| Stored record | Size | Max rate | Can we redo later? |
-|---|---:|---:|---|
-| Raw detector data | 1 MB | 200 Hz | Reconstruction, calibration, selection |
-| Full reconstructed event | 100 kB | 2 kHz | Selection, most physics objects |
-| Selected candidate only | 10 kB | 20 kHz | Only the final analysis |
-
-::: {.take-home}
-Smaller records buy rate; discarded information cannot be recovered.
-:::
-
-::::
-
-::: {.notes}
-4 minutes. LHCb Turbo/selective persistence is the concrete example: most physics streams keep the trigger candidate and chosen related objects. Saving a reduced record shifts more responsibility to online reconstruction, calibration and monitoring. Do not imply all events use the same persistence choice; real experiments mix all three rows. Sizes are illustrative round numbers, decimal units, no overhead, not an operational LHCb or ATLAS allocation. Sources: LHCb Starterkit sections on selective persistency; Stahl L08 pp12–13. About 84 minutes elapsed.
-:::
-
-## What must remain reproducible?
-
-:::: {.slide-body}
-
-**Event data:** raw detector measurements or selected reconstructed objects.
-
-**Conditions:** calibration, alignment and detector status.
-
-**Selection record:** trigger decisions, menu version and prescales.
-
-**Exposure:** luminosity, live time and data-quality intervals.
-
-A physics result needs all four, not just a file of candidates.
-
-::::
-
-::: {.notes}
-2 minutes. Synthesis. Selective persistence can close future analysis options; retained conditions and selection provenance are needed even for a fully reconstructed stream. Link to Lecture 7 calibration and next lecture reconstruction/statistics.
-:::
-
-## Five figures you should be able to explain
-
-:::: {.slide-body}
-
-1. **Cross-section hierarchy:** why rare physics needs selective recording.
-2. **Pile-up distribution:** why one crossing is not one interaction.
-3. **Multilevel trigger diagram:** where data wait and where decisions happen.
-4. **Turn-on curve:** efficiency, plateau and data/MC correction.
-5. **Rate and bandwidth during a fill:** why event content matters.
-
-::::
-
-::: {.notes}
-2 minutes. Ask students to explain one axis and one physical conclusion for each figure without looking at their notes.
+2 minutes. Ask students to reconstruct the physics behind each number in one sentence.
 :::
 
 ## Exit questions
 
 :::: {.slide-body}
 
-1. **5 kHz × 200 kB:** what bandwidth?
-2. Can a finite buffer fix sustained overload?
-3. Does low trigger acceptance guarantee high signal purity?
-4. Why does a cross-section measurement need trigger efficiency?
-5. Why can time of flight separate π and K at 1 GeV/c but not at 10 GeV/c?
+1. Why does a fixed-target experiment waste most of the beam energy?
+2. Why can a ring use much weaker cavities than a linac?
+3. Why does one quadrupole not focus a beam in both planes?
+4. Double the number of bunches: what happens to $\mathcal{L}$ and to $\mu$?
 
 ::::
 
 ::: {.notes}
-4 minutes. Answers: 1 GB/s in decimal units; no; no (relative input rates and efficiencies matter); the recorded sample is selected and the yield must be corrected within an explicit measurement definition; 5: Δt falls as 1/p², from about 1.8 ns to 18 ps over 5 m, below a 100 ps resolution. Use student answers to choose the opening recap of the reconstruction lecture.
+3 minutes. Answers: 1, momentum conservation: the centre of mass must keep moving, √s∝√E. 2, the ring reuses the same cavities every turn. 3, ∇·B=0 and ∇×B=0 force the field to focus in one plane and defocus in the other. 4, L doubles, μ stays the same (μ ∝ L/n_b); doubling N per bunch instead doubles μ and quadruples L.
 :::
 
-
-## Next lecture: hits are not yet tracks {.full-figure}
-
-::: {.slide-refs}
-[ACTS · Tracking in a nutshell](https://acts.readthedocs.io/en/latest/tracking.html)
-:::
+## Next lecture: DAQ and trigger
 
 :::: {.slide-body}
 
-::: {.visual}
-![ACTS illustration separating seeding, track finding and track fitting](figures/acts-tracking.svg)
-:::
+The machine delivers **40 MHz** of crossings, each with **tens of interactions**.
 
-::: {.take-home}
-Reconstruction associates measurements with particle trajectories.
-:::
+Detectors produce **MB per event**; storage takes **~1 kHz**.
 
-::::
-
-::: {.notes}
-4 minutes. Use the supplied overview to distinguish seed candidates, extension and final fit. Ask where measurement errors and multiple scattering enter. Do not derive Kalman matrices or list many algorithms here. Source: ACTS documentation, Tracking in a nutshell; original SVG retrieved 7 November 2026. This is the next lecture’s starting point; show it as a preview and skip the discussion if time is short.
-:::
-
-
-## Homework and next lecture
-
-:::: {.slide-body}
-
-**Homework:** design a trigger for energetic muons. Name a signal it could miss, and an efficiency you would need to measure.
-
-**Next lecture:** hits → tracks → vertices → particle identification.
+**How do we decide, within microseconds, which collisions to keep?**
 
 ::: {.subtle}
-Think about measurement uncertainties, calibration and simulation.
+Homework: estimate the LHC beam energy stored per beam ($N=1.15\times10^{11}$, 2808 bunches, 7 TeV) and compare with a car or a train.
 :::
 
 ::::
 
 ::: {.notes}
-Assign verbally at the close; do not add time beyond the 90-minute exit discussion. No full statistics lecture today.
+Homework answer: 2808 × 1.15e11 × 7e12 eV × 1.6e-19 J/eV ≈ 362 MJ per beam — a high-speed train at ~150 km/h, or about 90 kg of TNT. Explains why machine protection and beam dumps matter.
 :::
 
-
-## Backup · Detailed examples {.section-title}
+## Backup · Details {.section-title}
 
 :::: {.slide-body}
 
-Additional derivations and exercises
+Derivations and further reading
 
 ::: {.subtle}
-Pulse shape · calibration · storage arithmetic · non-paralyzable dead time
+Fixed-target invariant mass · synchrotron-radiation formula · references
 :::
 
 ::::
@@ -1227,168 +868,66 @@ Pulse shape · calibration · storage arithmetic · non-paralyzable dead time
 
 :::
 
-## Backup · The detector has produced a signal
-
-::: {.slide-refs}
-Original teaching model
-:::
+## Backup · Collision energy, fixed target
 
 :::: {.slide-body}
 
-::::: {.picture-layout}
-::: {.picture-copy}
-A sensor produced charge or light.
+Beam $(E_1,\vec p_1)$ on target $(m_2,\vec 0)$, with $c=1$:
 
-**The front end delivers an electrical pulse.**
+$$s=(p_1+p_2)^2=m_1^2+m_2^2+2E_1m_2$$
 
-What information can we extract from it?
-:::
+For $E_1\gg m_1,m_2$: $\sqrt{s}\approx\sqrt{2E_1m_2}$.
 
-::: {.picture-visual}
-![Illustrative shaped voltage pulse with electronic noise](figures/signal-pulse.svg)
+Head-on beams of equal energy $E$, $|\vec p|\approx E$: $s=(2E)^2$.
 
-::: {.plot-caption}
-Illustrative waveform; not recorded detector data.
-:::
-:::
-:::::
+Example: HERA, $e$ (27.5 GeV) on $p$ (920 GeV): $\sqrt{s}=\sqrt{4E_eE_p}\approx318$ GeV.
 
 ::::
 
 ::: {.notes}
-Opening recall, 2 minutes. Elicit charge, voltage, ADC samples, channel IDs, timing. Distinguish the physical signal from the particle energy inferred after calibration. Source: prior Lecture 7 p8 and Marian Stahl, Lecture 8 pp4,15.
-Figure: original analytic pulse A(t)=600 u² exp(2−2u) mV for u=(t−30 ns)/22 ns>0, zero otherwise; Gaussian noise σ=9 mV, seed 8. Ask about amplitude, area, arrival time and baseline. The pulse is not a universal detector shape.
+Optional derivation for questions. Asymmetric colliders (HERA, B factories) also boost the centre of mass, useful for measuring decay times.
 :::
 
-
-## Backup · DAQ must keep the experiment coherent
-
-::: {.slide-refs}
-Original teaching model
-:::
+## Backup · Synchrotron radiation formulas
 
 :::: {.slide-body}
 
-::::: {.picture-layout}
-::: {.picture-copy}
-A constant energy input can appear to drift.
+Radiated power for a charge on a circle (Liénard):
 
-Record **gain, timing and detector conditions** alongside event data.
-:::
+$$P=\frac{e^2c}{6\pi\varepsilon_0}\,\frac{\beta^4\gamma^4}{\rho^2}$$
 
-::: {.picture-visual}
-![Apparent energy drifts with gain while a correction using recorded conditions restores the constant input](figures/gain-drift.svg)
+Energy per turn, $\Delta E=P\cdot2\pi\rho/(\beta c)$:
 
-::: {.plot-caption}
-Toy example: 100 GeV input; gain increases 2.5% per hour.
-:::
-:::
-:::::
+$$\Delta E=\frac{e^2}{3\varepsilon_0}\,\frac{\beta^3\gamma^4}{\rho}\quad\Rightarrow\quad\Delta E\,[\mathrm{GeV}]=8.85\times10^{-5}\,\frac{E^4\,[\mathrm{GeV}^4]}{\rho\,[\mathrm{m}]}\ \ (e^\pm)$$
 
-::: {.take-home}
-A recorded event needs its calibration context.
-:::
+Critical photon energy $E_c=\tfrac{3}{2}\hbar c\,\gamma^3/\rho$: X-rays for GeV electron rings.
 
 ::::
 
 ::: {.notes}
-3 minutes. Slow control and data-quality monitoring are part of the system, not physics triggers. Give a temperature or high-voltage example. Source: Stahl L08 p8. Backup only.
-Original teaching calculation: measured response =100 GeV×(1+0.025t/h), divided by known gain for correction. No detector stability claim; no noise added so the role of calibration is isolated.
+Optional. For a separated-function ring only the dipoles radiate, so ρ is the dipole bending radius, not the average ring radius. E_c explains why light sources at a few GeV produce keV X-rays.
 :::
-
-
-## Backup · A day of data
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-At **1 GB/s**:
-
-**86.4 TB** in 24 hours.
-
-5 kHz × 200 kB per event = ?
-:::
-
-::: {.picture-visual}
-![Stored data volume increases over 24 hours for two constant recording rates](figures/data-per-day.svg)
-
-::: {.plot-caption}
-Continuous recording; decimal units; no overhead.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-4 minutes including student calculation. Answer 1 GB/s, hence 86.4 TB/day for uninterrupted acquisition. Accelerator duty cycle and actual run conditions matter in reality. Ask whether reducing event size by ten is as powerful as reducing event rate by ten for the storage budget: yes for bandwidth, but with different physics consequences.
-Original V=Bt curves. At 0.2 GB/s the 24-hour total is 17.28 TB. Show that slope is the bandwidth, not just a number on a slide.
-:::
-
-
-## Backup · Non-paralyzable dead time
-
-::: {.slide-refs}
-Original teaching model
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-$$r=\frac{R}{1+R\tau}$$
-
-At **τ = 120 µs**, the output approaches **8.33 kHz**.
-
-Steady Poisson arrivals; one busy stage.
-:::
-
-::: {.picture-visual}
-![Non-paralyzable output rate saturates with increasing input rate](figures/deadtime-rate.svg)
-
-::: {.plot-caption}
-Asymptotic capacity 1/τ; finite input always gives a lower output.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-Optional derivation. After fixed busy time τ, the memoryless Poisson process has mean wait 1/R until the next accepted arrival. In burst mode the instantaneous rate is time-dependent; do not apply the formula with the average rate as an exact prediction. Definition and model are original teaching additions to Neufeld/Stahl.
-Original analytic rate plot. Derivation: mean interval between accepts =τ+1/R. The graph is not the prediction for the two-stage buffered or burst model.
-:::
-
 
 ## Backup · Reference material {.references}
 
 :::: {.slide-body}
 
+[CERN Accelerator School](https://cas.web.cern.ch/) — open proceedings and introductory courses.
+
+[F. Tecker, Introduction to accelerator physics (CERN, 2019)](https://indico.cern.ch/event/819412/contributions/3608649/attachments/1944647/3226029/2019-Intro-Acc-Physics.pdf) — overview lecture.
+
+[O. Brüning et al., LHC Design Report, Vol. I (CERN-2004-003)](https://cds.cern.ch/record/782076) — LHC parameters.
+
+[H. Wiedemann, Particle Accelerator Physics (Springer, open access)](https://doi.org/10.1007/978-3-319-18317-6) — textbook.
+
 [W. J. Stirling, LHC physics lecture (2010)](https://indico.cern.ch/event/94815/contributions/1282690/attachments/1106827/1579062/LBLMIT_Stirling_v2.pdf) — cross-section hierarchy.
 
-[CMS luminosity public results](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults) — Run-2 pile-up distribution.
+[CMS luminosity public results](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults) — Run-2 pile-up.
 
-[CMS Collaboration, JINST 19 P11021 (2024)](https://cms-results.web.cern.ch/cms-results/public-results/publications/TRG-19-001/) — HLT performance: turn-on, menu rates, CPU budget.
-
-[N. Neufeld, DAQ/trigger lecture (2009)](https://indico.cern.ch/event/43007/contributions/1065030/attachments/927884/1313738/trigger-daq-analysis-esi09-neufeld1.pdf) — elementary DAQ, busy time, buffers.
-
-[ATLAS Collaboration, JINST 15 P10004 (2020)](https://arxiv.org/abs/2007.12539) — Run-2 trigger architecture, stream rates and bandwidth.
-
-[LHCb Starterkit, Run-3 data flow](https://lhcb.github.io/starterkit-lessons/first-analysis-steps/dataflow-run3.html) — software trigger and selective persistence.
-
-[LHCb trigger performance, CHEP 2024](https://indico.cern.ch/event/1338689/contributions/6015396/attachments/2951324/5187948/CHEP24_LHCb_Run3_trigger_performance.pdf) — Run-3 operation.
-
-[ACTS documentation](https://acts.readthedocs.io/en/latest/tracking.html) — reconstruction overview.
-
-Course source: Marian Stahl, Lecture 8, WS 2025/26.
+B. R. Martin and G. Shaw, *Particle Physics*, ch. on experimental methods · M. Thomson, *Modern Particle Physics*, ch. 1.
 
 ::::
 
 ::: {.notes}
-Full local asset provenance and model assumptions are in SOURCES.md. No links to the internal reference archive are embedded in the student deck.
+Photo and figure credits are in SOURCES.md.
 :::

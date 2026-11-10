@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Accelerators · Ring designer</title><link rel="stylesheet" href="widget.css">
+<style>.rings{height:330px}.lossbar{height:110px}.metrics{grid-template-columns:repeat(4,1fr)}#decay,#fixed{font-size:18px;margin:6px 0}@media(min-width:1700px){.rings{height:420px}#decay,#fixed{font-size:23px}}</style>
+<header><h1>Design a circular collider</h1><p>ρ = p / (0.3 B) · ΔE<sub>turn</sub> ∝ E<sup>4</sup> / (m<sup>4</sup> ρ)</p></header>
+<div class="layout"><aside>
+<label>Particle<select id="particle" aria-label="Beam particle"><option value="proton" selected>Protons</option><option value="electron">Electrons</option><option value="muon">Muons</option></select></label>
+<label>Beam energy <output id="energyValue"></output><input id="energy" aria-label="Beam energy, logarithmic from 1 GeV to 100 TeV" type="range" min="0" max="5" step="0.001" value="3.845"></label>
+<label>Dipole field <output id="fieldValue"></output><input id="field" aria-label="Dipole field in tesla" type="range" min="0.05" max="20" step="0.01" value="8.33"></label>
+<div class="actions"><button id="reset">Reset</button></div>
+<p class="hint">Try: protons at 7 TeV and 8.33 T (LHC). Then electrons. Can you find LEP (104.5 GeV in the same tunnel)? Then muons.</p>
+</aside><main>
+<div class="metrics"><div class="metric"><strong id="rho">—</strong><span>bending radius</span></div><div class="metric"><strong id="circ">—</strong><span>ring circumference</span></div><div class="metric"><strong id="loss">—</strong><span>radiated per turn</span></div><div class="metric"><strong id="sqrts">—</strong><span>√s, two beams</span></div></div>
+<canvas id="rings" class="rings" role="img" aria-label="Ring circumference drawn to scale with LHC and FCC reference rings"></canvas>
+<canvas id="lossbar" class="lossbar" role="img" aria-label="Energy radiated per turn on a logarithmic scale compared with LHC and LEP2"></canvas>
+<div id="status" class="budget" aria-live="polite"></div>
+<p id="fixed"></p><p id="decay"></p>
+<p class="assumptions">Analytic model: ultra-relativistic beam, dipoles fill 66% of the circumference (as in the LHC), synchrotron loss 8.85×10⁻⁵ E⁴/ρ GeV for electrons scaled by (m<sub>e</sub>/m)⁴. Ignores RF, focusing, beam–beam effects and magnet engineering.</p>
+</main></div><footer>Teaching model · analytic, no random numbers</footer>
+<script src="ring.js"></script><script src="designer.js"></script></html>
