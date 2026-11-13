@@ -17,9 +17,9 @@ The generated HTML is local and untracked. Press `S` for Reveal speaker notes. T
 
 No external widget libraries, fonts, data services or network calls. `?export=1` on the deck uses the checked PNG posters, following the existing export convention. Widgets initially show a completed deterministic result rather than starting an animation automatically.
 
-## Draft publication guard
+## Publication
 
-Lecture 9 is explicitly excluded from both the generated website's `render` and `resources` lists in `.github/workflows/pages.yml`. It has not been added to the course index. The website checker and PDF exporter also skip this draft; a build assertion rejects any Lecture 9 output. Remove the Lecture 9 exclusions and assertion together only when publication is requested. No publishing commands or pushes were performed for this draft.
+Lecture 9 is included in the website render, resource checks and PDF export, and linked from the course index. GitHub Actions publishes it on pushes to `main`.
 
 ## Teaching sequence
 
