@@ -46,7 +46,7 @@ with sync_playwright() as p:
  page.goto(f'{base}/slides/lectures/Lecture_9/Lecture_9.html?export=1',wait_until='domcontentloaded')
  page.wait_for_function('window.Reveal && Reveal.isReady()')
  page.evaluate("Reveal.configure({transition:'none'});Reveal.layout()")
- count=page.evaluate('Reveal.getTotalSlides()');assert count==50,count
+ count=page.evaluate('Reveal.getTotalSlides()');assert count==64,count
  for i in range(count):
   page.evaluate('(i)=>Reveal.slide(i)',i);page.wait_for_timeout(100)
   page.evaluate("async()=>{await document.fonts.ready;await Promise.all([...Reveal.getCurrentSlide().querySelectorAll('img')].map(i=>i.decode().catch(()=>{})));}")

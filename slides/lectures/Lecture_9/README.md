@@ -1,6 +1,6 @@
-# Lecture 9: DAQ and Trigger
+# Lecture 9: Basics of Trigger and DAQ
 
-Local draft for the KT1 2026/27 course. Built from the internal lecture plan; follows Lecture 7 (tracking, light and charge) and Lecture 8 (accelerators); sections 1–2 still contain rate, synchrotron-radiation and time-of-flight slides that overlap Lecture 8 and are due to be trimmed. 50 slides: 44 main slides (including six section dividers, a roadmap and two interactive demos), followed by a backup divider and five backup slides. Synchrotron radiation (section 1) and time of flight (section 2) were added because they were not covered in earlier lectures. Speaker notes give a 90-minute pace, questions and answers, model assumptions, and references.
+Local draft for the KT1 2026/27 course, reworked on 13 November 2026 for undergraduates who meet trigger and data acquisition for the first time. Follows Lecture 7 (detectors) and Lecture 8 (accelerators). 64 slides: 42 main slides (four section dividers, six accelerator recap slides, two interactive demos), then a backup divider and 21 backup slides holding the advanced material of the earlier draft (tag and probe, menus, bandwidth, CPU budget, persistence, time of flight). Speaker notes give a 90-minute pace and answers.
 
 ## Preview
 
@@ -23,16 +23,16 @@ Lecture 9 is explicitly excluded from both the generated website's `render` and 
 
 ## Teaching sequence
 
-The six sections are visible as dividers and in the footer throughout. Recommended 90-minute route (timings include transitions and discussion):
+Recommended 90-minute route:
 
-- Orientation and physics rates: 0–21 min. Stirling hierarchy, luminosity, synchrotron radiation (why protons), pile-up.
-- Acquiring an event: 21–38 min. Digitization, time of flight, assembly, bandwidth, latency, pipeline storage, then the ATLAS Run-2 architecture as a worked example.
-- Dead time and buffering: 38–50 min. Dead-time formula, FIFO, overload and queue demo.
-- Trigger performance: 50–68 min. Real CMS turn-on, tag-and-probe, threshold demo and bias.
-- Operating a menu: 68–80 min. Overlaps, prescales, CPU, ATLAS rates versus bandwidth.
-- Real-time analysis and synthesis: 80–90 min. LHCb, ATLAS/LHCb comparison, persistence, provenance, exit questions; the ACTS tracking slide is a next-lecture preview.
+- Accelerator recap: 0–12 min. Six slides, each with one check question: RF cavities, magnets, colliders, synchrotron radiation, bunches (40 MHz), luminosity and rates.
+- The complete experiment: 12–27 min. Detector layers, what an event is (pile-up), pulse, ADC/TDC, event size, 40 TB/s.
+- The first trigger: 27–45 min. Geiger–Müller counter, gas-counter regimes, Bothe–Kolhörster coincidences, accidental rate, Blackett–Occhialini counter-controlled cloud chamber, definitions of trigger and DAQ.
+- DAQ: 45–63 min. Discriminator, readout chain, dead time, buffers, queue demo, pause and check.
+- Triggering at the LHC: 63–85 min. Rate funnel, signatures, threshold and demo, turn-on curve, pipeline, ATLAS two levels, prescale, LHCb software trigger.
+- Summary, exit questions, homework: 85–90 min.
 
-The expanded deck is also a reference for students. Individual speaker-note times are discussion allowances; use this section budget for a single 90-minute lecture. The deck is over-full for 90 minutes. To make room, defer CPU composition and tag-and-probe details, shorten the demos, show the ACTS preview without discussion, and assign the backup exercises. Keep all five landmark figures and their interpretation.
+If time is short, shorten the demos and skip the prescale slide.
 
 ## Visual teaching material
 
@@ -42,6 +42,7 @@ Regenerate plots from the repository root:
 
 ```sh
 .venv-pdf/bin/python slides/lectures/Lecture_9/scripts/make_plots.py
+.venv-pdf/bin/python slides/lectures/Lecture_9/scripts/make_intro_figures.py
 ```
 
 Requires NumPy, Matplotlib, Pillow and Node. See `SOURCES.md` for parameters and source transformations.

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d2733"/></marker><marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#007dc5"/></marker></defs>
+<rect x="150" y="120" width="360" height="70" rx="35" fill="#eef5fa" stroke="#7f8f9c" stroke-width="6"/>
+<line x1="170" y1="155.0" x2="490" y2="155.0" stroke="#1d2733" stroke-width="2.5"/>
+<text x="130" y="165.0" font-size="30" fill="#1d2733" text-anchor="end" font-weight="600">1</text>
+<rect x="150" y="250" width="360" height="90" fill="#9aa5b1"/>
+<text x="160" y="306" font-size="26" fill="white" text-anchor="start" font-weight="600">absorber</text>
+<rect x="150" y="400" width="360" height="70" rx="35" fill="#eef5fa" stroke="#7f8f9c" stroke-width="6"/>
+<line x1="170" y1="435.0" x2="490" y2="435.0" stroke="#1d2733" stroke-width="2.5"/>
+<text x="130" y="445.0" font-size="30" fill="#1d2733" text-anchor="end" font-weight="600">2</text>
+<line x1="300" y1="30" x2="360" y2="540" stroke="#007dc5" stroke-width="5" stroke-linecap="round" marker-end="url(#arb)"/>
+<text x="372" y="545" font-size="26" fill="#007dc5" text-anchor="start" font-weight="600">cosmic ray</text>
+<path d="M560,90 L430,150" stroke="#cf741b" stroke-width="4" stroke-dasharray="10 7" marker-end="url(#ar)" fill="none"/>
+<text x="570" y="92" font-size="26" fill="#cf741b" text-anchor="start" font-weight="600">background γ</text>
+<text x="570" y="124" font-size="24" fill="#cf741b" text-anchor="start" font-weight="400">(only counter 1)</text>
+<text x="795" y="158" font-size="28" fill="#1d2733" text-anchor="end" font-weight="600">counter 1</text>
+<path d="M820,150 H984 v-60 h36 v60 H1378 v-60 h36 v60 H1640" fill="none" stroke="#1d2733" stroke-width="4"/>
+<text x="795" y="298" font-size="28" fill="#1d2733" text-anchor="end" font-weight="600">counter 2</text>
+<path d="M820,290 H992 v-60 h36 v60 H1640" fill="none" stroke="#1d2733" stroke-width="4"/>
+<text x="795" y="478" font-size="28" fill="#bd3249" text-anchor="end" font-weight="600">1 AND 2</text>
+<path d="M820,470 H984 v-60 h36 v60 H1640" fill="none" stroke="#bd3249" stroke-width="4"/>
+<rect x="971" y="40" width="71" height="470" fill="#bd3249" opacity="0.08"/>
+<text x="1005.3199999999999" y="30" font-size="24" fill="#bd3249" text-anchor="middle" font-weight="600">same time</text>
+<line x1="820" y1="540" x2="1640" y2="540" stroke="#1d2733" stroke-width="2.5" marker-end="url(#ar)"/>
+<text x="1640" y="580" font-size="26" fill="#607382" text-anchor="end" font-weight="400">time</text>
+<rect x="980" y="350" width="170" height="64" rx="10" fill="white" stroke="#bd3249" stroke-width="3"/>
+<text x="1065" y="392" font-size="26" fill="#bd3249" text-anchor="middle" font-weight="600">AND gate</text>
+</svg>

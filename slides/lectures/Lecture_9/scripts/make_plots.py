@@ -15,8 +15,10 @@ def plot(title=None):
  f,a=plt.subplots(figsize=(10.6,6.5),layout='constrained');a.grid(alpha=.75);a.set_axisbelow(True)
  if title:a.set_title(title,loc='left',pad=16)
  return f,a
+def _sans(path):
+    p=Path(path);p.write_text(p.read_text().replace("font-family: 'DejaVu Sans'","font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif"))
 def save(f,name):
- f.savefig(OUT/(name+'.svg'));plt.close(f)
+ f.savefig(OUT/(name+'.svg'));plt.close(f);_sans(OUT/(name+'.svg'))
 t=np.linspace(0,200,1200);pulse=lambda x:np.where(x>30,600*((np.maximum(x-30,0)/22)**2)*np.exp(2-2*np.maximum(x-30,0)/22),0)
 rng=np.random.default_rng(8)
 f,a=plot('An electrical pulse, not a particle label')

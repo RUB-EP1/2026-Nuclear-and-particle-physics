@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 690" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d2733"/></marker><marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#007dc5"/></marker></defs>
+<rect x="200" y="60" width="420" height="64" rx="35" fill="#eef5fa" stroke="#7f8f9c" stroke-width="6"/>
+<line x1="220" y1="92.0" x2="600" y2="92.0" stroke="#1d2733" stroke-width="2.5"/>
+<text x="180" y="102.0" font-size="30" fill="#1d2733" text-anchor="end" font-weight="600">counter A</text>
+<rect x="170" y="190" width="480" height="270" rx="12" fill="#f7f9fb" stroke="#7f8f9c" stroke-width="6"/>
+<text x="410" y="230" font-size="26" fill="#607382" text-anchor="middle" font-weight="600">cloud chamber</text>
+<rect x="190" y="460" width="440" height="34" fill="#c3ced6"/>
+<text x="410" y="486" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="400">piston</text>
+<rect x="200" y="540" width="420" height="64" rx="35" fill="#eef5fa" stroke="#7f8f9c" stroke-width="6"/>
+<line x1="220" y1="572.0" x2="600" y2="572.0" stroke="#1d2733" stroke-width="2.5"/>
+<text x="180" y="582.0" font-size="30" fill="#1d2733" text-anchor="end" font-weight="600">counter B</text>
+<line x1="380" y1="10" x2="450" y2="650" stroke="#007dc5" stroke-width="5" stroke-linecap="round" marker-end="url(#arb)"/>
+<circle cx="404" cy="255" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="408" cy="266" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="412" cy="277" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="407" cy="288" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="412" cy="299" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="416" cy="310" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="411" cy="321" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="415" cy="332" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="419" cy="343" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="415" cy="354" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="419" cy="365" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="423" cy="376" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="418" cy="387" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="422" cy="398" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="427" cy="409" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="422" cy="420" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="426" cy="431" r="3.4" fill="#1d2733" opacity="0.7"/>
+<circle cx="430" cy="442" r="3.4" fill="#1d2733" opacity="0.7"/>
+<text x="470" y="660" font-size="26" fill="#007dc5" text-anchor="start" font-weight="600">cosmic ray</text>
+<path d="M620,92 H860 V300" fill="none" stroke="#1d2733" stroke-width="3.5"/>
+<path d="M620,572 H860 V380" fill="none" stroke="#1d2733" stroke-width="3.5"/>
+<rect x="780" y="300" width="160" height="80" rx="12" fill="white" stroke="#bd3249" stroke-width="4"/>
+<text x="860" y="350" font-size="28" fill="#bd3249" text-anchor="middle" font-weight="700">A AND B</text>
+<line x1="940" y1="340" x2="1050" y2="340" stroke="#bd3249" stroke-width="4" marker-end="url(#ar)"/>
+<rect x="1060" y="270" width="380" height="140" rx="12" fill="#fbeaec" stroke="#bd3249" stroke-width="3"/>
+<text x="1250" y="322" font-size="27" fill="#1d2733" text-anchor="middle" font-weight="600">expand the chamber</text>
+<text x="1250" y="358" font-size="27" fill="#1d2733" text-anchor="middle" font-weight="600">flash the lamp</text>
+<text x="1250" y="394" font-size="27" fill="#1d2733" text-anchor="middle" font-weight="600">take the photograph</text>
+<path d="M1060,380 C900,470 760,470 640,478" fill="none" stroke="#bd3249" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#ar)"/>
+<text x="1060" y="140" font-size="27" fill="#007dc5" text-anchor="start" font-weight="700">fast, simple detectors:</text>
+<text x="1060" y="176" font-size="27" fill="#007dc5" text-anchor="start" font-weight="400">decide whether to record</text>
+<text x="1060" y="500" font-size="27" fill="#cf741b" text-anchor="start" font-weight="700">slow, detailed detector:</text>
+<text x="1060" y="536" font-size="27" fill="#cf741b" text-anchor="start" font-weight="400">records the picture</text>
+</svg>

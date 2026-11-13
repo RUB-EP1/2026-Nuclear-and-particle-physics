@@ -55,7 +55,7 @@ L 0 3.5
       </g>
      </g>
      <g id="text_1">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle" x="90.907995" y="438.914369" transform="rotate(-0 90.907995 438.914369)">0.0</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="90.907995" y="438.914369" transform="rotate(-0 90.907995 438.914369)">0.0</text>
      </g>
     </g>
     <g id="xtick_2">
@@ -70,7 +70,7 @@ L 179.438652 34.197115
       </g>
      </g>
      <g id="text_2">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle" x="179.438652" y="438.914369" transform="rotate(-0 179.438652 438.914369)">2.5</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="179.438652" y="438.914369" transform="rotate(-0 179.438652 438.914369)">2.5</text>
      </g>
     </g>
     <g id="xtick_3">
@@ -85,7 +85,7 @@ L 267.969309 34.197115
       </g>
      </g>
      <g id="text_3">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle" x="267.969309" y="438.914369" transform="rotate(-0 267.969309 438.914369)">5.0</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="267.969309" y="438.914369" transform="rotate(-0 267.969309 438.914369)">5.0</text>
      </g>
     </g>
     <g id="xtick_4">
@@ -100,7 +100,7 @@ L 356.499965 34.197115
       </g>
      </g>
      <g id="text_4">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle" x="356.499965" y="438.914369" transform="rotate(-0 356.499965 438.914369)">7.5</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="356.499965" y="438.914369" transform="rotate(-0 356.499965 438.914369)">7.5</text>
      </g>
     </g>
     <g id="xtick_5">
@@ -115,7 +115,7 @@ L 445.030622 34.197115
       </g>
      </g>
      <g id="text_5">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle" x="445.030622" y="438.914369" transform="rotate(-0 445.030622 438.914369)">10.0</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="445.030622" y="438.914369" transform="rotate(-0 445.030622 438.914369)">10.0</text>
      </g>
     </g>
     <g id="xtick_6">
@@ -130,7 +130,7 @@ L 533.561279 34.197115
       </g>
      </g>
      <g id="text_6">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle" x="533.561279" y="438.914369" transform="rotate(-0 533.561279 438.914369)">12.5</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="533.561279" y="438.914369" transform="rotate(-0 533.561279 438.914369)">12.5</text>
      </g>
     </g>
     <g id="xtick_7">
@@ -145,7 +145,7 @@ L 622.091936 34.197115
       </g>
      </g>
      <g id="text_7">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle" x="622.091936" y="438.914369" transform="rotate(-0 622.091936 438.914369)">15.0</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="622.091936" y="438.914369" transform="rotate(-0 622.091936 438.914369)">15.0</text>
      </g>
     </g>
     <g id="xtick_8">
@@ -160,11 +160,11 @@ L 710.622592 34.197115
       </g>
      </g>
      <g id="text_8">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle" x="710.622592" y="438.914369" transform="rotate(-0 710.622592 438.914369)">17.5</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="710.622592" y="438.914369" transform="rotate(-0 710.622592 438.914369)">17.5</text>
      </g>
     </g>
     <g id="text_9">
-     <text style="font-size: 18px; font-family: 'DejaVu Sans'; text-anchor: middle" x="409.618359" y="460.675541" transform="rotate(-0 409.618359 460.675541)">Threshold [GeV/c]</text>
+     <text style="font-size: 18px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="409.618359" y="460.675541" transform="rotate(-0 409.618359 460.675541)">Threshold [GeV/c]</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">
@@ -185,7 +185,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_10">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: end" x="52.036959" y="425.456362" transform="rotate(-0 52.036959 425.456362)">0.0</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: end" x="52.036959" y="425.456362" transform="rotate(-0 52.036959 425.456362)">0.0</text>
      </g>
     </g>
     <g id="ytick_2">
@@ -200,7 +200,7 @@ L 760.19976 345.70288
       </g>
      </g>
      <g id="text_11">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: end" x="52.036959" y="352.160888" transform="rotate(-0 52.036959 352.160888)">0.2</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: end" x="52.036959" y="352.160888" transform="rotate(-0 52.036959 352.160888)">0.2</text>
      </g>
     </g>
     <g id="ytick_3">
@@ -215,7 +215,7 @@ L 760.19976 272.407406
       </g>
      </g>
      <g id="text_12">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: end" x="52.036959" y="278.865413" transform="rotate(-0 52.036959 278.865413)">0.4</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: end" x="52.036959" y="278.865413" transform="rotate(-0 52.036959 278.865413)">0.4</text>
      </g>
     </g>
     <g id="ytick_4">
@@ -230,7 +230,7 @@ L 760.19976 199.111932
       </g>
      </g>
      <g id="text_13">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: end" x="52.036959" y="205.569939" transform="rotate(-0 52.036959 205.569939)">0.6</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: end" x="52.036959" y="205.569939" transform="rotate(-0 52.036959 205.569939)">0.6</text>
      </g>
     </g>
     <g id="ytick_5">
@@ -245,7 +245,7 @@ L 760.19976 125.816458
       </g>
      </g>
      <g id="text_14">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: end" x="52.036959" y="132.274465" transform="rotate(-0 52.036959 132.274465)">0.8</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: end" x="52.036959" y="132.274465" transform="rotate(-0 52.036959 132.274465)">0.8</text>
      </g>
     </g>
     <g id="ytick_6">
@@ -260,11 +260,11 @@ L 760.19976 52.520984
       </g>
      </g>
      <g id="text_15">
-      <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: end" x="52.036959" y="58.978991" transform="rotate(-0 52.036959 58.978991)">1.0</text>
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: end" x="52.036959" y="58.978991" transform="rotate(-0 52.036959 58.978991)">1.0</text>
      </g>
     </g>
     <g id="text_16">
-     <text style="font-size: 18px; font-family: 'DejaVu Sans'; text-anchor: middle" x="16.677428" y="226.597734" transform="rotate(-90 16.677428 226.597734)">Fraction</text>
+     <text style="font-size: 18px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="16.677428" y="226.597734" transform="rotate(-90 16.677428 226.597734)">Fraction</text>
     </g>
    </g>
    <g id="line2d_29">
@@ -481,7 +481,7 @@ L 760.19976 418.998354
 " style="fill: none; stroke: #b8c7d2; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_17">
-    <text style="font-size: 20px; font-family: 'DejaVu Sans'; text-anchor: start" x="59.036959" y="18.197115" transform="rotate(-0 59.036959 18.197115)">The same cut treats two spectra differently</text>
+    <text style="font-size: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start" x="59.036959" y="18.197115" transform="rotate(-0 59.036959 18.197115)">The same cut treats two spectra differently</text>
    </g>
    <g id="legend_1">
     <g id="line2d_32">
@@ -491,7 +491,7 @@ L 526.447104 56.464459
 " style="fill: none; stroke: #007dc5; stroke-width: 3; stroke-linecap: square"/>
     </g>
     <g id="text_18">
-     <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start" x="540.047104" y="62.414459" transform="rotate(-0 540.047104 62.414459)">Signal efficiency</text>
+     <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start" x="540.047104" y="62.414459" transform="rotate(-0 540.047104 62.414459)">Signal efficiency</text>
     </g>
     <g id="line2d_33">
      <path d="M 492.447104 81.965787 
@@ -500,7 +500,7 @@ L 526.447104 81.965787
 " style="fill: none; stroke: #cf741b; stroke-width: 3; stroke-linecap: square"/>
     </g>
     <g id="text_19">
-     <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start" x="540.047104" y="87.915787" transform="rotate(-0 540.047104 87.915787)">Background acceptance</text>
+     <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start" x="540.047104" y="87.915787" transform="rotate(-0 540.047104 87.915787)">Background acceptance</text>
     </g>
     <g id="line2d_34">
      <path d="M 492.447104 107.467115 
@@ -509,7 +509,7 @@ L 526.447104 107.467115
 " style="fill: none; stroke-dasharray: 11.1,4.8; stroke-dashoffset: 0; stroke: #268565; stroke-width: 3"/>
     </g>
     <g id="text_20">
-     <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start" x="540.047104" y="113.417115" transform="rotate(-0 540.047104 113.417115)">Selected signal fraction</text>
+     <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start" x="540.047104" y="113.417115" transform="rotate(-0 540.047104 113.417115)">Selected signal fraction</text>
     </g>
    </g>
   </g>
