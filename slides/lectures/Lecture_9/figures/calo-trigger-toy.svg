@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1008pt" height="475.2pt" viewBox="0 0 1008 475.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-13T09:55:44.459419</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 475.2 
+L 1008 475.2 
+L 1008 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 49.963138 429.471236 
+L 451.997102 429.471236 
+L 451.997102 27.437271 
+L 49.963138 27.437271 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g clip-path="url(#p827cfd060e)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAi8AAAIuCAYAAAB3iOjhAAALD0lEQVR4nO3YMaokVRiG4VtDQTfKcEE0MjTQDQjGgpsw0uW4CcGFuA1dwGRzo0YG+2p7y1w6mMT5zwvPE3fwcaq6eDnby+XN8QDvadvPzuqO43pxLvfel/Ojc/nvu3K7OpN7bs/OxX/ovb16/58CAMwTLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkLI/3J6nNyxpOz9OT1jS8e5pesKSto8/m56wpON2nZ6wHt/cu3xz7/Mfus/NCwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKdvx7umYHrGi43qZnrCm/TS9gJDj15+mJ6znq2+nFyxp+/zr6Qlrev5jesGS3LwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJCyvbz97ZgesaTT6+kFS9r28/SEJR3Xy/SEJf383ZfTE5bzw/ffTE9Y0qsff5mesKTt/Dg9YUluXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASNleLm+O6REr2vbz9IQlHdfL9IQ17afpBWu6PU8vWI935S7f3PuO2/X/fBuz3LwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUvZtP09vWNLL0+/TE5a0ffTp9ARK9tP0guX45t53XC8f+ElQ5uYFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAICU/bhepjes6e8/pxcs6XAud22n1x/6USRs+3l6wnKO23V6wpr++Wt6wZp8W+5y8wIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQMr+sJ+mNyxp++SL6QlL2s6P0xOWdLx7mp6wpGN6wIpuz9ML1nR6Pb1gSdt+np6wJDcvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgCkiBcAIEW8AAAp4gUASBEvAECKeAEAUsQLAJAiXgCAFPECAKSIFwAgRbwAACniBQBIES8AQIp4AQBSxAsAkCJeAIAU8QIApIgXACBFvAAAKeIFAEgRLwBAingBAFLECwCQIl4AgBTxAgA8lPwL03JXz76HR40AAAAASUVORK5CYII=" id="image49361a6673" transform="scale(1 -1) translate(0 -401.76)" x="49.68" y="-27.36" width="402.48" height="401.76"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 250.98012 228.454254 
+L 351.488611 228.454254 
+L 351.488611 328.962745 
+L 250.98012 328.962745 
+L 250.98012 228.454254 
+z
+" clip-path="url(#p827cfd060e)" style="fill: none; stroke: #007dc5; stroke-width: 4; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="text_1">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="75.09026" y="56.201113" transform="rotate(-0 75.09026 56.201113)">0.1</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="125.344506" y="56.201113" transform="rotate(-0 125.344506 56.201113)">0.2</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="175.598752" y="56.201113" transform="rotate(-0 175.598752 56.201113)">0.0</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="225.852997" y="56.201113" transform="rotate(-0 225.852997 56.201113)">0.3</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="276.107243" y="56.201113" transform="rotate(-0 276.107243 56.201113)">0.1</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="326.361488" y="56.201113" transform="rotate(-0 326.361488 56.201113)">0.2</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="376.615734" y="56.201113" transform="rotate(-0 376.615734 56.201113)">0.1</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="426.86998" y="56.201113" transform="rotate(-0 426.86998 56.201113)">0.0</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="75.09026" y="106.455358" transform="rotate(-0 75.09026 106.455358)">0.2</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="125.344506" y="106.455358" transform="rotate(-0 125.344506 106.455358)">0.6</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="175.598752" y="106.455358" transform="rotate(-0 175.598752 106.455358)">0.4</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="225.852997" y="106.455358" transform="rotate(-0 225.852997 106.455358)">0.1</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="276.107243" y="106.455358" transform="rotate(-0 276.107243 106.455358)">0.0</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="326.361488" y="106.455358" transform="rotate(-0 326.361488 106.455358)">0.1</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="376.615734" y="106.455358" transform="rotate(-0 376.615734 106.455358)">0.3</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="426.86998" y="106.455358" transform="rotate(-0 426.86998 106.455358)">0.1</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="75.09026" y="156.709604" transform="rotate(-0 75.09026 156.709604)">0.0</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="125.344506" y="156.709604" transform="rotate(-0 125.344506 156.709604)">0.5</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="175.598752" y="156.709604" transform="rotate(-0 175.598752 156.709604)">0.3</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="225.852997" y="156.709604" transform="rotate(-0 225.852997 156.709604)">0.2</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="276.107243" y="156.709604" transform="rotate(-0 276.107243 156.709604)">0.1</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="326.361488" y="156.709604" transform="rotate(-0 326.361488 156.709604)">0.0</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="376.615734" y="156.709604" transform="rotate(-0 376.615734 156.709604)">0.2</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="426.86998" y="156.709604" transform="rotate(-0 426.86998 156.709604)">0.2</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="75.09026" y="206.96385" transform="rotate(-0 75.09026 206.96385)">0.1</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="125.344506" y="206.96385" transform="rotate(-0 125.344506 206.96385)">0.0</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="175.598752" y="206.96385" transform="rotate(-0 175.598752 206.96385)">0.2</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="225.852997" y="206.96385" transform="rotate(-0 225.852997 206.96385)">0.1</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="276.107243" y="206.96385" transform="rotate(-0 276.107243 206.96385)">0.2</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="326.361488" y="206.96385" transform="rotate(-0 326.361488 206.96385)">0.1</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="376.615734" y="206.96385" transform="rotate(-0 376.615734 206.96385)">0.0</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="426.86998" y="206.96385" transform="rotate(-0 426.86998 206.96385)">0.1</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="75.09026" y="257.218095" transform="rotate(-0 75.09026 257.218095)">0.3</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="125.344506" y="257.218095" transform="rotate(-0 125.344506 257.218095)">0.1</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="175.598752" y="257.218095" transform="rotate(-0 175.598752 257.218095)">0.0</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="225.852997" y="257.218095" transform="rotate(-0 225.852997 257.218095)">0.2</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #ffffff" x="276.107243" y="257.218095" transform="rotate(-0 276.107243 257.218095)">2.9</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="326.361488" y="257.218095" transform="rotate(-0 326.361488 257.218095)">1.6</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="376.615734" y="257.218095" transform="rotate(-0 376.615734 257.218095)">0.2</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="426.86998" y="257.218095" transform="rotate(-0 426.86998 257.218095)">0.0</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="75.09026" y="307.472341" transform="rotate(-0 75.09026 307.472341)">0.0</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="125.344506" y="307.472341" transform="rotate(-0 125.344506 307.472341)">0.2</text>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="175.598752" y="307.472341" transform="rotate(-0 175.598752 307.472341)">0.1</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="225.852997" y="307.472341" transform="rotate(-0 225.852997 307.472341)">0.1</text>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="276.107243" y="307.472341" transform="rotate(-0 276.107243 307.472341)">1.2</text>
+   </g>
+   <g id="text_46">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="326.361488" y="307.472341" transform="rotate(-0 326.361488 307.472341)">0.7</text>
+   </g>
+   <g id="text_47">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="376.615734" y="307.472341" transform="rotate(-0 376.615734 307.472341)">0.1</text>
+   </g>
+   <g id="text_48">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="426.86998" y="307.472341" transform="rotate(-0 426.86998 307.472341)">0.3</text>
+   </g>
+   <g id="text_49">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="75.09026" y="357.726587" transform="rotate(-0 75.09026 357.726587)">0.2</text>
+   </g>
+   <g id="text_50">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="125.344506" y="357.726587" transform="rotate(-0 125.344506 357.726587)">0.0</text>
+   </g>
+   <g id="text_51">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="175.598752" y="357.726587" transform="rotate(-0 175.598752 357.726587)">0.3</text>
+   </g>
+   <g id="text_52">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="225.852997" y="357.726587" transform="rotate(-0 225.852997 357.726587)">0.0</text>
+   </g>
+   <g id="text_53">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="276.107243" y="357.726587" transform="rotate(-0 276.107243 357.726587)">0.1</text>
+   </g>
+   <g id="text_54">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="326.361488" y="357.726587" transform="rotate(-0 326.361488 357.726587)">0.2</text>
+   </g>
+   <g id="text_55">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="376.615734" y="357.726587" transform="rotate(-0 376.615734 357.726587)">0.0</text>
+   </g>
+   <g id="text_56">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="426.86998" y="357.726587" transform="rotate(-0 426.86998 357.726587)">0.1</text>
+   </g>
+   <g id="text_57">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="75.09026" y="407.980832" transform="rotate(-0 75.09026 407.980832)">0.1</text>
+   </g>
+   <g id="text_58">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="125.344506" y="407.980832" transform="rotate(-0 125.344506 407.980832)">0.1</text>
+   </g>
+   <g id="text_59">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="175.598752" y="407.980832" transform="rotate(-0 175.598752 407.980832)">0.0</text>
+   </g>
+   <g id="text_60">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="225.852997" y="407.980832" transform="rotate(-0 225.852997 407.980832)">0.2</text>
+   </g>
+   <g id="text_61">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="276.107243" y="407.980832" transform="rotate(-0 276.107243 407.980832)">0.0</text>
+   </g>
+   <g id="text_62">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="326.361488" y="407.980832" transform="rotate(-0 326.361488 407.980832)">0.1</text>
+   </g>
+   <g id="text_63">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="376.615734" y="407.980832" transform="rotate(-0 376.615734 407.980832)">0.2</text>
+   </g>
+   <g id="text_64">
+    <text style="font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="426.86998" y="407.980832" transform="rotate(-0 426.86998 407.980832)">0.0</text>
+   </g>
+   <g id="text_65">
+    <text style="font-size: 15px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: end; fill: #607382" x="446.971678" y="462.136496" transform="rotate(-0 446.971678 462.136496)">hottest cell 2.9 GeV &lt; 4 GeV</text>
+   </g>
+   <g id="text_66">
+    <text style="font-size: 19px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start" x="49.963138" y="17.437271" transform="rotate(-0 49.963138 17.437271)">① Energy in each cell [GeV]</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_4">
+    <path d="M 556.002898 429.471236 
+L 958.036862 429.471236 
+L 958.036862 27.437271 
+L 556.002898 27.437271 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g clip-path="url(#p2e1afbecbf)">
+    <image xlink:href="data:image/png;base64,
+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" id="image1cf1e8e1c2" transform="scale(1 -1) translate(0 -401.76)" x="555.84" y="-27.36" width="402.48" height="401.76"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 785.736592 257.170966 
+L 843.170015 257.170966 
+L 843.170015 314.604389 
+L 785.736592 314.604389 
+L 785.736592 257.170966 
+z
+" clip-path="url(#p2e1afbecbf)" style="fill: none; stroke: #007dc5; stroke-width: 4; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="text_67">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="584.719609" y="59.530936" transform="rotate(-0 584.719609 59.530936)">1.1</text>
+   </g>
+   <g id="text_68">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="642.153033" y="59.530936" transform="rotate(-0 642.153033 59.530936)">1.2</text>
+   </g>
+   <g id="text_69">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="699.586456" y="59.530936" transform="rotate(-0 699.586456 59.530936)">0.8</text>
+   </g>
+   <g id="text_70">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="757.01988" y="59.530936" transform="rotate(-0 757.01988 59.530936)">0.5</text>
+   </g>
+   <g id="text_71">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="814.453304" y="59.530936" transform="rotate(-0 814.453304 59.530936)">0.4</text>
+   </g>
+   <g id="text_72">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="871.886727" y="59.530936" transform="rotate(-0 871.886727 59.530936)">0.7</text>
+   </g>
+   <g id="text_73">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="929.320151" y="59.530936" transform="rotate(-0 929.320151 59.530936)">0.5</text>
+   </g>
+   <g id="text_74">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="584.719609" y="116.96436" transform="rotate(-0 584.719609 116.96436)">1.3</text>
+   </g>
+   <g id="text_75">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="642.153033" y="116.96436" transform="rotate(-0 642.153033 116.96436)">1.8</text>
+   </g>
+   <g id="text_76">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="699.586456" y="116.96436" transform="rotate(-0 699.586456 116.96436)">1.0</text>
+   </g>
+   <g id="text_77">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="757.01988" y="116.96436" transform="rotate(-0 757.01988 116.96436)">0.4</text>
+   </g>
+   <g id="text_78">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="814.453304" y="116.96436" transform="rotate(-0 814.453304 116.96436)">0.2</text>
+   </g>
+   <g id="text_79">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="871.886727" y="116.96436" transform="rotate(-0 871.886727 116.96436)">0.6</text>
+   </g>
+   <g id="text_80">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="929.320151" y="116.96436" transform="rotate(-0 929.320151 116.96436)">0.8</text>
+   </g>
+   <g id="text_81">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="584.719609" y="174.397783" transform="rotate(-0 584.719609 174.397783)">0.6</text>
+   </g>
+   <g id="text_82">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="642.153033" y="174.397783" transform="rotate(-0 642.153033 174.397783)">1.0</text>
+   </g>
+   <g id="text_83">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="699.586456" y="174.397783" transform="rotate(-0 699.586456 174.397783)">0.8</text>
+   </g>
+   <g id="text_84">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="757.01988" y="174.397783" transform="rotate(-0 757.01988 174.397783)">0.6</text>
+   </g>
+   <g id="text_85">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="814.453304" y="174.397783" transform="rotate(-0 814.453304 174.397783)">0.4</text>
+   </g>
+   <g id="text_86">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="871.886727" y="174.397783" transform="rotate(-0 871.886727 174.397783)">0.3</text>
+   </g>
+   <g id="text_87">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="929.320151" y="174.397783" transform="rotate(-0 929.320151 174.397783)">0.5</text>
+   </g>
+   <g id="text_88">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="584.719609" y="231.831207" transform="rotate(-0 584.719609 231.831207)">0.5</text>
+   </g>
+   <g id="text_89">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="642.153033" y="231.831207" transform="rotate(-0 642.153033 231.831207)">0.3</text>
+   </g>
+   <g id="text_90">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="699.586456" y="231.831207" transform="rotate(-0 699.586456 231.831207)">0.5</text>
+   </g>
+   <g id="text_91">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="757.01988" y="231.831207" transform="rotate(-0 757.01988 231.831207)">3.4</text>
+   </g>
+   <g id="text_92">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #ffffff" x="814.453304" y="231.831207" transform="rotate(-0 814.453304 231.831207)">4.8</text>
+   </g>
+   <g id="text_93">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="871.886727" y="231.831207" transform="rotate(-0 871.886727 231.831207)">1.9</text>
+   </g>
+   <g id="text_94">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="929.320151" y="231.831207" transform="rotate(-0 929.320151 231.831207)">0.3</text>
+   </g>
+   <g id="text_95">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="584.719609" y="289.26463" transform="rotate(-0 584.719609 289.26463)">0.6</text>
+   </g>
+   <g id="text_96">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="642.153033" y="289.26463" transform="rotate(-0 642.153033 289.26463)">0.4</text>
+   </g>
+   <g id="text_97">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="699.586456" y="289.26463" transform="rotate(-0 699.586456 289.26463)">0.4</text>
+   </g>
+   <g id="text_98">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #ffffff" x="757.01988" y="289.26463" transform="rotate(-0 757.01988 289.26463)">4.4</text>
+   </g>
+   <g id="text_99">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #ffffff" x="814.453304" y="289.26463" transform="rotate(-0 814.453304 289.26463)">6.4</text>
+   </g>
+   <g id="text_100">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="871.886727" y="289.26463" transform="rotate(-0 871.886727 289.26463)">2.6</text>
+   </g>
+   <g id="text_101">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="929.320151" y="289.26463" transform="rotate(-0 929.320151 289.26463)">0.6</text>
+   </g>
+   <g id="text_102">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="584.719609" y="346.698054" transform="rotate(-0 584.719609 346.698054)">0.4</text>
+   </g>
+   <g id="text_103">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="642.153033" y="346.698054" transform="rotate(-0 642.153033 346.698054)">0.6</text>
+   </g>
+   <g id="text_104">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="699.586456" y="346.698054" transform="rotate(-0 699.586456 346.698054)">0.5</text>
+   </g>
+   <g id="text_105">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="757.01988" y="346.698054" transform="rotate(-0 757.01988 346.698054)">1.4</text>
+   </g>
+   <g id="text_106">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="814.453304" y="346.698054" transform="rotate(-0 814.453304 346.698054)">2.2</text>
+   </g>
+   <g id="text_107">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="871.886727" y="346.698054" transform="rotate(-0 871.886727 346.698054)">1.0</text>
+   </g>
+   <g id="text_108">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="929.320151" y="346.698054" transform="rotate(-0 929.320151 346.698054)">0.5</text>
+   </g>
+   <g id="text_109">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="584.719609" y="404.131478" transform="rotate(-0 584.719609 404.131478)">0.4</text>
+   </g>
+   <g id="text_110">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="642.153033" y="404.131478" transform="rotate(-0 642.153033 404.131478)">0.4</text>
+   </g>
+   <g id="text_111">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="699.586456" y="404.131478" transform="rotate(-0 699.586456 404.131478)">0.5</text>
+   </g>
+   <g id="text_112">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="757.01988" y="404.131478" transform="rotate(-0 757.01988 404.131478)">0.3</text>
+   </g>
+   <g id="text_113">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="814.453304" y="404.131478" transform="rotate(-0 814.453304 404.131478)">0.4</text>
+   </g>
+   <g id="text_114">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="871.886727" y="404.131478" transform="rotate(-0 871.886727 404.131478)">0.5</text>
+   </g>
+   <g id="text_115">
+    <text style="font-size: 13px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle; fill: #1d2733" x="929.320151" y="404.131478" transform="rotate(-0 929.320151 404.131478)">0.3</text>
+   </g>
+   <g id="text_116">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: end; fill: #007dc5" x="952.29352" y="466.802962" transform="rotate(-0 952.29352 466.802962)">③ largest sum 6.4 GeV &gt; 4 GeV → ACCEPT</text>
+   </g>
+   <g id="text_117">
+    <text style="font-size: 19px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start" x="556.002898" y="17.437271" transform="rotate(-0 556.002898 17.437271)">② Sum of every 2×2 group [GeV]</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p827cfd060e">
+   <rect x="49.963138" y="27.437271" width="402.033965" height="402.033965"/>
+  </clipPath>
+  <clipPath id="p2e1afbecbf">
+   <rect x="556.002898" y="27.437271" width="402.033965" height="402.033965"/>
+  </clipPath>
+ </defs>
+</svg>

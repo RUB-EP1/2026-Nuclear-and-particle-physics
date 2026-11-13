@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1004 770" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d2733"/></marker><marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#007dc5"/></marker></defs>
+<clipPath id="det"><rect x="90" y="115.0" width="874" height="475.0"/></clipPath>
+<rect x="90" y="115.0" width="874" height="475.0" fill="#e9f4ef" stroke="#b8c7d2" stroke-width="2"/>
+<rect x="90" y="428.5" width="247.0" height="161.5" fill="#f6eef3" stroke="#b8c7d2" stroke-width="2"/>
+<text x="325.0" y="460.5" font-size="24" fill="#607382" text-anchor="end" font-weight="600">calorimeters</text>
+<rect x="90" y="548.2" width="133.0" height="41.800000000000004" fill="#e6f1f8" stroke="#b8c7d2" stroke-width="2"/>
+<text x="156.5" y="578" font-size="20" fill="#607382" text-anchor="middle" font-weight="600">tracker</text>
+<text x="964" y="103.0" font-size="24" fill="#607382" text-anchor="end" font-weight="600">muon system</text>
+<circle cx="90" cy="590" r="12" fill="#007dc5"/>
+<path d="M375.0,590 A285.0,285.0 0 0 0 90,305.0" fill="none" stroke="#bd3249" stroke-width="7" clip-path="url(#det)"/>
+<line x1="350" y1="740" x2="400" y2="740" stroke="#bd3249" stroke-width="7"/>
+<text x="412" y="749" font-size="24" fill="#bd3249" text-anchor="start" font-weight="700">25 ns ago</text>
+<path d="M660.0,590 A570.0,570.0 0 0 0 90,20.0" fill="none" stroke="#cf741b" stroke-width="7" clip-path="url(#det)"/>
+<line x1="550" y1="740" x2="600" y2="740" stroke="#cf741b" stroke-width="7"/>
+<text x="612" y="749" font-size="24" fill="#cf741b" text-anchor="start" font-weight="700">50 ns ago</text>
+<path d="M945.0,590 A855.0,855.0 0 0 0 90,-265.0" fill="none" stroke="#268565" stroke-width="7" clip-path="url(#det)"/>
+<line x1="750" y1="740" x2="800" y2="740" stroke="#268565" stroke-width="7"/>
+<text x="812" y="749" font-size="24" fill="#268565" text-anchor="start" font-weight="700">75 ns ago</text>
+<text x="112" y="630" font-size="24" fill="#007dc5" text-anchor="start" font-weight="700">collision point: a new crossing now</text>
+<text x="90" y="749" font-size="24" fill="#1d2733" text-anchor="start" font-weight="700">particles produced</text>
+<line x1="90" y1="660" x2="375.0" y2="660" stroke="#1d2733" stroke-width="2.5" marker-end="url(#ar)" marker-start="url(#ar)"/>
+<text x="232.5" y="695" font-size="26" fill="#1d2733" text-anchor="middle" font-weight="700">c × 25 ns = 7.5 m</text>
+<text x="964" y="695" font-size="22" fill="#607382" text-anchor="end" font-weight="400">half of an ATLAS-sized detector, to scale (schematic)</text>
+</svg>

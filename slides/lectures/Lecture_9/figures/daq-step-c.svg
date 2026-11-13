@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 760" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d2733"/></marker><marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#007dc5"/></marker></defs>
+<rect x="130" y="30" width="200" height="70" rx="10" fill="#ffffff" stroke="#1d2733" stroke-width="4"/>
+<text x="230.0" y="74.8" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="600">Sensor</text>
+<path d="M230,100 V175" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<circle cx="230" cy="140" r="7" fill="#1d2733"/>
+<path d="M230,140 H600" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<rect x="130" y="180" width="200" height="70" rx="10" fill="#f4f6f8" stroke="#7f8f9c" stroke-width="4"/>
+<text x="230.0" y="224.8" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="600">Delay</text>
+<path d="M230,250 V295" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<rect x="130" y="300" width="200" height="70" rx="10" fill="#eef5fa" stroke="#7f8f9c" stroke-width="4"/>
+<text x="230.0" y="344.8" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="600">ADC</text>
+<path d="M230,370 V415" fill="none" stroke="#cf741b" stroke-width="3.5" marker-end="url(#ar)"/>
+<rect x="130" y="420" width="200" height="70" rx="10" fill="#fff1e3" stroke="#cf741b" stroke-width="4"/>
+<text x="230.0" y="464.8" font-size="28" fill="#cf741b" text-anchor="middle" font-weight="600">FIFO</text>
+<path d="M230,490 V535" fill="none" stroke="#cf741b" stroke-width="3.5" marker-end="url(#ar)"/>
+<ellipse cx="230" cy="580" rx="115" ry="44" fill="#fffbe6" stroke="#7f8f9c" stroke-width="4"/>
+<text x="230" y="590" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="600">Processing</text>
+<path d="M230,624 V665" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<path d="M150,680 v50 a80,16 0 0 0 160,0 v-50" fill="#e6e9f7" stroke="#7f8f9c" stroke-width="4"/>
+<ellipse cx="230" cy="680" rx="80" ry="16" fill="#e6e9f7" stroke="#7f8f9c" stroke-width="4"/>
+<text x="230" y="728" font-size="26" fill="#1d2733" text-anchor="middle" font-weight="600">Storage</text>
+<rect x="600" y="105" width="280" height="70" rx="10" fill="#fbeaec" stroke="#bd3249" stroke-width="4"/>
+<text x="740.0" y="149.8" font-size="28" fill="#bd3249" text-anchor="middle" font-weight="600">Discriminator</text>
+<text x="740" y="85" font-size="24" fill="#bd3249" text-anchor="middle" font-weight="700">TRIGGER</text>
+<path d="M740,175 V240" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<rect x="600" y="245" width="280" height="70" rx="10" fill="#fff1e3" stroke="#cf741b" stroke-width="4"/>
+<text x="740.0" y="289.45" font-size="27" fill="#cf741b" text-anchor="middle" font-weight="600">AND NOT full</text>
+<path d="M600,280 H500 V335 H335" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<text x="420" y="325" font-size="25" fill="#607382" text-anchor="middle" font-weight="600">Start</text>
+<path d="M335,455 H740 V320" fill="none" stroke="#cf741b" stroke-width="3.5" marker-end="url(#ar)"/>
+<text x="560" y="445" font-size="24" fill="#cf741b" text-anchor="middle" font-weight="600">full?</text>
+</svg>

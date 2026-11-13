@@ -5,7 +5,7 @@ No measured data. Run from the repository root:
     .venv-pdf/bin/python slides/lectures/Lecture_9/scripts/make_intro_figures.py
 """
 from pathlib import Path
-import os, re
+import os, re, math
 ROOT = Path(__file__).resolve().parents[1]
 os.environ.setdefault('MPLCONFIGDIR', str(ROOT / 'tmp/matplotlib'))
 import matplotlib
@@ -259,13 +259,36 @@ def rate_funnel():
     f.savefig(OUT / 'rate-funnel.svg'); plt.close(f); _sans(OUT / 'rate-funnel.svg')
 
 
-def detector_layers():
-    """Lecture 7 signpost without the lecture brackets."""
-    src = (ROOT.parent / 'Lecture_7/figures/detector-layers-signpost.svg').read_text()
-    src = re.sub(r'<g fill="none" stroke-width="3" stroke-linecap="round">\s*<path d="M336,722.*?</g>\n', '', src, flags=re.S)
-    src = re.sub(r'<text[^>]*>Lecture [78]</text>\n', '', src)
-    (OUT / 'detector-layers.svg').write_text(src)
+def xsec_ladder():
+    """Cross sections at 13 TeV (rounded) and the rates they give at L = 1e34 cm^-2 s^-1."""
+    rows = [('all inelastic pp collisions', 80e9, '#9aa5b1'),
+            ('b-quark pairs', 0.5e9, '#9aa5b1'),
+            ('W → ℓν (one lepton type)', 20e3, B),
+            ('Z → ℓℓ (one lepton type)', 2e3, B),
+            ('top-quark pairs', 830, B),
+            ('Higgs boson', 55, R)]
+    def rate_txt(r):
+        if r >= 1e3:
+            e = int(math.floor(math.log10(r))); m = r / 10**e
+            return (f'{m:.0f}×10' if round(m) != 1 else '10') + ''.join('⁰¹²³⁴⁵⁶⁷⁸⁹'[int(c)] for c in str(e)) + ' /s'
+        if r >= 1:
+            return f'{r:.0f} /s'
+        return 'one every 2 s'
+    f, a = plt.subplots(figsize=(13, 6.4), layout='constrained')
+    y = np.arange(len(rows))[::-1]
+    lo = 0  # 1 pb
+    for yi, (lab, pb, col) in zip(y, rows):
+        a.barh(yi, math.log10(pb) - lo + .4, left=lo - .4, color=col, height=.62)
+        a.text(lo - .25, yi, lab, va='center', color='white', fontsize=17, weight='bold')
+        a.text(math.log10(pb) + .35, yi, rate_txt(pb * 1e-2), va='center', fontsize=20, color=INK, weight='bold')
+    ticks = [0, 3, 6, 9]
+    a.set(xlim=(-.4, 13.6), ylim=(-.55, len(rows) - .45), yticks=[], xticks=ticks,
+          xticklabels=['1 pb', '1 nb', '1 µb', '1 mb'])
+    a.set_xlabel('Cross section σ at √s = 13 TeV (logarithmic)', fontsize=18)
+    a.spines['left'].set_visible(False); a.grid(axis='x', alpha=.6); a.set_axisbelow(True)
+    a.set_title('Events per second at ℒ = 10³⁴ cm⁻² s⁻¹:   R = ℒ σ', loc='right', fontsize=18, color=GR, pad=12)
+    f.savefig(OUT / 'xsec-ladder.svg'); plt.close(f); _sans(OUT / 'xsec-ladder.svg')
 
 
 if __name__ == '__main__':
-    gm_tube(); gas_regions(); coincidence(); cloud_trigger(); discriminator(); rate_funnel(); detector_layers()
+    gm_tube(); gas_regions(); coincidence(); cloud_trigger(); discriminator(); rate_funnel(); xsec_ladder()

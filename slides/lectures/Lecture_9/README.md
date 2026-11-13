@@ -1,6 +1,6 @@
 # Lecture 9: Basics of Trigger and DAQ
 
-Local draft for the KT1 2026/27 course, reworked on 13 November 2026 for undergraduates who meet trigger and data acquisition for the first time. Follows Lecture 7 (detectors) and Lecture 8 (accelerators). 64 slides: 42 main slides (four section dividers, six accelerator recap slides, two interactive demos), then a backup divider and 21 backup slides holding the advanced material of the earlier draft (tag and probe, menus, bandwidth, CPU budget, persistence, time of flight). Speaker notes give a 90-minute pace and answers.
+Local draft for the KT1 2026/27 course, reworked on 13 November 2026 for undergraduates who meet trigger and data acquisition for the first time. Follows Lecture 7 (detectors) and Lecture 8 (accelerators). 78 slides: 51 numbered main slides (four section dividers, six accelerator recap slides, two interactive demos, ending with a thank-you slide), then a backup divider and 26 unnumbered backup slides (`visibility="uncounted"`, so the counter stops at 51/51) holding the advanced material of the earlier draft (real CMS turn-on, ATLAS diagram, prescales, tag and probe, menus, bandwidth, CPU budget, persistence, time of flight). The history and DAQ parts follow the storyline of N. Neufeld's ESI 2009 lecture (Tycho Brahe; a trivial DAQ built up step by step). Speaker notes give a 90-minute pace and answers.
 
 ## Preview
 
@@ -25,14 +25,14 @@ Lecture 9 is explicitly excluded from both the generated website's `render` and 
 
 Recommended 90-minute route:
 
-- Accelerator recap: 0–12 min. Six slides, each with one check question: RF cavities, magnets, colliders, synchrotron radiation, bunches (40 MHz), luminosity and rates.
-- The complete experiment: 12–27 min. Detector layers, what an event is (pile-up), pulse, ADC/TDC, event size, 40 TB/s.
-- The first trigger: 27–45 min. Geiger–Müller counter, gas-counter regimes, Bothe–Kolhörster coincidences, accidental rate, Blackett–Occhialini counter-controlled cloud chamber, definitions of trigger and DAQ.
-- DAQ: 45–63 min. Discriminator, readout chain, dead time, buffers, queue demo, pause and check.
-- Triggering at the LHC: 63–85 min. Rate funnel, signatures, threshold and demo, turn-on curve, pipeline, ATLAS two levels, prescale, LHCb software trigger.
-- Summary, exit questions, homework: 85–90 min.
+- Accelerator recap: 0–12 min. Six slides, each with one check question.
+- The complete experiment: 12–25 min. Events and pile-up, pulse, ADC/TDC, event size, 40 TB/s.
+- History: 25–45 min. Tycho Brahe's systematic measurements and Kepler's 8 arcminutes; Geiger–Müller counter, gas-counter regimes, coincidences, accidentals, counter-controlled cloud chamber; trigger and DAQ defined.
+- Building a DAQ step by step: 45–65 min. (1) one sensor on a clock, (2) many sensors: crates and networks, (3) trigger + delay, discriminator, (4) busy logic and dead time, (5) FIFO; queue demo; pause and check.
+- Scaling up to the LHC: 65–85 min. Crossings in flight, the full detector at work (which systems feed Level-1), a calorimeter trigger worked example (2×2 sums), a class exercise, the LHCb Level-0 calorimeter trigger, signatures, threshold and demo, toy turn-on, the pipeline as the grown-up delay, two trigger levels, rates, LHCb software trigger.
+- Summary and exit questions: 85–90 min. No homework slide; the next lecture is on the Dirac equation.
 
-If time is short, shorten the demos and skip the prescale slide.
+The LHC section is now full: if time is short, drop the threshold demo or the rates slide rather than the calorimeter example.
 
 ## Visual teaching material
 
@@ -43,6 +43,7 @@ Regenerate plots from the repository root:
 ```sh
 .venv-pdf/bin/python slides/lectures/Lecture_9/scripts/make_plots.py
 .venv-pdf/bin/python slides/lectures/Lecture_9/scripts/make_intro_figures.py
+.venv-pdf/bin/python slides/lectures/Lecture_9/scripts/make_daq_figures.py
 ```
 
 Requires NumPy, Matplotlib, Pillow and Node. See `SOURCES.md` for parameters and source transformations.

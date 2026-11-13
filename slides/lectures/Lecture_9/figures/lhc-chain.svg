@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 780" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d2733"/></marker><marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#007dc5"/></marker></defs>
+<rect x="300" y="30" width="520" height="80" rx="10" fill="#ffffff" stroke="#1d2733" stroke-width="4"/>
+<text x="560.0" y="80.5" font-size="30" fill="#1d2733" text-anchor="middle" font-weight="600">Detector: ~10⁸ channels</text>
+<rect x="300" y="150" width="520" height="80" rx="10" fill="#eef5fa" stroke="#7f8f9c" stroke-width="4"/>
+<text x="560.0" y="200.5" font-size="30" fill="#1d2733" text-anchor="middle" font-weight="600">Front-end pipelines</text>
+<rect x="300" y="300" width="520" height="80" rx="10" fill="#eef5fa" stroke="#7f8f9c" stroke-width="4"/>
+<text x="560.0" y="350.5" font-size="30" fill="#1d2733" text-anchor="middle" font-weight="600">Readout buffers</text>
+<rect x="300" y="420" width="520" height="80" rx="10" fill="#eef5fa" stroke="#7f8f9c" stroke-width="4"/>
+<text x="560.0" y="470.5" font-size="30" fill="#1d2733" text-anchor="middle" font-weight="600">Event building network</text>
+<rect x="300" y="540" width="520" height="80" rx="10" fill="#eef5fa" stroke="#7f8f9c" stroke-width="4"/>
+<text x="560.0" y="590.5" font-size="30" fill="#1d2733" text-anchor="middle" font-weight="600">Computer farm</text>
+<rect x="300" y="680" width="520" height="80" rx="10" fill="#e6e9f7" stroke="#7f8f9c" stroke-width="4"/>
+<text x="560.0" y="730.5" font-size="30" fill="#1d2733" text-anchor="middle" font-weight="600">Storage</text>
+<path d="M560.0,110 V146" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<text x="580.0" y="140.0" font-size="30" fill="#007dc5" text-anchor="start" font-weight="700">40 MHz</text>
+<path d="M560.0,230 V296" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<text x="580.0" y="275.0" font-size="30" fill="#007dc5" text-anchor="start" font-weight="700">100 kHz</text>
+<path d="M560.0,380 V416" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<path d="M560.0,500 V536" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<path d="M560.0,620 V676" fill="none" stroke="#1d2733" stroke-width="3.5" marker-end="url(#ar)"/>
+<text x="580.0" y="660.0" font-size="30" fill="#007dc5" text-anchor="start" font-weight="700">~1 kHz</text>
+<rect x="20" y="150" width="230" height="140" rx="10" fill="#fbeaec" stroke="#bd3249" stroke-width="4"/>
+<text x="135.0" y="196.20000000000002" font-size="28" fill="#bd3249" text-anchor="middle" font-weight="600">Level-1</text>
+<text x="135.0" y="229.8" font-size="28" fill="#bd3249" text-anchor="middle" font-weight="600">hardware</text>
+<text x="135.0" y="263.40000000000003" font-size="28" fill="#bd3249" text-anchor="middle" font-weight="600">≈ 2.5 µs</text>
+<path d="M250,200 H294" fill="none" stroke="#bd3249" stroke-width="3.5" marker-end="url(#ar)"/>
+<rect x="20" y="520" width="230" height="120" rx="10" fill="#fbeaec" stroke="#bd3249" stroke-width="4"/>
+<text x="135.0" y="556.1999999999999" font-size="28" fill="#bd3249" text-anchor="middle" font-weight="600">High-Level</text>
+<text x="135.0" y="589.8" font-size="28" fill="#bd3249" text-anchor="middle" font-weight="600">Trigger</text>
+<text x="135.0" y="623.4" font-size="28" fill="#bd3249" text-anchor="middle" font-weight="600">(software)</text>
+<text x="135" y="670" font-size="22" fill="#bd3249" text-anchor="middle" font-weight="600">≈ 0.1–1 s per event</text>
+<path d="M250,580 H294" fill="none" stroke="#bd3249" stroke-width="3.5"/>
+</svg>

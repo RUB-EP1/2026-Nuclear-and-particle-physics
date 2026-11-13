@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 760" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d2733"/></marker><marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#007dc5"/></marker></defs>
+<path d="M70,690 L220,690 A150,150 0 0 0 70,540 L70,690 A0,0 0 0 1 70,690 Z" fill="#e6f1f8" stroke="#b8c7d2" stroke-width="2"/>
+<path d="M70,690 L305,690 A235,235 0 0 0 70,455 L70,525 A165,165 0 0 1 235,690 Z" fill="#fbeaec" stroke="#b8c7d2" stroke-width="2"/>
+<path d="M70,690 L415,690 A345,345 0 0 0 70,345 L70,450 A240,240 0 0 1 310,690 Z" fill="#f1ebf6" stroke="#b8c7d2" stroke-width="2"/>
+<path d="M70,690 L670,690 A600,600 0 0 0 70,90 L70,330 A360,360 0 0 1 430,690 Z" fill="#e9f4ef" stroke="#b8c7d2" stroke-width="2"/>
+<path d="M465,690 A395,395 0 0 0 70,295" fill="none" stroke="#7fb79c" stroke-width="16"/>
+<path d="M550,690 A480,480 0 0 0 70,210" fill="none" stroke="#7fb79c" stroke-width="16"/>
+<path d="M635,690 A565,565 0 0 0 70,125" fill="none" stroke="#7fb79c" stroke-width="16"/>
+<text x="145" y="720" font-size="22" fill="#607382" text-anchor="middle" font-weight="600">tracker</text>
+<text x="270" y="748" font-size="22" fill="#607382" text-anchor="middle" font-weight="600">EM calo</text>
+<text x="362" y="720" font-size="22" fill="#607382" text-anchor="middle" font-weight="600">hadron calo</text>
+<text x="550" y="720" font-size="22" fill="#607382" text-anchor="middle" font-weight="600">muon chambers</text>
+<line x1="70" y1="690" x2="110" y2="530" stroke="#007dc5" stroke-width="2.5" stroke-dasharray="6 6"/>
+<line x1="110.6" y1="527.0" x2="116.2" y2="504.9" stroke="#bd3249" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="116.2" y1="504.9" x2="125.1" y2="490.6" stroke="#bd3249" stroke-width="3.0" stroke-linecap="round"/>
+<line x1="125.1" y1="490.6" x2="133.9" y2="481.7" stroke="#bd3249" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="133.9" y1="481.7" x2="140.7" y2="477.7" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="133.9" y1="481.7" x2="137.0" y2="474.1" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="125.1" y1="490.6" x2="128.8" y2="480.6" stroke="#bd3249" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="128.8" y1="480.6" x2="132.3" y2="475.2" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="128.8" y1="480.6" x2="128.1" y2="473.2" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="116.2" y1="504.9" x2="115.2" y2="491.8" stroke="#bd3249" stroke-width="3.0" stroke-linecap="round"/>
+<line x1="115.2" y1="491.8" x2="117.7" y2="483.0" stroke="#bd3249" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="117.7" y1="483.0" x2="121.6" y2="477.5" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="117.7" y1="483.0" x2="117.2" y2="476.3" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="115.2" y1="491.8" x2="111.7" y2="483.4" stroke="#bd3249" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="111.7" y1="483.4" x2="110.6" y2="476.9" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<path d="M70,690 Q99,615 136,555 L150,546" fill="none" stroke="#007dc5" stroke-width="3.5"/>
+<line x1="143.6" y1="539.0" x2="153.6" y2="518.5" stroke="#bd3249" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="153.6" y1="518.5" x2="162.6" y2="507.9" stroke="#bd3249" stroke-width="3.0" stroke-linecap="round"/>
+<line x1="162.6" y1="507.9" x2="169.7" y2="504.3" stroke="#bd3249" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="162.6" y1="507.9" x2="166.7" y2="499.4" stroke="#bd3249" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="166.7" y1="499.4" x2="167.7" y2="493.0" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="153.6" y1="518.5" x2="155.9" y2="505.3" stroke="#bd3249" stroke-width="3.0" stroke-linecap="round"/>
+<line x1="155.9" y1="505.3" x2="159.6" y2="497.4" stroke="#bd3249" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="159.6" y1="497.4" x2="164.3" y2="493.4" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="155.9" y1="505.3" x2="155.3" y2="495.6" stroke="#bd3249" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="155.3" y1="495.6" x2="157.4" y2="488.9" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="155.3" y1="495.6" x2="152.5" y2="490.1" stroke="#bd3249" stroke-width="2.0" stroke-linecap="round"/>
+<path d="M70,690 Q132,640 176,584 L467,240" fill="none" stroke="#007dc5" stroke-width="3.5"/>
+<rect x="327" y="390" width="14" height="14" fill="#cf741b" stroke="#1d2733" stroke-width="1.5"/>
+<rect x="382" y="325" width="14" height="14" fill="#cf741b" stroke="#1d2733" stroke-width="1.5"/>
+<rect x="437" y="260" width="14" height="14" fill="#cf741b" stroke="#1d2733" stroke-width="1.5"/>
+<path d="M70,690 Q139,650 205,624 L295,592" fill="none" stroke="#007dc5" stroke-width="3.5"/>
+<line x1="293.9" y1="585.6" x2="323.1" y2="572.0" stroke="#8660a5" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="323.1" y1="572.0" x2="341.9" y2="567.4" stroke="#8660a5" stroke-width="3.0" stroke-linecap="round"/>
+<line x1="341.9" y1="567.4" x2="354.6" y2="569.5" stroke="#8660a5" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="354.6" y1="569.5" x2="362.2" y2="572.4" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="354.6" y1="569.5" x2="362.9" y2="568.4" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="362.9" y1="568.4" x2="368.4" y2="565.4" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="341.9" y1="567.4" x2="355.0" y2="561.7" stroke="#8660a5" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="355.0" y1="561.7" x2="363.7" y2="560.3" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="363.7" y1="560.3" x2="369.3" y2="557.5" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="355.0" y1="561.7" x2="362.6" y2="554.3" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="362.6" y1="554.3" x2="368.8" y2="550.6" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="362.6" y1="554.3" x2="365.4" y2="547.6" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="323.1" y1="572.0" x2="335.2" y2="558.0" stroke="#8660a5" stroke-width="3.0" stroke-linecap="round"/>
+<line x1="335.2" y1="558.0" x2="345.7" y2="553.1" stroke="#8660a5" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="345.7" y1="553.1" x2="352.3" y2="552.2" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="345.7" y1="553.1" x2="350.9" y2="548.0" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="335.2" y1="558.0" x2="339.2" y2="546.5" stroke="#8660a5" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="339.2" y1="546.5" x2="344.2" y2="541.3" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="339.2" y1="546.5" x2="339.0" y2="537.4" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="339.0" y1="537.4" x2="341.4" y2="531.4" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="339.0" y1="537.4" x2="337.4" y2="531.0" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="70" y1="690" x2="310" y2="639" stroke="#007dc5" stroke-width="2.5" stroke-dasharray="6 6"/>
+<line x1="311.6" y1="638.6" x2="343.2" y2="631.9" stroke="#8660a5" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="343.2" y1="631.9" x2="363.7" y2="636.7" stroke="#8660a5" stroke-width="3.0" stroke-linecap="round"/>
+<line x1="363.7" y1="636.7" x2="373.0" y2="644.2" stroke="#8660a5" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="373.0" y1="644.2" x2="376.9" y2="650.5" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="373.0" y1="644.2" x2="380.5" y2="646.1" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="363.7" y1="636.7" x2="378.9" y2="633.4" stroke="#8660a5" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="378.9" y1="633.4" x2="389.3" y2="633.4" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="389.3" y1="633.4" x2="396.4" y2="636.3" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="389.3" y1="633.4" x2="396.6" y2="631.1" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="378.9" y1="633.4" x2="387.1" y2="627.1" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="387.1" y1="627.1" x2="394.0" y2="624.1" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="387.1" y1="627.1" x2="390.9" y2="620.9" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="343.2" y1="631.9" x2="364.8" y2="621.6" stroke="#8660a5" stroke-width="3.0" stroke-linecap="round"/>
+<line x1="364.8" y1="621.6" x2="379.9" y2="621.2" stroke="#8660a5" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="379.9" y1="621.2" x2="387.7" y2="624.2" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="379.9" y1="621.2" x2="388.7" y2="618.4" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="388.7" y1="618.4" x2="394.4" y2="614.4" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="364.8" y1="621.6" x2="376.8" y2="612.5" stroke="#8660a5" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="376.8" y1="612.5" x2="387.6" y2="609.9" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="387.6" y1="609.9" x2="393.8" y2="610.0" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="387.6" y1="609.9" x2="394.5" y2="606.8" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="376.8" y1="612.5" x2="382.7" y2="604.6" stroke="#8660a5" stroke-width="2.0" stroke-linecap="round"/>
+<line x1="382.7" y1="604.6" x2="387.9" y2="600.6" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="382.7" y1="604.6" x2="385.4" y2="599.1" stroke="#8660a5" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="70" y1="690" x2="113" y2="81" stroke="#607382" stroke-width="2.5" stroke-dasharray="2 7"/>
+<text x="94.94940289813113" y="572.6222879119433" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="700">γ</text>
+<text x="122.87576359985403" y="571.2390905064619" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="700">e</text>
+<text x="506.47895043999904" y="221.93363096373093" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="700">μ</text>
+<text x="255.41899450037468" y="591.410971814963" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="700">π±</text>
+<text x="273.76210251795925" y="639.1964019240697" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="700">n</text>
+<text x="103.49501199548413" y="50.87709775707276" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="700">ν</text>
+<rect x="820" y="40" width="560" height="150" rx="10" fill="#fbeaec" stroke="#bd3249" stroke-width="4"/>
+<text x="1100.0" y="124.8" font-size="28" fill="#bd3249" text-anchor="middle" font-weight="600"></text>
+<text x="840" y="80" font-size="30" fill="#bd3249" text-anchor="start" font-weight="700">Calorimeter trigger</text>
+<text x="840" y="118" font-size="26" fill="#1d2733" text-anchor="start" font-weight="400">sum energy in groups of cells,</text>
+<text x="840" y="152" font-size="26" fill="#1d2733" text-anchor="start" font-weight="400">find large E_T: e, γ, jets, missing E_T</text>
+<path d="M144,488 C200,120 500,40 814,115" fill="none" stroke="#bd3249" stroke-width="3.5" marker-end="url(#ar)"/>
+<rect x="820" y="250" width="560" height="150" rx="10" fill="#fbeaec" stroke="#bd3249" stroke-width="4"/>
+<text x="1100.0" y="334.8" font-size="28" fill="#bd3249" text-anchor="middle" font-weight="600"></text>
+<text x="840" y="290" font-size="30" fill="#bd3249" text-anchor="start" font-weight="700">Muon trigger</text>
+<text x="840" y="328" font-size="26" fill="#1d2733" text-anchor="start" font-weight="400">hits in several stations →</text>
+<text x="840" y="362" font-size="26" fill="#1d2733" text-anchor="start" font-weight="400">bending → p_T of the muon</text>
+<path d="M456,267 C620,260 700,325 814,325" fill="none" stroke="#bd3249" stroke-width="3.5" marker-end="url(#ar)"/>
+<rect x="820" y="460" width="560" height="110" rx="10" fill="#eef5fa" stroke="#7f8f9c" stroke-width="4"/>
+<text x="1100.0" y="524.8" font-size="28" fill="#1d2733" text-anchor="middle" font-weight="600"></text>
+<text x="840" y="500" font-size="28" fill="#1d2733" text-anchor="start" font-weight="700">Tracker: too many channels</text>
+<text x="840" y="540" font-size="26" fill="#1d2733" text-anchor="start" font-weight="400">data wait in the pipeline</text>
+<path d="M168,621 C500,640 650,560 814,520" fill="none" stroke="#7f8f9c" stroke-width="3.5" marker-end="url(#ar)" stroke-dasharray="8 7"/>
+<rect x="820" y="610" width="560" height="80" rx="10" fill="#fff6d6" stroke="#cf741b" stroke-width="4"/>
+<text x="1100.0" y="659.1" font-size="26" fill="#1d2733" text-anchor="middle" font-weight="600">new data every 25 ns · decision in ~µs</text>
+</svg>

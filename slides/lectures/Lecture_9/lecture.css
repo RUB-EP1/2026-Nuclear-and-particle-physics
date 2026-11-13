@@ -76,3 +76,21 @@
 .reveal .rule{border-top:6px solid #007dc5;padding-top:18px;font-size:35px;line-height:1.28}
 .reveal .rule .rule-head{display:block;font-size:46px;font-weight:700;margin:0 0 6px;color:#007dc5}
 .reveal .rule p{margin:0 0 18px}
+/* Portrait slides (Tycho): wider text, narrower picture. */
+.reveal .portrait-layout{grid-template-columns:minmax(0,.62fr) minmax(0,.38fr)}
+.reveal .portrait-layout .picture-visual img{height:620px}
+.reveal .portrait-layout .picture-copy ul{margin:0 0 0 1em}
+.reveal .portrait-layout .picture-copy li{margin:.25em 0}
+/* Pipeline belt: a wide, short figure. */
+.reveal .belt img{height:auto!important;max-height:420px;width:100%}
+.reveal .slide-body pre{width:100%;font-size:32px;box-shadow:none;background:#f6f8fa;margin:10px 0 24px}
+.reveal .slide-body pre code{max-height:none;padding:22px 28px;line-height:1.35}
+/* Block diagrams (DAQ steps, LHC chain): give the drawing the full slide height. */
+.reveal .diagram{grid-template-columns:minmax(0,.4fr) minmax(0,.6fr)}
+.reveal .diagram .picture-visual img{height:780px}
+/* Calorimeter exercise grid. */
+.reveal .calo-grid table{font-size:40px;width:auto;border-collapse:collapse}
+.reveal .calo-grid thead{display:none}
+.reveal .calo-grid td{width:110px;height:84px;text-align:center!important;vertical-align:middle;border:2px solid #dfe3e7;padding:0}
+.reveal .calo-grid strong{color:#bd3249}
+.reveal:has(section[data-visibility="uncounted"].present) .slide-number{display:none!important}

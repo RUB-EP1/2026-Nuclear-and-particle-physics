@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="936pt" height="460.8pt" viewBox="0 0 936 460.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-13T10:05:26.147628</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 460.8 
+L 936 460.8 
+L 936 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 3.00024 410.874526 
+L 932.99976 410.874526 
+L 932.99976 28.677428 
+L 3.00024 28.677428 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 29.571655 410.874526 
+L 29.571655 28.677428 
+" clip-path="url(#p0dbcab9146)" style="fill: none; stroke: #e0e8ed; stroke-opacity: 0.6; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m6cc1813c89" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m6cc1813c89" x="29.571655" y="410.874526" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="29.571655" y="430.791869" transform="rotate(-0 29.571655 430.791869)">1 pb</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 228.857266 410.874526 
+L 228.857266 28.677428 
+" clip-path="url(#p0dbcab9146)" style="fill: none; stroke: #e0e8ed; stroke-opacity: 0.6; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m6cc1813c89" x="228.857266" y="410.874526" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="228.857266" y="430.791869" transform="rotate(-0 228.857266 430.791869)">1 nb</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 428.142878 410.874526 
+L 428.142878 28.677428 
+" clip-path="url(#p0dbcab9146)" style="fill: none; stroke: #e0e8ed; stroke-opacity: 0.6; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m6cc1813c89" x="428.142878" y="410.874526" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="428.142878" y="430.791869" transform="rotate(-0 428.142878 430.791869)">1 µb</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 627.428489 410.874526 
+L 627.428489 28.677428 
+" clip-path="url(#p0dbcab9146)" style="fill: none; stroke: #e0e8ed; stroke-opacity: 0.6; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m6cc1813c89" x="627.428489" y="410.874526" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="627.428489" y="430.791869" transform="rotate(-0 627.428489 430.791869)">1 mb</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 18px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: middle" x="468" y="453.475541" transform="rotate(-0 468 453.475541)">Cross section σ at √s = 13 TeV (logarithmic)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_3">
+    <path d="M 3.00024 82.560953 
+L 753.847973 82.560953 
+L 753.847973 43.71469 
+L 3.00024 43.71469 
+z
+" clip-path="url(#p0dbcab9146)" style="fill: #9aa5b1"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 3.00024 145.216215 
+L 607.431507 145.216215 
+L 607.431507 106.369952 
+L 3.00024 106.369952 
+z
+" clip-path="url(#p0dbcab9146)" style="fill: #9aa5b1"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 3.00024 207.871477 
+L 315.282786 207.871477 
+L 315.282786 169.025214 
+L 3.00024 169.025214 
+z
+" clip-path="url(#p0dbcab9146)" style="fill: #007dc5"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 3.00024 270.526739 
+L 248.854249 270.526739 
+L 248.854249 231.680476 
+L 3.00024 231.680476 
+z
+" clip-path="url(#p0dbcab9146)" style="fill: #007dc5"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 3.00024 333.182001 
+L 223.481742 333.182001 
+L 223.481742 294.335738 
+L 3.00024 294.335738 
+z
+" clip-path="url(#p0dbcab9146)" style="fill: #007dc5"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 3.00024 395.837263 
+L 145.181402 395.837263 
+L 145.181402 356.991 
+L 3.00024 356.991 
+z
+" clip-path="url(#p0dbcab9146)" style="fill: #bd3249"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 3.00024 410.874526 
+L 932.99976 410.874526 
+" style="fill: none; stroke: #b8c7d2; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #ffffff" x="12.964521" y="67.554501" transform="rotate(-0 12.964521 67.554501)">all inelastic pp collisions</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #1d2733" x="777.097961" y="68.333134" transform="rotate(-0 777.097961 68.333134)">8×10⁸ /s</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #ffffff" x="12.964521" y="130.209763" transform="rotate(-0 12.964521 130.209763)">b-quark pairs</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #1d2733" x="630.681495" y="130.988396" transform="rotate(-0 630.681495 130.988396)">5×10⁶ /s</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #ffffff" x="12.964521" y="192.865025" transform="rotate(-0 12.964521 192.865025)">W → ℓν (one lepton type)</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #1d2733" x="338.532774" y="193.643658" transform="rotate(-0 338.532774 193.643658)">200 /s</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #ffffff" x="12.964521" y="255.520287" transform="rotate(-0 12.964521 255.520287)">Z → ℓℓ (one lepton type)</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #1d2733" x="272.104237" y="256.29892" transform="rotate(-0 272.104237 256.29892)">20 /s</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #ffffff" x="12.964521" y="318.175549" transform="rotate(-0 12.964521 318.175549)">top-quark pairs</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #1d2733" x="246.73173" y="318.954182" transform="rotate(-0 246.73173 318.954182)">8 /s</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #ffffff" x="12.964521" y="380.830811" transform="rotate(-0 12.964521 380.830811)">Higgs boson</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: start; fill: #1d2733" x="168.43139" y="381.609444" transform="rotate(-0 168.43139 381.609444)">one every 2 s</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 18px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-anchor: end; fill: #607382" x="932.99976" y="16.677428" transform="rotate(-0 932.99976 16.677428)">Events per second at ℒ = 10³⁴ cm⁻² s⁻¹:   R = ℒ σ</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p0dbcab9146">
+   <rect x="3.00024" y="28.677428" width="929.99952" height="382.197098"/>
+  </clipPath>
+ </defs>
+</svg>

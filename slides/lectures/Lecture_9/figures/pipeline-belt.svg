@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1628 400" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d2733"/></marker><marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#007dc5"/></marker></defs>
+<rect x="120" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="157.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1100</text>
+<rect x="202" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="239.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1099</text>
+<rect x="284" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="321.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1098</text>
+<rect x="366" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="403.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1097</text>
+<rect x="448" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="485.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1096</text>
+<rect x="530" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="567.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1095</text>
+<rect x="612" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="649.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1094</text>
+<text x="735.0" y="237.0" font-size="40" fill="#607382" text-anchor="middle" font-weight="700">…</text>
+<rect x="776" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="813.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1006</text>
+<rect x="858" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="895.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1005</text>
+<rect x="940" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="977.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1004</text>
+<rect x="1022" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="1059.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1003</text>
+<rect x="1104" y="180" width="74" height="90" rx="8" fill="#eef5fa" stroke="#7f8f9c" stroke-width="3"/>
+<text x="1141.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1002</text>
+<rect x="1186" y="180" width="74" height="90" rx="8" fill="#fff1e3" stroke="#cf741b" stroke-width="3"/>
+<text x="1223.0" y="235.0" font-size="22" fill="#1d2733" text-anchor="middle" font-weight="600">#1001</text>
+<path d="M30,225.0 H112" fill="none" stroke="#007dc5" stroke-width="4" marker-end="url(#ar)"/>
+<text x="20" y="122" font-size="26" fill="#007dc5" text-anchor="start" font-weight="700">new crossing in</text>
+<text x="20" y="152" font-size="24" fill="#007dc5" text-anchor="start" font-weight="400">every 25 ns</text>
+<path d="M160,310 H1186" fill="none" stroke="#607382" stroke-width="3" marker-end="url(#ar)"/>
+<text x="653.0" y="350" font-size="26" fill="#607382" text-anchor="middle" font-weight="400">every cell moves one step to the right every 25 ns</text>
+<text x="694.0" y="130" font-size="30" fill="#1d2733" text-anchor="middle" font-weight="700">100 cells = 2.5 µs / 25 ns</text>
+<path d="M1228,110 V172" fill="none" stroke="#bd3249" stroke-width="4" marker-end="url(#ar)"/>
+<text x="1228" y="95" font-size="26" fill="#bd3249" text-anchor="middle" font-weight="700">Level-1 decision for #1001</text>
+<path d="M1268,205 H1388" fill="none" stroke="#268565" stroke-width="4" marker-end="url(#ar)"/>
+<text x="1398" y="213" font-size="28" fill="#268565" text-anchor="start" font-weight="700">yes → read out</text>
+<path d="M1268,245 H1388" fill="none" stroke="#607382" stroke-width="4" marker-end="url(#ar)" stroke-dasharray="8 7"/>
+<text x="1398" y="253" font-size="28" fill="#607382" text-anchor="start" font-weight="700">no → overwrite</text>
+</svg>

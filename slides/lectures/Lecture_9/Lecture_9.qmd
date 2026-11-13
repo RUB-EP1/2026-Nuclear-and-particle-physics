@@ -34,7 +34,7 @@ Mikhail Mikhasenko · KT1 · Winter semester 2026/27
 ::::
 
 ::: {.notes}
-90-minute session for students who meet trigger and data acquisition (DAQ) for the first time. Follows Lecture 7 (detectors: tracking, gas, silicon, scintillators) and Lecture 8 (accelerators). Budget: accelerator recap 0–12 min; the complete experiment 12–27; the first trigger (Geiger–Müller counters, coincidences) 27–45; DAQ and dead time 45–63; triggering at the LHC 63–85; summary and exit questions 85–90. Advanced material from the earlier draft (tag and probe, menus, bandwidth, persistence, CPU budgets) is in the backup.
+90-minute session for students who meet trigger and data acquisition (DAQ) for the first time. Follows Lecture 7 (detectors: tracking, gas, silicon, scintillators) and Lecture 8 (accelerators). Budget: accelerator recap 0–12 min; the complete experiment 12–25; history (Tycho Brahe, Geiger–Müller counters, coincidences) 25–45; building a DAQ step by step (after N. Neufeld, ESI 2009) 45–65; scaling up to the LHC 65–85; summary and exit questions 85–90. Advanced material from the earlier draft (tag and probe, menus, bandwidth, persistence, CPU budgets) is in the backup.
 :::
 
 ## Today in four questions
@@ -42,8 +42,8 @@ Mikhail Mikhasenko · KT1 · Winter semester 2026/27
 :::: {.slide-body}
 
 1. **The experiment:** what does a collider deliver, and what does a detector record?
-2. **History:** what was the first trigger? *Geiger–Müller counters in coincidence.*
-3. **DAQ:** how do we turn signals into stored data without losing events?
+2. **History:** Tycho Brahe's logbook and the first electronic trigger.
+3. **DAQ:** how do we build a readout, step by step, without losing events?
 4. **Trigger:** how do we choose 1 collision in 10⁶ within microseconds?
 
 ::::
@@ -217,23 +217,23 @@ $$f=\frac{1}{25\ \mathrm{ns}}=40\ \mathrm{MHz}$$
 ## Recap 6 · Luminosity: σ → rate {.full-figure}
 
 ::: {.slide-refs}
-Lecture 4 figure (course-generated)
+Rounded values at 13 TeV (TOTEM, ATLAS, LHC Top and Higgs working groups)
 :::
 
 :::: {.slide-body}
 
 ::: {.visual}
-![Total, W, Z, top-pair and Higgs production cross sections of pp collisions versus centre-of-mass energy, with the event rate at 10^34 per square centimetre and second on the right axis](figures/xsec-lhc.svg)
+![Cross sections at 13 TeV as horizontal bars on a logarithmic axis, with the rate at 10^34 per square centimetre per second: all inelastic collisions 8×10^8 per second, b-quark pairs 5×10^6, W 200, Z 20, top pairs 8, Higgs one every 2 seconds](figures/xsec-ladder.svg)
 :::
 
 ::: {.take-home}
-$R=\mathcal{L}\sigma$. At $\mathcal{L}=10^{34}\,\mathrm{cm^{-2}s^{-1}}$: **10⁹ collisions/s**, but **one Higgs every 2 s**. How do we find it?
+$R=\mathcal{L}\sigma$. At $\mathcal{L}=10^{34}\,\mathrm{cm^{-2}s^{-1}}$: **≈10⁹ collisions/s**, but **one Higgs every 2 s**. How do we find it?
 :::
 
 ::::
 
 ::: {.notes}
-2 minutes. Total inelastic ≈ 80 mb → 8×10^8 /s; Higgs ≈ 50 pb → 0.5 /s. The interesting processes sit 9–10 orders of magnitude below the total. This is the question of today. About 12 minutes elapsed.
+2 minutes. Simplified version of the Lecture 4 plot, at one energy. Conversion: 1 pb × 10³⁴ cm⁻²s⁻¹ = 10⁻³⁶ cm² × 10³⁴ cm⁻²s⁻¹ = 0.01 /s. Rounded 13 TeV values: inelastic ≈ 80 mb → 8×10^8 /s; bb̄ ≈ 0.5 mb → 5×10^6 /s; W→ℓν ≈ 20 nb and Z→ℓℓ ≈ 2 nb per lepton flavour; tt̄ ≈ 830 pb → 8 /s; Higgs ≈ 55 pb → 0.5 /s. The interesting processes sit 9–10 orders of magnitude below the total. This is the question of today. About 12 minutes elapsed.
 :::
 
 ## 1 · The complete experiment {.section-title}
@@ -243,35 +243,13 @@ $R=\mathcal{L}\sigma$. At $\mathcal{L}=10^{34}\,\mathrm{cm^{-2}s^{-1}}$: **10⁹
 What does the detector see in one bunch crossing?
 
 ::: {.subtle}
-Detector layers · events · signals · digitization · data volume
+Events · signals · digitization · data volume
 :::
 
 ::::
 
 ::: {.notes}
 
-:::
-
-## A detector is built in layers {.full-figure}
-
-::: {.slide-refs}
-Redrawn after C. Lippmann (2003); Lecture 7 figure
-:::
-
-:::: {.slide-body}
-
-::: {.visual}
-![Signatures of photons, electrons, muons, charged and neutral hadrons in the layers of a detector: tracking, particle identification, electromagnetic and hadron calorimeters, muon system](figures/detector-layers.svg)
-:::
-
-::: {.take-home}
-Each particle leaves a **pattern** across layers. A general-purpose detector has **~10⁸ readout channels**.
-:::
-
-::::
-
-::: {.notes}
-3 minutes. Recall Lecture 7: tracking measures position and momentum, calorimeters stop particles and measure energy, muons pass through everything. Ask students which particle types reach the muon system: muons (and neutrinos, which escape unseen). Keep this picture in mind: the trigger will look for exactly these patterns — a muon in the outer layers, a large deposit in a calorimeter. Order of magnitude: the ATLAS and CMS pixel detectors alone have ~10^8 pixels.
 :::
 
 ## What is an "event"? {.landmark}
@@ -425,20 +403,106 @@ We must keep **1 crossing in 40 000** — and throw away the rest **for ever**.
 3 minutes. Let students do the arithmetic: 4×10^7 × 10^6 B = 4×10^13 B/s. 40 TB/s × 8 bit/B = 320 Tbit/s. At 1 GB/s one day of running already fills 86 TB (backup slide). The deciding system is the **trigger**; the system that moves and records the data is the **DAQ**. Both ideas are almost a hundred years old — next section. About 27 minutes elapsed.
 :::
 
-## 2 · The first trigger {.section-title}
+## 2 · History: the first DAQ and the first trigger {.section-title}
 
 :::: {.slide-body}
 
-Geiger–Müller counters and the coincidence method, 1928–1933
+From Tycho Brahe's logbook to Geiger–Müller counters
 
 ::: {.subtle}
-Geiger mode · coincidences · accidental rate · counter-controlled cloud chamber
+Systematic measurement · Geiger mode · coincidences · counter-controlled cloud chamber
 :::
 
 ::::
 
 ::: {.notes}
 
+:::
+
+## Tycho Brahe: the first systematic data acquisition
+
+::: {.slide-refs}
+[After N. Neufeld · ESI 2009, pp. 6–9](https://indico.cern.ch/event/43007/contributions/1065030/attachments/927884/1313738/trigger-daq-analysis-esi09-neufeld1.pdf)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout .portrait-layout}
+::: {.picture-copy}
+At 16, Tycho (1546–1601) saw a planetary conjunction happen **days** away from the date the best tables predicted.
+
+His answer: a **measurement campaign**.
+
+- one place (Uraniborg, island of Hven), the **same instruments**;
+- the **same procedure**, night after night, for **about 20 years**;
+- every entry with its **conditions**: weather, light, "not so good".
+:::
+
+::: {.picture-visual}
+![Portrait of Tycho Brahe, 16th century](figures/tycho-portrait.jpg)
+
+::: {.plot-caption}
+Tycho Brahe (portrait, public domain).
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. Tell it as a story. Tycho Brahe, Danish nobleman, built the observatory Uraniborg on the island of Hven (1576–1597) with large naked-eye instruments (mural quadrant, sextants). His positions were good to about 1–2 arcminutes, several times better than anything before. The key word is *systematic*: controlled conditions (same instruments, same procedure, repeated measurements) and careful notes on the boundary conditions — exactly what we call data quality and systematic uncertainties today. Mars was followed for about 18 years; each observation took about an hour by eye. Storyline from N. Neufeld, ESI 2009, pp. 6–9. Portrait: 16th-century painting, public domain; low-resolution copy taken from Neufeld's slides.
+:::
+
+## Tycho's DAQ in today's words
+
+::: {.slide-refs}
+[After N. Neufeld · ESI 2009, p. 8](https://indico.cern.ch/event/43007/contributions/1065030/attachments/927884/1313738/trigger-daq-analysis-esi09-neufeld1.pdf)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+**Trigger** = *when* to take data: the position of the Sun and the Moon. About **once every 3 days**.
+
+**DAQ** = write the numbers into the logbook: **~100 bytes per hour**.
+
+**Analysis** = Kepler, years later.
+:::
+
+::: {.picture-visual}
+![Recording bandwidth on a logarithmic axis: Tycho's logbook, a thermometer read once per second, an LHC experiment writing to disk, LHCb Run 3 full readout, and all LHC crossings](figures/daq-history.svg)
+
+::: {.plot-caption}
+Bytes per second, orders of magnitude. Seventeen decades from Tycho to the LHC.
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+3 minutes. Neufeld's numbers: bandwidth about 100 bytes per hour (written to the logbook), trigger rate about 3.85×10⁻⁶ Hz, i.e. one observation every three days on average. Compare with LHCb (Run 3): ~30 MHz of crossings, ~5 TB/s full readout. Ask: what would be Tycho's "dead time"? (Cloudy nights, daytime.)
+:::
+
+## Raw data → physics: Kepler's 8 arcminutes
+
+:::: {.slide-body}
+
+Tycho did not find the law in his data. His assistant **Johannes Kepler** did.
+
+Circular orbits missed Tycho's Mars positions by **8 arcminutes**.
+
+Kepler **trusted the measurement** — he knew Tycho was good to ~2 arcminutes — and abandoned the circle: **ellipses** (1609).
+
+::: {.take-home}
+The size and speed of a DAQ say nothing about the importance of the discovery. **Knowing your uncertainties** does.
+:::
+
+::::
+
+::: {.notes}
+3 minutes. Kepler joined Tycho in Prague in 1600 and inherited the observations after Tycho's death in 1601. Fitting circles (with all the classical refinements) left a discrepancy of 8 arcminutes for Mars — about a quarter of the Moon's diameter. Because Tycho's instruments and procedures were documented well enough to trust ~2′, Kepler concluded the model, not the data, was wrong: elliptical orbits, Astronomia Nova (1609). Kepler's laws then led to Newton's gravitation. Moral, quoting Neufeld's slide in spirit: the size and speed of a DAQ system are not correlated with the importance of the discovery. Raw data also needed conversion (from sky coordinates to orbital coordinates) and quality corrections — the analysis chain we will meet in the next lectures. 8′ ≈ 0.13°.
 :::
 
 ## The Geiger–Müller counter (1928)
@@ -634,23 +698,123 @@ The principle has not changed in 90 years: **a fast decision on part of the data
 2 minutes. Ask students to name the trigger and the DAQ in the Blackett–Occhialini set-up. The selection is irreversible: whatever the trigger rejects is lost. About 45 minutes elapsed.
 :::
 
-## 3 · DAQ: recording without losing {.section-title}
+## 3 · Building a DAQ, step by step {.section-title}
 
 :::: {.slide-body}
 
-What happens between the sensor and the disk?
+From one thermometer to a particle detector
 
 ::: {.subtle}
-Discriminator · readout chain · dead time · buffers
+Clock or trigger · many sensors · delay · busy · buffer
 :::
 
 ::::
 
 ::: {.notes}
-
+Storyline of this section follows N. Neufeld, ESI 2009, pp. 16–29: a trivial DAQ grows one element at a time. Each step answers one problem of the previous one.
 :::
 
-## The discriminator: the modern Geiger click
+## Step 1 · One sensor, read on a clock
+
+::: {.slide-refs}
+[After N. Neufeld · ESI 2009, pp. 23–24](https://indico.cern.ch/event/43007/contributions/1065030/attachments/927884/1313738/trigger-daq-analysis-esi09-neufeld1.pdf)
+:::
+
+:::: {.slide-body}
+
+A thermometer in the lab, read by a voltmeter connected to a computer:
+
+```python
+while True:
+    T = voltmeter.read()          # the measurement
+    logbook.write(clock.now(), T) # storage
+    sleep(1)                      # the "trigger": a clock
+```
+
+::: {.two-col}
+::: {.rule}
+[Sensor → digitizer → computer → disk]{.rule-head}
+
+This is already a complete **DAQ**.
+:::
+::: {.rule}
+[A clock is enough]{.rule-head}
+
+The temperature changes **slowly**: any moment is as good as another.
+:::
+:::
+
+::::
+
+::: {.notes}
+3 minutes. Neufeld's example: a Pt100 resistance thermometer read with a digital voltmeter over USB, a few lines of code. Point out how little the DAQ needs to know about the sensor. Ask: would this loop work for a particle detector? No — a particle passes at a random moment and its signal lasts ~100 ns; reading every second would almost always see nothing. That is step 3.
+:::
+
+## Step 2 · Many sensors: cables do not scale
+
+::: {.slide-refs}
+[Photo: N. Neufeld · ESI 2009, p. 29](https://indico.cern.ch/event/43007/contributions/1065030/attachments/927884/1313738/trigger-daq-analysis-esi09-neufeld1.pdf)
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+**16 sensors:** a USB hub, the same program.
+
+**160 sensors:** 160 voltmeters and cables? Expensive and fragile.
+
+→ **Readout boards** with many channels in a **crate**, sharing one **bus**.
+
+**10⁸ channels:** boards → optical links → **network** → computers.
+:::
+
+::: {.picture-visual}
+![A readout crate with many modules and dozens of labelled coaxial cables](figures/vme-crate.jpg)
+
+::: {.plot-caption}
+Readout boards in a VME crate. Even 100 channels make a thicket of cables.
+:::
+:::
+:::::
+
+::::
+
+::: {.notes}
+3 minutes. Neufeld pp. 25–29. The architecture must be scalable: 16 sensors need no change, 160 need a new idea. A crate provides mechanics, power and a standard way (a bus, e.g. VME, IEEE 1014) to read many boards. Buses are shared: only one board talks at a time, so a bus does not scale to an LHC detector. Modern experiments digitize on the detector, send data over optical fibres and use switched networks (Ethernet) — like the internet. Photo from Neufeld's slides; original source not stated there.
+:::
+
+## Step 3 · Particles arrive at random: a trigger
+
+::: {.slide-refs}
+Redrawn after N. Neufeld · ESI 2009, p. 17
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout .diagram}
+::: {.picture-copy}
+Copy the signal to a **discriminator**: "a particle is here **now**".
+
+Its output **starts the ADC**.
+
+The **delay** holds the analogue signal while the trigger decides.
+
+Remember the delay: at the LHC it becomes a **pipeline**.
+:::
+
+::: {.picture-visual}
+![Sensor signal split: one copy through a delay to the ADC, processing and storage; the other to a discriminator whose output starts the ADC](figures/daq-step-a.svg)
+:::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. Compare with step 1: the clock is replaced by a signal derived from the detector itself — a self-triggered DAQ. The discriminator (next slide) is the modern version of the Geiger click. The delay is needed because the decision takes time (tens of ns in a simple circuit): without it the pulse would already have passed the ADC when the start arrives. In the 1970s–80s delays were literally long coaxial cables (≈5 ns per metre).
+:::
+
+## Inside the trigger: the discriminator
 
 ::: {.slide-refs}
 Original teaching model
@@ -664,9 +828,9 @@ Compare the pulse with a **threshold**.
 
 Above: output a **logic 1**. Below: nothing.
 
-Turns any detector into a yes/no counter — for the **trigger**.
+The Geiger counter was a discriminator by construction.
 
-The ADC measures the full pulse — for the **data**.
+The ADC still measures the **full pulse**.
 :::
 
 ::: {.picture-visual}
@@ -677,42 +841,40 @@ The ADC measures the full pulse — for the **data**.
 ::::
 
 ::: {.notes}
-3 minutes. The Geiger counter was a discriminator by construction. Modern detectors keep the analogue information for measurement and split the signal: one copy to a discriminator for fast decisions, one to the ADC. The threshold must sit above the noise but below the smallest real signal. The rising edge of the logic signal also marks the time; feed it to a TDC or into a coincidence.
+2 minutes. The threshold must sit above the noise but below the smallest real signal. The rising edge of the logic signal also marks the time. Several discriminator outputs can be combined in a coincidence — Bothe and Rossi's AND.
 :::
 
-## The simplest readout chain
+## Step 4 · What if a particle arrives while we are busy?
 
 ::: {.slide-refs}
-[N. Neufeld · ESI 2009](https://indico.cern.ch/event/43007/contributions/1065030/attachments/927884/1313738/trigger-daq-analysis-esi09-neufeld1.pdf)
+Redrawn after N. Neufeld · ESI 2009, p. 18
 :::
 
 :::: {.slide-body}
 
-::::: {.picture-layout}
+::::: {.picture-layout .diagram}
 ::: {.picture-copy}
-Sensor → **discriminator** → trigger.
+The ADC and the processing take time.
 
-Trigger says "go" → **ADC** converts → **computer** stores.
+A second trigger now would **corrupt** the event.
 
-While converting, the system is **busy**.
+**Busy flag:** set at "start", cleared when processing is done. Triggers pass only if **not busy**.
+
+The time spent busy is **dead time**.
 :::
 
 ::: {.picture-visual}
-![Physical readout chain and its logical analogue-to-digital, processing and storage stages](figures/neufeld-readout-chain.png)
-
-::: {.plot-caption}
-Physical and logical views of a simple DAQ.
-:::
+![The trivial DAQ with busy logic: the trigger passes an AND-NOT-busy gate; the busy flag is set by start and cleared when processing is ready](figures/daq-step-b.svg)
 :::
 :::::
 
 ::::
 
 ::: {.notes}
-3 minutes. Walk through one event: the sensor signal is split; the discriminator output starts the ADC conversion; the computer reads the digital value and writes it. The ADC conversion and the readout take time. Ask: what if a second particle arrives during that time? That is the next slide. Figure: Neufeld p16, physical and logical panels.
+3 minutes. Neufeld p. 18: dead time (%) is the ratio between the time the DAQ is busy and the total time. Note the orange elements are the only change from step 3. Next slide: how much do we lose?
 :::
 
-## Dead time: a busy detector loses events
+## Dead time: how much do we lose?
 
 ::: {.slide-refs}
 Original teaching model
@@ -722,15 +884,15 @@ Original teaching model
 
 ::::: {.picture-layout}
 ::: {.picture-copy}
-After each event the system is **busy** for a time $\tau$.
-
-Particles arriving then are **lost**.
+$\tau$ = busy time after each event.
 
 Input rate $R$, recorded rate:
 
 $$r=\frac{R}{1+R\tau}\;\xrightarrow{R\to\infty}\;\frac{1}{\tau}$$
 
-Geiger counter: $\tau\approx100\ \mu\mathrm{s}$ → at most **10 000 counts/s**.
+Example: $R=1$ kHz, $\tau=100\ \mu$s → we lose **9%**.
+
+Geiger counter ($\tau\approx100\ \mu$s): at most **10 000 counts/s**.
 :::
 
 ::: {.picture-visual}
@@ -745,39 +907,35 @@ Toy example with busy time τ = 2 time units.
 ::::
 
 ::: {.notes}
-4 minutes. Derivation in one line: on average each recorded event is followed by τ of dead time plus 1/R of waiting for the next particle, so r = 1/(τ + 1/R). Live fraction r/R = 1/(1+Rτ). Example: R = 1 kHz, τ = 100 µs → Rτ = 0.1, we lose about 9%. Practical point for the lab course: a Geiger counter close to a strong source under-counts; the dead-time correction R = r/(1−rτ) recovers the true rate. This "non-paralyzable" model assumes lost particles do not extend the busy time. Backup has the plot of r versus R.
+4 minutes. Derivation in one line: on average each recorded event is followed by τ of dead time plus 1/R of waiting for the next particle, so r = 1/(τ + 1/R). Live fraction 1/(1+Rτ) = 1/1.1 = 91% in the example. Lab-course link: a Geiger counter close to a strong source under-counts; correct with R = r/(1−rτ). This "non-paralyzable" model assumes lost particles do not extend the busy time. Backup has the plot of r versus R.
 :::
 
-## A buffer absorbs bursts
+## Step 5 · Add a buffer
 
 ::: {.slide-refs}
-Original teaching model
+Redrawn after N. Neufeld · ESI 2009, pp. 19–20
 :::
 
 :::: {.slide-body}
 
-::::: {.picture-layout}
+::::: {.picture-layout .diagram}
 ::: {.picture-copy}
-Particles arrive **randomly**: sometimes several close together.
+A **FIFO** (first in, first out) between ADC and processing.
 
-A **buffer** (FIFO: first in, first out) stores events while the processor is busy.
+Busy only while the ADC converts — or when the FIFO is **full**.
 
-Same input, same processor: with 8 slots almost nothing is lost.
+Random arrivals → steady processing: the buffer **de-randomizes**.
 :::
 
 ::: {.picture-visual}
-![Cumulative arrived and completed event counts for zero and eight waiting slots](figures/buffer-bursts.svg)
-
-::: {.plot-caption}
-Same burst arrivals, 8 kHz mean input; processor handles 10 kHz.
-:::
+![The trivial DAQ with a FIFO after the ADC; the trigger is blocked only when the FIFO is full](figures/daq-step-c.svg)
 :::
 :::::
 
 ::::
 
 ::: {.notes}
-3 minutes. Analogy: a queue at a supermarket checkout. A FIFO decouples the random arrival of events from the steady processing. Buffers are everywhere in a modern DAQ: on the detector, in readout boards, in computer memory and on disk. Generated with the exact widget model (seed 821, 60 ms, ADC time 0). Next: try it.
+3 minutes. Analogy: the queue at a supermarket checkout. Without the FIFO the system is busy for ADC conversion plus processing; with it, only for the conversion (as long as the processing keeps up on average). Buffers are everywhere in a modern DAQ: on the detector, on readout boards, in computer memory, on disk. Try it in the demo.
 :::
 
 ## Event queue demo {.demo-slide}
@@ -790,7 +948,7 @@ Same burst arrivals, 8 kHz mean input; processor handles 10 kHz.
 ::::
 
 ::: {.notes}
-5 minutes. Ask for a prediction first. Try buffer depths 0 → 8 → 32 at 8 kHz input. Then raise the input to 15 kHz, above the 10 kHz processor capacity: the buffer fills and losses return. Switch to the one-busy-stage model to see the dead-time formula. A 200 ms simulation is replayed over about 10 seconds.
+5 minutes. Ask for a prediction first. Start with the one-busy-stage model (step 4). Then switch to ADC → FIFO → processor and try buffer depths 0 → 8 → 32 at 8 kHz input (step 5). Then raise the input to 15 kHz, above the 10 kHz processor capacity: the buffer fills and losses return. A 200 ms simulation is replayed over about 10 seconds.
 :::
 
 ## Pause and check
@@ -814,17 +972,17 @@ A buffer smooths **fluctuations**. Only a faster processor — or a **trigger th
 ::::
 
 ::: {.notes}
-3 minutes including thinking time. Answer revealed on click. After 500 s (about 8 minutes) the buffer is full and we lose 2 kHz of the 12 kHz input, about 17%. This is the bridge to the LHC section: at 40 MHz no buffer and no processor can keep up with everything, so the rate must be reduced in steps. About 63 minutes elapsed.
+3 minutes including thinking time. Answer revealed on click. After 500 s (about 8 minutes) the buffer is full and we lose 2 kHz of the 12 kHz input, about 17%. Bridge to the LHC: the same five steps, but with 10⁸ channels and a new crossing every 25 ns. About 63 minutes elapsed.
 :::
 
-## 4 · Triggering at the LHC {.section-title}
+## 4 · Scaling up to the LHC {.section-title}
 
 :::: {.slide-body}
 
-How do we keep 1 crossing in 40 000 — and the right one?
+The same five steps — with 10⁸ channels and 25 ns
 
 ::: {.subtle}
-Rate reduction · signatures · thresholds · latency · trigger levels
+Crossings in flight · the full detector · calorimeter trigger · thresholds · pipeline · two levels
 :::
 
 ::::
@@ -833,26 +991,139 @@ Rate reduction · signatures · thresholds · latency · trigger levels
 
 :::
 
-## Reduce the rate in steps {.full-figure}
+## 25 ns is short
 
 ::: {.slide-refs}
-Original teaching model; round numbers for ATLAS/CMS
+Original schematic · after N. Neufeld · ESI 2009, p. 51
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout .diagram}
+::: {.picture-copy}
+In 25 ns light travels **7.5 m**.
+
+A detector is **25 m** tall: particles from **three crossings** are inside at once.
+
+Every channel must be **synchronized** to the 40 MHz clock and must know **which crossing** it saw.
+:::
+
+::: {.picture-visual}
+![Quarter view of an ATLAS-sized detector with circles of particles from crossings 25, 50 and 75 nanoseconds ago](figures/crossings-in-flight.svg)
+:::
+:::::
+
+::::
+
+::: {.notes}
+3 minutes. ATLAS: 25 m high, 44 m long; the drawing shows one quarter (half length, half height), to scale. Particles move at nearly c, so at any moment the outer muon chambers see particles from a crossing that happened 50–75 ns earlier, while new particles leave the collision point. Some detector signals are longer than 25 ns (drift times in gas, calorimeter pulses), so the electronics must assign each signal to its crossing (bunch-crossing identification). And the system is on-line: a rejected crossing is gone for ever.
+:::
+
+## The full detector at work {.full-figure}
+
+::: {.slide-refs}
+Original schematic · after N. Neufeld · ESI 2009, p. 54
 :::
 
 :::: {.slide-body}
 
 ::: {.visual}
-![Rates on a logarithmic axis: 10^9 collisions per second, 4×10^7 bunch crossings, 10^5 after Level-1, 10^3 after the High-Level Trigger, compared with one Higgs boson every two seconds](figures/rate-funnel.svg)
+![Quarter slice of a detector with a photon, electron, muon, charged pion, neutron and neutrino; calorimeter and muon chambers send data to the calorimeter and muon triggers, the tracker data wait in the pipeline](figures/detector-slice.svg)
 :::
 
 ::: {.take-home}
-**Level-1:** custom electronics, very fast, coarse. **High-Level Trigger:** computers, slower, close to the full analysis.
+Every system records every crossing, but only the **calorimeters** and **muon chambers** feed the first trigger: few channels, simple sums. The **tracker** waits in the pipeline.
 :::
 
 ::::
 
 ::: {.notes}
-2 minutes. Overview before details. Each step reduces the rate by a factor 100–400 and gives the next step more time per event. Note that even after the full chain, the recorded rate is ~2000 times the Higgs production rate: most recorded events are still not Higgs — the selection is only the first step of an analysis. The HLT time per event is an order of magnitude on one CPU core, not a fixed latency.
+4 minutes. Walk through the particles (recall the detector layers of Lecture 7), in a transverse slice: γ and e shower in the EM calorimeter, π± and n in the hadron calorimeter, μ reaches the muon chambers, ν escapes (missing transverse energy). Level-1 (called Level-0 at LHCb) uses only the systems with few, large channels and simple signatures: the calorimeters are read in coarse "trigger towers" (sums of many cells), the muon system in a few stations. The tracker has ~10⁸ channels and pattern recognition is too slow for 25 ns — it is used only after the accept, in the High-Level Trigger. Redrawn after Neufeld p. 54 (original CMS illustration).
+:::
+
+## Example: a calorimeter trigger {.full-figure}
+
+::: {.slide-refs}
+Original teaching model
+:::
+
+:::: {.slide-body}
+
+::: {.visual}
+![Toy 8 by 8 calorimeter: cell energies with a shower split over four cells, the hottest cell 2.9 GeV below a 4 GeV threshold; the sums of every 2 by 2 group, largest 6.4 GeV above threshold, accept](figures/calo-trigger-toy.svg)
+:::
+
+::: {.take-home}
+A shower **spreads over neighbouring cells**. Add every 2×2 group, keep the largest sum, compare with the threshold — for all groups **in parallel, every 25 ns**.
+:::
+
+::::
+
+::: {.notes}
+5 minutes. Step by step: (1) each cell measures energy (converted to transverse energy E_T = E sin θ with a fixed factor per cell); (2) a shower that hits near a cell corner shares its energy between up to four cells, so the hottest cell alone (2.9 GeV) would fail a 4 GeV threshold although the particle had 6.4 GeV; summing every overlapping 2×2 group recovers it; (3) only the largest sum (one number!) is sent on and compared with the threshold. Overlapping groups: each cell enters four sums, so no shower is missed wherever it lands. This is simple arithmetic — additions and comparisons — so it can be built in FPGAs/ASICs that finish within a fixed latency. Toy numbers; noise 0–0.6 GeV per cell.
+:::
+
+## Your turn: be the trigger
+
+:::: {.slide-body}
+
+::: {.two-col}
+::: {.calo-grid}
+| | | | | | |
+|---:|---:|---:|---:|---:|---:|
+| 0.1 | 0.3 | 0.2 | 0.0 | 0.4 | 0.1 |
+| 0.2 | 1.8 | 2.1 | 0.3 | 0.1 | 0.2 |
+| 0.0 | 0.9 | 1.2 | 0.2 | 0.5 | 0.3 |
+| 0.3 | 0.1 | 0.2 | 0.4 | **3.6** | 0.2 |
+| 0.1 | 0.2 | 0.0 | 0.3 | 0.4 | 0.1 |
+| 0.2 | 0.1 | 0.3 | 0.1 | 0.2 | 0.0 |
+:::
+::: {}
+Cell energies in GeV. Threshold: **5 GeV** on the largest 2×2 sum.
+
+1. Where is the largest 2×2 sum?
+2. Accept or reject?
+
+::: {.fragment}
+Around the hottest cell (3.6): at most **4.7 GeV**.
+
+Rows 2–3, columns 2–3: 1.8 + 2.1 + 0.9 + 1.2 = **6.0 GeV** → **accept**.
+
+The hottest cell is not the biggest cluster.
+:::
+:::
+:::
+
+::::
+
+::: {.notes}
+4 minutes. Give students one minute with a neighbour. The four sums containing the 3.6 GeV cell are 4.7, 4.7, 4.6 and 4.3 GeV — all below threshold. The broad deposit in the upper left (typical of a hadron shower or a particle hitting a cell corner) gives 6.0 GeV. Follow-up question: what would a single-cell trigger with a 3 GeV threshold do? (Fire on the 3.6 GeV cell — a different event selection.)
+:::
+
+## A real one: the LHCb Level-0 calorimeter trigger
+
+::: {.slide-refs}
+LHCb, Runs 1–2 (2010–2018)
+:::
+
+:::: {.slide-body}
+
+| | |
+|---|---|
+| Input | ECAL ≈ 6 000 cells, HCAL ≈ 1 500 cells, every 25 ns |
+| Clusters | $E_T$ of every **2×2 group of cells**, computed on the front-end boards |
+| Particle type | hits in the preshower and pad detectors in front: **e, γ or hadron?** |
+| Decision | largest-$E_T$ candidate of each type above a threshold of **a few GeV** |
+| Output | ≤ **1 MHz** (with the muon trigger), fixed latency **4 µs** |
+
+::: {.take-home}
+Exactly our toy. Since 2022 LHCb runs the same idea — and much more — **in software** on GPUs.
+:::
+
+::::
+
+::: {.notes}
+3 minutes. LHCb's hardware first level was called Level-0 (L0). L0 combined the calorimeter trigger (hadron, electron, photon, π⁰ candidates from 2×2 clusters) and the muon trigger (straight-line track in the muon stations → p_T) and reduced 40 MHz of crossings to at most 1 MHz, with a fixed 4 µs latency (the front-end pipelines were sized for it). Thresholds changed with running conditions; typical Run-2 values were around 3–4 GeV for hadrons and 2–3 GeV for electrons and photons. ATLAS and CMS use the same idea with "trigger towers" (≈0.1 × 0.1 in η × φ) and sliding windows of 2×2 or 4×4 towers, plus isolation around the cluster. In Run 3 LHCb removed L0 and reads every crossing (next slides). Numbers rounded; check the LHCb trigger papers (e.g. JINST 8 P04022, 2013) before quoting precisely.
 :::
 
 ## What makes a crossing interesting?
@@ -873,7 +1144,7 @@ Most collisions produce only **low-energy** particles. Rare heavy particles deca
 ::::
 
 ::: {.notes}
-4 minutes. Link to the detector-layers picture: the muon system and the calorimeters give quick, coarse information, so Level-1 uses them; the tracker has too many channels to read out at 40 MHz. Transverse momentum p_T is the momentum component perpendicular to the beam: the colliding partons have almost no p_T, so large p_T signals a hard collision. A Z boson (91 GeV) decays into two muons of about 45 GeV each; typical particles from a soft collision have p_T below 1 GeV.
+4 minutes. Link to the full-detector slice: the muon system and the calorimeters give quick, coarse information, so Level-1 uses them; the tracker has too many channels to read out at 40 MHz. Transverse momentum p_T is the momentum component perpendicular to the beam: the colliding partons have almost no p_T, so large p_T signals a hard collision. A Z boson (91 GeV) decays into two muons of about 45 GeV each; typical particles from a soft collision have p_T below 1 GeV. H→4μ is the "golden" signature.
 :::
 
 ## A threshold: keep signal, reject background
@@ -925,7 +1196,191 @@ Toy rate densities; grey region is rejected at 7 GeV/c.
 5 minutes. First move only the threshold: watch signal efficiency, background acceptance and the bandwidth to disk. Find the lowest threshold that fits. Then reduce the event size: bandwidth changes, efficiencies do not. Then increase the background rate: the threshold must go up and signal is lost. Message: the trigger always trades efficiency for rate.
 :::
 
-## Real thresholds are not sharp {.landmark}
+## Real thresholds are not sharp
+
+::: {.slide-refs}
+Original teaching model
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+The trigger measures $p_T$ **fast and roughly**.
+
+A muon of 22 GeV is sometimes kept; one of 28 GeV is sometimes lost.
+
+**Turn-on**, then a **plateau**.
+
+Analyses use events **on the plateau**, where the efficiency is high and well measured.
+:::
+
+::: {.picture-visual}
+![Toy trigger efficiency versus true transverse momentum: a step for a perfect measurement, smooth turn-on curves for 8 and 20 percent resolution, plateau at 95 percent](figures/turn-on-toy.svg)
+:::
+:::::
+
+::::
+
+::: {.notes}
+3 minutes. Toy model: the trigger cuts at 25 GeV on a measured p_T with Gaussian resolution 8% or 20% of p_T, plateau 95%. The worse the trigger resolution, the wider the turn-on. Real example: the CMS isolated-muon trigger (backup slide), with data/simulation comparison. How do we measure this curve without knowing the true muons? Tag and probe — backup.
+:::
+
+## The delay grows up: the pipeline
+
+::: {.slide-refs}
+Original schematic
+:::
+
+:::: {.slide-body}
+
+A new crossing every **25 ns**. The Level-1 decision takes **2.5 µs**.
+
+::: {.visual .belt}
+![A row of memory cells holding crossings 1100 down to 1001; the oldest cell receives the Level-1 decision: yes means read out, no means overwrite](figures/pipeline-belt.svg)
+:::
+
+::: {.take-home}
+Step 3's **delay**, made of memory: every channel keeps the last **100 crossings** while Level-1 decides. No dead time from the decision itself.
+:::
+
+::::
+
+::: {.notes}
+3 minutes. Analogy: a conveyor belt — the decision for each item arrives a fixed time later, exactly when the item reaches the end of the belt. 2.5 µs / 25 ns = 100 cells. The trigger is itself pipelined: it starts on a new crossing every 25 ns while older ones are still being processed. The 2.5 µs include cable delays from the detector to the counting room and back, which is why Level-1 uses custom electronics (FPGAs). Real ATLAS Level-1 latency < 2.5 µs; ATLAS accepts about 1 crossing in 400.
+:::
+
+## Two trigger levels
+
+::: {.slide-refs}
+Original schematic · after N. Neufeld · ESI 2009, p. 52
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout .diagram}
+::: {.picture-copy}
+**Level-1** (hardware): calorimeter + muons only, in **µs**. 40 MHz → 100 kHz.
+
+**Event building:** collect all pieces of one event into **one computer**.
+
+**High-Level Trigger** (software): full reconstruction, close to offline. 100 kHz → **~1 kHz**.
+:::
+
+::: {.picture-visual}
+![Chain: detector, front-end pipelines with Level-1 hardware trigger, readout buffers, event building network, computer farm running the High-Level Trigger, storage; rates 40 MHz, 100 kHz, 1 kHz](figures/lhc-chain.svg)
+:::
+:::::
+
+::::
+
+::: {.notes}
+4 minutes. Follow one event down the chain. Compare with our five steps: pipelines = delay; Level-1 = discriminator logic, much bigger; readout buffers = FIFO; event building = many sensors (step 2) with a switched network instead of a bus; HLT = processing. Event building: after a Level-1 accept, ~500 readout units each hold a fragment; the network sends all fragments of one event to the same computer, while other computers work on other events. CMS (Neufeld p. 55): ~1 Tbit/s event-building network, thousands of PCs. The real ATLAS Run-2 diagram is in the backup. Numbers are round Run-2 values for ATLAS/CMS.
+:::
+
+## The rates in numbers {.full-figure}
+
+::: {.slide-refs}
+Original teaching model; round numbers for ATLAS/CMS
+:::
+
+:::: {.slide-body}
+
+::: {.visual}
+![Rates on a logarithmic axis: 10^9 collisions per second, 4×10^7 bunch crossings, 10^5 after Level-1, 10^3 after the High-Level Trigger, compared with one Higgs boson every two seconds](figures/rate-funnel.svg)
+:::
+
+::: {.take-home}
+Each level gives the next one **more time per event**. Even after both, most recorded events are **not** Higgs bosons.
+:::
+
+::::
+
+::: {.notes}
+2 minutes. Each step reduces the rate by a factor 100–400. The recorded rate is still ~2000 times the Higgs production rate: the trigger is only the first selection; the analysis does the rest.
+:::
+
+## New trend: trigger in software {.full-figure}
+
+::: {.slide-refs}
+[LHCb Starterkit · Run-3 design](https://lhcb.github.io/starterkit-lessons/first-analysis-steps/dataflow-run3.html)
+:::
+
+:::: {.slide-body}
+
+::: {.visual}
+![LHCb Run-3 design data flow with full detector readout, GPU HLT1, disk buffer, calibration and CPU HLT2](figures/lhcb-run3-dataflow.png)
+:::
+
+::: {.take-home}
+LHCb since 2022: **no hardware trigger**. All 30 MHz read out → GPUs (HLT1) → disk buffer → CPUs (HLT2).
+:::
+
+::::
+
+::: {.notes}
+3 minutes. LHCb studies b and c hadrons: their decay products have low p_T, so a hardware p_T threshold would throw away much of the signal. Instead the full detector is read out (about 5 TB/s in the diagram) and the first selection runs on a few hundred GPUs with full tracking. A disk buffer lets the detector be calibrated before the second software stage. The trade-off: you must move every crossing over the network. Cheaper networks and GPUs make this possible; future experiments follow the same path. About 85 minutes elapsed.
+:::
+
+## Five things to remember
+
+:::: {.slide-body}
+
+1. **40 MHz × 1 MB = 40 TB/s** — we can keep only ~1 kHz.
+2. **Tycho:** systematic, documented measurements — Kepler trusted 8 arcminutes.
+3. **Trigger** decides *when* (fast, partial data); **DAQ** records the full event. First trigger: Geiger counters in **coincidence**.
+4. **A DAQ in five steps:** clock → trigger + delay → busy logic (**dead time**) → **buffer**.
+5. **LHC:** the delay becomes a **pipeline**; two trigger levels, 40 MHz → 100 kHz → 1 kHz.
+
+::::
+
+::: {.notes}
+1 minute. Ask students to explain each line in one sentence to their neighbour.
+:::
+
+## Exit questions
+
+:::: {.slide-body}
+
+1. Why does a Geiger–Müller counter not measure the particle's energy?
+2. Two counters at 100 Hz each, window $\tau=100$ ns: accidental rate?
+3. A detector with $\tau=50\ \mu$s sees 10 kHz. What fraction is lost?
+4. Why must Level-1 store every crossing in a pipeline?
+5. Why would a low-$p_T$ threshold be essential for LHCb but not for a Higgs search?
+
+::::
+
+::: {.notes}
+3 minutes. Answers: (1) in Geiger mode the discharge spreads along the whole wire and stops by itself; its size does not depend on the initial ionization. (2) 2 × 10^-7 s × 10^4 s^-2 = 2×10^-3 Hz. (3) Rτ = 0.5, live fraction 1/1.5 = 67%, so 33% lost. (4) The decision takes 2.5 µs = 100 crossings; without a pipeline the data would be overwritten before the decision arrives. (5) b-hadron decay products have only a few GeV of p_T; Higgs decay products have tens of GeV.
+:::
+
+## Thank you for your attention {.title-card}
+
+:::: {.slide-body}
+
+::: {.subtitle}
+Questions?
+:::
+
+::::
+
+## Backup · Details {.section-title visibility="uncounted"}
+
+:::: {.slide-body}
+
+Material from the extended version of this lecture
+
+::: {.subtle}
+Cross sections · dead time · event building · efficiency · menus · bandwidth · real-time analysis
+:::
+
+::::
+
+::: {.notes}
+
+:::
+
+## Backup · A real turn-on curve: CMS {.landmark visibility="uncounted"}
 
 ::: {.slide-refs}
 [CMS · HLT performance, Run 2 (2024)](https://cms-results.web.cern.ch/cms-results/public-results/publications/TRG-19-001/)
@@ -958,7 +1413,7 @@ CMS isolated-muon trigger efficiency, Run 2.
 4 minutes. Read the axes slowly. Below 24 GeV the trigger sometimes fires because the online p_T was overestimated; above, it sometimes misses because it was underestimated. Analyses use events on the plateau (e.g. offline p_T > 26–27 GeV) where the efficiency is high and well measured. The plateau below 100% comes from detector gaps and isolation requirements. The lower panel compares data and simulation; any difference becomes a correction factor. How do we measure this curve without knowing the true muons? Tag and probe — backup slide.
 :::
 
-## The decision takes longer than 25 ns
+## Backup · Pipeline timing {visibility="uncounted"}
 
 ::: {.slide-refs}
 [ATLAS · Trigger operation, Run 2 (2020)](https://arxiv.org/abs/2007.12539)
@@ -992,7 +1447,7 @@ Accepts enlarged in frequency for visibility (real: ~1 in 400).
 3 minutes. Analogy: a conveyor belt; the decision for each item arrives a fixed time later, by which time the item has reached the end of the belt. The trigger is itself pipelined: it starts working on a new crossing every 25 ns while older ones are still being processed, so there is no dead time from the decision itself. The 2.5 µs include cable delays from the detector to the counting room and back, which is why Level-1 must sit close and use custom electronics (FPGAs).
 :::
 
-## Two trigger levels: ATLAS {.full-figure}
+## Backup · A real system: ATLAS Run 2 {.full-figure visibility="uncounted"}
 
 ::: {.slide-refs}
 [ATLAS, JINST 15 P10004 (2020)](https://arxiv.org/abs/2007.12539)
@@ -1014,7 +1469,7 @@ Accepts enlarged in frequency for visibility (real: ~1 in 400).
 4 minutes. Follow one event: left, the detector front ends hold data in pipelines; Level-1 calorimeter and muon logic decide in 2.5 µs; accepted events are read out into buffers; the HLT computers request the data they need and run fast versions of the offline reconstruction, including tracking; accepted events go to permanent storage. Do not teach the acronyms. Source: ATLAS Collaboration, JINST 15 P10004 (2020), Fig. 1, CC BY 4.0. This is the 2015–2018 (Run 2) architecture.
 :::
 
-## Prescale: keep a sample of common events
+## Backup · Prescale {visibility="uncounted"}
 
 :::: {.slide-body}
 
@@ -1036,95 +1491,39 @@ A **trigger menu** is a list of hundreds of triggers, each with its own threshol
 2 minutes. The prescaled events are a random, unbiased subset of that trigger's selection, so they can measure efficiencies of higher-threshold triggers. In the analysis, a prescaled trigger corresponds to 1/P of the luminosity. A "zero-bias" trigger records randomly chosen crossings with no condition at all. The backup shows the CMS menu rates and the ATLAS rate and bandwidth during a fill.
 :::
 
-## New trend: trigger in software {.full-figure}
+## Backup · A buffer absorbs bursts {visibility="uncounted"}
 
 ::: {.slide-refs}
-[LHCb Starterkit · Run-3 design](https://lhcb.github.io/starterkit-lessons/first-analysis-steps/dataflow-run3.html)
+Original teaching model
 :::
 
 :::: {.slide-body}
 
-::: {.visual}
-![LHCb Run-3 design data flow with full detector readout, GPU HLT1, disk buffer, calibration and CPU HLT2](figures/lhcb-run3-dataflow.png)
+::::: {.picture-layout}
+::: {.picture-copy}
+Particles arrive **randomly**: sometimes several close together.
+
+A **buffer** (FIFO: first in, first out) stores events while the processor is busy.
+
+Same input, same processor: with 8 slots almost nothing is lost.
 :::
 
-::: {.take-home}
-LHCb since 2022: **no hardware trigger**. All 30 MHz read out → GPUs (HLT1) → disk buffer → CPUs (HLT2).
+::: {.picture-visual}
+![Cumulative arrived and completed event counts for zero and eight waiting slots](figures/buffer-bursts.svg)
+
+::: {.plot-caption}
+Same burst arrivals, 8 kHz mean input; processor handles 10 kHz.
 :::
+:::
+:::::
 
 ::::
 
 ::: {.notes}
-3 minutes. LHCb studies b and c hadrons: their decay products have low p_T, so a hardware p_T threshold would throw away much of the signal. Instead the full detector is read out (about 5 TB/s in the diagram) and the first selection runs on a few hundred GPUs with full tracking. A disk buffer lets the detector be calibrated before the second software stage. The trade-off: you must move every crossing over the network. Cheaper networks and GPUs make this possible; future experiments follow the same path. About 85 minutes elapsed.
+3 minutes. Analogy: a queue at a supermarket checkout. A FIFO decouples the random arrival of events from the steady processing. Buffers are everywhere in a modern DAQ: on the detector, in readout boards, in computer memory and on disk. Generated with the exact widget model (seed 821, 60 ms, ADC time 0). Next: try it.
 :::
 
-## Five things to remember
-
-:::: {.slide-body}
-
-1. **40 MHz × 1 MB = 40 TB/s** — we can keep only ~1 kHz.
-2. **Coincidence** (Bothe, Rossi, 1929–30): the first trigger logic; accidentals $2\tau R_1R_2$.
-3. **Trigger** decides with fast, partial data; **DAQ** records the full event.
-4. **Dead time** $r=R/(1+R\tau)$; **buffers** absorb fluctuations, not overload.
-5. **Multi-level trigger:** hardware in µs, software in ms; thresholds have **turn-on curves**.
-
-::::
-
-::: {.notes}
-1 minute. Ask students to explain each line in one sentence to their neighbour.
-:::
-
-## Exit questions
-
-:::: {.slide-body}
-
-1. Why does a Geiger–Müller counter not measure the particle's energy?
-2. Two counters at 100 Hz each, window $\tau=100$ ns: accidental rate?
-3. A detector with $\tau=50\ \mu$s sees 10 kHz. What fraction is lost?
-4. Why must Level-1 store every crossing in a pipeline?
-5. Why would a low-$p_T$ threshold be essential for LHCb but not for a Higgs search?
-
-::::
-
-::: {.notes}
-3 minutes. Answers: (1) in Geiger mode the discharge spreads along the whole wire and stops by itself; its size does not depend on the initial ionization. (2) 2 × 10^-7 s × 10^4 s^-2 = 2×10^-3 Hz. (3) Rτ = 0.5, live fraction 1/1.5 = 67%, so 33% lost. (4) The decision takes 2.5 µs = 100 crossings; without a pipeline the data would be overwritten before the decision arrives. (5) b-hadron decay products have only a few GeV of p_T; Higgs decay products have tens of GeV.
-:::
-
-## Homework and next lecture
-
-:::: {.slide-body}
-
-**Homework:** Design a trigger for $Z\to\mu^+\mu^-$ at the LHC. Which detector layer? Which threshold? Estimate the rate. Name one kind of event your trigger would miss.
-
-**Next lecture:** from recorded hits to tracks, vertices and particles.
-
-::: {.subtle}
-Lab course link: measure the dead time of a Geiger–Müller counter with the two-source method.
-:::
-
-::::
-
-::: {.notes}
-Assign verbally. The two-source method: count sources A, B and A+B separately; dead time makes r_AB < r_A + r_B. No full statistics today.
-:::
-
-## Backup · Details {.section-title}
-
-:::: {.slide-body}
-
-Material from the extended version of this lecture
-
-::: {.subtle}
-Cross sections · dead time · event building · efficiency · menus · bandwidth · real-time analysis
-:::
-
-::::
-
-::: {.notes}
-
-:::
-
-## Backup · Cross sections {.landmark .tall-figure}
+## Backup · Cross sections {.landmark .tall-figure visibility="uncounted"}
 
 ::: {.slide-refs}
 [W. J. Stirling · 2010 lecture, p22](https://indico.cern.ch/event/94815/contributions/1282690/attachments/1106827/1579062/LBLMIT_Stirling_v2.pdf)
@@ -1157,7 +1556,7 @@ Stirling’s classic hierarchy; historical predictions (WJS2009).
 5 minutes. Read x as centre-of-mass energy and left y as cross section in nb, both logarithmic. Right y converts to rates only at L=10^33 cm^-2 s^-1. Locate total, b, W/Z, top and Higgs at the LHC marker. Higgs curves assume masses 120, 200 and 500 GeV: historical predictions, not the measured 125 GeV cross section. Curves mix inclusive processes and jets with different cuts, so they are not disjoint event categories. The key is the scale hierarchy, not current numerical predictions.
 :::
 
-## Backup · Luminosity turns probability into rate
+## Backup · Luminosity turns probability into rate {visibility="uncounted"}
 
 :::: {.slide-body}
 
@@ -1179,7 +1578,7 @@ At an illustrative $\mathcal{L}=10^{34}\,\mathrm{cm}^{-2}\mathrm{s}^{-1}$:
 3 minutes. Arithmetic examples, not a list of measured process cross sections. 1 barn=10^-24 cm². Distinguish instantaneous from integrated luminosity. A rare production process may have a still rarer observable decay.
 :::
 
-## Backup · Non-paralyzable dead time
+## Backup · Non-paralyzable dead time {visibility="uncounted"}
 
 ::: {.slide-refs}
 Original teaching model
@@ -1212,7 +1611,7 @@ Optional derivation. After fixed busy time τ, the memoryless Poisson process ha
 Original analytic rate plot. Derivation: mean interval between accepts =τ+1/R. The graph is not the prediction for the two-stage buffered or burst model.
 :::
 
-## Backup · More memory does not create capacity
+## Backup · More memory does not create capacity {visibility="uncounted"}
 
 ::: {.slide-refs}
 Original teaching model
@@ -1245,7 +1644,7 @@ Same queue model; 2 s runs; steady Poisson arrivals; ADC time = 0.
 Original sweep from the widget model. At 15 kHz input and 10 kHz service, the large-buffer long-run lost fraction approaches at least 1−10/15≈33.3% when counting departures and accounting for pending events. A finite observation window shifts exact percentages. This plot isolates service overload; default demo includes ADC conversion too.
 :::
 
-## Backup · An event is assembled from fragments
+## Backup · An event is assembled from fragments {visibility="uncounted"}
 
 ::: {.slide-refs}
 Original teaching model
@@ -1278,7 +1677,7 @@ Colours identify events; each square is one fragment.
 Original illustrative arrival raster. Event 1042 is complete at t=5 arbitrary units, after its calorimeter fragment arrives. Event 1041 completes at t=3. One acquisition event may contain several interactions; retain the discussion of synchronization and missing fragments.
 :::
 
-## Backup · Latency and throughput
+## Backup · Latency and throughput {visibility="uncounted"}
 
 ::: {.slide-refs}
 Original teaching model
@@ -1315,7 +1714,7 @@ A long latency can coexist with a high throughput.
 Original pipeline timing diagram. Events A–D enter at t=0,1,2,3; three equal-duration stages. Bars have small visual gaps only for readability; stage duration is one unit. Distinguish latency 3 from initiation interval 1.
 :::
 
-## Backup · A day of data
+## Backup · A day of data {visibility="uncounted"}
 
 ::: {.slide-refs}
 Original teaching model
@@ -1348,7 +1747,7 @@ Continuous recording; decimal units; no overhead.
 Original V=Bt curves. At 0.2 GB/s the 24-hour total is 17.28 TB. Show that slope is the bandwidth, not just a number on a slide.
 :::
 
-## Backup · DAQ must keep the experiment coherent
+## Backup · DAQ must keep the experiment coherent {visibility="uncounted"}
 
 ::: {.slide-refs}
 Original teaching model
@@ -1383,7 +1782,7 @@ A recorded event needs its calibration context.
 Original teaching calculation: measured response =100 GeV×(1+0.025t/h), divided by known gain for correction. No detector stability claim; no noise added so the role of calibration is isolated.
 :::
 
-## Backup · Timing is a measurement: time of flight
+## Backup · Timing is a measurement: time of flight {visibility="uncounted"}
 
 ::: {.slide-refs}
 Original teaching model
@@ -1418,7 +1817,7 @@ Separation falls roughly as $1/p^2$: TOF identifies particles at low momentum.
 Figure: original analytic calculation, Gaussian timing response σ_t=100 ps, L=5 m (a GlueX-like flight path), exact momenta and paths. Real detectors add tails and momentum/path uncertainties.
 :::
 
-## Backup · Efficiency, acceptance and purity
+## Backup · Efficiency, acceptance and purity {visibility="uncounted"}
 
 ::: {.slide-refs}
 Original teaching model
@@ -1451,7 +1850,7 @@ Analytic toy spectra; signal 100 Hz, background 100 kHz.
 Analytic curves corresponding to the demo distributions: nonnegative N(8,2²) signal and exponential mean 1.5 background. Unlike the finite sample in the demo, these are smooth theoretical expectations. Green is S/(S+B), not signal efficiency. Define each efficiency as kept/input within its class.
 :::
 
-## Backup · Measuring efficiency: tag and probe
+## Backup · Measuring efficiency: tag and probe {visibility="uncounted"}
 
 ::: {.slide-refs}
 [CMS · HLT performance, Run 2 (2024)](https://cms-results.web.cern.ch/cms-results/public-results/publications/TRG-19-001/)
@@ -1488,7 +1887,7 @@ Toy pseudo-data: the mass peak counts real probes; background is subtracted in b
 Figure: original toy, seed 91. Gaussian Z peak (σ=2.6 GeV) on exponential background; 18,400 passing and 1,600 failing signal probes, 600 and 900 background pairs. Point out that the failing sample has relatively more background, so simply counting pairs would bias ε downward.
 :::
 
-## Backup · The saved sample is biased
+## Backup · The saved sample is biased {visibility="uncounted"}
 
 ::: {.slide-refs}
 Original teaching model
@@ -1521,7 +1920,7 @@ Kept spectrum is not renormalized: its area is the efficiency.
 Analytic Gaussian-like illustration from the same signal model. Retain the displaced-track/decay-time analogy verbally. Simplified yield relation N_kept=L_int σ ε_total; include branching fractions, acceptance and backgrounds as appropriate.
 :::
 
-## Backup · A menu serves many physics programmes {.landmark}
+## Backup · A menu serves many physics programmes {.landmark visibility="uncounted"}
 
 ::: {.slide-refs}
 [CMS · HLT performance, Run 2 (2024)](https://cms-results.web.cern.ch/cms-results/public-results/publications/TRG-19-001/)
@@ -1552,7 +1951,7 @@ CMS Run-2 menu: inclusive, exclusive and shared group rates.
 3 minutes. Fig.2, menu deployed September 2018. Total is inclusive per physics group; pure means unique to that group; shared allocates a path rate among its owning groups. It is an accounting convention, not a new selection probability. Explain OR overlap with R(A or B)=R(A)+R(B)-R(A and B). Physics groups own/use paths; group names are not mutually exclusive event types.
 :::
 
-## Backup · Prescales and control samples
+## Backup · Prescales and control samples {visibility="uncounted"}
 
 ::: {.slide-refs}
 [ATLAS · Trigger operation, Run 2 (2020)](https://arxiv.org/abs/2007.12539)
@@ -1587,7 +1986,7 @@ Toy power-law path rate. Control and calibration paths are typically operated li
 Figure: original toy, R_pass=20 kHz×(threshold/10 GeV)^-4. Option A raises the threshold to 38 GeV; option B keeps 15 GeV with P=40. Both record 100 Hz, but only B can measure the turn-on of a higher-threshold trigger or the low-pT spectrum. Ask which a cross-section measurement at 20 GeV would need.
 :::
 
-## Backup · The HLT is a reconstruction farm {.landmark}
+## Backup · The HLT is a reconstruction farm {.landmark visibility="uncounted"}
 
 ::: {.slide-refs}
 [CMS · HLT performance, Run 2 (2024)](https://cms-results.web.cern.ch/cms-results/public-results/publications/TRG-19-001/)
@@ -1620,7 +2019,7 @@ CMS HLT CPU-time composition; core estimate is illustrative.
 3 minutes. Fig.1: reconstruction algorithm categories and their nested subdivisions; do not teach C++ labels. The numerical core example is an independent capacity estimate, not the measured CMS farm size or timing. CPU time differs from wall latency for parallel code. Mean capacity is necessary but tails, pile-up, I/O, scheduling and resilience require margin. Link back to queue saturation.
 :::
 
-## Backup · Event rate is not bandwidth {.landmark}
+## Backup · Event rate is not bandwidth {.landmark visibility="uncounted"}
 
 ::: {.slide-refs}
 [ATLAS · Trigger operation, Run 2 (2020)](https://arxiv.org/abs/2007.12539)
@@ -1651,7 +2050,7 @@ ATLAS September 2018: stream rates above, bandwidth below.
 5 minutes. Fig.7, full two-panel plot. Upper y kHz, lower y GB/s. Late-fill prescale strategy uses freed resources for lower-threshold trigger-level analysis. Only HLT jet information was saved in this Run-2 TLA stream. Rate jumps therefore need not imply comparable byte jumps. Monitoring is absent from the bandwidth stack because these events are not written to disk. Do not divide total upper by total lower to infer a single universal event size. Ask which colour dominates each panel and what information was sacrificed.
 :::
 
-## Backup · Two architectures, one event
+## Backup · Two architectures, one event {visibility="uncounted"}
 
 :::: {.slide-body}
 
@@ -1675,7 +2074,7 @@ Same goal, different place to decide: hardware limits *what* can be seen first; 
 4 minutes. Follow one b-hadron decay through each system: in ATLAS a low-pT hadronic B decay rarely fires Level-1 (no high-pT calo/muon object), whereas LHCb can reconstruct its displaced tracks in HLT1. Conversely ATLAS's hardware stage handles a much larger raw event and pile-up at lower cost. Numbers are order-of-magnitude design values from the two sources already shown (ATLAS JINST 15 P10004 Fig. 1 and text; LHCb Starterkit Run-3 data flow), not live operating values. ATLAS also runs a prompt calibration loop before bulk reconstruction; "mostly after recording" refers to the trigger decision using online calibrations. TLA = trigger-level analysis (previous section).
 :::
 
-## Backup · What do we keep?
+## Backup · What do we keep? {visibility="uncounted"}
 
 ::: {.slide-refs}
 Original teaching model
@@ -1701,7 +2100,7 @@ Smaller records buy rate; discarded information cannot be recovered.
 4 minutes. LHCb Turbo/selective persistence is the concrete example: most physics streams keep the trigger candidate and chosen related objects. Saving a reduced record shifts more responsibility to online reconstruction, calibration and monitoring. Do not imply all events use the same persistence choice; real experiments mix all three rows. Sizes are illustrative round numbers, decimal units, no overhead, not an operational LHCb or ATLAS allocation. Sources: LHCb Starterkit sections on selective persistency; Stahl L08 pp12–13. About 84 minutes elapsed.
 :::
 
-## Backup · What must remain reproducible?
+## Backup · What must remain reproducible? {visibility="uncounted"}
 
 :::: {.slide-body}
 
@@ -1721,7 +2120,7 @@ A physics result needs all four, not just a file of candidates.
 2 minutes. Synthesis. Selective persistence can close future analysis options; retained conditions and selection provenance are needed even for a fully reconstructed stream. Link to Lecture 7 calibration and next lecture reconstruction/statistics.
 :::
 
-## Backup · Preview: hits are not yet tracks {.full-figure}
+## Backup · Preview: hits are not yet tracks {.full-figure visibility="uncounted"}
 
 ::: {.slide-refs}
 [ACTS · Tracking in a nutshell](https://acts.readthedocs.io/en/latest/tracking.html)
@@ -1743,7 +2142,7 @@ Reconstruction associates measurements with particle trajectories.
 4 minutes. Use the supplied overview to distinguish seed candidates, extension and final fit. Ask where measurement errors and multiple scattering enter. Do not derive Kalman matrices or list many algorithms here. Source: ACTS documentation, Tracking in a nutshell; original SVG retrieved 7 November 2026. This is the next lecture’s starting point; show it as a preview and skip the discussion if time is short.
 :::
 
-## Backup · Reference material {.references}
+## Backup · Reference material {.references visibility="uncounted"}
 
 :::: {.slide-body}
 
