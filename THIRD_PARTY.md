@@ -125,3 +125,19 @@ Lecture 4 figure `xsec-lhc.svg`.
 | Video slide, Oxford Sparks “A quick look around the LHC” | [YouTube](https://www.youtube.com/watch?v=BEnaEMMAO_s), embedded via youtube-nocookie. | Streamed from YouTube, not redistributed. The poster `widgets/lhc-video-poster.png` is a course-made title card. |
 | CERN photographs and figures: LHC tunnel sector 3-4 (M. Brice), CERN accelerator complex 2022 (F. Landua), LEAR bending magnet (CERN PhotoLab); CMS Run-2 pile-up plot (CMS luminosity public results) | CERN / CMS. | **Not redistributed.** Commons lists CC BY-SA 3.0 or CC BY 4.0 for the CERN images, but this could not be confirmed on CDS; the CMS plot has no confirmed open licence. As for Lecture 7, the files live in the git-ignored `figures/local/` folder and the public deck shows a placeholder with the credit. |
 
+## Lecture 9: trigger and DAQ
+
+Licences checked on 13 November 2026. The schematics, toy plots and the two
+widgets are course-generated (`slides/lectures/Lecture_9/SOURCES.md` lists the
+models and parameters); several schematics are redrawn after N. Neufeld,
+*Introduction to Trigger / Data Acquisition / Data Analysis*, ESI 2009, and
+credited on the slides. Figures copied from Lecture 8 keep the credits listed above.
+
+| Slide image | Source / attribution | Licence and verification |
+| --- | --- | --- |
+| ATLAS Run-2 TDAQ diagram and stream rate/bandwidth plots (`atlas-run2-tdaq.png`, `atlas-stream-rate-bandwidth.png`) | ATLAS Collaboration, *Operation of the ATLAS trigger system in Run 2*, JINST 15 P10004 (2020), arXiv:2007.12539, Figs. 1 and 7, cropped. | CC BY 4.0 (paper licence). |
+| CMS HLT muon turn-on, menu rates and CPU budget (`cms-muon-turnon.png`, `cms-menu-rates.png`, `cms-cpu-budget.png`) | CMS Collaboration, *Performance of the CMS high-level trigger during LHC Run 2*, JINST 19 P11021 (2024), arXiv:2410.17038, Figs. 7a, 2, 1. | CC BY 4.0 (arXiv licence field). |
+| LHCb Run-3 data flow (`lhcb-run3-dataflow.png`) | LHCb Starterkit lessons, “Data flow in Run 3”, unmodified. | CC BY 4.0 (repository licence of `lhcb/starterkit-lessons`). |
+| ACTS tracking overview (`acts-tracking.svg`) | ACTS project, “Tracking in a nutshell” documentation, unmodified. | MPL 2.0 (licence of the `acts-project/acts` repository). |
+| Portrait of Tycho Brahe (`tycho-portrait.jpg`) | 16th-century portrait, as reproduced in N. Neufeld, ESI 2009, p. 6. | Public domain: faithful reproduction of a two-dimensional artwork whose author died centuries ago. |
+| Not redistributed: CMS Run-2 pile-up plot, Stirling cross-section hierarchy (WJS2009), VME readout crate photo (from Neufeld, ESI 2009, p. 29) | CMS; W. J. Stirling; photographer not stated. | No confirmed open licence. As for Lectures 7 and 8, the files live in the git-ignored `figures/local/` folder and the public deck shows a placeholder with the credit. |

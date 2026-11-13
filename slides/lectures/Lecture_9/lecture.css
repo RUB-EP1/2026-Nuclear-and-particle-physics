@@ -94,3 +94,7 @@
 .reveal .calo-grid td{width:110px;height:84px;text-align:center!important;vertical-align:middle;border:2px solid #dfe3e7;padding:0}
 .reveal .calo-grid strong{color:#bd3249}
 .reveal:has(section[data-visibility="uncounted"].present) .slide-number{display:none!important}
+/* Local-only figures (not redistributed): real image locally, labelled placeholder on the public site. */
+.reveal .local-photo img{display:block;width:100%;height:610px;object-fit:contain;margin:0}
+.reveal .tall-figure .local-photo img{height:790px}
+.reveal .local-photo.missing{height:600px;display:flex;align-items:center;justify-content:center;text-align:center;background:#f4f6f8;border:2px dashed #c9d1d9;color:#8a949e;font-size:28px;padding:20px;box-sizing:border-box;border-radius:6px}

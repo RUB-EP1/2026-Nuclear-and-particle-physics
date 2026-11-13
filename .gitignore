@@ -88,7 +88,7 @@
 !slides/lectures/Lecture_7/widgets/*.png
 # Lecture 7: CERN photographs (CDS terms of use) stay in figures/local and are never committed.
 
-# Lecture 8 (accelerators) and Lecture 9 (DAQ and trigger) drafts: sources and offline widgets; rendered output stays local.
+# Lecture 8: source, layout, course-generated and openly licensed figures, offline widgets and tests.
 !slides/lectures/Lecture_8/lecture.css
 !slides/lectures/Lecture_8/layout.html
 !slides/lectures/Lecture_8/README.md
@@ -103,12 +103,16 @@
 !slides/lectures/Lecture_8/tests/*.cjs
 !slides/lectures/Lecture_8/tests/*.py
 !slides/lectures/Lecture_8/scripts/*.py
+# Lecture 8: CERN photographs and figures without a confirmed open licence stay in figures/local and are never committed.
+
+# Lecture 9: source, layout, course-generated and openly licensed figures, offline widgets and tests.
 !slides/lectures/Lecture_9/lecture.css
 !slides/lectures/Lecture_9/layout.html
 !slides/lectures/Lecture_9/README.md
 !slides/lectures/Lecture_9/SOURCES.md
 !slides/lectures/Lecture_9/figures/*.png
 !slides/lectures/Lecture_9/figures/*.svg
+!slides/lectures/Lecture_9/figures/*.jpg
 !slides/lectures/Lecture_9/widgets/*.html
 !slides/lectures/Lecture_9/widgets/*.js
 !slides/lectures/Lecture_9/widgets/*.css
@@ -116,4 +120,4 @@
 !slides/lectures/Lecture_9/tests/*.cjs
 !slides/lectures/Lecture_9/tests/*.py
 !slides/lectures/Lecture_9/scripts/*.py
-# Lecture 8: CERN photographs and figures without a confirmed open licence stay in figures/local and are never committed.
+# Lecture 9: figures without a confirmed open licence stay in figures/local and are never committed.

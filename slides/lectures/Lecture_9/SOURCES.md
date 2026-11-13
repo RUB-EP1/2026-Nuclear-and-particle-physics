@@ -137,3 +137,7 @@ Historical facts for the Tycho slides (Hven/Uraniborg 1576–1597, 1563 conjunct
 The exercise grid on "Your turn: be the trigger" is hand-made: largest 2×2 sum 6.0 GeV (rows 2–3, columns 2–3); sums around the 3.6 GeV cell are 4.7, 4.7, 4.6, 4.3 GeV. LHCb Level-0 numbers (≈6000 ECAL / 1500 HCAL cells, 2×2 clusters, ≤1 MHz, 4 µs) are rounded from memory of the LHCb trigger papers, e.g. JINST 8 P04022 (2013); check before publication.
 
 `xsec-ladder.svg` (Recap 6, `make_intro_figures.py`): rounded 13 TeV cross sections — inelastic 80 mb, bb̄ 0.5 mb, W→ℓν 20 nb and Z→ℓℓ 2 nb per lepton flavour, tt̄ 830 pb, Higgs 55 pb — times 10³⁴ cm⁻²s⁻¹. Replaces the busier Lecture 4 figure.
+
+## Publication (13 November 2026)
+
+Licences were checked before publication; see `THIRD_PARTY.md` (Lecture 9). ATLAS (arXiv:2007.12539) and CMS (arXiv:2410.17038) papers are CC BY 4.0, the LHCb Starterkit is CC BY 4.0, ACTS is MPL 2.0, and the Tycho portrait is a public-domain artwork. `cms-run2-pileup.png`, `stirling-cross-sections.png`, `vme-crate.jpg` and the unused `neufeld-readout-chain.png` have no confirmed open licence: they live in the git-ignored `figures/local/` folder and the public deck shows a placeholder (`.local-photo`, as in Lecture 8).

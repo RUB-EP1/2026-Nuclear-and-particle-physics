@@ -136,6 +136,19 @@ ladder to a collider designer.
 [Download PDF](slides/lectures/Lecture_8/Lecture_8.pdf){.chip download="Lecture_8.pdf"}
 :::
 
+::: {.course-card}
+[Lecture 9 · Trigger and DAQ]{.card-tag}
+
+### Basics of trigger and data acquisition
+
+From Tycho Brahe's logbook and the first Geiger-counter coincidences to a
+DAQ built step by step, dead time, the LHC pipeline and two trigger levels,
+with a calorimeter-trigger exercise and two interactive demos.
+
+[Open slides](slides/lectures/Lecture_9/Lecture_9.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_9/Lecture_9.pdf){.chip download="Lecture_9.pdf"}
+:::
+
 
 ::::
 

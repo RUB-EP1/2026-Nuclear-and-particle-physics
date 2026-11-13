@@ -271,7 +271,7 @@ Usually **at most one** of them is interesting.
 Horizontal axis: what does it count?
 :::
 :::: {.picture-visual}
-![CMS Run 2: recorded luminosity versus mean pile-up.](figures/cms-run2-pileup.png)
+<div class="local-photo" data-local="figures/local/cms-run2-pileup.png" data-alt="CMS Run 2: recorded luminosity versus mean pile-up"></div>
 
 ::: {.plot-caption}
 CMS Run 2: recorded luminosity versus mean number of collisions per crossing.
@@ -770,7 +770,7 @@ The temperature changes **slowly**: any moment is as good as another.
 :::
 
 ::: {.picture-visual}
-![A readout crate with many modules and dozens of labelled coaxial cables](figures/vme-crate.jpg)
+<div class="local-photo" data-local="figures/local/vme-crate.jpg" data-alt="A readout crate with many modules and dozens of labelled coaxial cables"></div>
 
 ::: {.plot-caption}
 Readout boards in a VME crate. Even 100 channels make a thicket of cables.
@@ -1542,7 +1542,7 @@ $$R=\mathcal{L}\sigma$$
 Why would random recording be inefficient?
 :::
 :::: {.picture-visual}
-![Stirling’s classic hierarchy; historical predictions (WJS2009).](figures/stirling-cross-sections.png)
+<div class="local-photo" data-local="figures/local/stirling-cross-sections.png" data-alt="Stirling’s classic hierarchy; historical predictions (WJS2009)"></div>
 
 ::: {.plot-caption}
 Stirling’s classic hierarchy; historical predictions (WJS2009).
