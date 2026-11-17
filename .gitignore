@@ -121,3 +121,12 @@
 !slides/lectures/Lecture_9/tests/*.py
 !slides/lectures/Lecture_9/scripts/*.py
 # Lecture 9: figures without a confirmed open licence stay in figures/local and are never committed.
+
+# Lecture 10: source, layout, course-generated figures, offline widget and figure script.
+!slides/lectures/Lecture_10/lecture.css
+!slides/lectures/Lecture_10/layout.html
+!slides/lectures/Lecture_10/README.md
+!slides/lectures/Lecture_10/figures/*.svg
+!slides/lectures/Lecture_10/widgets/*.html
+!slides/lectures/Lecture_10/widgets/*-poster.png
+!slides/lectures/Lecture_10/scripts/*.py

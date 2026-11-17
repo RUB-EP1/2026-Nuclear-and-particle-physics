@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dirac spinor explorer</title>
+<style>
+:root{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#12202d;background:#fff;font-size:20px;--blue:#007dc5;--orange:#c86418;--red:#bd3249;--green:#23734e;--muted:#5e6e7b}
+*{box-sizing:border-box}
+body{margin:0;padding:26px 34px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:25px;border-bottom:2px solid #dde5eb;padding-bottom:12px}
+h1{font-size:34px;margin:0;letter-spacing:-.025em}
+header p{color:var(--muted);margin:0;font-size:18px}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:30px;margin-top:20px}
+aside{border-right:1px solid #dde5eb;padding-right:24px}
+label{display:block;font-size:18px;font-weight:600;margin:0 0 18px}
+label output{float:right;color:var(--blue);font-variant-numeric:tabular-nums}
+input[type=range]{display:block;width:100%;accent-color:var(--blue);margin-top:8px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 18px}
+.choices button{font:inherit;font-size:18px;border:1px solid #b8c7d2;background:#fff;border-radius:5px;padding:8px 6px;cursor:pointer;color:inherit}
+.choices button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.choices button.neg[aria-pressed=true]{background:var(--red);border-color:var(--red)}
+.choices button.anti[aria-pressed=true]{background:var(--orange);border-color:var(--orange)}
+.group{font-size:16px;color:var(--muted);margin:2px 0 4px;font-weight:600}
+.hint{color:var(--muted);font-size:16px;line-height:1.4;margin:12px 0}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:4px 0 14px}
+.metric{border-top:3px solid var(--blue);padding-top:8px}
+.metric strong{font-size:29px;display:block;font-variant-numeric:tabular-nums}
+.metric span{font-size:16px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1.25fr 1fr;gap:26px}
+canvas{width:100%;display:block;height:330px}
+.formula{font-size:21px;line-height:1.5;margin:14px 0 0;font-variant-numeric:tabular-nums}
+.formula b{color:var(--blue)}
+.ok{color:var(--green);font-weight:600}
+footer{margin-top:12px;font-size:15px;color:var(--muted);border-top:1px solid #dde5eb;padding-top:10px}
+button:focus-visible,input:focus-visible{outline:3px solid #007dc5;outline-offset:3px}
+@media(min-width:1700px){:root{font-size:24px}body{padding:32px 46px}h1{font-size:42px}header p{font-size:22px}.layout{grid-template-columns:350px 1fr;gap:40px}label{font-size:22px;margin-bottom:26px}.choices button{font-size:22px;padding:10px 6px}.group,.hint{font-size:19px}.metric strong{font-size:38px}.metric span{font-size:20px}canvas{height:560px}.formula{font-size:25px}footer{font-size:18px}}
+@media(max-width:850px){body{padding:16px}.layout,.panels{grid-template-columns:1fr}aside{border:0}.metrics{grid-template-columns:1fr 1fr}}
+</style>
+<header><h1>Dirac spinor explorer</h1><p>Thomson conventions · Dirac–Pauli representation · units of m</p></header>
+<div class="layout">
+<aside>
+  <label>Momentum |p| / m <output id="pOut"></output><input id="p" type="range" min="0" max="5" step="0.01" value="0.6" aria-label="Momentum magnitude in units of the mass"></label>
+  <label>Polar angle θ <output id="thOut"></output><input id="th" type="range" min="0" max="180" step="1" value="0" aria-label="Polar angle of the momentum in degrees"></label>
+  <div class="group">Particle solutions (E &gt; 0)</div>
+  <div class="choices" id="choices">
+    <button data-s="u1" aria-pressed="true">u₁</button><button data-s="u2" aria-pressed="false">u₂</button>
+  </div>
+  <div class="group">Negative-energy solutions (E &lt; 0)</div>
+  <div class="choices">
+    <button class="neg" data-s="u3" aria-pressed="false">u₃</button><button class="neg" data-s="u4" aria-pressed="false">u₄</button>
+  </div>
+  <div class="group">Antiparticle spinors, ψ = v e<sup>+ip·x</sup></div>
+  <div class="choices">
+    <button class="anti" data-s="v1" aria-pressed="false">v₁</button><button class="anti" data-s="v2" aria-pressed="false">v₂</button>
+  </div>
+  <p class="hint">p lies in the x–z plane (p<sub>y</sub> = 0), so all components are real. Try |p| → 0 and |p| → 5 m.</p>
+</aside>
+<main>
+  <div class="metrics">
+    <div class="metric"><strong id="E">—</strong><span>energy E</span></div>
+    <div class="metric"><strong id="beta">—</strong><span>velocity β = |p|/|E|</span></div>
+    <div class="metric"><strong id="norm">—</strong><span>density ψ†ψ (per e<sup>∓ip·x</sup>)</span></div>
+    <div class="metric"><strong id="small">—</strong><span>|small| / |large| = |p|/(|E|+m)</span></div>
+  </div>
+  <div class="panels">
+    <canvas id="bars" role="img" aria-label="Bar chart of the four spinor components"></canvas>
+    <canvas id="disp" role="img" aria-label="Energy versus momentum with the current solution marked"></canvas>
+  </div>
+  <p class="formula" id="formula"></p>
+</main>
+</div>
+<footer>N = √(|E| + m) gives u†u = 2|E| particles per unit volume. The check multiplies the spinor numerically by (p̸ − m) for u, or (p̸ + m) for v.</footer>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const m = 1;
+let sol = "u1";
+const SUB = {u1:"u₁",u2:"u₂",u3:"u₃",u4:"u₄",v1:"v₁",v2:"v₂"};
+
+function spinor(s, px, pz) {
+  const Ea = Math.sqrt(px * px + pz * pz + m * m);
+  const N = Math.sqrt(Ea + m), k = Ea + m;
+  // Thomson eqs. for u1..u4 (u3, u4 with E = -Ea, so E - m = -(Ea + m)) and v1, v2.
+  const S = {
+    u1: [1, 0, pz / k, px / k],
+    u2: [0, 1, px / k, -pz / k],
+    u3: [-pz / k, -px / k, 1, 0],
+    u4: [-px / k, pz / k, 0, 1],
+    v1: [px / k, -pz / k, 0, 1],
+    v2: [pz / k, px / k, 1, 0],
+  }[s].map((c) => N * c);
+  const E = s === "u3" || s === "u4" ? -Ea : Ea;
+  return {u: S, E, Ea, N};
+}
+
+// (gamma^mu p_mu) acting on a real 4-spinor with p_y = 0, Dirac-Pauli representation:
+// pslash = [[E, 0, -pz, -px], [0, E, -px, pz], [pz, px, -E, 0], [px, -pz, 0, -E]].
+function pslash(E, px, pz, u) {
+  return [E * u[0] - pz * u[2] - px * u[3],
+          E * u[1] - px * u[2] + pz * u[3],
+          pz * u[0] + px * u[1] - E * u[2],
+          px * u[0] - pz * u[1] - E * u[3]];
+}
+
+function setupCanvas(c) {
+  const r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+  c.width = w * r; c.height = h * r;
+  const ctx = c.getContext("2d"); ctx.setTransform(r, 0, 0, r, 0, 0);
+  return {ctx, w, h};
+}
+
+function drawBars(u, color) {
+  const {ctx, w, h} = setupCanvas($("bars"));
+  const fs = Math.max(15, Math.round(h / 20));
+  const top = 34, bottom = h - 46, mid = (top + bottom) / 2, half = (bottom - top) / 2;
+  const vmax = Math.sqrt(6 + 1);  // N for |p| = 5m... fixed scale so heights compare across settings
+  ctx.font = `600 ${fs}px Helvetica Neue, Arial`; ctx.fillStyle = "#12202d"; ctx.textAlign = "left";
+  ctx.fillText("components of " + SUB[sol] + " (fixed scale)", 0, fs);
+  ctx.strokeStyle = "#c9d3db"; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(w, mid); ctx.stroke();
+  const bw = w / 4;
+  u.forEach((c, i) => {
+    const x = i * bw + bw * 0.18, ww = bw * 0.64, hh = (c / vmax) * half;
+    ctx.fillStyle = i < 2 ? "#007dc5" : "#c86418";
+    ctx.globalAlpha = 0.85;
+    ctx.fillRect(x, hh >= 0 ? mid - hh : mid, ww, Math.abs(hh));
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = "#12202d"; ctx.textAlign = "center";
+    ctx.font = `${fs}px Helvetica Neue, Arial`;
+    const ty = hh >= 0 ? mid - hh - 8 : mid - hh + fs + 4;
+    ctx.fillText(c.toFixed(2), x + ww / 2, Math.max(top + fs, Math.min(bottom - 4, ty)));
+    ctx.fillStyle = "#5e6e7b";
+    ctx.fillText(["1", "2", "3", "4"][i], x + ww / 2, h - 22);
+  });
+  ctx.font = `${Math.round(fs * 0.85)}px Helvetica Neue, Arial`;
+  ctx.fillStyle = "#007dc5"; ctx.textAlign = "center"; ctx.fillText("upper pair", bw, h - 2);
+  ctx.fillStyle = "#c86418"; ctx.fillText("lower pair", 3 * bw, h - 2);
+}
+
+function drawDisp(p, E, color) {
+  const {ctx, w, h} = setupCanvas($("disp"));
+  const fs = Math.max(15, Math.round(h / 20));
+  const l = 46, r = w - 10, t = 30, b = h - 30, pmax = 5, Emax = 5.3;
+  const X = (q) => l + (q / pmax) * (r - l), Y = (e) => (t + b) / 2 - (e / Emax) * (b - t) / 2;
+  ctx.font = `600 ${fs}px Helvetica Neue, Arial`; ctx.fillStyle = "#12202d"; ctx.textAlign = "left";
+  ctx.fillText("E(|p|) = ±√(p² + m²)", l, fs);
+  ctx.fillStyle = "#f1f4f7"; ctx.fillRect(l, Y(1), r - l, Y(-1) - Y(1));
+  ctx.strokeStyle = "#12202d"; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(l, t); ctx.lineTo(l, b); ctx.moveTo(l, Y(0)); ctx.lineTo(r, Y(0)); ctx.stroke();
+  [[1, "#007dc5"], [-1, "#bd3249"]].forEach(([s, c]) => {
+    ctx.strokeStyle = c; ctx.lineWidth = 3; ctx.beginPath();
+    for (let i = 0; i <= 100; i++) { const q = (pmax * i) / 100; const y = Y(s * Math.hypot(q, 1)); i ? ctx.lineTo(X(q), y) : ctx.moveTo(X(q), y); }
+    ctx.stroke();
+  });
+  ctx.fillStyle = "#5e6e7b"; ctx.font = `${Math.round(fs * 0.85)}px Helvetica Neue, Arial`; ctx.textAlign = "right";
+  ctx.fillText("+m", l - 6, Y(1) + 5); ctx.fillText("−m", l - 6, Y(-1) + 5);
+  ctx.textAlign = "right"; ctx.fillText("|p|/m", r, Y(0) - 8);
+  ctx.beginPath(); ctx.arc(X(p), Y(E), 9, 0, 2 * Math.PI); ctx.fillStyle = color; ctx.fill();
+  ctx.lineWidth = 2; ctx.strokeStyle = "#fff"; ctx.stroke();
+}
+
+function update() {
+  const p = +$("p").value, th = (+$("th").value * Math.PI) / 180;
+  const px = p * Math.sin(th), pz = p * Math.cos(th);
+  $("pOut").textContent = p.toFixed(2); $("thOut").textContent = $("th").value + "°";
+  const {u, E, Ea, N} = spinor(sol, px, pz);
+  const anti = sol[0] === "v";
+  const ps = pslash(E, px, pz, u);
+  const resid = Math.max(...ps.map((c, i) => Math.abs(c + (anti ? 1 : -1) * m * u[i])));
+  const norm = u.reduce((a, c) => a + c * c, 0);
+  const upper = Math.hypot(u[0], u[1]), lower = Math.hypot(u[2], u[3]);
+  const small = Math.min(upper, lower) / Math.max(upper, lower);
+  const color = anti ? "#c86418" : E > 0 ? "#007dc5" : "#bd3249";
+  $("E").textContent = (E > 0 ? "+" : "−") + Ea.toFixed(3) + " m";
+  $("E").style.color = color;
+  $("beta").textContent = (p / Ea).toFixed(3);
+  $("norm").textContent = norm.toFixed(3) + " m";
+  $("small").textContent = small.toFixed(3);
+  const eq = anti ? "(p̸ + m) v = 0" : "(p̸ − m) u = 0";
+  $("formula").innerHTML =
+    `<b>${SUB[sol]}</b> = N · (${u.map((c) => (c / N).toFixed(3)).join(", ")})ᵀ,&nbsp; N = ${N.toFixed(3)}<br>` +
+    `${anti ? "v†v" : "u†u"} = ${norm.toFixed(3)} = 2|E| = ${(2 * Ea).toFixed(3)}&nbsp;·&nbsp; check ${eq}: largest component ${resid.toExponential(1)} ` + (resid < 1e-9 ? `<span class="ok">✓</span>` : `<span style="color:#bd3249">✗</span>`) +
+    (anti ? `<br>Physical energy of the antiparticle: Ê<sup>(v)</sup> = −i∂<sub>t</sub> gives +${Ea.toFixed(3)} m.` : "");
+  drawBars(u, color);
+  drawDisp(p, anti ? Ea : E, color);
+}
+
+document.querySelectorAll(".choices button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    sol = btn.dataset.s;
+    document.querySelectorAll(".choices button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    update();
+  });
+});
+["p", "th"].forEach((id) => $(id).addEventListener("input", update));
+window.addEventListener("resize", update);
+update();
+</script>
+</html>

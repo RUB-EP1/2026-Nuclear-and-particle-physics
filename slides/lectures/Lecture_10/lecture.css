@@ -1,0 +1,153 @@
+/* Lecture 10: base layout copied from Lecture 9; Dirac-specific blocks at the end. */
+.reveal strong{color:#007dc5}
+.reveal .slide-body{padding:22px 0 18px;font-size:40px;line-height:1.3;gap:20px;justify-content:center}
+.reveal .slide-body>p{margin:.35em 0}
+.reveal .split{display:grid;grid-template-columns:minmax(0,.44fr) minmax(0,.56fr);gap:54px;align-items:center;width:100%}
+.reveal .copy{font-size:37px;line-height:1.28}
+.reveal .copy p{margin:.35em 0 .65em}
+.reveal .copy li{margin:.35em 0}
+.reveal .visual{min-width:0;text-align:center}
+.reveal .visual>p,.reveal .visual figure{margin:0}
+.reveal .visual img{width:100%;height:610px;object-fit:contain;display:block;margin:0 auto;max-width:100%;max-height:none}
+.reveal .visual figcaption{display:none}
+.reveal .take-home{border-left:5px solid #007dc5;padding:10px 0 10px 25px;margin-top:22px;font-size:35px;line-height:1.25}
+.reveal .take-home p{margin:0}
+.reveal .full-figure .visual img{height:690px}
+.reveal .full-figure .take-home{font-size:29px;margin-top:0}
+.reveal .slides section table{width:100%;font-size:34px;line-height:1.25}
+.reveal .slides section td,.reveal .slides section th{padding:18px 22px;border-bottom:1px solid #dfe3e7;vertical-align:top}
+.reveal .slides section th{color:#007dc5}
+.reveal math[display="block"]{font-size:1.05em;margin:.45em 0}
+.reveal .title-card .slide-body{flex:none;display:block;padding:10px 0}
+.reveal .title-card .subtitle{font-size:60px;margin:20px 0 90px}
+.reveal .title-card .slide-body>p{font-size:30px;color:#627383}
+.reveal .section-title .slide-body{font-size:46px;display:block;margin-top:60px}
+.reveal .deck-footer{position:absolute;left:var(--gutter-x);right:var(--gutter-x);bottom:28px;display:flex;justify-content:space-between;gap:28px;box-sizing:border-box;padding:12px 100px 0 0;border-top:1px solid var(--line);color:var(--muted);font-family:var(--deck-font);font-size:20px;font-weight:400;line-height:1.2;z-index:20;pointer-events:none}
+.reveal .slide-number{font-family:var(--deck-font)!important;font-size:20px!important;font-weight:400;bottom:28px!important}
+.reveal .pipeline{font-size:42px;line-height:1.8;text-align:center;padding:25px 0;border-top:2px solid #dfe3e7;border-bottom:2px solid #dfe3e7}
+.reveal .prompt{font-size:54px;line-height:1.25;max-width:1450px}
+.reveal .subtle{color:#627383;font-size:30px}
+.reveal .number{font-size:100px;line-height:1.2;color:#007dc5;font-weight:600}
+.reveal .slide-refs{font-size:22px}
+.reveal .slides>section.demo-slide{padding:0!important;width:1920px!important;height:1080px!important;left:0!important;top:0!important;background:#fff;display:flex!important}
+.reveal .demo-slide>h2{display:none}
+.reveal .demo-slide>.slide-body{padding:0;width:100%;height:100%;display:flex}
+.reveal .demo-slide .widget{width:100%;height:100%;min-height:100%;margin:0}
+.reveal .demo-slide .widget iframe{max-width:none!important;max-height:none!important}
+.reveal:has(.demo-slide.present) .deck-footer,.reveal:has(.demo-slide.present) .slide-number{display:none!important}
+.reveal .references .slide-body{font-size:29px;gap:10px}
+.reveal .references p{margin:.3em 0}
+
+/* Plot-led explanatory slides: short reading column, large evidence panel. */
+.reveal .picture-layout{display:grid;grid-template-columns:minmax(0,.33fr) minmax(0,.67fr);gap:42px;align-items:center;width:100%}
+.reveal .picture-copy{font-size:36px;line-height:1.3}
+.reveal .picture-copy p{margin:0 0 28px}
+.reveal .picture-copy math[display="block"]{font-size:.82em}
+.reveal .picture-visual{min-width:0;width:100%}
+.reveal .picture-visual img{display:block;width:100%;height:610px;max-height:none;max-width:100%;object-fit:contain;margin:0}
+.reveal .picture-visual figure,.reveal .picture-visual figure>p{margin:0;width:100%}
+.reveal .picture-visual figcaption{display:none}
+.reveal .plot-caption{font-size:24px;line-height:1.25;color:#627383;margin-top:12px;text-align:center}
+.reveal .plot-caption p{margin:0}
+.reveal .picture-layout+.take-home{font-size:30px;margin-top:0}
+
+/* Give canonical source plots enough height to read axes and legends. */
+.reveal .landmark .picture-layout{grid-template-columns:minmax(0,.36fr) minmax(0,.64fr)}
+.reveal .landmark .picture-visual img{height:680px}
+.reveal .landmark .picture-copy{font-size:35px}
+.reveal .section-title .subtle{margin-top:55px;font-size:34px}
+
+/* Tall, narrow landmark figures (Stirling hierarchy): use the full slide height. */
+.reveal .tall-figure .slide-body{padding:0}
+.reveal .tall-figure .picture-layout{grid-template-columns:minmax(0,.42fr) minmax(0,.58fr)}
+.reveal .tall-figure .picture-visual img{height:790px}
+.reveal .tall-figure .plot-caption{margin-top:4px;font-size:22px}
+/* Tables inside the plot column. */
+.reveal .picture-visual table{font-size:31px}
+.reveal .picture-visual td,.reveal .picture-visual th{padding:16px 14px}
+.reveal .compare-table table{font-size:30px}
+.reveal .compare-table td,.reveal .compare-table th{padding:12px 18px}
+.reveal .compare-table td:first-child{color:#007dc5;font-weight:600;white-space:nowrap}
+
+/* Undergraduate rework: recap check questions and two-column definitions. */
+.reveal .check{margin-top:30px;padding:12px 0 12px 22px;border-left:5px solid #cf741b;color:#4a5560;font-size:31px;font-style:italic;line-height:1.25}
+.reveal .check p{margin:0}
+.reveal .two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;width:100%;align-items:start}
+.reveal .rule{border-top:6px solid #007dc5;padding-top:18px;font-size:35px;line-height:1.28}
+.reveal .rule .rule-head{display:block;font-size:46px;font-weight:700;margin:0 0 6px;color:#007dc5}
+.reveal .rule p{margin:0 0 18px}
+/* Portrait slides (Tycho): wider text, narrower picture. */
+.reveal .portrait-layout{grid-template-columns:minmax(0,.62fr) minmax(0,.38fr)}
+.reveal .portrait-layout .picture-visual img{height:620px}
+.reveal .portrait-layout .picture-copy ul{margin:0 0 0 1em}
+.reveal .portrait-layout .picture-copy li{margin:.25em 0}
+/* Pipeline belt: a wide, short figure. */
+.reveal .belt img{height:auto!important;max-height:420px;width:100%}
+.reveal .slide-body pre{width:100%;font-size:32px;box-shadow:none;background:#f6f8fa;margin:10px 0 24px}
+.reveal .slide-body pre code{max-height:none;padding:22px 28px;line-height:1.35}
+/* Block diagrams (DAQ steps, LHC chain): give the drawing the full slide height. */
+.reveal .diagram{grid-template-columns:minmax(0,.4fr) minmax(0,.6fr)}
+.reveal .diagram .picture-visual img{height:780px}
+/* Calorimeter exercise grid. */
+.reveal .calo-grid table{font-size:40px;width:auto;border-collapse:collapse}
+.reveal .calo-grid thead{display:none}
+.reveal .calo-grid td{width:110px;height:84px;text-align:center!important;vertical-align:middle;border:2px solid #dfe3e7;padding:0}
+.reveal .calo-grid strong{color:#bd3249}
+.reveal:has(section[data-visibility="uncounted"].present) .slide-number{display:none!important}
+/* Local-only figures (not redistributed): real image locally, labelled placeholder on the public site. */
+.reveal .local-photo img{display:block;width:100%;height:610px;object-fit:contain;margin:0}
+.reveal .tall-figure .local-photo img{height:790px}
+.reveal .local-photo.missing{height:600px;display:flex;align-items:center;justify-content:center;text-align:center;background:#f4f6f8;border:2px dashed #c9d1d9;color:#8a949e;font-size:28px;padding:20px;box-sizing:border-box;border-radius:6px}
+
+/* Lecture 10: quiz cards revealed one by one (students answer in a row). */
+.reveal .card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;width:100%}
+.reveal .card-grid.three{grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}
+.reveal .qcard{border:1px solid #dce4eb;border-top:6px solid #007dc5;border-radius:3px;background:#fafcfd;padding:16px 22px 18px;min-height:190px;box-sizing:border-box}
+.reveal .qcard.orange{border-top-color:#c86418}.reveal .qcard.red{border-top-color:#bd3249}.reveal .qcard.green{border-top-color:#23734e}
+.reveal .qcard>p{margin:0}
+.reveal .qcard .sym{font-size:44px;line-height:1.25;margin:0 0 10px}
+.reveal .qcard .use{font-size:25px;line-height:1.25;color:#3e4b57}
+.reveal .qcard .use p{margin:0}
+.reveal .card-grid.three .qcard{min-height:330px}
+.reveal .card-grid.three .sym{font-size:38px;font-weight:600}
+.reveal .card-grid.three .use{font-size:30px}
+.reveal .verdict{font-weight:700;font-size:32px;margin-top:12px!important}
+.reveal .yes{color:#23734e}.reveal .no{color:#bd3249}
+
+/* Large boxed equations and labelled anatomy. */
+.reveal .eq-big{font-size:74px;text-align:center;margin:10px 0 24px}
+.reveal .eq-big math[display="block"]{margin:.1em 0}
+.reveal .eq-box{border:3px solid #007dc5;border-radius:6px;padding:4px 30px;margin:10px auto 26px;width:fit-content;font-size:56px;background:#f6fafd}
+.reveal .eq-box math[display="block"]{margin:.15em 0}
+.reveal .anatomy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 34px;width:100%}
+.reveal .anatomy>div{border-left:5px solid #007dc5;padding:4px 0 4px 20px;font-size:30px;line-height:1.28}
+.reveal .anatomy>div>p{margin:0}
+.reveal .anatomy .tag{font-size:40px;display:block;margin-bottom:4px}
+.reveal .smallmath math[display="block"]{font-size:.8em}
+.reveal .mid math[display="block"]{font-size:.9em}
+.reveal .note-line{font-size:30px;color:#4a5560}
+.reveal .history{display:grid;grid-template-columns:150px 1fr;gap:16px 30px;font-size:34px;line-height:1.3;width:100%}
+.reveal .history>p{margin:0}
+.reveal .history .yr{color:#007dc5;font-weight:700}
+.reveal .compare-table td:first-child{white-space:normal}
+/* Card text: override inherited paragraph sizes. */
+.reveal .qcard .sym{display:block}
+.reveal .card-grid .qcard{min-height:250px;padding:20px 24px}
+.reveal .qcard .use,.reveal .qcard .use p{font-size:30px;line-height:1.28}
+.reveal .card-grid.three .qcard{min-height:400px}
+.reveal .card-grid.three .use,.reveal .card-grid.three .use p{font-size:34px}
+.reveal .card-grid.three .sym{font-size:42px;margin-bottom:22px}
+.reveal .anatomy>div,.reveal .anatomy>div>p{font-size:32px}
+.reveal .anatomy .tag{font-size:46px}
+/* Matrix parentheses drawn with borders (see layout.html). */
+.reveal math mtable.paren-matrix{border-left:.075em solid currentColor;border-right:.075em solid currentColor;border-radius:.5em/1.4em;padding:0 .22em;margin:0 .12em}
+.reveal math mtable.paren-matrix mtd{padding:.14em .32em;text-align:center}
+.reveal .statement-box{border:3px solid #007dc5;border-radius:6px;padding:18px 30px;margin:16px auto 26px;width:fit-content;font-size:42px;background:#f6fafd;text-align:center}
+.reveal .statement-box p{margin:0}
+.reveal .compare-table table{table-layout:fixed}
+.reveal .compare-table table{width:100%!important}
+.reveal .compare-table td{white-space:normal!important}
+.reveal .qcard .use,.reveal .qcard .use p{font-size:33px}
+.reveal .compare-table{width:100%}
+.reveal .slide-body>.compare-table{align-self:stretch}.reveal .compare-table table{max-width:none!important;display:table}
+.reveal .slides section .compare-table table{width:100%!important}.reveal .slides section .compare-table td{white-space:normal}

@@ -149,6 +149,19 @@ with a calorimeter-trigger exercise and two interactive demos.
 [Download PDF](slides/lectures/Lecture_9/Lecture_9.pdf){.chip download="Lecture_9.pdf"}
 :::
 
+::: {.course-card}
+[Lecture 10 · Dirac equation]{.card-tag}
+
+### The Dirac equation
+
+Equations of motion from Newton to Maxwell to fermions, the γ matrices and
+four-component spinors, solutions at rest and in motion with the 2E
+normalization, and two pictures of antiparticles, with an interactive spinor explorer.
+
+[Open slides](slides/lectures/Lecture_10/Lecture_10.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_10/Lecture_10.pdf){.chip download="Lecture_10.pdf"}
+:::
+
 
 ::::
 
