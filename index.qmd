@@ -8,7 +8,7 @@ format:
     toc: false
     include-in-header:
       text: |
-        <style>main .hero { grid-template-columns:minmax(0,1fr); } .lecture-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; } .course-card { padding:1.5rem; } .course-card h3 { margin-top:.5rem; }</style>
+        <style>main .hero { grid-template-columns:minmax(0,1fr); } .lecture-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; } .course-card { padding:1.5rem; } .course-card h3 { margin-top:.5rem; } .course-card { display:flex; flex-direction:column; } .course-card > section { flex:1; display:flex; flex-direction:column; } .course-card > section > p:last-child { margin-top:auto; margin-bottom:0; padding-top:.6rem; display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; } .course-card > section > p:last-child > a, .course-card > section > p:last-child > span { margin:0; white-space:nowrap; } .exercise-grid { grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }</style>
 ---
 
 ::: {.hero}
@@ -170,39 +170,73 @@ normalization, and two pictures of antiparticles, with an interactive spinor exp
 Submit individual, handwritten solutions to your tutor:
 Hendric Jonas or Dhruvanshu Parmar.
 
+Dates read *distributed → due*; hand in at the lecture.
+
+:::: {.lecture-grid .exercise-grid}
+::: {.course-card}
+[Sheet 1 · due Oct 23]{.card-tag}
+
 ### Exercise 1
-Thomson problems **1.1, 1.4, 1.10, and 2.16**. Due **October 23, 2026**.
-[Download exercise sheet 1 (PDF)](exercises/Sheet_1/Sheet_1.pdf){.btn-main}
+
+Thomson problems **1.1, 1.4, 1.10, and 2.16**.
+
+[Download sheet 1 (PDF)](exercises/Sheet_1/Sheet_1.pdf){.btn-main}
+:::
+
+::: {.course-card}
+[Sheet 2 · due Oct 30]{.card-tag}
 
 ### Exercise 2
-Thomson problems **2.6, 2.12, 3.2, and 3.4**. Due **October 30, 2026**.
+
+Thomson problems **2.6, 2.12, 3.2, and 3.4**.
+
+[No PDF]{.chip}
+:::
+
+::: {.course-card}
+[Sheet 3 · Nov 3 → Nov 10]{.card-tag}
 
 ### Exercise 3
-Thomson problems **1.7, 3.6, and 3.8**. Distributed **November 3, 2026**;
-due **November 10, 2026, at the lecture**.
-Includes class work for **November 6** on phase space, threshold energies, and the Bethe–Bloch curve.
-[Download exercise sheet 3 (PDF)](exercises/Sheet_3/Sheet_3.pdf){.btn-main}
 
+Thomson problems **1.7, 3.6, and 3.8**.
+Class work on **November 6**: phase space, threshold energies, and the Bethe–Bloch curve.
+
+[Download sheet 3 (PDF)](exercises/Sheet_3/Sheet_3.pdf){.btn-main}
+:::
+
+::: {.course-card}
+[Sheet 4 · Nov 6 → Nov 13]{.card-tag}
 
 ### Exercise 4
-Thomson problems **1.8, 1.9, 2.7, and 3.1**. Distributed **November 6, 2026**;
-due **November 13, 2026, at the lecture**.
-[Download exercise sheet 4 (PDF)](exercises/Sheet_4/Sheet_4.pdf){.btn-main}
+
+Thomson problems **1.8, 1.9, 2.7, and 3.1**.
+Class work: track curvature, a 7 TeV synchrotron, and TPC drift.
+
+[Download sheet 4 (PDF)](exercises/Sheet_4/Sheet_4.pdf){.btn-main}
+:::
+
+::: {.course-card}
+[Sheet 5 · Nov 17 → Nov 24]{.card-tag}
 
 ### Exercise 5
-Accelerators and trigger: the LHC ring, luminosity and pile-up, why we need a
-trigger, and accidental coincidences. Distributed **November 17, 2026**;
-due **November 24, 2026, at the lecture**.
-Includes class work on quadrupole focusing and dead time.
-[Download exercise sheet 5 (PDF)](exercises/Sheet_5/Sheet_5.pdf){.btn-main}
+
+Accelerators and trigger: the LHC ring, luminosity and pile-up, why we need a trigger, and accidental coincidences.
+Class work: quadrupole focusing and dead time.
+
+[Download sheet 5 (PDF)](exercises/Sheet_5/Sheet_5.pdf){.btn-main}
+:::
+
+::: {.course-card}
+[Sheet 6 · Nov 24 → Dec 1]{.card-tag}
 
 ### Exercise 6
-Thomson problems **4.3, 4.5, 4.7, 4.8, and 4.9**. Distributed **November 24, 2026**;
-due **December 1, 2026, at the lecture**.
-Includes class work on left- and right-handed spinors, the magnetic moment ($g=2$),
-and the proton size from Jefferson Lab data.
-[Download exercise sheet 6 (PDF)](exercises/Sheet_6/Sheet_6.pdf){.btn-main}
 
+Thomson problems **4.3, 4.5, 4.7, 4.8, and 4.9**.
+Class work: left- and right-handed spinors, $g=2$, and the proton size from Jefferson Lab data.
+
+[Download sheet 6 (PDF)](exercises/Sheet_6/Sheet_6.pdf){.btn-main}
+:::
+::::
 
 ## Schedule {.section-title}
 
