@@ -176,6 +176,20 @@ Thomson problems **1.8, 1.9, 2.7, and 3.1**. Distributed **November 6, 2026**;
 due **November 13, 2026, at the lecture**.
 [Download exercise sheet 4 (PDF)](exercises/Sheet_4/Sheet_4.pdf){.btn-main}
 
+### Exercise 5
+Accelerators and trigger: the LHC ring, luminosity and pile-up, why we need a
+trigger, and accidental coincidences. Distributed **November 17, 2026**;
+due **November 24, 2026, at the lecture**.
+Includes class work on quadrupole focusing and dead time.
+[Download exercise sheet 5 (PDF)](exercises/Sheet_5/Sheet_5.pdf){.btn-main}
+
+### Exercise 6
+Thomson problems **4.3, 4.5, 4.7, 4.8, and 4.9**. Distributed **November 24, 2026**;
+due **December 1, 2026, at the lecture**.
+Includes class work on left- and right-handed spinors, the magnetic moment ($g=2$),
+and the proton size from Jefferson Lab data.
+[Download exercise sheet 6 (PDF)](exercises/Sheet_6/Sheet_6.pdf){.btn-main}
+
 
 ## Schedule {.section-title}
 
