@@ -106,14 +106,16 @@ def dirac_sea():
         for E in levels:
             b.append(line(axis_x + 60, Y(E), axis_x + 460, Y(E), BLUE, 2))
             b.append(line(axis_x + 60, Y(-E), axis_x + 460, Y(-E), RED, 2))
-            for j in range(5):
-                cx = axis_x + 100 + 80 * j
-                hole = k == 1 and abs(E - levels[1]) < 1e-9 and j == 1
+            for j in range(2):  # two spin states per level
+                cx = axis_x + 180 + 120 * j
+                hole = k == 1 and abs(E - levels[1]) < 1e-9 and j == 0
                 if hole:
                     b.append(f'<circle cx="{cx}" cy="{Y(-E) - 11}" r="11" fill="#fff" stroke="{RED}" stroke-width="3"/>')
                 else:
                     b.append(f'<circle cx="{cx}" cy="{Y(-E) - 11}" r="10" fill="{RED}"/>')
-        b.append(text(axis_x + 260, 712, "… infinitely many, all occupied (Pauli)", 22, MUTED, "middle"))
+        for j, lab in enumerate(("spin ↑", "spin ↓")):
+            b.append(text(axis_x + 180 + 120 * j, 690, lab, 22, RED, "middle", 600))
+        b.append(text(axis_x + 260, 742, "… infinitely many levels, each holds ↑ and ↓ (Pauli)", 22, MUTED, "middle"))
         if k == 1:
             hx, hy = axis_x + 180, Y(-levels[1]) - 11
             ex, ey = axis_x + 180, Y(levels[3]) - 11
