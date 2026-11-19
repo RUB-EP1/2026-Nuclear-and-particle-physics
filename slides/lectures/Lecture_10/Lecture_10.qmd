@@ -1213,7 +1213,7 @@ Answers: (1) four; no, it is a spinor — it transforms differently under boosts
 
 **Reading:** Thomson, *Modern Particle Physics*, Chapter 4.
 
-**Next:** spin and helicity of Dirac particles, then the first Feynman-diagram calculation in QED.
+**Next (Fri 20 Nov):** Feynman rules and the trace technique — Thomson, Chapters 5–6.
 
 ::: {.check}
 Try at home: show that $u_1$ at rest is an eigenstate of $\hat S_z=\tfrac12\begin{pmatrix}\sigma_z&0\\0&\sigma_z\end{pmatrix}$ with eigenvalue $+\tfrac12$, and $u_2$ with $-\tfrac12$.

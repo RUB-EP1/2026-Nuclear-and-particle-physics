@@ -1,10 +1,10 @@
-# Lecture source archive and next-lecture plan
+# Lecture source archive
 
-Prepared 7 November 2026 from the supplied 2025/26 lecture PDFs. Lecture 7 is already covered; the next planned topic is **DAQ and trigger**.
+Prepared 7 November 2026 from the supplied 2025/26 lecture PDFs. They served as sources for Lectures 7–9. The course schedule lives only in [`slides/lectures.yml`](../../slides/lectures.yml).
 
 ## Start here
 
-- [Next lecture: 90-minute plan, with a 60-minute variant](NEXT-LECTURE.md)
+- [Lecture 9 preparation plan (archived)](Lecture-09-plan.md)
 - [Lecture 7: calorimeters and particle identification](Lecture-07.md)
 - [Lecture 8: DAQ, trigger and reconstruction](Lecture-08.md)
 - [Lecture 9: reconstruction and data analysis](Lecture-09.md)

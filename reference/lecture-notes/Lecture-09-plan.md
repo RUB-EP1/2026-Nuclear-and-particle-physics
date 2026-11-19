@@ -1,4 +1,6 @@
-# Next lecture: from detector signals to recorded events
+# Lecture 9 preparation plan: from detector signals to recorded events
+
+> **Archived.** This was the preparation plan for Lecture 9 (Trigger and DAQ, given 13 Nov 2026). The course schedule lives only in [`slides/lectures.yml`](../../slides/lectures.yml).
 
 Planning basis: lecturer confirmed on 7 November 2026 that Lecture 7 calorimetry/PID is covered. Assume a 90-minute slot; adjust using the 60-minute variant below. This is a proposed scope, not a scheduled event or finished slide deck.
 

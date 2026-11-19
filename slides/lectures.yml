@@ -1,0 +1,175 @@
+# Course plan: the single source of truth for what is taught when.
+# Lectures: Tuesday 12:00–14:00 and Friday 10:00–12:00, NB 3/99.
+# Build targets discover lectures/Lecture_*/*.qmd; this file is not read by the build.
+#
+# Fields
+#   date:    session date (YYYY-MM-DD)
+#   id:      lecture deck id (lectures/<id>/<id>.qmd); absent for non-lecture sessions
+#   title:   topic as planned, or the deck title once given
+#   reading: Thomson, Modern Particle Physics, unless stated
+#   status:  given | planned | tentative | buffer | skip
+#   topics:  optional; detailed content (fill in once the deck exists)
+#
+# Dates of Lectures 1–9 follow the Tuesday/Friday rhythm from 16 Oct and the
+# publish history; correct them here if a session moved.
+
+sessions:
+  - date: 2026-10-16
+    id: Lecture_1
+    title: Introduction to Nuclear and Particle Physics
+    reading: Ch. 1
+    status: given
+    topics:
+      - Recap of quantum mechanics
+      - Interactive spin rotation, projections and probabilities
+      - Educational introductions, physics films and audience questions
+      - Four fundamental forces and reaction notation
+      - Introductory four-vectors and non-additive mass
+      - Clickable Standard Model and composite hadrons
+      - Gauge-boson charges, perturbation theory and Feynman vertices
+
+  - date: 2026-10-20
+    id: Lecture_2
+    title: Particle Kinematics
+    reading: Ch. 2
+    status: given
+    topics:
+      - Lecture 1 recap and existing knowledge checks
+      - Lorentz transformations, proper time, and muon survival
+      - Natural units, four-momentum, and invariant mass
+      - Two-body decay energies and breakup momentum
+      - Laboratory boosts and energy endpoints
+      - Fixed-target and collider production thresholds
+
+  - date: 2026-10-23
+    id: Lecture_3
+    title: Quantum Amplitudes and Transition Rates
+    reading: Ch. 2–3
+    status: given
+    topics:
+      - Thirty-minute kinematics recap with board problems
+      - Three-question Menti kinematics quiz
+      - Quantum amplitudes, interference, and momentum-transfer resolution
+      - State evolution and first-order time-dependent perturbation theory
+      - Fermi golden rule, decay widths, lifetimes, and branching fractions
+      - Worked two-body decay rate and introduction to cross sections
+      - Quantum mechanics reminders and phase-space formulas in backup
+
+  - date: 2026-10-27
+    id: Lecture_4
+    title: Decay Rates and Cross Sections
+    reading: Ch. 3
+    status: given
+    topics:
+      - Phase space and normalization
+      - Two- and three-body decays
+      - Cross sections, luminosity and differential cross sections
+
+  - date: 2026-10-30
+    id: Lecture_5
+    title: Interaction of Particles with Matter
+    status: given
+    topics:
+      - Forty-minute blackboard recap of amplitudes, widths and cross sections
+      - Ionization, TPC particle identification and bremsstrahlung
+      - Multiple Coulomb scattering
+
+  - date: 2026-11-03
+    id: Lecture_6
+    title: Interaction of Particles with Matter
+    status: given
+    topics:
+      - Ionization review and quiz before multiple scattering
+      - Stopping power, Bethe–Bloch and minimum-ionizing particles
+      - TPC tracking and particle identification with ionization
+      - Energy-loss fluctuations, bremsstrahlung and critical energy
+      - Multiple Coulomb scattering
+      - Photon interactions, pair production and electromagnetic showers
+      - Cherenkov radiation
+
+  - date: 2026-11-06
+    id: Lecture_7
+    title: Particle Detectors I
+    status: given
+    topics:
+      - Magnets and momentum measurement
+      - Gas detectors, silicon sensors, scintillators and photosensors
+      - Momentum-resolution explorer
+
+  - date: 2026-11-10
+    id: Lecture_8
+    title: Accelerators
+    status: given
+    topics:
+      - Electrostatic machines and RF cavities
+      - Magnets, focusing and emittance
+      - Synchrotron radiation and collider design demos
+
+  - date: 2026-11-13
+    id: Lecture_9
+    title: Trigger and DAQ
+    status: given
+    topics:
+      - Coincidences, DAQ built step by step, dead time
+      - LHC pipeline and two trigger levels
+      - Calorimeter-trigger exercise
+
+  - date: 2026-11-17
+    id: Lecture_10
+    title: Dirac equation and spinors
+    reading: Ch. 4
+    status: given
+
+  - date: 2026-11-20
+    id: Lecture_11
+    title: Trace technique, Feynman rules
+    reading: Ch. 5–6
+    status: planned
+
+  - date: 2026-11-24
+    id: Lecture_12
+    title: Elastic scattering, form factors
+    reading: Ch. 7
+    status: planned
+
+  - date: 2026-11-27
+    title: Mock exam
+    status: planned
+
+  - date: 2026-12-01
+    id: Lecture_13
+    title: Inelastic scattering
+    reading: Ch. 8
+    status: planned
+
+  - date: 2026-12-04
+    id: Lecture_14
+    title: Symmetries of the quark model
+    reading: Ch. 9
+    status: planned
+
+  - date: 2026-12-08
+    id: Lecture_15
+    title: SU(3) flavour symmetry
+    reading: Ch. 9
+    status: planned
+
+  - date: 2026-12-11
+    id: Lecture_16
+    title: QCD, resonances
+    reading: Ch. 10
+    status: planned
+
+  - date: 2026-12-15
+    id: Lecture_17
+    title: Running coupling, field theory
+    reading: Ch. 10
+    status: planned
+
+  - date: 2026-12-18
+    title: Buffer
+    status: buffer
+
+  - date: 2026-12-22
+    title: Probably no lecture
+    status: tentative
