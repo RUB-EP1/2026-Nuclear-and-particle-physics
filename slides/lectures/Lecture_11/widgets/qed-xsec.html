@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QED cross-section explorer</title>
+<style>
+:root{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#12202d;background:#fff;font-size:20px;--blue:#007dc5;--orange:#c86418;--red:#bd3249;--green:#23734e;--muted:#5e6e7b}
+*{box-sizing:border-box}
+body{margin:0;padding:26px 34px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:25px;border-bottom:2px solid #dde5eb;padding-bottom:12px}
+h1{font-size:34px;margin:0;letter-spacing:-.025em}
+header p{color:var(--muted);margin:0;font-size:18px}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:30px;margin-top:20px}
+aside{border-right:1px solid #dde5eb;padding-right:24px}
+label{display:block;font-size:18px;font-weight:600;margin:0 0 18px}
+label output{float:right;color:var(--blue);font-variant-numeric:tabular-nums}
+input[type=range]{display:block;width:100%;accent-color:var(--blue);margin-top:8px}
+.choices{display:grid;grid-template-columns:1fr;gap:8px;margin:6px 0 18px}
+.choices button{font:inherit;font-size:18px;border:1px solid #b8c7d2;background:#fff;border-radius:5px;padding:8px 6px;cursor:pointer;color:inherit}
+.choices button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.check{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;margin:0 0 18px;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--blue)}
+.group{font-size:16px;color:var(--muted);margin:2px 0 4px;font-weight:600}
+.hint{color:var(--muted);font-size:16px;line-height:1.4;margin:12px 0}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin:4px 0 14px}
+.metric{border-top:3px solid var(--blue);padding-top:8px}
+.metric strong{font-size:27px;display:block;font-variant-numeric:tabular-nums}
+.metric span{font-size:16px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1.35fr 1fr;gap:26px}
+canvas{width:100%;display:block;height:330px}
+.formula{font-size:21px;line-height:1.5;margin:14px 0 0;font-variant-numeric:tabular-nums}
+.formula b{color:var(--blue)}
+.legend{display:flex;gap:22px;font-size:16px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:26px;height:0;border-top:4px solid;vertical-align:middle;margin-right:6px}
+.legend .d{border-top-style:dashed}
+footer{margin-top:12px;font-size:15px;color:var(--muted);border-top:1px solid #dde5eb;padding-top:10px}
+button:focus-visible,input:focus-visible{outline:3px solid #007dc5;outline-offset:3px}
+@media(min-width:1700px){:root{font-size:24px}body{padding:32px 46px}h1{font-size:42px}header p{font-size:22px}.layout{grid-template-columns:350px 1fr;gap:40px}label,.check{font-size:22px;margin-bottom:26px}.choices button{font-size:22px;padding:10px 6px}.group,.hint{font-size:19px}.metric strong{font-size:34px}.metric span{font-size:19px}canvas{height:540px}.formula{font-size:25px}.legend{font-size:20px}footer{font-size:18px}}
+@media(max-width:850px){body{padding:16px}.layout,.panels{grid-template-columns:1fr}aside{border:0}.metrics{grid-template-columns:1fr 1fr}}
+</style>
+<header><h1>QED cross-section explorer</h1><p>lowest order · E ≫ m · centre-of-mass frame</p></header>
+<div class="layout">
+<aside>
+  <div class="group">Process</div>
+  <div class="choices">
+    <button data-p="ee" aria-pressed="true">e⁺e⁻ → μ⁺μ⁻ &nbsp;(s-channel)</button>
+    <button data-p="emu" aria-pressed="false">e⁻μ⁻ → e⁻μ⁻ &nbsp;(t-channel)</button>
+  </div>
+  <label class="check"><input id="chan" type="checkbox"> show helicity channels</label>
+  <label>Scattering angle θ <output id="thOut"></output><input id="th" type="range" min="5" max="175" step="1" value="60" aria-label="Scattering angle in degrees"></label>
+  <label>√s (GeV) <output id="sOut"></output><input id="rs" type="range" min="0" max="2" step="0.01" value="1" aria-label="Centre-of-mass energy, logarithmic from 1 to 100 GeV"></label>
+  <p class="hint" id="hint"></p>
+</aside>
+<main>
+  <div class="metrics">
+    <div class="metric"><strong id="s">—</strong><span>s (GeV²)</span></div>
+    <div class="metric"><strong id="t">—</strong><span>t (GeV²)</span></div>
+    <div class="metric"><strong id="u">—</strong><span>u (GeV²)</span></div>
+    <div class="metric"><strong id="dsig">—</strong><span>dσ/dΩ at θ (nb/sr)</span></div>
+    <div class="metric"><strong id="sig">—</strong><span id="sigLab">σ (nb)</span></div>
+  </div>
+  <div class="panels">
+    <div><canvas id="ang" role="img" aria-label="Spin-averaged squared matrix element versus cos theta"></canvas>
+      <div class="legend" id="legend"></div></div>
+    <canvas id="tot" role="img" aria-label="Cross section versus centre-of-mass energy on logarithmic axes"></canvas>
+  </div>
+  <p class="formula" id="formula"></p>
+</main>
+</div>
+<footer>dσ/dΩ = ⟨|M|²⟩ / (64π² s), e² = 4πα, α = 1/137.036, (ħc)² = 0.3894 mb GeV². Channel curves are their contributions to the spin average, so they add up to the solid line. Masses neglected; no Z boson.</footer>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const ALPHA = 1 / 137.036, HBARC2_NB = 0.3894e6;
+const BLUE = "#007dc5", RED = "#bd3249", INK = "#12202d", MUTED = "#5e6e7b";
+let proc = "ee";
+
+// <|M|^2>/e^4 as a function of c = cos(theta), split into helicity channels (contributions to the average).
+const MODEL = {
+  ee: {
+    name: "e⁺e⁻ → μ⁺μ⁻",
+    chans: [
+      {lab: "RL→RL, LR→LR: (1 + cos θ)²", col: BLUE, f: (c) => 0.5 * (1 + c) ** 2},
+      {lab: "RL→LR, LR→RL: (1 − cos θ)²", col: RED, f: (c) => 0.5 * (1 - c) ** 2},
+    ],
+    avg: (c) => 1 + c * c, log: false, ymax: 2.2,
+    formula: "⟨|M|²⟩ = 2e⁴ (t² + u²)/s² = e⁴ (1 + cos²θ)",
+    hint: "Photon in s: no angle is preferred by the propagator. The shape is pure angular momentum: J<sub>z</sub> = ±1 along the beam.",
+  },
+  emu: {
+    name: "e⁻μ⁻ → e⁻μ⁻",
+    chans: [
+      {lab: "RR, LL: 4s²/t²", col: BLUE, f: (c) => 8 / (1 - c) ** 2},
+      {lab: "RL, LR: 4u²/t²", col: RED, f: (c) => 2 * (1 + c) ** 2 / (1 - c) ** 2},
+    ],
+    avg: (c) => (8 + 2 * (1 + c) ** 2) / (1 - c) ** 2, log: true, ymin: 0.05, ymax: 5000,
+    formula: "⟨|M|²⟩ = 2e⁴ (s² + u²)/t²",
+    hint: "Photon in t: 1/t² makes a Rutherford-like forward peak. The opposite-helicity channel vanishes at θ = 180°.",
+  },
+};
+const THCUT = 10;  // degrees, for the e mu cross section
+
+function setupCanvas(c) {
+  const r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+  c.width = w * r; c.height = h * r;
+  const ctx = c.getContext("2d"); ctx.setTransform(r, 0, 0, r, 0, 0);
+  return {ctx, w, h};
+}
+
+function sigmaNb(s) {
+  // Integrated cross section in nb: ee total, emu for theta > THCUT.
+  const k = (ALPHA * ALPHA) / (4 * s) * HBARC2_NB;
+  if (proc === "ee") return k * 2 * Math.PI * (2 + 2 / 3);
+  const cmax = Math.cos((THCUT * Math.PI) / 180), n = 4000, M = MODEL.emu;
+  let sum = 0;
+  for (let i = 0; i < n; i++) { const c = -1 + ((i + 0.5) * (cmax + 1)) / n; sum += M.avg(c); }
+  return k * 2 * Math.PI * sum * ((cmax + 1) / n);
+}
+
+function drawAngular(c0, showChan) {
+  const M = MODEL[proc];
+  const {ctx, w, h} = setupCanvas($("ang"));
+  const fs = Math.max(15, Math.round(h / 20));
+  const l = 70, r = w - 14, t = 34, b = h - 40;
+  const X = (c) => l + ((c + 1) / 2) * (r - l);
+  const Y = M.log
+    ? (y) => { const lo = Math.log10(M.ymin), hi = Math.log10(M.ymax); const v = Math.min(hi, Math.max(lo, Math.log10(Math.max(y, 1e-9)))); return b - ((v - lo) / (hi - lo)) * (b - t); }
+    : (y) => b - (Math.min(y, M.ymax) / M.ymax) * (b - t);
+  ctx.font = `600 ${fs}px Helvetica Neue, Arial`; ctx.fillStyle = INK; ctx.textAlign = "left";
+  ctx.fillText("⟨|M|²⟩ / e⁴  versus  cos θ" + (M.log ? "  (log scale)" : ""), l, fs);
+  ctx.font = `${Math.round(fs * 0.85)}px Helvetica Neue, Arial`; ctx.fillStyle = MUTED;
+  ctx.strokeStyle = "#e3e8ec"; ctx.lineWidth = 1;
+  const ticks = M.log ? [0.1, 1, 10, 100, 1000] : [0, 0.5, 1, 1.5, 2];
+  ctx.textAlign = "right";
+  ticks.forEach((v) => { ctx.beginPath(); ctx.moveTo(l, Y(v)); ctx.lineTo(r, Y(v)); ctx.stroke(); ctx.fillText(String(v), l - 8, Y(v) + 5); });
+  ctx.textAlign = "center";
+  [-1, -0.5, 0, 0.5, 1].forEach((c) => { ctx.beginPath(); ctx.moveTo(X(c), t); ctx.lineTo(X(c), b); ctx.stroke(); ctx.fillText(String(c).replace("-", "−"), X(c), b + fs + 4); });
+  ctx.strokeStyle = INK; ctx.lineWidth = 1.5; ctx.strokeRect(l, t, r - l, b - t);
+  const curve = (f, col, lw, dash) => {
+    ctx.save(); ctx.beginPath(); ctx.rect(l, t, r - l, b - t); ctx.clip();
+    ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.setLineDash(dash || []); ctx.beginPath();
+    for (let i = 0; i <= 400; i++) { const c = -1 + (i / 400) * 1.995; const y = Y(f(c)); i ? ctx.lineTo(X(c), y) : ctx.moveTo(X(c), y); }
+    ctx.stroke(); ctx.restore();
+  };
+  if (showChan) M.chans.forEach((ch) => curve(ch.f, ch.col, 3, [10, 7]));
+  curve(M.avg, INK, 4.5);
+  ctx.setLineDash([]);
+  ctx.strokeStyle = "#c86418"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(X(c0), t); ctx.lineTo(X(c0), b); ctx.stroke();
+  ctx.beginPath(); ctx.arc(X(c0), Y(M.avg(c0)), 8, 0, 2 * Math.PI); ctx.fillStyle = "#c86418"; ctx.fill();
+  $("legend").innerHTML = `<span><i style="border-color:${INK}"></i>spin average</span>` +
+    (showChan ? M.chans.map((ch) => `<span><i class="d" style="border-color:${ch.col}"></i>${ch.lab}</span>`).join("") : "");
+}
+
+function drawTotal(rs) {
+  const {ctx, w, h} = setupCanvas($("tot"));
+  const fs = Math.max(15, Math.round(h / 20));
+  const l = 70, r = w - 34, t = 34, b = h - 40;
+  const lx0 = 0, lx1 = 2;                 // log10 sqrt(s) from 1 to 100 GeV
+  const [ly0, ly1] = proc === "ee" ? [-3, 3] : [-1, 5];  // log10 sigma in nb
+  const X = (v) => l + ((Math.log10(v) - lx0) / (lx1 - lx0)) * (r - l);
+  const Y = (v) => b - ((Math.log10(v) - ly0) / (ly1 - ly0)) * (b - t);
+  ctx.font = `600 ${fs}px Helvetica Neue, Arial`; ctx.fillStyle = INK; ctx.textAlign = "left";
+  ctx.fillText(proc === "ee" ? "σ(√s), nb" : `σ(θ > ${THCUT}°), nb`, l, fs);
+  ctx.font = `${Math.round(fs * 0.85)}px Helvetica Neue, Arial`; ctx.fillStyle = MUTED; ctx.strokeStyle = "#e3e8ec"; ctx.lineWidth = 1;
+  ctx.textAlign = "right";
+  [1e-3, 1e-2, 1e-1, 1, 10, 100, 1e3, 1e4, 1e5].filter((v) => Math.log10(v) >= ly0 && Math.log10(v) <= ly1).forEach((v) => { ctx.beginPath(); ctx.moveTo(l, Y(v)); ctx.lineTo(r, Y(v)); ctx.stroke(); ctx.fillText(v >= 1 && v < 1e4 ? String(v) : "10" + String(Math.round(Math.log10(v))).replace("-", "⁻").replace(/\d/g, (d) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[d]), l - 8, Y(v) + 5); });
+  ctx.textAlign = "center";
+  [1, 3, 10, 30, 100].forEach((v) => { ctx.beginPath(); ctx.moveTo(X(v), t); ctx.lineTo(X(v), b); ctx.stroke(); ctx.fillText(String(v), X(v), b + fs + 4); });
+  ctx.textAlign = "left"; ctx.fillText("√s (GeV)", l + 10, b - 10);
+  ctx.strokeStyle = INK; ctx.lineWidth = 1.5; ctx.strokeRect(l, t, r - l, b - t);
+  ctx.strokeStyle = BLUE; ctx.lineWidth = 4; ctx.beginPath();
+  for (let i = 0; i <= 100; i++) { const v = 10 ** (lx0 + (i / 100) * (lx1 - lx0)); const y = Y(sigmaNb(v * v)); i ? ctx.lineTo(X(v), y) : ctx.moveTo(X(v), y); }
+  ctx.stroke();
+  ctx.beginPath(); ctx.arc(X(rs), Y(sigmaNb(rs * rs)), 8, 0, 2 * Math.PI); ctx.fillStyle = "#c86418"; ctx.fill();
+  ctx.fillStyle = MUTED; ctx.textAlign = "right"; ctx.fillText("σ ∝ 1/s", r - 10, t + fs + 6);
+}
+
+const fmt = (v) => Math.abs(v) < 1e-9 ? "0" : (Math.abs(v) >= 1000 || Math.abs(v) < 0.01 ? v.toExponential(2).replace("e+", "e").replace("e-", "e−") : v.toPrecision(3)).replace(/^-/, "−");
+
+function update() {
+  const M = MODEL[proc];
+  const th = +$("th").value, c = Math.cos((th * Math.PI) / 180);
+  const rs = 10 ** +$("rs").value, s = rs * rs;
+  const t = (-s / 2) * (1 - c), u = (-s / 2) * (1 + c);
+  const showChan = $("chan").checked;
+  $("thOut").textContent = th + "°";
+  $("sOut").textContent = rs.toPrecision(3);
+  $("s").textContent = fmt(s); $("t").textContent = fmt(t); $("u").textContent = fmt(u);
+  const m2 = M.avg(c);
+  const dsig = ((ALPHA * ALPHA) / (4 * s)) * m2 * HBARC2_NB;
+  $("dsig").textContent = fmt(dsig);
+  const sig = sigmaNb(s);
+  $("sig").textContent = fmt(sig);
+  $("sigLab").textContent = proc === "ee" ? "σ = 4πα²/3s (nb)" : `σ for θ > ${THCUT}° (nb)`;
+  $("hint").innerHTML = M.hint;
+  let html = `<b>${M.name}</b>: ${M.formula}.&nbsp; At θ = ${th}°: ⟨|M|²⟩/e⁴ = ${fmt(m2)}`;
+  if (showChan) html += " = " + M.chans.map((ch) => `<span style="color:${ch.col}">${fmt(ch.f(c))}</span>`).join(" + ");
+  html += proc === "ee"
+    ? `<br>Check: s + t + u = ${fmt(s + t + u)} ✓ &nbsp;·&nbsp; σ·s = ${fmt(sig * s)} nb GeV² (expect 4π/3 · α² · 0.3894 mb = 86.9)`
+    : `<br>Check: s + t + u = ${fmt(s + t + u)} ✓ &nbsp;·&nbsp; the full σ diverges: 1/t² as θ → 0 (Coulomb has infinite range)`;
+  $("formula").innerHTML = html;
+  drawAngular(c, showChan);
+  drawTotal(rs);
+}
+
+document.querySelectorAll(".choices button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    proc = btn.dataset.p;
+    document.querySelectorAll(".choices button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    update();
+  });
+});
+["th", "rs", "chan"].forEach((id) => $(id).addEventListener("input", update));
+window.addEventListener("resize", update);
+update();
+</script>
+</html>

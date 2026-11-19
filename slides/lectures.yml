@@ -7,7 +7,7 @@
 #   id:      lecture deck id (lectures/<id>/<id>.qmd); absent for non-lecture sessions
 #   title:   topic as planned, or the deck title once given
 #   reading: Thomson, Modern Particle Physics, unless stated
-#   status:  given | planned | tentative | buffer | skip
+#   status:  given | draft (deck exists, not yet given) | planned | tentative | buffer | skip
 #   topics:  optional; detailed content (fill in once the deck exists)
 #
 # Dates of Lectures 1–9 follow the Tuesday/Friday rhythm from 16 Oct and the
@@ -124,7 +124,7 @@ sessions:
     id: Lecture_11
     title: Trace technique, Feynman rules
     reading: Ch. 5–6
-    status: planned
+    status: draft  # deck drafted 2026-11-19, not yet linked from index.qmd
     topics:
       - "Feynman rules for QED: vertex −ieγ^μ, photon propagator, external spinors; M for e⁻μ⁻ → e⁻μ⁻ as current × propagator × current"
       - "Spin sums and trace technique: completeness relations, trace theorems, lepton tensor L^μν (landmark, reused in L12–L13)"

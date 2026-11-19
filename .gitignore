@@ -131,3 +131,12 @@
 !slides/lectures/Lecture_10/widgets/*.html
 !slides/lectures/Lecture_10/widgets/*-poster.png
 !slides/lectures/Lecture_10/scripts/*.py
+
+# Lecture 11: source, layout, course-generated figures, offline widget and figure script.
+!slides/lectures/Lecture_11/lecture.css
+!slides/lectures/Lecture_11/layout.html
+!slides/lectures/Lecture_11/README.md
+!slides/lectures/Lecture_11/figures/*.svg
+!slides/lectures/Lecture_11/widgets/*.html
+!slides/lectures/Lecture_11/widgets/*-poster.png
+!slides/lectures/Lecture_11/scripts/*.py
