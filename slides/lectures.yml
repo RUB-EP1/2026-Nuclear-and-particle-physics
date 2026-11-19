@@ -125,6 +125,13 @@ sessions:
     title: Trace technique, Feynman rules
     reading: Ch. 5–6
     status: planned
+    topics:
+      - "Feynman rules for QED: vertex −ieγ^μ, photon propagator, external spinors; M for e⁻μ⁻ → e⁻μ⁻ as current × propagator × current"
+      - "Spin sums and trace technique: completeness relations, trace theorems, lepton tensor L^μν (landmark, reused in L12–L13)"
+      - "Cross sections for standard processes: e⁻μ⁻ → e⁻μ⁻ in Mandelstam form, crossing to e⁺e⁻ → μ⁺μ⁻ (1 + cos²θ, 4πα²/3s)"
+      - "Helicity: h = Σ·p̂/2, helicity conservation at the QED vertex for m = 0, angular distributions; one-line pointer to γ⁵"
+      - "Bridge to L12: replace the point-like muon by a proton"
+      - "Deferred to the weak interaction: γ⁵ algebra, chiral projectors, chirality vs helicity, V−A, π → eν suppression"
 
   - date: 2026-11-24
     id: Lecture_12
