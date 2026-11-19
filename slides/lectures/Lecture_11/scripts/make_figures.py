@@ -383,11 +383,137 @@ def emu_angular():
     return svg(W, H, "".join(b))
 
 
+# ---------------------------------------------------------------- Rutherford
+
+def coulomb_path(b, x0=-7.0, xmax=7.0, rmax=9.0, dt=0.002):
+    """Repulsive Coulomb orbit (RK4). Units: head-on closest approach d = 1, speed 1, mass 1,
+    so E = 1/2 and the force is (1/2) r_hat / r^2. Returns the list of (x, y)."""
+    x, y, vx, vy = x0, b, 1.0, 0.0
+    pts = [(x, y)]
+    rmax = max(rmax, hypot(x0, b) + 0.5)
+
+    def acc(x, y):
+        r3 = (x * x + y * y) ** 1.5
+        return 0.5 * x / r3, 0.5 * y / r3
+
+    for _ in range(40000):
+        ax1, ay1 = acc(x, y)
+        vx2, vy2 = vx + 0.5 * dt * ax1, vy + 0.5 * dt * ay1
+        ax2, ay2 = acc(x + 0.5 * dt * vx, y + 0.5 * dt * vy)
+        vx3, vy3 = vx + 0.5 * dt * ax2, vy + 0.5 * dt * ay2
+        ax3, ay3 = acc(x + 0.5 * dt * vx2, y + 0.5 * dt * vy2)
+        vx4, vy4 = vx + dt * ax3, vy + dt * ay3
+        ax4, ay4 = acc(x + dt * vx3, y + dt * vy3)
+        x += dt / 6 * (vx + 2 * vx2 + 2 * vx3 + vx4)
+        y += dt / 6 * (vy + 2 * vy2 + 2 * vy3 + vy4)
+        vx += dt / 6 * (ax1 + 2 * ax2 + 2 * ax3 + ax4)
+        vy += dt / 6 * (ay1 + 2 * ay2 + 2 * ay3 + ay4)
+        pts.append((x, y))
+        if hypot(x, y) > rmax or x > xmax:
+            break
+    return pts
+
+
+def path_d(pts, X, Y, step=10):
+    sel = pts[::step] + [pts[-1]]
+    return "M" + " L".join(f"{X(a):.1f},{Y(c):.1f}" for a, c in sel)
+
+
+def clip_pts(pts, X, Y, x0, y0, x1, y1):
+    """Keep the orbit up to where it first leaves the pixel box (after having entered it)."""
+    out, inside = [], False
+    for a, c in pts:
+        ok = x0 <= X(a) <= x1 and y0 <= Y(c) <= y1
+        if ok:
+            inside = True
+        elif inside:
+            break
+        out.append((a, c))
+    return out
+
+
+def end_arrow(pts, X, Y, color):
+    (xa, ya), (xb, yb) = pts[-12], pts[-1]
+    return arrowhead(X(xb), Y(yb), atan2(Y(yb) - Y(ya), X(xb) - X(xa)), color, 20)
+
+
+def rutherford_models():
+    W, H = 1700, 660
+    b = []
+    for k, (title, sub) in enumerate((("Expected: Thomson atom", "positive charge spread over the whole atom"),
+                                       ("Observed: nuclear atom", "positive charge in a tiny nucleus"))):
+        ox = 40 + k * 850
+        cx, cy, R = ox + 400, 370, 210
+        b.append(text(cx, 50, title, 34, INK, "middle", 700))
+        b.append(text(cx, 92, sub, 26, MUTED, "middle"))
+        if k == 0:
+            b.append(f'<circle cx="{cx}" cy="{cy}" r="{R}" fill="#f8dfe3" stroke="{RED}" stroke-width="2"/>')
+            b.append(text(cx, cy - R + 50, "+   +   +   +", 30, RED, "middle", 700))
+            b.append(text(cx, cy + R - 30, "+   +   +   +", 30, RED, "middle", 700))
+        else:
+            b.append(f'<circle cx="{cx}" cy="{cy}" r="{R}" fill="none" stroke="{MUTED}" stroke-width="2" stroke-dasharray="8 8"/>')
+        for ex, ey in ((-120, -90), (90, -130), (140, 40), (-60, 110), (30, -40), (-150, 20), (70, 140)):
+            b.append(f'<circle cx="{cx + ex}" cy="{cy + ey}" r="9" fill="{BLUE}"/>')
+        if k == 0:
+            for i, yb in enumerate((-150, -75, 0, 75, 150)):
+                tilt = (0.035, -0.02, 0.03, -0.04, 0.025)[i]
+                b.append(arrow(ox + 10, cy + yb, ox + 790, cy + yb + 780 * tilt, ORANGE, 4, 20))
+            b.append(text(cx, H - 30, "every α deflected by ≲ 1°: many small kicks", 28, INK, "middle", 600))
+        else:
+            scale = 26.0
+            X = lambda u: cx + scale * u
+            Y = lambda v: cy - scale * v
+            for bb in (-5.8, -2.9, 0.12, 0.9, 2.9, 5.8):
+                pts = coulomb_path(abs(bb), x0=-15, xmax=15, rmax=16.5)
+                if bb < 0:
+                    pts = [(a, -c) for a, c in pts]
+                pts = clip_pts(pts, X, Y, ox + 10, 150, ox + 800, 590)
+                b.append(f'<path d="{path_d(pts, X, Y)}" fill="none" stroke="{ORANGE}" stroke-width="4"/>')
+                b.append(end_arrow(pts, X, Y, ORANGE))
+            b.append(f'<circle cx="{cx}" cy="{cy}" r="8" fill="{RED}"/>')
+            b.append(text(cx + 22, cy + 38, "nucleus", 24, RED, "start", 600))
+            b.append(text(cx, H - 30, "most pass straight; a few bounce back", 28, INK, "middle", 600))
+    b.append(text(W / 2, 130, "α beam from the left · not to scale", 22, MUTED, "middle"))
+    return svg(W, H, "".join(b))
+
+
+def rutherford_orbits():
+    W, H = 1100, 760
+    b = []
+    cx, cy, scale = 560, 490, 50.0
+    X = lambda u: cx + scale * u
+    Y = lambda v: cy - scale * v
+    b.append(line(60, cy, 1060, cy, LINE, 2, "8 8"))
+    for bb in (0.0, 0.25, 0.6, 1.2, 2.4, 4.5):
+        col = RED if bb == 0 else ORANGE
+        pts = coulomb_path(bb, x0=-8.4, xmax=8.4, rmax=9.2)
+        b.append(f'<path d="{path_d(pts, X, Y)}" fill="none" stroke="{col}" stroke-width="4"/>')
+        if bb > 0:
+            b.append(end_arrow(pts, X, Y, col))
+            xb, yb = pts[-1]
+            th = 2 * atan2(1, 2 * bb) * 180 / pi
+            ly = {0.25: Y(bb) + 10, 0.6: Y(bb) - 2}.get(bb, Y(bb) + 8)
+            b.append(text(X(-8.4) - 8, ly, f"b = {bb:g} d", 20, INK, "end"))
+            b.append(text(X(xb) + (12 if xb > 0 else -12), Y(yb) + 8, f"θ = {th:.0f}°", 24, INK,
+                          "start" if xb > 0 else "end", 600))
+    b.append(f'<circle cx="{X(0)}" cy="{Y(0)}" r="11" fill="{RED}"/>')
+    b.append(text(X(0), Y(0) + 44, "nucleus, charge Ze", 24, RED, "middle", 600))
+    b.append(arrow(X(-0.5), Y(0) - 28, X(-1.0), Y(0) - 28, INK, 2, 12))
+    b.append(arrow(X(-0.5), Y(0) - 28, X(0), Y(0) - 28, INK, 2, 12))
+    b.append(text(X(-0.5), Y(0) - 42, "d", 28, INK, "middle", 700, 'font-style="italic"'))
+    b.append(text(60, 610, "Head-on, the α stops at distance d and turns back:", 26, INK))
+    b.append(text(60, 648, "d = zZα ħc / E" + "<tspan baseline-shift='sub' font-size='70%'>kin</tspan>"
+                  + " ≈ 30 fm for gold at 7.7 MeV", 26, RED, "start", 600))
+    b.append(text(60, 704, "tan(θ/2) = d / (2b)", 30, INK, "start", 700))
+    return svg(W, H, "".join(b))
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
     figs = (("vertex-crossings", vertex_crossings), ("emu-tchannel", emu_t), ("ee-schannel", ee_s),
             ("crossing", crossing), ("ep-blob", ep_blob), ("helicity-vertex", helicity_vertex),
             ("helicity-ee", helicity_ee), ("ee-angular", ee_angular), ("emu-angular", emu_angular))
+    figs += (("rutherford-models", rutherford_models), ("rutherford-orbits", rutherford_orbits))
     for name, fn in figs:
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", OUT / f"{name}.svg")

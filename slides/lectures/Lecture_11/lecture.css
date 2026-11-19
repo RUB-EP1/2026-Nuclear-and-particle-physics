@@ -159,3 +159,5 @@
 .reveal .wide-figure figcaption{display:none}
 .reveal .eq-box.long{font-size:40px;padding:4px 22px}
 .reveal .bigmath math[display="block"]{font-size:1.3em}
+.reveal .compare-table.tight td,.reveal .compare-table.tight th{padding:8px 14px}
+.reveal .two-col.wide-left{grid-template-columns:1.55fr 1fr;gap:50px}

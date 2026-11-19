@@ -34,7 +34,7 @@ Mikhail Mikhasenko · KT1 · Winter semester 2026/27 · Thomson, Chapters 5–6
 ::::
 
 ::: {.notes}
-Blackboard lecture with companion slides; Thomson's conventions (metric (+,−,−,−), spinors normalized to 2E, Dirac–Pauli representation unless stated). Budget: recap 0–10 min; Feynman rules 10–35; spin sums and traces 35–60; cross sections 60–75; helicity 75–87; bridge and exit 87–90.
+Blackboard lecture with companion slides; Thomson's conventions (metric (+,−,−,−), spinors normalized to 2E, Dirac–Pauli representation unless stated). Budget: recap 0–8 min; Feynman rules 8–30; spin sums and traces 30–53; cross sections 53–67; helicity 67–79; Rutherford bridge and exit 79–90.
 :::
 
 ## Today in four questions
@@ -148,34 +148,36 @@ Lorentz-invariant matrix element. Rates and cross sections need $|\mathcal M|^2$
 
 :::: {.slide-body}
 
-Lecture 4, two-body scattering $1+2\to3+4$ in the centre-of-mass frame:
-
 ::: {.eq-box}
-$$\frac{d\sigma}{d\Omega^*}=\frac{1}{64\pi^2 s}\,\frac{p_f^*}{p_i^*}\,\langle|\mathcal M|^2\rangle$$
+$$d\sigma=\frac{1}{J}\,\langle|\mathcal M|^2\rangle\,d\Phi$$
 :::
 
-::::: {.two-col}
+Flux × dynamics × phase space (Lecture 4). Today: the dynamics, $\langle|\mathcal M|^2\rangle$.
+
+::::: {.two-col .wide-left}
 ::: {.rule}
-[Known]{.rule-head}
+[Lorentz invariant]{.rule-head}
 
-Flux, phase space, $2E$ normalization: all kinematics.
+$$J=4\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}$$
 
-For $E\gg m$: $p_f^*=p_i^*$.
+$$d\Phi=(2\pi)^4\delta^4(p_1+p_2-p_3-p_4)\,\frac{d^3p_3}{(2\pi)^32E_3}\,\frac{d^3p_4}{(2\pi)^32E_4}$$
 :::
 
 ::: {.rule}
-[Missing]{.rule-head}
+[CM frame, $2\to2$]{.rule-head}
 
-The **dynamics**: the number $\mathcal M$.
+$$J=4\,p_i^*\sqrt s$$
 
-Today: compute it for QED, from a diagram.
+$$d\Phi=\frac{p_f^*}{16\pi^2\sqrt s}\,d\Omega^*$$
 :::
 :::::
+
+$$\frac{d\sigma}{d\Omega^*}=\frac{1}{4p_i^*\sqrt s}\cdot\frac{p_f^*}{16\pi^2\sqrt s}\,\langle|\mathcal M|^2\rangle=\frac{1}{64\pi^2s}\,\frac{p_f^*}{p_i^*}\,\langle|\mathcal M|^2\rangle$$
 
 ::::
 
 ::: {.notes}
-Write the formula on the board and keep it there for the whole lecture; section 3 plugs into it. ⟨|M|²⟩ denotes the spin-averaged squared matrix element, defined in section 2.
+Write dσ = (1/J)⟨|M|²⟩dΦ on the board and keep it there for the whole lecture; section 3 plugs into it. Lecture 4 called the flux factor F. J, M and dΦ are each Lorentz invariant; only the evaluation of J and dΦ uses the CM frame. Elastic scattering at E ≫ m: p_f* = p_i*. ⟨|M|²⟩ is the spin-averaged squared matrix element, defined in section 2.
 :::
 
 ## 1 · Feynman rules for QED {.section-title}
@@ -1032,13 +1034,106 @@ Deliberately no γ⁵ algebra today. Sheet 6 problem 1(b) asks what the left-han
 
 :::: {.slide-body}
 
-From point-like targets to structure
+Back to Rutherford: from point-like targets to structure
 
 ::: {.subtle}
-Lecture 12 · Thomson Ch. 7
+Lecture 4 · Lecture 6 · Lecture 12 · Thomson Ch. 7
 :::
 
 ::::
+
+## Rutherford scattering: the experiment
+
+:::: {.slide-body}
+
+::::: {.two-col}
+::: {.rule}
+[What was measured]{.rule-head}
+
+Geiger and Marsden, Manchester, 1909–1913.
+
+$\alpha$ particles of a few MeV from a radioactive source hit a thin metal foil (gold, platinum).
+
+A zinc-sulfide screen flashes for each $\alpha$ (Lecture 6). Count flashes by eye, under a microscope, at each angle $\theta$:
+$$N(\theta)\propto\frac{d\sigma}{d\Omega}$$
+:::
+
+::: {.rule}
+[Expected vs observed]{.rule-head}
+
+**Expected** (Thomson atom): fields are weak everywhere. Each atom deflects by much less than $1^\circ$; many small kicks add up to $\sim1^\circ$. Large angles: essentially never.
+
+**Observed:** about **1 in 8000** $\alpha$ turned by more than $90^\circ$ (1909).
+
+Later (1913): $N(\theta)\propto1/\sin^4(\theta/2)$ from $5^\circ$ to $150^\circ$.
+:::
+:::::
+
+::: {.take-home}
+A large deflection needs a strong force: the positive charge must be concentrated in a tiny volume.
+:::
+
+::::
+
+::: {.notes}
+3 minutes. Most students met this in their first physics course; ask what they remember before showing the slide. The "many small kicks" picture is exactly the Gaussian core of multiple Coulomb scattering from Lecture 6; the Rutherford tail of that distribution is the single hard scattering. Lecture 4 has the closest-approach estimate.
+:::
+
+## Two pictures of the atom
+
+::: {.slide-refs}
+Original figure
+:::
+
+:::: {.slide-body}
+
+::: {.wide-figure style="--fig-h:560px"}
+![](figures/rutherford-models.svg){fig-alt="Left: Thomson atom with positive charge spread over the atom; alpha particles pass with tiny deflections. Right: nuclear atom with a tiny positive nucleus; most alpha particles pass straight, a few close ones are deflected strongly or bounce back"}
+:::
+
+::: {.take-home}
+Rutherford (1911): positive charge and almost all the mass sit in a **nucleus** at least $10^4$ times smaller than the atom. One hard collision, not many soft ones.
+:::
+
+::::
+
+::: {.notes}
+The electrons (blue) are too light to deflect an α noticeably: like a bowling ball hitting ping-pong balls.
+:::
+
+## One hard collision {.landmark}
+
+::: {.slide-refs}
+Original figure
+:::
+
+:::: {.slide-body}
+
+::::: {.picture-layout}
+::: {.picture-copy}
+Coulomb repulsion bends the $\alpha$ on a **hyperbola**; the heavy nucleus stays at rest.
+
+Small impact parameter $b$ → large angle $\theta$.
+
+$$\frac{d\sigma}{d\Omega}=\left(\frac{d}{4}\right)^2\frac{1}{\sin^4(\theta/2)}\propto\frac{1}{|\mathbf q|^4}$$
+
+$|\mathbf q|=2p\sin(\theta/2)$: momentum transfer.
+
+::: {.check}
+$1/|\mathbf q|^4$ is the photon propagator squared: the forward peak of $e^-\mu^-\to e^-\mu^-$.
+:::
+:::
+
+::: {.picture-visual}
+![Classical repulsive Coulomb orbits of alpha particles around a nucleus for impact parameters from 0.25 d to 4.5 d, with deflection angles from 127 degrees to 13 degrees; the head-on alpha stops at distance d and turns back](figures/rutherford-orbits.svg)
+:::
+:::::
+
+::::
+
+::: {.notes}
+Derivation on the board if time: particles with impact parameter below b are deflected by more than θ, so σ(>θ) = πb² with b = (d/2)cot(θ/2); differentiate with dΩ = 2π sinθ dθ. Large θ ⇔ small b ⇔ large |q|: back-scattering probes the shortest distances, down to d ≈ 30 fm for gold at 7.7 MeV. The gold nucleus (R ≈ 7 fm) is never touched, so Rutherford saw a point charge. Electrons of hundreds of MeV get closer: deviations from 1/q⁴ then measure the size (Lecture 12).
+:::
 
 ## Replace the muon tensor
 
@@ -1055,7 +1150,7 @@ Original figure
 $$\langle|\mathcal M|^2\rangle=\frac{e^4}{q^4}\,L_e^{\mu\nu}\;\underbrace{L^{\text{muon}}_{\mu\nu}}_{\text{known}}\quad\longrightarrow\quad\frac{e^4}{q^4}\,L_e^{\mu\nu}\;\underbrace{W_{\mu\nu}}_{\text{unknown}}$$
 
 ::: {.take-home}
-The electron side is exact QED. Everything we do not know about the proton is packed into a few **form factors** of $q^2$, measured by electron scattering.
+Rutherford is the point-like limit: the same $1/q^4$. Lecture 12 adds the electron's **spin** (Mott) and the target's **size** (form factors): deviations from $1/q^4$ measure structure.
 :::
 
 ::::
