@@ -124,7 +124,7 @@ sessions:
     id: Lecture_11
     title: Trace technique, Feynman rules
     reading: Ch. 5–6
-    status: draft  # deck drafted 2026-11-19, not yet linked from index.qmd
+    status: draft
     topics:
       - "Feynman rules for QED: vertex −ieγ^μ, photon propagator, external spinors; M for e⁻μ⁻ → e⁻μ⁻ as current × propagator × current"
       - "Spin sums and trace technique: completeness relations, trace theorems, lepton tensor L^μν (landmark, reused in L12–L13)"

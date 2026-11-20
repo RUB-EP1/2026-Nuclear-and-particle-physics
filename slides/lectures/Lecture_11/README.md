@@ -34,4 +34,4 @@ Open `http://localhost:8000/slides/lectures/Lecture_11/Lecture_11.html`. The wid
 
 ## Status
 
-Draft, not linked from the course index. `layout.html` must be force-added (`git add -f`) because `slides/.gitignore` ignores lecture HTML. Once pushed, the website workflow renders every `Lecture_*/Lecture_*.qmd`, so the deck becomes reachable by URL even before it gets a card in `index.qmd`.
+Linked from the course index (card in `index.qmd`). `layout.html` must be force-added (`git add -f`) because `slides/.gitignore` ignores lecture HTML.

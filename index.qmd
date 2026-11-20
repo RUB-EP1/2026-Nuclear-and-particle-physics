@@ -162,6 +162,19 @@ normalization, and two pictures of antiparticles, with an interactive spinor exp
 [Download PDF](slides/lectures/Lecture_10/Lecture_10.pdf){.chip download="Lecture_10.pdf"}
 :::
 
+::: {.course-card}
+[Lecture 11 · Feynman rules]{.card-tag}
+
+### Feynman rules and the trace technique
+
+QED Feynman rules, spin sums and traces leading to the lepton tensor,
+cross sections for e⁻μ⁻ → e⁻μ⁻ and e⁺e⁻ → μ⁺μ⁻, helicity at the QED vertex,
+and a bridge back to Rutherford scattering, with an interactive cross-section explorer.
+
+[Open slides](slides/lectures/Lecture_11/Lecture_11.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_11/Lecture_11.pdf){.chip download="Lecture_11.pdf"}
+:::
+
 
 ::::
 
