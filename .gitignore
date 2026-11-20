@@ -140,3 +140,9 @@
 !slides/lectures/Lecture_11/widgets/*.html
 !slides/lectures/Lecture_11/widgets/*-poster.png
 !slides/lectures/Lecture_11/scripts/*.py
+
+# Lecture 12: source, layout and course-generated figures (copied from Lecture 11).
+!slides/lectures/Lecture_12/lecture.css
+!slides/lectures/Lecture_12/layout.html
+!slides/lectures/Lecture_12/README.md
+!slides/lectures/Lecture_12/figures/*.svg

@@ -1,0 +1,148 @@
+<script>
+// Chrome's MathML does not stretch the \overline accent (a macron glyph), so the bar over
+// |M|^2 stays glyph-wide. Mark those accents; lecture.css draws the bar as a top border.
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("mover > mo").forEach((mo) => {
+    if (mo.textContent === "¯") mo.parentElement.classList.add("overbar");
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const footer = document.createElement("div");
+  footer.className = "deck-footer";
+  ["Mikhail Mikhasenko", document.title, "KT1 · RUB · 2026/27"].forEach((text) => {
+    const label = document.createElement("span");
+    label.textContent = text;
+    footer.appendChild(label);
+  });
+  // Reveal scales this canvas, including its footer, as one 16:9 unit.
+  const canvas = document.querySelector(".reveal .slides");
+  canvas.appendChild(footer);
+  const attachPageNumber = () => {
+    const number = document.querySelector(".reveal .slide-number");
+    if (number) canvas.appendChild(number);
+  };
+  attachPageNumber();
+  window.addEventListener("load", attachPageNumber);
+  if (window.Reveal) Reveal.on("ready", attachPageNumber);
+  document.querySelectorAll(".reveal .slides > section").forEach((s) => {
+    if (s.classList.contains("section-title") ||
+        s.classList.contains("title-card") ||
+        s.id === "title-slide" ||
+        s.querySelector(":scope > .slide-body")) return;
+    let n = s.firstElementChild;
+    while (n && (n.tagName === "H2" ||
+                 n.classList.contains("slide-refs") ||
+                 n.classList.contains("subtitle"))) {
+      n = n.nextElementSibling;
+    }
+    const rest = [];
+    while (n) { rest.push(n); n = n.nextElementSibling; }
+    if (!rest.length) return;
+    const body = document.createElement("div");
+    body.className = "slide-body";
+    rest.forEach((el) => body.appendChild(el));
+    s.appendChild(body);
+  });
+});
+</script>
+<script>
+// Photos that may not be redistributed (CERN audiovisual terms, or no confirmed open licence) are loaded from figures/local only.
+// That folder is git-ignored, so the public site shows a placeholder instead of a broken image.
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".local-photo").forEach((box) => {
+    const img = new Image();
+    img.alt = box.dataset.alt || "";
+    img.onload = () => box.appendChild(img);
+    img.onerror = () => { box.classList.add("missing"); box.textContent = "Photo shown in the lecture only (see credit)"; };
+    img.src = box.dataset.local;
+  });
+});
+</script>
+<script>
+if (new URLSearchParams(location.search).has("export")) {
+  document.documentElement.classList.add("export-pdf");
+  window.addEventListener("load", async () => {
+    if (window.Reveal) Reveal.configure({ minScale: 1, maxScale: 1 });
+    document.querySelectorAll("img[data-src]").forEach((img) => {
+      img.src = img.getAttribute("data-src");
+    });
+    try {
+      if (window.MathJax?.startup?.promise) await MathJax.startup.promise;
+      if (window.MathJax?.typesetPromise) await MathJax.typesetPromise();
+    } catch (e) {}
+    await Promise.all([...document.images].map((img) => {
+      if (img.complete) return Promise.resolve();
+      return new Promise((res) => { img.onload = img.onerror = res; });
+    }));
+    document.documentElement.classList.add("export-ready");
+  });
+}
+</script>
+
+<script>
+window.addEventListener('load', () => {
+  if (!window.Reveal) return;
+  let section = 'Recap';
+  // Backup slides are uncounted, so Reveal.getSlides() skips them; walk the DOM instead.
+  document.querySelectorAll('.reveal .slides > section').forEach(s => {
+    if (s.classList.contains('section-title')) section = s.querySelector('h2').textContent;
+    s.dataset.lectureSection = section;
+  });
+  const update = () => {
+    const label = document.querySelector('.deck-footer span:nth-child(2)');
+    if (label) label.textContent = Reveal.getCurrentSlide().dataset.lectureSection;
+  };
+  Reveal.on('slidechanged', update); update();
+});
+</script>
+
+<script>
+// Feynman slash: Pandoc turns \not p into <mi>p&#x338;</mi> and \not{\partial} into an accent,
+// and Chrome draws the combining stroke badly. Overlay a zero-width "/" on the letter instead.
+document.addEventListener("DOMContentLoaded", () => {
+  const NS = "http://www.w3.org/1998/Math/MathML";
+  const slashed = (base) => {
+    const row = document.createElementNS(NS, "mrow");
+    const pad = document.createElementNS(NS, "mpadded");
+    pad.setAttribute("width", "0");
+    pad.setAttribute("lspace", "0.08em");
+    const mo = document.createElementNS(NS, "mo");
+    mo.textContent = "/";
+    mo.setAttribute("lspace", "0");
+    mo.setAttribute("rspace", "0");
+    mo.setAttribute("stretchy", "false");
+    mo.style.fontSize = "1.1em";
+    pad.appendChild(mo);
+    row.append(pad, base);
+    row.classList.add("feynman-slash");
+    return row;
+  };
+  document.querySelectorAll("math mi").forEach((mi) => {
+    const t = mi.textContent;
+    if (t.length === 2 && t[1] === "̸") {
+      const b = document.createElementNS(NS, "mi");
+      b.textContent = t[0];
+      mi.replaceWith(slashed(b));
+    }
+  });
+  // The partial-derivative glyph comes out much smaller than the letters around it.
+  document.querySelectorAll("math mi").forEach((mi) => {
+    if (mi.textContent === "∂" || mi.textContent === "∇") mi.style.fontSize = "1.3em";
+  });
+  // pmatrix: Chrome cannot stretch "(" ")" without an OpenType MATH font, so the
+  // parentheses stay one line high. Draw them as curved CSS borders on the table.
+  document.querySelectorAll("math mtable").forEach((t) => {
+    const l = t.previousElementSibling, r = t.nextElementSibling;
+    if (l && r && l.textContent === "(" && r.textContent === ")") {
+      l.remove(); r.remove();
+      t.classList.add("paren-matrix");
+    }
+  });
+  document.querySelectorAll("math mover").forEach((mv) => {
+    const [b, acc] = mv.children;
+    if (acc && acc.textContent === "̸") mv.replaceWith(slashed(b));
+  });
+});
+</script>

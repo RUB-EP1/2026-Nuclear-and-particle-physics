@@ -1,18 +1,18 @@
 # Lecture 11: Feynman Rules and the Trace Technique
 
-KT1 2026/27, Friday 20 November 2026. Companion slides for a blackboard lecture following Thomson, *Modern Particle Physics*, Chapters 5–6 (metric (+,−,−,−), spinors normalized to 2E, vertex −ieQγ^μ). 54 slides: 48 numbered main slides and 6 unnumbered backup slides. Speaker notes (`S`) give timings and answers.
+KT1 2026/27, Friday 20 November 2026. Companion slides for a blackboard lecture following Thomson, *Modern Particle Physics*, Chapters 5–6 (metric (+,−,−,−), spinors normalized to 2E, vertex −ieQγ^μ). 40 slides: 35 numbered main slides and 5 unnumbered backup slides. Speaker notes (`S`) give timings and answers.
 
 Scope and the follow-on plan are recorded in `slides/lectures.yml`.
 
 ## Structure
 
 - Recap: Lecture 10 toolkit as reveal-one-by-one cards; dσ = ⟨|M|²⟩ dΦ / J from Lecture 4, with J and dΦ in invariant and CM-frame form.
-- 1 · Feynman rules for QED: propagator as Fourier transform of a potential, the vertex as charge × current, one vertex for four processes, the rules table, M for e⁻μ⁻ → e⁻μ⁻ (current × propagator × current) and e⁺e⁻ → μ⁺μ⁻, diagram-counting quiz, powers of α.
+- 1 · Feynman rules for QED: propagator as Fourier transform of a potential, the vertex as charge × current, one vertex for four processes, the rules table, M for e⁻μ⁻ → e⁻μ⁻ (current × propagator × current) and e⁺e⁻ → μ⁺μ⁻, powers of α.
 - 2 · Spin sums and traces: spin average, complex conjugate of a current, completeness relations (checked at rest), spin sum → trace, trace theorems, the lepton tensor (landmark), contracting two tensors, the six-step recipe.
 - 3 · Cross sections: Mandelstam variables, e⁻μ⁻ → e⁻μ⁻ at high energy, crossing s ↔ t, e⁺e⁻ → μ⁺μ⁻ (1 + cos²θ, 4πα²/3s), table of standard processes (Bhabha, Møller), cross-section explorer widget.
-- 4 · Helicity: helicity operator, the vector current does not mix handedness while the mass term does (chiral representation, no γ⁵ algebra), allowed/forbidden vertices, angular momentum explains (1 ± cos θ)², no backward eμ scattering → Mott factor next time; one-slide pointer to γ⁵ and the weak interaction.
-- Bridge to Lecture 12, grounded in Rutherford scattering: what Geiger and Marsden measured, Thomson-atom expectation vs observation, the single hard collision (hyperbolic orbits, 1/q⁴), then replace the muon tensor with an unknown hadronic tensor (form factors).
-- Summary, exit questions with answers in the notes, backup (time orderings → propagator, trace-theorem proofs including the only use of γ⁵, tensor contraction, massless helicity spinors, references).
+- Summary, exit questions with answers in the notes, backup (time orderings → propagator, trace-theorem proofs including the only use of γ⁵, tensor contraction, references).
+
+Not reached on 20 Nov and moved to Lecture 12: the diagram-counting quiz, the helicity section and the Rutherford bridge (with the helicity-spinor backup). Their figures stay generated here by `scripts/make_figures.py` and are copied to `Lecture_12/figures/`.
 
 Deliberately deferred to the weak-interaction lecture: γ⁵ algebra, chiral projectors, chirality vs helicity for m ≠ 0, V−A, π → eν suppression.
 

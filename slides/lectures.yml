@@ -124,20 +124,24 @@ sessions:
     id: Lecture_11
     title: Trace technique, Feynman rules
     reading: Ch. 5–6
-    status: draft
+    status: given
     topics:
       - "Feynman rules for QED: vertex −ieγ^μ, photon propagator, external spinors; M for e⁻μ⁻ → e⁻μ⁻ as current × propagator × current"
       - "Spin sums and trace technique: completeness relations, trace theorems, lepton tensor L^μν (landmark, reused in L12–L13)"
       - "Cross sections for standard processes: e⁻μ⁻ → e⁻μ⁻ in Mandelstam form, crossing to e⁺e⁻ → μ⁺μ⁻ (1 + cos²θ, 4πα²/3s)"
-      - "Helicity: h = Σ·p̂/2, helicity conservation at the QED vertex for m = 0, angular distributions; one-line pointer to γ⁵"
-      - "Bridge to L12: replace the point-like muon by a proton"
-      - "Deferred to the weak interaction: γ⁵ algebra, chiral projectors, chirality vs helicity, V−A, π → eν suppression"
+      - "Not reached, moved to L12: diagram-counting quiz, helicity section, Rutherford bridge"
 
   - date: 2026-11-24
     id: Lecture_12
     title: Elastic scattering, form factors
-    reading: Ch. 7
-    status: planned
+    reading: Ch. 6–7
+    status: draft  # opening sections moved from L11; elastic e⁻p section still to write
+    topics:
+      - "Recap: how many diagrams at lowest order? (moved from L11)"
+      - "Helicity: h = Σ·p̂/2, helicity conservation at the QED vertex for m = 0, angular distributions; one-line pointer to γ⁵ (moved from L11)"
+      - "Bridge: Rutherford scattering (measured vs expected), 1/q⁴ as the point-like limit, replace the muon tensor by W^μν (moved from L11)"
+      - "Elastic e⁻p scattering: Mott, Rosenbluth, form factors, proton radius (to draft)"
+      - "Deferred to the weak interaction: γ⁵ algebra, chiral projectors, chirality vs helicity, V−A, π → eν suppression"
 
   - date: 2026-11-27
     title: Mock exam

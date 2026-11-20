@@ -34,17 +34,16 @@ Mikhail Mikhasenko · KT1 · Winter semester 2026/27 · Thomson, Chapters 5–6
 ::::
 
 ::: {.notes}
-Blackboard lecture with companion slides; Thomson's conventions (metric (+,−,−,−), spinors normalized to 2E, Dirac–Pauli representation unless stated). Budget: recap 0–8 min; Feynman rules 8–30; spin sums and traces 30–53; cross sections 53–67; helicity 67–79; Rutherford bridge and exit 79–90.
+Blackboard lecture with companion slides; Thomson's conventions (metric (+,−,−,−), spinors normalized to 2E, Dirac–Pauli representation unless stated). Budget: recap 0–8 min; Feynman rules 8–30; spin sums and traces 30–53; cross sections 53–75; summary and exit 75–90. Helicity, the Rutherford bridge and the diagram-counting quiz moved to Lecture 12 (not reached on 20 Nov).
 :::
 
-## Today in four questions
+## Today in three questions
 
 :::: {.slide-body}
 
 1. **Rules:** how does a Feynman diagram turn into a number $\mathcal M$?
 2. **Algebra:** how do we sum $|\mathcal M|^2$ over spins without ever writing a spinor?
 3. **Cross sections:** what does QED predict for $e^-\mu^-\to e^-\mu^-$ and $e^+e^-\to\mu^+\mu^-$?
-4. **Helicity:** why do the angular distributions look the way they do?
 
 ::: {.take-home}
 One process carries us through the lecture: $e^-\mu^-\to e^-\mu^-$, scattering off a **point-like** target. Next lecture the target becomes a proton.
@@ -388,66 +387,6 @@ The $e^+$ line: arrow points **into** the past, so $\bar v(p_2)$ sits on the lef
 Follow the electron line backwards: arrow ends at the e⁺ external leg, so we start with v̄(p₂), then γ^μ, then u(p₁). For the muon line: ū(p₃) γ_μ v(p₄).
 :::
 
-## How many diagrams at lowest order? {.quiz-slide}
-
-:::: {.slide-body}
-
-::::: {.card-grid .three}
-::: {.qcard}
-[$e^+e^-\to\mu^+\mu^-$]{.sym}
-
-::: {.use .fragment}
-**One**: $s$-channel annihilation.
-:::
-:::
-
-::: {.qcard}
-[$e^-\mu^-\to e^-\mu^-$]{.sym}
-
-::: {.use .fragment}
-**One**: $t$-channel exchange. $e$ and $\mu$ are distinguishable.
-:::
-:::
-
-::: {.qcard .orange}
-[$e^-e^-\to e^-e^-$ (Møller)]{.sym}
-
-::: {.use .fragment}
-**Two**: $t$ and $u$. Identical fermions: relative minus sign.
-:::
-:::
-
-::: {.qcard .orange}
-[$e^+e^-\to e^+e^-$ (Bhabha)]{.sym}
-
-::: {.use .fragment}
-**Two**: $s$ (annihilation) and $t$ (scattering).
-:::
-:::
-
-::: {.qcard .green}
-[$e^+e^-\to\gamma\gamma$]{.sym}
-
-::: {.use .fragment}
-**Two**: an electron propagator in $t$ and in $u$.
-:::
-:::
-
-::: {.qcard .red}
-[$\gamma\gamma\to\gamma\gamma$]{.sym}
-
-::: {.use .fragment}
-**None** at tree level: photons carry no charge. First in a fermion loop, $\propto\alpha^2$ in $\mathcal M$.
-:::
-:::
-:::::
-
-::::
-
-::: {.notes}
-4 minutes. Ask students to draw them on paper first. Light-by-light scattering was observed by ATLAS and CMS in ultra-peripheral Pb–Pb collisions (2017–2019).
-:::
-
 ## Counting powers of α
 
 :::: {.slide-body}
@@ -496,7 +435,7 @@ $$\langle|\mathcal M|^2\rangle=\frac{1}{(2s_1+1)(2s_2+1)}\sum_{\text{spins}}|\ma
 
 Write explicit spinors, compute all $2^4=16$ amplitudes, add $|\mathcal M|^2$.
 
-Physical insight (section 4), lots of algebra.
+Physical insight (Lecture 12), lots of algebra.
 :::
 
 ::: {.rule}
@@ -773,7 +712,7 @@ Forward peak $\propto1/\theta^4$: **Rutherford** again, from $1/q^4$.
 ::::
 
 ::: {.notes}
-Insert the dot products: 8e⁴/t² [(s/2)² + (u/2)²] = 2e⁴(s² + u²)/t². With e⁴ = 16π²α² and 1/(64π²s): dσ/dΩ = α²(s² + u²)/(2st²). The total cross section diverges at θ → 0: the Coulomb field has infinite range. In practice a minimum angle (or screening) cuts it off. The dashed channels are explained in section 4.
+Insert the dot products: 8e⁴/t² [(s/2)² + (u/2)²] = 2e⁴(s² + u²)/t². With e⁴ = 16π²α² and 1/(64π²s): dσ/dΩ = α²(s² + u²)/(2st²). The total cross section diverges at θ → 0: the Coulomb field has infinite range. In practice a minimum angle (or screening) cuts it off. The dashed channels are explained with helicity in Lecture 12.
 :::
 
 ## Crossing: rotate the diagram
@@ -863,300 +802,7 @@ Bhabha = s-channel + t-channel; its interference term 2u²/(st). Møller follows
 ::::
 
 ::: {.notes}
-3 minutes. Start with e⁺e⁻ → μ⁺μ⁻: only the average, then switch on the channels: (1 ± cos θ)² add to 1 + cos²θ. Move √s: σ falls as 1/s. Switch to eμ: log scale, forward peak; the opposite-helicity channel vanishes backwards. Use it to lead into section 4.
-:::
-
-## 4 · Helicity {.section-title}
-
-:::: {.slide-body}
-
-Why the angular distributions look the way they do
-
-::: {.subtle}
-Thomson Ch. 4 and 6
-:::
-
-::::
-
-## Helicity: spin along the motion
-
-:::: {.slide-body}
-
-$$\hat h=\frac{\boldsymbol\Sigma\cdot\hat{\mathbf p}}{2},\qquad\boldsymbol\Sigma=\begin{pmatrix}\boldsymbol\sigma&0\\0&\boldsymbol\sigma\end{pmatrix},\qquad h=\pm\tfrac12$$
-
-::::: {.two-col}
-::: {.rule}
-[A good quantum number]{.rule-head}
-
-$[\hat H,\hat h]=0$ for a free particle in **any** direction. $\hat S_z$ commutes with $\hat H$ only for $\mathbf p\parallel z$.
-
-Label the two spin states by helicity: **R** ($h=+\tfrac12$), **L** ($h=-\tfrac12$).
-:::
-
-::: {.rule}
-[But frame dependent]{.rule-head}
-
-For $m>0$, overtake the particle: $\hat{\mathbf p}$ flips, the spin does not → R becomes L (Sheet 6).
-
-For $m=0$ (or $E\gg m$) nobody can overtake it: helicity is **fixed**.
-:::
-:::::
-
-::::
-
-::: {.notes}
-Sheet 6, class problem 1: the massless Dirac equation splits into σ·p ψ_{R,L} = ±E ψ_{R,L}. Helicity eigenstates for E ≫ m are in the backup.
-:::
-
-## The current does not mix the handedness
-
-:::: {.slide-body}
-
-Chiral representation (Lecture 10 backup): $\psi=\begin{pmatrix}\psi_L\\\psi_R\end{pmatrix}$, with $\sigma^\mu=(1,\boldsymbol\sigma)$, $\bar\sigma^\mu=(1,-\boldsymbol\sigma)$:
-
-::::: {.two-col .bigmath}
-::: {.rule}
-[Vector current: no mixing]{.rule-head}
-
-$$\bar\psi\gamma^\mu\psi=\psi_L^\dagger\,\bar\sigma^\mu\,\psi_L+\psi_R^\dagger\,\sigma^\mu\,\psi_R$$
-:::
-
-::: {.rule}
-[Mass term: mixes]{.rule-head}
-
-$$\bar\psi\psi=\psi_L^\dagger\psi_R+\psi_R^\dagger\psi_L$$
-:::
-:::::
-
-::: {.statement-box}
-For $E\gg m$, handedness = helicity, and the QED vertex **preserves** it.
-:::
-
-::::
-
-::: {.notes}
-In the chiral representation γ^0γ^0 = 1 and γ^0γ^k = diag(−σ_k, σ_k): block diagonal, so the current never connects L with R. γ^0 itself is off-diagonal, so the mass term does. The corrections are of order m/E. Subtlety: for antiparticles the helicity is opposite to the chiral label, so e⁻_R annihilates with e⁺_L.
-:::
-
-## Helicity at the vertex
-
-::: {.slide-refs}
-Original figure
-:::
-
-:::: {.slide-body}
-
-::: {.wide-figure style="--fig-h:560px"}
-![](figures/helicity-vertex.svg){fig-alt="Four QED vertices for massless fermions: an electron keeps its helicity in scattering (allowed), flipping it is forbidden; an e− R annihilates with an e+ L (allowed) but not with an e+ R (forbidden)"}
-:::
-
-::: {.take-home}
-Scattering: the fermion keeps its helicity. Annihilation: $e^-$ and $e^+$ have **opposite** helicities, so their spins **add** to $\pm1$ along the beam: the photon's spin.
-:::
-
-::::
-
-::: {.notes}
-Open arrows: spin; line arrows: fermion flow. Of the 16 helicity combinations in e⁺e⁻ → μ⁺μ⁻ only 4 survive: RL → RL, RL → LR, LR → RL, LR → LR.
-:::
-
-## Why 1 + cos²θ? {.landmark}
-
-::: {.slide-refs}
-Original figure
-:::
-
-:::: {.slide-body}
-
-::: {.wide-figure style="--fig-h:560px"}
-![](figures/helicity-ee.svg){fig-alt="Initial state e− R e+ L with total spin projection plus one along the beam; two final states with mu− R mu+ L and mu− L mu+ R, with angular momentum plus and minus one along the mu− direction, giving (1 plus cos theta) squared and (1 minus cos theta) squared"}
-:::
-
-$$\langle|\mathcal M|^2\rangle=\tfrac14\,e^4\big[2(1+\cos\theta)^2+2(1-\cos\theta)^2\big]=e^4\,(1+\cos^2\theta)\ ✓$$
-
-::::
-
-::: {.notes}
-The amplitude is the rotation matrix d¹_{λλ'}(θ) between J_z = +1 along the beam and J = ±1 along the outgoing μ⁻: (1 ± cos θ)/2. RL → LR vanishes at θ = 0 (would require J_z = +1 → −1 along the same axis). Exactly what the trace calculation gave, now with a picture.
-:::
-
-## And e⁻μ⁻ → e⁻μ⁻: no backward scattering
-
-:::: {.slide-body}
-
-::::: {.two-col .bigmath}
-::: {.rule}
-[Same helicities: RR, LL]{.rule-head}
-
-Spins **opposite** along the beam: $J_z=0$. Any angle allowed:
-$$|\mathcal M|^2=4e^4\,\frac{s^2}{t^2}$$
-:::
-
-::: {.rule}
-[Opposite: RL, LR]{.rule-head}
-
-Spins **add**: $J_z=\pm1$. Backward scattering would flip it:
-$$|\mathcal M|^2=4e^4\,\frac{u^2}{t^2}\propto(1+\cos\theta)^2\to0$$
-:::
-:::::
-
-$$\tfrac14\big[2\cdot4s^2+2\cdot4u^2\big]\frac{e^4}{t^2}=2e^4\,\frac{s^2+u^2}{t^2}\ ✓$$
-
-::: {.take-home}
-Lecture 12: a **spinless** target cannot absorb the spin flip, so backward scattering of a relativistic electron is suppressed: the **Mott** factor $\cos^2(\theta/2)$.
-:::
-
-::::
-
-::: {.notes}
-The dashed curves on the eμ plot. In CM, u = −s(1 + cos θ)/2, so u²/t² ∝ (1 + cos θ)²/(1 − cos θ)². Mott: the electron must keep its helicity, and at θ = π that requires a spin flip of ΔJ_z = 1 that a spin-0 target cannot provide.
-:::
-
-## Helicity today, chirality with the weak interaction
-
-:::: {.slide-body}
-
-::: {.statement-box}
-For $m=0$: helicity = chirality. The matrix that separates $\psi_L$ from $\psi_R$ is called $\gamma^5$.
-:::
-
-- QED (today): **vector** coupling $\gamma^\mu$ treats L and R the same.
-- Weak interaction (later): the $W$ couples **only** to $\psi_L$, through $\gamma^\mu(1-\gamma^5)$. Parity is violated.
-- Then: $\gamma^5$ algebra, chiral projectors, and why $\pi^+\to e^+\nu_e$ is $10^4$ times rarer than $\pi^+\to\mu^+\nu_\mu$.
-
-::::
-
-::: {.notes}
-Deliberately no γ⁵ algebra today. Sheet 6 problem 1(b) asks what the left-handedness of neutrinos says about mirror symmetry: this is the hook for the weak lecture.
-:::
-
-## Bridge: what if the muon is a proton? {.section-title}
-
-:::: {.slide-body}
-
-Back to Rutherford: from point-like targets to structure
-
-::: {.subtle}
-Lecture 4 · Lecture 6 · Lecture 12 · Thomson Ch. 7
-:::
-
-::::
-
-## Rutherford scattering: the experiment
-
-:::: {.slide-body}
-
-::::: {.two-col}
-::: {.rule}
-[What was measured]{.rule-head}
-
-Geiger and Marsden, Manchester, 1909–1913.
-
-$\alpha$ particles of a few MeV from a radioactive source hit a thin metal foil (gold, platinum).
-
-A zinc-sulfide screen flashes for each $\alpha$ (Lecture 6). Count flashes by eye, under a microscope, at each angle $\theta$:
-$$N(\theta)\propto\frac{d\sigma}{d\Omega}$$
-:::
-
-::: {.rule}
-[Expected vs observed]{.rule-head}
-
-**Expected** (Thomson atom): fields are weak everywhere. Each atom deflects by much less than $1^\circ$; many small kicks add up to $\sim1^\circ$. Large angles: essentially never.
-
-**Observed:** about **1 in 8000** $\alpha$ turned by more than $90^\circ$ (1909).
-
-Later (1913): $N(\theta)\propto1/\sin^4(\theta/2)$ from $5^\circ$ to $150^\circ$.
-:::
-:::::
-
-::: {.take-home}
-A large deflection needs a strong force: the positive charge must be concentrated in a tiny volume.
-:::
-
-::::
-
-::: {.notes}
-3 minutes. Most students met this in their first physics course; ask what they remember before showing the slide. The "many small kicks" picture is exactly the Gaussian core of multiple Coulomb scattering from Lecture 6; the Rutherford tail of that distribution is the single hard scattering. Lecture 4 has the closest-approach estimate.
-:::
-
-## Two pictures of the atom
-
-::: {.slide-refs}
-Original figure
-:::
-
-:::: {.slide-body}
-
-::: {.wide-figure style="--fig-h:560px"}
-![](figures/rutherford-models.svg){fig-alt="Left: Thomson atom with positive charge spread over the atom; alpha particles pass with tiny deflections. Right: nuclear atom with a tiny positive nucleus; most alpha particles pass straight, a few close ones are deflected strongly or bounce back"}
-:::
-
-::: {.take-home}
-Rutherford (1911): positive charge and almost all the mass sit in a **nucleus** at least $10^4$ times smaller than the atom. One hard collision, not many soft ones.
-:::
-
-::::
-
-::: {.notes}
-The electrons (blue) are too light to deflect an α noticeably: like a bowling ball hitting ping-pong balls.
-:::
-
-## One hard collision {.landmark}
-
-::: {.slide-refs}
-Original figure
-:::
-
-:::: {.slide-body}
-
-::::: {.picture-layout}
-::: {.picture-copy}
-Coulomb repulsion bends the $\alpha$ on a **hyperbola**; the heavy nucleus stays at rest.
-
-Small impact parameter $b$ → large angle $\theta$.
-
-$$\frac{d\sigma}{d\Omega}=\left(\frac{d}{4}\right)^2\frac{1}{\sin^4(\theta/2)}\propto\frac{1}{|\mathbf q|^4}$$
-
-$|\mathbf q|=2p\sin(\theta/2)$: momentum transfer.
-
-::: {.check}
-$1/|\mathbf q|^4$ is the photon propagator squared: the forward peak of $e^-\mu^-\to e^-\mu^-$.
-:::
-:::
-
-::: {.picture-visual}
-![Classical repulsive Coulomb orbits of alpha particles around a nucleus for impact parameters from 0.25 d to 4.5 d, with deflection angles from 127 degrees to 13 degrees; the head-on alpha stops at distance d and turns back](figures/rutherford-orbits.svg)
-:::
-:::::
-
-::::
-
-::: {.notes}
-Derivation on the board if time: particles with impact parameter below b are deflected by more than θ, so σ(>θ) = πb² with b = (d/2)cot(θ/2); differentiate with dΩ = 2π sinθ dθ. Large θ ⇔ small b ⇔ large |q|: back-scattering probes the shortest distances, down to d ≈ 30 fm for gold at 7.7 MeV. The gold nucleus (R ≈ 7 fm) is never touched, so Rutherford saw a point charge. Electrons of hundreds of MeV get closer: deviations from 1/q⁴ then measure the size (Lecture 12).
-:::
-
-## Replace the muon tensor
-
-::: {.slide-refs}
-Original figure
-:::
-
-:::: {.slide-body}
-
-::: {.wide-figure style="--fig-h:470px"}
-![](figures/ep-blob.svg){fig-alt="Left: electron–muon scattering via one photon with a point-like muon vertex. Right: electron–proton scattering, where the photon hits a blob representing the unknown proton structure"}
-:::
-
-$$\langle|\mathcal M|^2\rangle=\frac{e^4}{q^4}\,L_e^{\mu\nu}\;\underbrace{L^{\text{muon}}_{\mu\nu}}_{\text{known}}\quad\longrightarrow\quad\frac{e^4}{q^4}\,L_e^{\mu\nu}\;\underbrace{W_{\mu\nu}}_{\text{unknown}}$$
-
-::: {.take-home}
-Rutherford is the point-like limit: the same $1/q^4$. Lecture 12 adds the electron's **spin** (Mott) and the target's **size** (form factors): deviations from $1/q^4$ measure structure.
-:::
-
-::::
-
-::: {.notes}
-Resolution: a photon with |q| probes distances ~ 1/|q| (Lecture 3). Low Q² sees the charge radius; high Q² resolves quarks (Lecture 13, deep inelastic scattering, same L_e with a different W).
+3 minutes. Start with e⁺e⁻ → μ⁺μ⁻: only the average, then switch on the channels: (1 ± cos θ)² add to 1 + cos²θ. Move √s: σ falls as 1/s. Switch to eμ: log scale, forward peak; the opposite-helicity channel vanishes backwards. The helicity channels are explained in Lecture 12.
 :::
 
 ## Summary {.section-title}
@@ -1170,7 +816,6 @@ Resolution: a photon with |q| probes distances ~ 1/|q| (Lecture 3). Low Q² sees
 - Spin sums: $\sum u\bar u=\not p+m$, $\sum v\bar v=\not p-m$ turn $|\mathcal M|^2$ into **traces**; all trace theorems follow from $\{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu}$.
 - Lepton tensor $L^{\mu\nu}=2[k^\mu k'^\nu+k^\nu k'^\mu-(k\cdot k'-m^2)g^{\mu\nu}]$: reused for $e^-p$.
 - $e^+e^-\to\mu^+\mu^-$: $\dfrac{d\sigma}{d\Omega}=\dfrac{\alpha^2}{4s}(1+\cos^2\theta)$, $\;\sigma=\dfrac{4\pi\alpha^2}{3s}$. Crossing $s\leftrightarrow t$ gives $e^-\mu^-$.
-- At high energy QED conserves helicity; angular momentum explains $(1\pm\cos\theta)^2$.
 
 ::::
 
@@ -1182,13 +827,12 @@ Resolution: a photon with |q| probes distances ~ 1/|q| (Lecture 3). Low Q² sees
 2. Evaluate $\operatorname{Tr}(\gamma^\mu\gamma_\mu)$ and $\operatorname{Tr}(\not p\not p)$ for $p^2=m^2$.
 3. Why do the terms linear in $m$ drop out of $L^{\mu\nu}$?
 4. Estimate $\sigma(e^+e^-\to\mu^+\mu^-)$ at $\sqrt s=10.58$ GeV (Belle II).
-5. Why is $e^-_Re^+_R\to\gamma^*\to\mu^+\mu^-$ forbidden at high energy?
-6. Which feature of the diagram makes $e^-\mu^-\to e^-\mu^-$ peak in the forward direction?
+5. Which feature of the diagram makes $e^-\mu^-\to e^-\mu^-$ peak in the forward direction?
 
 ::::
 
 ::: {.notes}
-Answers: (1) v̄(p₂): following the electron arrow backwards, it ends on the incoming positron. (2) Tr(γ^μγ_μ) = Tr(4·1) = 16; Tr(p̸p̸) = 4p² = 4m². (3) They contain an odd number (three) of γ matrices. (4) 86.9 nb / 111.9 ≈ 0.78 nb. (5) The vector current couples e⁻_R only to e⁺_L; equivalently J_z = 0 cannot make a spin-1 photon along the beam with these helicities. (6) The photon propagator 1/t: t → 0 for θ → 0 (long-range Coulomb force).
+Answers: (1) v̄(p₂): following the electron arrow backwards, it ends on the incoming positron. (2) Tr(γ^μγ_μ) = Tr(4·1) = 16; Tr(p̸p̸) = 4p² = 4m². (3) They contain an odd number (three) of γ matrices. (4) 86.9 nb / 111.9 ≈ 0.78 nb. (5) The photon propagator 1/t: t → 0 for θ → 0 (long-range Coulomb force).
 :::
 
 ## Next time and reading
@@ -1197,7 +841,7 @@ Answers: (1) v̄(p₂): following the electron arrow backwards, it ends on the i
 
 **Reading:** Thomson, *Modern Particle Physics*, Chapters 5 and 6.
 
-**Next (Tue 24 Nov):** elastic electron–proton scattering. Rutherford → Mott → Rosenbluth, form factors and the size of the proton.
+**Next (Tue 24 Nov):** helicity at the QED vertex, back to Rutherford, then elastic electron–proton scattering: Mott, Rosenbluth, form factors and the size of the proton.
 
 ::: {.check}
 Try at home: use the trace theorems to show $\operatorname{Tr}\big[(\not p_2-m)\gamma^\mu(\not p_1+m)\gamma^\nu\big]=4\big[p_2^\mu p_1^\nu+p_2^\nu p_1^\mu-(p_1\cdot p_2+m^2)g^{\mu\nu}\big]$, the electron tensor for $e^+e^-$ annihilation.
@@ -1268,26 +912,6 @@ Use $k\cdot k'=a+m^2$ and $p\cdot p'=b+M^2$ to simplify $-2b\,k\cdot k'-2a\,p\cd
 :::
 
 ::::
-
-## Backup · Helicity spinors for E ≫ m {visibility="uncounted"}
-
-:::: {.slide-body}
-
-Dirac–Pauli representation, momentum along $(\theta,\phi)$, $c=\cos\frac\theta2$, $s=\sin\frac\theta2$:
-
-$$u_\uparrow=\sqrt E\begin{pmatrix}c\\e^{i\phi}s\\c\\e^{i\phi}s\end{pmatrix},\qquad u_\downarrow=\sqrt E\begin{pmatrix}-s\\e^{i\phi}c\\s\\-e^{i\phi}c\end{pmatrix}$$
-
-Upper pair: eigenvector of $\boldsymbol\sigma\cdot\hat{\mathbf p}$ with $\pm1$. Lower pair $=\pm$ upper pair, since $\boldsymbol\sigma\cdot\mathbf p/(E+m)\to\boldsymbol\sigma\cdot\hat{\mathbf p}$.
-
-::: {.check}
-Insert these into $\bar u_\uparrow(p_3)\gamma^\mu u_\downarrow(p_1)$: every component vanishes. This is helicity conservation, by brute force.
-:::
-
-::::
-
-::: {.notes}
-Thomson Ch. 4 and 6. With these one computes the four surviving helicity amplitudes for e⁺e⁻ → μ⁺μ⁻ (Thomson Ch. 6).
-:::
 
 ## Backup · References {.references visibility="uncounted"}
 
