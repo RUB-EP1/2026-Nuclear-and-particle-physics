@@ -176,16 +176,17 @@ and a bridge back to Rutherford scattering, with an interactive cross-section ex
 :::
 
 ::: {.course-card}
-[Lecture 13 · Form factors]{.card-tag}
+[Lecture 12 · Form factors]{.card-tag}
 
-### Form factors and the size of the proton
+### Helicity and the size of the proton
 
-Form factors as a diffraction picture: rings on a wall behind a disk, minima at
-fixed momentum transfer, the radius from the slope at Q² = 0, G_E and G_M, the
-Rosenbluth formula and the proton radius puzzle, with an interactive diffraction explorer.
+Helicity as spin along the motion, from Rutherford to Mott scattering, elastic
+electron–proton scattering, form factors and the charge radius, G_E and G_M,
+the Rosenbluth formula and the proton radius puzzle, with interactive helicity
+and proton-radius explorers.
 
-[Open slides](slides/lectures/Lecture_13/Lecture_13.qmd){.btn-main}
-[Download PDF](slides/lectures/Lecture_13/Lecture_13.pdf){.chip download="Lecture_13.pdf"}
+[Open slides](slides/lectures/Lecture_12/Lecture_12.qmd){.btn-main}
+[Download PDF](slides/lectures/Lecture_12/Lecture_12.pdf){.chip download="Lecture_12.pdf"}
 :::
 
 
@@ -261,17 +262,6 @@ Thomson problems **4.3, 4.5, 4.7, 4.8, and 4.9**.
 Class work: left- and right-handed spinors, $g=2$, and the proton size from Jefferson Lab data.
 
 [Download sheet 6 (PDF)](exercises/Sheet_6/Sheet_6.pdf){.btn-main}
-:::
-
-::: {.course-card}
-[Sheet 7 · Dec 1 → Dec 8]{.card-tag}
-
-### Exercise 7
-
-Thomson problems **5.3, 6.11, 7.4, 7.8, and 8.8**.
-Class work: which cross-section formula do I need, and beyond the elastic peak.
-
-[Download sheet 7 (PDF)](exercises/Sheet_7/Sheet_7.pdf){.btn-main}
 :::
 ::::
 
