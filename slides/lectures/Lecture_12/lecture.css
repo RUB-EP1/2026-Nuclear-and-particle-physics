@@ -161,3 +161,7 @@
 .reveal .bigmath math[display="block"]{font-size:1.3em}
 .reveal .compare-table.tight td,.reveal .compare-table.tight th{padding:8px 14px}
 .reveal .two-col.wide-left{grid-template-columns:1.55fr 1fr;gap:50px}
+
+/* Lecture 12: formula above a plot (Rosenbluth). */
+.reveal .short-visual .picture-visual img{height:500px}
+.reveal .short-visual>math[display="block"]{margin:0 0 .2em}

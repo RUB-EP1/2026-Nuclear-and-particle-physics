@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spin and helicity explorer</title>
+<style>
+:root{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#12202d;background:#fff;font-size:20px;--blue:#007dc5;--orange:#c86418;--red:#bd3249;--muted:#5e6e7b}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;padding:26px 34px;display:flex;flex-direction:column}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:25px;border-bottom:2px solid #dde5eb;padding-bottom:12px}
+h1{font-size:34px;margin:0;letter-spacing:-.025em}
+header p{color:var(--muted);margin:0;font-size:18px}
+.layout{flex:1;min-height:0;display:grid;grid-template-columns:300px minmax(0,1fr) minmax(0,1.05fr);gap:30px;margin-top:20px}
+aside{border-right:1px solid #dde5eb;padding-right:24px}
+label{display:block;font-size:18px;font-weight:600;margin:0 0 16px}
+label output{float:right;color:var(--blue);font-variant-numeric:tabular-nums}
+input[type=range]{display:block;width:100%;accent-color:var(--blue);margin-top:8px}
+.chi{display:grid;grid-template-columns:auto 1fr;gap:8px 10px;align-items:center;font-size:18px;font-weight:600;margin:4px 0 6px}
+.chi input{font:inherit;font-weight:400;width:100%;padding:5px 8px;border:1px solid #b8c7d2;border-radius:5px}
+.warn{color:var(--red);font-size:16px;min-height:1.3em;margin:2px 0 8px;font-weight:600}
+.group{font-size:16px;color:var(--muted);margin:10px 0 4px;font-weight:600}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 8px}
+.choices button{font:inherit;font-size:18px;border:1px solid #b8c7d2;background:#fff;border-radius:5px;padding:8px 6px;cursor:pointer;color:inherit}
+.choices button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.choices button.h.on,.basis button.on.hb{background:var(--orange);border-color:var(--orange)}
+.hint{color:var(--muted);font-size:16px;line-height:1.4;margin:10px 0}
+.formula{display:flex;flex-direction:column;justify-content:center;gap:26px;border-right:1px solid #dde5eb;padding-right:26px}
+.ftitle{font-size:22px;font-weight:700;color:var(--blue)}
+.ftitle.h{color:var(--orange)}
+.row{display:flex;align-items:center;gap:16px;font-size:26px}
+.row>span{white-space:nowrap}
+.col{display:inline-grid;grid-auto-rows:1fr;align-items:center;gap:10px;padding:8px 14px;border-left:2px solid #12202d;border-right:2px solid #12202d;border-radius:12px/50px;text-align:center;font-variant-numeric:tabular-nums}
+.col span{white-space:nowrap}
+.num{color:var(--blue)}
+.lower{color:var(--muted)}
+.defs{font-size:19px;line-height:1.6;color:#3e4b57}
+.defs b{font-weight:600;color:#12202d}
+.sk{min-height:0;display:flex}
+canvas{width:100%;height:100%;display:block}
+footer{margin-top:10px;font-size:15px;color:var(--muted);border-top:1px solid #dde5eb;padding-top:10px}
+button:focus-visible,input:focus-visible{outline:3px solid #007dc5;outline-offset:3px}
+@media(min-width:1700px){:root{font-size:24px}body{padding:30px 46px}h1{font-size:42px}header p{font-size:22px}.layout{grid-template-columns:360px minmax(0,1fr) minmax(0,1.05fr);gap:40px}label,.chi{font-size:22px}.choices button{font-size:22px;padding:10px 6px}.group,.hint,.warn{font-size:19px}.ftitle{font-size:28px}.row{font-size:31px}.defs{font-size:23px}footer{font-size:18px}}
+@media(max-width:850px){html,body{height:auto}body{padding:16px}.layout{grid-template-columns:1fr}aside,.formula{border:0}.sk{height:420px}}
+</style>
+<header><h1>Spin and helicity explorer</h1><p>particles (u spinors) · Dirac–Pauli representation · u†u = 2E · units of m</p></header>
+<div class="layout">
+<aside>
+  <label>Lorentz factor γ <output id="gOut"></output><input id="g" type="range" min="0" max="2" step="0.005" value="0.301" aria-label="Lorentz factor, logarithmic from 1 to 100"></label>
+  <label>Polar angle θ of p (from z) <output id="tOut"></output><input id="t" type="range" min="0" max="180" step="1" value="60" aria-label="Polar angle of the momentum in degrees"></label>
+  <label>Azimuth φ of p (around z) <output id="fOut"></output><input id="f" type="range" min="0" max="360" step="1" value="90" aria-label="Azimuthal angle of the momentum in degrees"></label>
+  <div class="group">Basis for the spin state</div>
+  <div class="choices basis"><button data-b="c">canonical</button><button data-b="h" class="hb">helicity</button></div>
+  <div class="chi"><span id="l1">χ₁</span><input id="c1" value="1" aria-label="first coefficient"><span id="l2">χ₂</span><input id="c2" value="0" aria-label="second coefficient"></div>
+  <div class="warn" id="warn"></div>
+  <div class="group">Basis states</div>
+  <div class="choices"><button data-m="c+">S<sub>z</sub> = +½</button><button data-m="c-">S<sub>z</sub> = −½</button><button class="h" data-m="h+">h = +½</button><button class="h" data-m="h-">h = −½</button></div>
+  <p class="hint" id="hint"></p>
+</aside>
+<section class="formula" aria-live="polite">
+  <div class="ftitle" id="ftitle"></div>
+  <div class="row" id="formula"></div>
+  <div class="defs" id="defs"></div>
+</section>
+<div class="sk"><canvas id="cv" role="img" aria-label="Coordinate system with z and x horizontal and y vertical, the momentum vector and the spin expectation value"></canvas></div>
+</div>
+<footer>p = |p|(sinθ cosφ, sinθ sinφ, cosθ), u = √(E+m) (χ, σ·p χ/(E+m)). Orange arrow: ⟨½σ⟩ in χ, the spin in the rest frame; the dot is its projection on p̂, the helicity. Coefficients can be complex: 0.6+0.8i, 1/sqrt(2).</footer>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const BLUE = "#007dc5", ORANGE = "#c86418", INK = "#12202d", MUTED = "#5e6e7b", GRID = "#d5dee6";
+
+// ---- complex numbers
+const C = (re, im = 0) => ({ re, im });
+const add = (a, b) => C(a.re + b.re, a.im + b.im), sub = (a, b) => C(a.re - b.re, a.im - b.im);
+const mul = (a, b) => C(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re);
+const div = (a, b) => { const d = b.re * b.re + b.im * b.im; return C((a.re * b.re + a.im * b.im) / d, (a.im * b.re - a.re * b.im) / d); };
+const conj = (a) => C(a.re, -a.im), abs2 = (a) => a.re * a.re + a.im * a.im, sc = (k, a) => C(k * a.re, k * a.im);
+const expi = (x) => C(Math.cos(x), Math.sin(x));
+function fc(z, d = 3) {
+  const r = Math.abs(z.re) < 5e-4 ? 0 : z.re, i = Math.abs(z.im) < 5e-4 ? 0 : z.im;
+  const f = (x) => x.toFixed(d).replace("-", "−");
+  if (i === 0) return f(r);
+  if (r === 0) return (i < 0 ? "−" : "") + Math.abs(i).toFixed(d) + "i";
+  return f(r) + (i < 0 ? " − " : " + ") + Math.abs(i).toFixed(d) + "i";
+}
+const fin = (z) => fc(z, 4).replace("−", "-").replace(/ /g, "").replace(/(\.\d*?)0+(?=i|$|[+-])/g, "$1").replace(/\.(?=i|$|[+-])/g, "");
+
+// ---- tiny complex expression parser: numbers, i, + - * / ^, sqrt(), parentheses
+function parse(src) {
+  const s = src.replace(/\s+/g, "").replace(/√/g, "sqrt").replace(/−/g, "-"); let k = 0;
+  const peek = () => s[k];
+  function expr() { let v = term(); while (peek() === "+" || peek() === "-") { const o = s[k++]; const w = term(); v = o === "+" ? add(v, w) : sub(v, w); } return v; }
+  function term() { let v = unary(); for (;;) { if (peek() === "*" || peek() === "/") { const o = s[k++]; const w = unary(); v = o === "*" ? mul(v, w) : div(v, w); } else if (peek() && /[0-9.i(s]/.test(peek())) { v = mul(v, unary()); } else return v; } }
+  function unary() { if (peek() === "-") { k++; return sc(-1, unary()); } if (peek() === "+") { k++; return unary(); } return power(); }
+  function power() { const b = atom(); if (peek() === "^") { k++; const e = unary(); if (e.im !== 0 || b.im !== 0) throw 0; return C(Math.pow(b.re, e.re)); } return b; }
+  function atom() {
+    if (peek() === "(") { k++; const v = expr(); if (s[k++] !== ")") throw 0; return v; }
+    if (s.startsWith("sqrt", k)) { k += 4; const v = atom(); if (v.im !== 0 || v.re < 0) throw 0; return C(Math.sqrt(v.re)); }
+    if (peek() === "i") { k++; return C(0, 1); }
+    const m = /^[0-9]*\.?[0-9]+(e-?[0-9]+)?/.exec(s.slice(k)); if (!m) throw 0; k += m[0].length; return C(+m[0]);
+  }
+  if (!s) throw 0;
+  const v = expr(); if (k !== s.length) throw 0; return v;
+}
+
+let basis = "c";
+const angles = () => [+$("t").value * Math.PI / 180, +$("f").value * Math.PI / 180];
+function helStates(th, ph) {
+  const c = Math.cos(th / 2), s = Math.sin(th / 2);
+  return [[C(c), sc(s, expi(ph))], [C(-s), sc(c, expi(ph))]];
+}
+function readCoef() { return [parse($("c1").value), parse($("c2").value)]; }
+// canonical chi from the current inputs
+function chiOf(a, b) {
+  if (basis === "c") return [a, b];
+  const [hp, hm] = helStates(...angles());
+  return [add(mul(a, hp[0]), mul(b, hm[0])), add(mul(a, hp[1]), mul(b, hm[1]))];
+}
+function setBasis(nb) {
+  if (nb === basis) return;
+  let a, b; try { [a, b] = readCoef(); } catch (e) { a = C(1); b = C(0); }
+  const chi = chiOf(a, b);
+  basis = nb;
+  if (nb === "c") { a = chi[0]; b = chi[1]; }
+  else { const [hp, hm] = helStates(...angles()); a = add(mul(conj(hp[0]), chi[0]), mul(conj(hp[1]), chi[1])); b = add(mul(conj(hm[0]), chi[0]), mul(conj(hm[1]), chi[1])); }
+  $("c1").value = fin(a); $("c2").value = fin(b);
+}
+
+const col = (items) => `<span class="col">${items.map((x) => `<span>${x}</span>`).join("")}</span>`;
+const frac = (a, b) => `<span class="frac"><span>${a}</span><span>${b}</span></span>`;
+
+function draw() {
+  const gam = Math.pow(10, +$("g").value), [th, ph] = angles();
+  $("gOut").textContent = gam < 10 ? gam.toFixed(2) : gam.toFixed(1);
+  $("tOut").textContent = $("t").value + "°"; $("fOut").textContent = $("f").value + "°";
+  $("l1").innerHTML = basis === "c" ? "χ₁" : "a<sub>+</sub>"; $("l2").innerHTML = basis === "c" ? "χ₂" : "a<sub>−</sub>";
+  document.querySelectorAll(".basis button").forEach((b) => b.classList.toggle("on", b.dataset.b === basis));
+  const E = gam, P = Math.sqrt(Math.max(gam * gam - 1, 0)), K = P / (E + 1);
+  const n = [Math.sin(th) * Math.cos(ph), Math.sin(th) * Math.sin(ph), Math.cos(th)];
+  let a, b;
+  try { [a, b] = readCoef(); } catch (e) { $("warn").textContent = "Cannot read the input: use numbers, i, sqrt( ), + − * /"; return; }
+  const nn = abs2(a) + abs2(b);
+  $("warn").textContent = nn < 1e-12 ? "Zero is not a state." : Math.abs(nn - 1) > 2e-3 ? `Not normalised: |${basis === "c" ? "χ₁" : "a+"}|² + |${basis === "c" ? "χ₂" : "a−"}|² = ${nn.toFixed(3)}` : "";
+  const isState = (x, y) => abs2(sub(a, x)) + abs2(sub(b, y)) < 1e-6;
+  document.querySelectorAll(".choices button[data-m]").forEach((btn) => {
+    const m = btn.dataset.m, on = m[0] === basis && isState(m[1] === "+" ? C(1) : C(0), m[1] === "+" ? C(0) : C(1));
+    btn.classList.toggle("on", on);
+  });
+  if (nn < 1e-12) return;
+  const chi = chiOf(a, b);
+  // u = sqrt(E+m) (chi, sigma.p chi/(E+m)); identical to the helicity form
+  const N = Math.sqrt(E + 1), pp = C(n[0] * P, n[1] * P), pm = C(n[0] * P, -n[1] * P), pz = n[2] * P;
+  const l1 = sc(1 / (E + 1), add(sc(pz, chi[0]), mul(pm, chi[1])));
+  const l2 = sc(1 / (E + 1), sub(mul(pp, chi[0]), sc(pz, chi[1])));
+  const u = [chi[0], chi[1], l1, l2].map((z) => sc(N, z));
+  const num = `<span>=</span>` + col(u.map((z, i) => `<span class="${i < 2 ? "num" : "lower"}">${fc(z, 3)}</span>`));
+  const pre = `<span>u = √(E+m)</span>`;
+  if (basis === "c") {
+    $("ftitle").className = "ftitle"; $("ftitle").textContent = "Canonical basis: spin along z";
+    $("formula").innerHTML = pre + col(["χ₁", "χ₂", "k (cosθ χ₁ + e<sup>−iφ</sup>sinθ χ₂)", "k (e<sup>iφ</sup>sinθ χ₁ − cosθ χ₂)"]) + num;
+    $("defs").innerHTML = `<b>k</b> = |p|/(E + m) = ${K.toFixed(3)} &nbsp;·&nbsp; lower part = σ·p χ/(E + m)<br>basis: (1, 0) = S<sub>z</sub> +½, &nbsp;(0, 1) = S<sub>z</sub> −½, fixed in space`;
+  } else {
+    $("ftitle").className = "ftitle h"; $("ftitle").textContent = "Helicity basis: spin along p̂";
+    $("formula").innerHTML = pre + col(["a<sub>+</sub>c − a<sub>−</sub>s", "e<sup>iφ</sup>(a<sub>+</sub>s + a<sub>−</sub>c)", "k (a<sub>+</sub>c + a<sub>−</sub>s)", "k e<sup>iφ</sup>(a<sub>+</sub>s − a<sub>−</sub>c)"]) + num;
+    $("defs").innerHTML = `<b>k</b> = |p|/(E + m) = ${K.toFixed(3)} &nbsp;·&nbsp; <b>c</b> = cos θ/2, <b>s</b> = sin θ/2<br>basis: χ<sub>+</sub> = (c, e<sup>iφ</sup>s), χ<sub>−</sub> = (−s, e<sup>iφ</sup>c), σ·p̂ χ<sub>±</sub> = ±χ<sub>±</sub>: they follow p̂`;
+  }
+  // spin expectation in chi (normalised)
+  const c12 = mul(conj(chi[0]), chi[1]);
+  const s = [2 * c12.re, 2 * c12.im, abs2(chi[0]) - abs2(chi[1])].map((x) => x / nn);
+  const hel = 0.5 * (s[0] * n[0] + s[1] * n[1] + s[2] * n[2]);
+  const hint = basis === "c"
+    ? "Canonical basis: the coefficients refer to spin up and down along z. Move θ: the spin stays put, the helicity changes."
+    : "Helicity basis: the coefficients refer to spin along and against p̂. Move θ and φ: the spin follows the momentum.";
+  $("hint").textContent = hint + (gam > 20 ? " γ ≫ 1: lower components as large as the upper ones." : gam < 1.02 ? " At rest p̂ is undefined: only the canonical basis is meaningful." : "");
+  sketch(n, s, hel, K);
+}
+
+// orthographic view: y up, z and x horizontal; viewer at (−0.89, 0.35, 0.3) (right-handed frame)
+const VIEW = (() => {
+  let o = [-0.89, 0.35, 0.3]; const no = Math.hypot(...o); o = o.map((x) => x / no);
+  let u = [-o[1] * o[0], 1 - o[1] * o[1], -o[1] * o[2]]; const nu = Math.hypot(...u); u = u.map((x) => x / nu);
+  const r = [u[1] * o[2] - u[2] * o[1], u[2] * o[0] - u[0] * o[2], u[0] * o[1] - u[1] * o[0]];
+  return { r, u };
+})();
+function sketch(n, s, hel, K) {
+  const cv = $("cv"), dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+  cv.width = w * dpr; cv.height = h * dpr;
+  const c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, w, h);
+  const R = Math.min(w * 0.4, h * 0.36), ox = w * 0.42, oy = h * 0.58, fs = Math.max(15, Math.round(h / 22));
+  const dot3 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const proj = (v) => [ox + R * dot3(v, VIEW.r), oy - R * dot3(v, VIEW.u)];
+  c.font = `${fs}px Helvetica Neue,Arial`; c.lineCap = "round"; c.lineJoin = "round";
+  // horizontal z–x plane
+  const sq = [[-1.1, 0, -1.1], [1.1, 0, -1.1], [1.1, 0, 1.1], [-1.1, 0, 1.1]].map(proj);
+  c.fillStyle = "rgba(0,125,197,0.05)"; c.strokeStyle = GRID; c.lineWidth = 1.5;
+  c.beginPath(); sq.forEach((p, i) => (i ? c.lineTo(...p) : c.moveTo(...p))); c.closePath(); c.fill(); c.stroke();
+  const O = proj([0, 0, 0]);
+  for (const [v, lab] of [[[1.3, 0, 0], "x"], [[0, 1.3, 0], "y"], [[0, 0, 1.4], "z"]]) {
+    const q = proj(v); c.strokeStyle = MUTED; c.lineWidth = 2;
+    c.beginPath(); c.moveTo(...O); c.lineTo(...q); c.stroke(); head(c, O, q, 12, MUTED);
+    c.fillStyle = MUTED; c.font = `italic ${fs * 1.1}px Helvetica Neue,Arial`; c.fillText(lab, lab === "x" ? q[0] - fs * 1.1 : q[0] + 8, q[1] - 6);
+  }
+  // momentum: bold arrow, with its foot in the z–x plane
+  const pe = proj(n), foot = proj([n[0], 0, n[2]]);
+  c.setLineDash([6, 6]); c.strokeStyle = "#9fb3c3"; c.lineWidth = 2; c.beginPath(); c.moveTo(...O); c.lineTo(...foot); c.lineTo(...pe); c.stroke(); c.setLineDash([]);
+  c.strokeStyle = BLUE; c.lineWidth = 9; c.beginPath(); c.moveTo(...O); c.lineTo(pe[0] - (pe[0] - O[0]) * 0.08, pe[1] - (pe[1] - O[1]) * 0.08); c.stroke(); head(c, O, pe, 28, BLUE);
+  c.fillStyle = BLUE; c.font = `bold ${fs * 1.3}px Helvetica Neue,Arial`; c.fillText("p", pe[0] + 16, pe[1] + 6);
+  // spin: hollow block arrow
+  const L = 0.72, se = proj(s.map((x) => x * L));
+  hollow(c, O, se, Math.max(10, R * 0.075), ORANGE);
+  c.fillStyle = ORANGE; c.font = `bold ${fs}px Helvetica Neue,Arial`; c.fillText("⟨½σ⟩", se[0] + 14, se[1] + 20);
+  // projection of the spin onto p: the helicity
+  const sp = 2 * hel, q = proj(n.map((x) => x * sp * L));
+  c.setLineDash([4, 6]); c.strokeStyle = ORANGE; c.lineWidth = 2; c.beginPath(); c.moveTo(...se); c.lineTo(...q); c.stroke(); c.setLineDash([]);
+  c.fillStyle = ORANGE; c.beginPath(); c.arc(...q, 7, 0, 2 * Math.PI); c.fill();
+  c.font = `bold ${fs * 1.2}px Helvetica Neue,Arial`; c.fillText(`helicity ⟨h⟩ = ${hel >= 0 ? "+" : "−"}${Math.abs(hel).toFixed(2)}`, 10, fs * 1.6);
+}
+function head(c, a, b, size, col) {
+  const ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
+  c.fillStyle = col; c.beginPath(); c.moveTo(...b);
+  c.lineTo(b[0] - size * Math.cos(ang) + size * 0.5 * Math.sin(ang), b[1] - size * Math.sin(ang) - size * 0.5 * Math.cos(ang));
+  c.lineTo(b[0] - size * Math.cos(ang) - size * 0.5 * Math.sin(ang), b[1] - size * Math.sin(ang) + size * 0.5 * Math.cos(ang));
+  c.closePath(); c.fill();
+}
+function hollow(c, a, b, wd, col) {
+  const dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy);
+  if (L < 4) { c.strokeStyle = col; c.lineWidth = 3; c.beginPath(); c.arc(...a, wd, 0, 2 * Math.PI); c.stroke(); return; }
+  const ux = dx / L, uy = dy / L, nx = -uy, ny = ux, hl = Math.min(L * 0.45, wd * 2.6), hw = wd * 1.9;
+  const pts = [[0, wd / 2], [L - hl, wd / 2], [L - hl, hw], [L, 0], [L - hl, -hw], [L - hl, -wd / 2], [0, -wd / 2]]
+    .map(([s, t]) => [a[0] + ux * s + nx * t, a[1] + uy * s + ny * t]);
+  c.beginPath(); pts.forEach((p, i) => (i ? c.lineTo(...p) : c.moveTo(...p))); c.closePath();
+  c.fillStyle = "rgba(200,100,24,0.12)"; c.fill(); c.strokeStyle = col; c.lineWidth = 3.5; c.stroke();
+}
+
+document.querySelectorAll(".basis button").forEach((b) => b.addEventListener("click", () => { setBasis(b.dataset.b); draw(); }));
+document.querySelectorAll(".choices button[data-m]").forEach((b) => b.addEventListener("click", () => {
+  const m = b.dataset.m; basis = m[0];
+  $("c1").value = m[1] === "+" ? "1" : "0"; $("c2").value = m[1] === "+" ? "0" : "1"; draw();
+}));
+["g", "t", "f", "c1", "c2"].forEach((id) => $(id).addEventListener("input", draw));
+window.addEventListener("resize", draw);
+draw();
+</script>

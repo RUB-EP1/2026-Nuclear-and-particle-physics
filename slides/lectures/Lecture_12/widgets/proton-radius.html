@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proton radius explorer</title>
+<style>
+:root{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#12202d;background:#fff;font-size:20px;--blue:#007dc5;--orange:#c86418;--red:#bd3249;--green:#23734e;--muted:#5e6e7b}
+*{box-sizing:border-box}
+body{margin:0;padding:26px 34px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:25px;border-bottom:2px solid #dde5eb;padding-bottom:12px}
+h1{font-size:34px;margin:0;letter-spacing:-.025em}
+header p{color:var(--muted);margin:0;font-size:18px}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:30px;margin-top:20px}
+aside{border-right:1px solid #dde5eb;padding-right:24px}
+label{display:block;font-size:18px;font-weight:600;margin:0 0 18px}
+label output{float:right;color:var(--blue);font-variant-numeric:tabular-nums}
+input[type=range]{display:block;width:100%;accent-color:var(--blue);margin-top:8px}
+.choices{display:grid;grid-template-columns:1fr;gap:8px;margin:6px 0 18px}
+.choices button{font:inherit;font-size:18px;border:1px solid #b8c7d2;background:#fff;border-radius:5px;padding:8px 6px;cursor:pointer;color:inherit}
+.choices button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.check{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;margin:0 0 18px;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--blue)}
+.group{font-size:16px;color:var(--muted);margin:2px 0 4px;font-weight:600}
+.hint{color:var(--muted);font-size:16px;line-height:1.4;margin:12px 0}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:4px 0 14px}
+.metric{border-top:3px solid var(--blue);padding-top:8px}
+.metric strong{font-size:27px;display:block;font-variant-numeric:tabular-nums}
+.metric span{font-size:16px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.ptitle{font-size:18px;font-weight:600;margin:0 0 4px}
+canvas{width:100%;display:block;height:330px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:16px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:26px;height:0;border-top:4px solid;vertical-align:middle;margin-right:6px}
+.legend .d{border-top-style:dashed}
+.legend b{display:inline-block;width:26px;height:12px;vertical-align:middle;margin-right:6px;opacity:.35}
+footer{margin-top:12px;font-size:15px;color:var(--muted);border-top:1px solid #dde5eb;padding-top:10px}
+button:focus-visible,input:focus-visible{outline:3px solid #007dc5;outline-offset:3px}
+@media(min-width:1700px){:root{font-size:24px}body{padding:32px 46px}h1{font-size:42px}header p{font-size:22px}.layout{grid-template-columns:350px 1fr;gap:40px}label,.check{font-size:22px;margin-bottom:26px}.choices button{font-size:22px;padding:10px 6px}.group,.hint{font-size:19px}.metric strong{font-size:34px}.metric span{font-size:19px}.ptitle{font-size:22px}canvas{height:560px}.legend{font-size:20px}footer{font-size:18px}}
+@media(max-width:850px){body{padding:16px}.layout,.panels{grid-template-columns:1fr}aside{border:0}.metrics{grid-template-columns:1fr 1fr}}
+</style>
+<header><h1>Proton radius explorer</h1><p>dipole form factor · G<sub>E</sub>(Q²) = (1 + Q²/Λ²)<sup>−2</sup>,  ⟨r²⟩ = 12/Λ²</p></header>
+<div class="layout">
+<aside>
+  <label>Charge radius r (fm) <output id="rOut"></output><input id="r" type="range" min="0.70" max="1.00" step="0.001" value="0.877" aria-label="Proton charge radius in femtometres"></label>
+  <div class="group">Historical values</div>
+  <div class="choices">
+    <button data-r="0.877">0.877 fm · electrons, CODATA 2006</button>
+    <button data-r="0.841">0.841 fm · muonic hydrogen 2010</button>
+  </div>
+  <label>Q² range shown (GeV²) <output id="qOut"></output><input id="qmax" type="range" min="-2.3" max="0.3" step="0.01" value="0" aria-label="Upper end of the Q squared axis, logarithmic"></label>
+  <label class="check"><input id="cmp" type="checkbox" checked> compare with 0.841 fm</label>
+  <p class="hint" id="hint"></p>
+</aside>
+<main>
+  <div class="metrics">
+    <div class="metric"><strong id="lam">—</strong><span>Λ² = 12/⟨r²⟩ (GeV²)</span></div>
+    <div class="metric"><strong id="slope">—</strong><span>slope dG<sub>E</sub>/dQ² at 0 (GeV⁻²)</span></div>
+    <div class="metric"><strong id="g01">—</strong><span>G<sub>E</sub>² at Q² = 0.01 GeV²</span></div>
+    <div class="metric"><strong id="d01">—</strong><span>σ difference to 0.841 fm at Q² = 0.01</span></div>
+  </div>
+  <div class="panels">
+    <div><p class="ptitle">Form factor and its tangent at Q² = 0</p><canvas id="ff" role="img" aria-label="Electric form factor versus Q squared with the tangent at zero"></canvas>
+      <div class="legend"><span><i style="border-color:#007dc5"></i>G<sub>E</sub>, your r</span><span><i class="d" style="border-color:#c86418"></i>tangent 1 − ⟨r²⟩Q²/6</span><span id="lgCmp"><i style="border-color:#bd3249"></i>r = 0.841 fm</span></div></div>
+    <div><p class="ptitle">How large is the effect? σ(r) / σ(0.841 fm) − 1</p><canvas id="rat" role="img" aria-label="Relative cross-section difference to a 0.841 femtometre proton versus Q squared on a logarithmic axis"></canvas>
+      <div class="legend"><span><b style="background:#23734e"></b>PRad (JLab 2019)</span><span><b style="background:#007dc5"></b>Mainz A1 (2010)</span></div></div>
+  </div>
+</main>
+</div>
+<footer>Illustration: a pure dipole for G<sub>E</sub>, magnetic contribution ignored. ħc = 0.1973 GeV fm, so 1 fm² = 25.7 GeV⁻². Measured Q² ranges approximate: Mainz A1 0.003–1 GeV², PRad 0.0002–0.06 GeV².</footer>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const HC2 = 0.1973 ** 2, RREF = 0.841;
+const BLUE = "#007dc5", RED = "#bd3249", ORANGE = "#c86418", GREEN = "#23734e", INK = "#12202d", MUTED = "#5e6e7b", GRID = "#e3e9ee";
+const lam2 = (r) => 12 * HC2 / (r * r);
+const G = (q2, r) => Math.pow(1 + q2 / lam2(r), -2);
+
+function setup(cv) {
+  const dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+  cv.width = w * dpr; cv.height = h * dpr;
+  const c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+  c.clearRect(0, 0, w, h);
+  return { c, w, h, fs: Math.max(14, Math.round(h / 26)) };
+}
+function frame(P, xl, yl, xt, yt) {
+  const { c, fs } = P;
+  c.font = `${fs}px Helvetica Neue,Arial`; c.fillStyle = INK; c.strokeStyle = GRID; c.lineWidth = 1;
+  for (const [v, s] of xt) { const x = P.X(v); c.beginPath(); c.moveTo(x, P.t); c.lineTo(x, P.b); c.stroke(); c.textAlign = "center"; c.fillText(s, x, P.b + fs * 1.3); }
+  for (const [v, s] of yt) { const y = P.Y(v); c.beginPath(); c.moveTo(P.l, y); c.lineTo(P.r, y); c.stroke(); c.textAlign = "right"; c.fillText(s, P.l - 8, y + fs * 0.35); }
+  c.strokeStyle = INK; c.lineWidth = 2; c.strokeRect(P.l, P.t, P.r - P.l, P.b - P.t);
+  c.textAlign = "center"; c.fillText(xl, (P.l + P.r) / 2, P.h - 6);
+  c.save(); c.translate(fs * 0.9, (P.t + P.b) / 2); c.rotate(-Math.PI / 2); c.fillText(yl, 0, 0); c.restore();
+}
+function curve(P, f, col, w, dash) {
+  const { c } = P; c.save(); c.beginPath(); c.rect(P.l, P.t, P.r - P.l, P.b - P.t); c.clip();
+  c.strokeStyle = col; c.lineWidth = w; c.setLineDash(dash || []); c.beginPath();
+  for (let i = 0; i <= 400; i++) { const u = i / 400, x = P.xAt(u), px = P.l + u * (P.r - P.l), py = P.Y(f(x)); i ? c.lineTo(px, py) : c.moveTo(px, py); }
+  c.stroke(); c.restore();
+}
+function fmt(x, d) { return x.toFixed(d).replace("-", "−"); }
+
+function draw() {
+  const r = +$("r").value, qmax = Math.pow(10, +$("qmax").value), cmp = $("cmp").checked;
+  $("rOut").textContent = r.toFixed(3);
+  $("qOut").textContent = qmax < 0.1 ? qmax.toFixed(3) : qmax.toFixed(2);
+  document.querySelectorAll(".choices button").forEach((b) => b.classList.toggle("on", Math.abs(+b.dataset.r - r) < 5e-4));
+  $("lgCmp").style.display = cmp ? "" : "none";
+  const L = lam2(r), r2 = r * r / HC2;
+  $("lam").textContent = fmt(L, 3);
+  $("slope").textContent = fmt(-r2 / 6, 2);
+  $("g01").textContent = fmt(G(0.01, r) ** 2, 4);
+  const d = (G(0.01, r) ** 2 / G(0.01, RREF) ** 2 - 1) * 100;
+  $("d01").textContent = (d >= 0 ? "+" : "") + fmt(d, 2) + " %";
+
+  // left: linear axes 0..qmax
+  let P = setup($("ff"));
+  Object.assign(P, { l: P.fs * 4.2, r: P.w - 14, t: 10, b: P.h - P.fs * 2.8 });
+  const ymin = Math.max(0, Math.floor((G(qmax, 0.70) - 0.02) * 10) / 10);
+  P.xAt = (u) => u * qmax; P.X = (x) => P.l + x / qmax * (P.r - P.l);
+  P.Y = (y) => P.b - (y - ymin) / (1 - ymin + 0.02) * (P.b - P.t);
+  const xt = [0, 0.25, 0.5, 0.75, 1].map((u) => [u * qmax, +(u * qmax).toPrecision(2) + ""]);
+  const ystep = (1 - ymin) > 0.5 ? 0.2 : (1 - ymin) > 0.2 ? 0.05 : 0.02;
+  const yt = []; for (let y = 1; y >= ymin - 1e-9; y -= ystep) yt.push([y, y.toFixed(ystep < 0.05 ? 2 : 2)]);
+  frame(P, "Q² (GeV²)", "G_E(Q²)", xt, yt);
+  if (cmp) curve(P, (x) => G(x, RREF), RED, 3);
+  curve(P, (x) => 1 - r2 * x / 6, ORANGE, 3, [10, 7]);
+  curve(P, (x) => G(x, r), BLUE, 5);
+
+  // right: log x from 1e-4 to 1 GeV^2, relative difference in %
+  P = setup($("rat"));
+  Object.assign(P, { l: P.fs * 4.2, r: P.w - 14, t: 10, b: P.h - P.fs * 2.8 });
+  const lo = -4, hi = 0;
+  const f = (x) => (G(x, r) ** 2 / G(x, RREF) ** 2 - 1) * 100;
+  const fmax = Math.max(1, Math.abs(f(1)) * 1.1);
+  P.xAt = (u) => Math.pow(10, lo + u * (hi - lo)); P.X = (x) => P.l + (Math.log10(x) - lo) / (hi - lo) * (P.r - P.l);
+  P.Y = (y) => P.b - (y + fmax) / (2 * fmax) * (P.b - P.t);
+  const c = P.c;
+  c.globalAlpha = 0.16;
+  c.fillStyle = GREEN; c.fillRect(P.X(2e-4), P.Y(fmax), P.X(0.06) - P.X(2e-4), (P.b - P.t) / 2);
+  c.fillStyle = BLUE; c.fillRect(P.X(3e-3), P.Y(0), P.X(1) - P.X(3e-3), (P.b - P.t) / 2);
+  c.globalAlpha = 1;
+  const step = fmax > 40 ? 20 : fmax > 15 ? 10 : fmax > 4 ? 2 : 0.5;
+  const yt2 = []; for (let y = -Math.floor(fmax / step) * step; y <= fmax + 1e-9; y += step) yt2.push([y, fmt(y, step < 1 ? 1 : 0)]);
+  frame(P, "Q² (GeV², log scale)", "difference (%)", [[1e-4, "10⁻⁴"], [1e-3, "10⁻³"], [1e-2, "10⁻²"], [0.1, "0.1"], [1, "1"]], yt2);
+  curve(P, f, BLUE, 5);
+
+  const pct = Math.abs((r * r - RREF * RREF) / RREF / RREF * 100);
+  $("hint").textContent = Math.abs(r - RREF) < 5e-4
+    ? "This is the muonic-hydrogen radius. Move the slider or pick 0.877 fm to see how small the difference is at low Q²."
+    : `⟨r²⟩ differs by ${pct.toFixed(1)} %, but at Q² = 0.01 GeV² the cross sections differ by only ${Math.abs(d).toFixed(2)} %: the radius is a sub-percent measurement at low Q².`;
+}
+document.querySelectorAll(".choices button").forEach((b) => b.addEventListener("click", () => { $("r").value = b.dataset.r; draw(); }));
+["r", "qmax", "cmp"].forEach((id) => $(id).addEventListener("input", draw));
+window.addEventListener("resize", draw);
+draw();
+</script>

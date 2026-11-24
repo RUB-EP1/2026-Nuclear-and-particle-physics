@@ -135,12 +135,19 @@ sessions:
     id: Lecture_12
     title: Elastic scattering, form factors
     reading: Ch. 6–7
-    status: draft  # opening sections moved from L11; elastic e⁻p section still to write
+    status: draft  # full draft; opening sections moved from L11
     topics:
-      - "Recap: how many diagrams at lowest order? (moved from L11)"
-      - "Helicity: h = Σ·p̂/2, helicity conservation at the QED vertex for m = 0, angular distributions; one-line pointer to γ⁵ (moved from L11)"
-      - "Bridge: Rutherford scattering (measured vs expected), 1/q⁴ as the point-like limit, replace the muon tensor by W^μν (moved from L11)"
-      - "Elastic e⁻p scattering: Mott, Rosenbluth, form factors, proton radius (to draft)"
+      - "Motivation: the proton radius puzzle (0.877 vs 0.842 fm)"
+      - "Recap = finish L11 section 3 (not reached on 20 Nov): contracting the two tensors, the recipe, Mandelstam variables, eμ → eμ and e⁺e⁻ → μ⁺μ⁻ at high energy, crossing, how-many-diagrams quiz, standard QED processes, QED cross-section explorer widget"
+      - "Spin and helicity: spinor explorer widget (canonical vs helicity basis, ⟨½σ⟩ vs p), h = Σ·p̂/2 (moved from L11)"
+      - "Backup only (no time): helicity structure of the QED vertex, no L–R mixing, why 1 + cos²θ, no backward eμ scattering"
+      - "Quiz on Lecture 11 (from its take-home messages and exit questions), just before Rutherford"
+      - "Bridge: Rutherford scattering (measured vs expected), 1/q⁴ as the point-like limit, Mott factor (1 − β² sin²θ/2) from helicity, replace the muon tensor by W^μν"
+      - "Elastic e⁻p: ladder Rutherford → Mott → recoil → Dirac proton → form factors (matches Sheet 7); kinematics Q² = 4EE′ sin²(θ/2) = 2M(E − E′), E′(θ) (board)"
+      - "Form factors: F = Fourier transform of ρ (board), ⟨r²⟩ = −6 dF/dQ²|₀ (board), shapes with the same radius, proton-radius explorer widget, why small Q²"
+      - "G_E, G_M from the vertex F₁γ^μ + F₂ iσ^μν q_ν/2M; Rosenbluth formula, σ_R = εG_E² + τG_M² (feeds Sheet 6 class problem 3)"
+      - "Proton radius puzzle: scattering vs (muonic) hydrogen spectroscopy, ΔE ∝ m_r³ r_p², CODATA 2022 r_p = 0.84075(64) fm"
+      - "Not covered (draft proposal Parts I–II): propagator/Yukawa range"
       - "Deferred to the weak interaction: γ⁵ algebra, chiral projectors, chirality vs helicity, V−A, π → eν suppression"
 
   - date: 2026-11-27
