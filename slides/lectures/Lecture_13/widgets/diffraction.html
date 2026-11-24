@@ -25,14 +25,10 @@ input[type=range]{display:block;width:100%;accent-color:var(--blue);margin-top:6
 .check{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;margin:0 0 10px;cursor:pointer}
 .check input{width:20px;height:20px;accent-color:var(--blue);flex:none}
 .hint{color:var(--muted);font-size:16px;line-height:1.4;margin:12px 0 0;border-left:4px solid var(--orange);padding-left:12px}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:0 0 10px}
-.metric{border-top:3px solid var(--blue);padding-top:6px}
-.metric strong{font-size:26px;display:block;font-variant-numeric:tabular-nums}
-.metric span{font-size:15px;color:var(--muted)}
 .top{display:grid;grid-template-columns:1.55fr 1fr;gap:24px}
 .ptitle{font-size:18px;font-weight:600;margin:0 0 4px}
 canvas{width:100%;display:block}
-#scene,#wall{height:300px}
+#scene,#wall{height:340px}
 #plot{height:260px;margin-top:4px}
 .legend{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:15px;color:var(--muted);margin-top:4px}
 .legend i{display:inline-block;width:26px;height:0;border-top:4px solid;vertical-align:middle;margin-right:6px}
@@ -40,8 +36,8 @@ canvas{width:100%;display:block}
 .legend b{display:inline-block;width:22px;height:12px;vertical-align:middle;margin-right:6px;background:#dfe5ea}
 footer{margin-top:8px;font-size:14px;color:var(--muted);border-top:1px solid #dde5eb;padding-top:8px}
 button:focus-visible,input:focus-visible{outline:3px solid #007dc5;outline-offset:3px}
-@media(min-width:1700px){:root{font-size:24px}body{padding:26px 44px}h1{font-size:40px}header p{font-size:22px}.layout{grid-template-columns:400px 1fr;gap:38px}label{font-size:21px;margin-bottom:18px}.check{font-size:20px;margin-bottom:12px}.check input{width:24px;height:24px}.choices button{font-size:19px;padding:8px 6px}.group{font-size:18px}.hint{font-size:19px}.metric strong{font-size:32px}.metric span{font-size:18px}.ptitle{font-size:21px}#scene,#wall{height:400px}#plot{height:330px}.legend{font-size:18px}footer{font-size:16px}}
-@media(max-width:850px){body{padding:16px}.layout,.top{grid-template-columns:1fr}aside{border:0;padding:0}.metrics{grid-template-columns:1fr 1fr}}
+@media(min-width:1700px){:root{font-size:24px}body{padding:26px 44px}h1{font-size:40px}header p{font-size:22px}.layout{grid-template-columns:400px 1fr;gap:38px}label{font-size:21px;margin-bottom:18px}.check{font-size:20px;margin-bottom:12px}.check input{width:24px;height:24px}.choices button{font-size:19px;padding:8px 6px}.group{font-size:18px}.hint{font-size:19px}.ptitle{font-size:21px}#scene,#wall{height:450px}#plot{height:370px}.legend{font-size:18px}footer{font-size:16px}}
+@media(max-width:850px){body{padding:16px}.layout,.top{grid-template-columns:1fr}aside{border:0;padding:0}}
 </style>
 <header><h1>Diffraction explorer: the wall behind the target</h1><p>amplitude ∝ F(q),&nbsp; q = 2k sin(θ/2),&nbsp; |t| = q²</p></header>
 <div class="layout">
@@ -75,12 +71,6 @@ button:focus-visible,input:focus-visible{outline:3px solid #007dc5;outline-offse
   <p class="hint" id="hint"></p>
 </aside>
 <main>
-  <div class="metrics">
-    <div class="metric"><strong id="mLam">—</strong><span>wavelength λ = 2πħc/p</span></div>
-    <div class="metric"><strong id="mTh">—</strong><span>first minimum θ₁</span></div>
-    <div class="metric"><strong id="mT">—</strong><span>|t₁| = q₁² at the first minimum</span></div>
-    <div class="metric"><strong id="mQ">—</strong><span>reach q<sub>max</sub>R = 2kR</span></div>
-  </div>
   <div class="top">
     <div><p class="ptitle">The experiment (not to scale)</p><canvas id="scene" role="img" aria-label="Plane waves hit a target and produce a ring pattern on a distant wall"></canvas></div>
     <div><p class="ptitle">The wall, seen face-on</p><canvas id="wall" role="img" aria-label="Diffraction rings on the wall"></canvas></div>
@@ -317,11 +307,7 @@ function update() {
   $("mottT").textContent = M.mott ? "× (dσ/dΩ)_Mott" : "";
   $("lgAll").style.display = $("all").checked ? "" : "none";
   $("lgKin").style.display = M.thView >= Math.PI && S.axis !== "theta" ? "" : "none";
-  $("mLam").textContent = fmtNum(M.lam) + " fm";
   const z1 = M.zeros[0];
-  $("mTh").textContent = z1 ? fmtAng(z1.th) : "none";
-  $("mT").textContent = z1 ? fmtNum((z1.q * HC / 1000) ** 2) + " GeV²" : "—";
-  $("mQ").textContent = fmtNum(2 * M.k * M.R);
   let hint;
   if (!M.sh.zeros.length) hint = "A smooth target has no sharp edge, so F(q) never vanishes: no minima, only a falling intensity. The proton looks like this (dipole form factor).";
   else if (!z1) hint = `The wavelength is too long: q can reach at most 2kR = ${fmtNum(2 * M.k * M.R)}, below the first zero at qR = ${M.sh.zeros[0].toFixed(2)}. Raise p to resolve the target.`;
