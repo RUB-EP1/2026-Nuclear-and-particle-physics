@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diffraction explorer</title>
+<style>
+:root{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#12202d;background:#fff;font-size:20px;--blue:#007dc5;--orange:#c86418;--red:#bd3249;--green:#23734e;--muted:#5e6e7b}
+*{box-sizing:border-box}
+body{margin:0;padding:22px 34px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:25px;border-bottom:2px solid #dde5eb;padding-bottom:10px}
+h1{font-size:34px;margin:0;letter-spacing:-.025em}
+header p{color:var(--muted);margin:0;font-size:18px}
+.layout{display:grid;grid-template-columns:320px 1fr;gap:30px;margin-top:16px}
+aside{border-right:1px solid #dde5eb;padding-right:24px}
+label{display:block;font-size:18px;font-weight:600;margin:0 0 14px}
+label output{float:right;color:var(--blue);font-variant-numeric:tabular-nums;font-weight:600}
+input[type=range]{display:block;width:100%;accent-color:var(--blue);margin-top:6px}
+.group{font-size:16px;color:var(--muted);margin:2px 0 4px;font-weight:600}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:4px 0 14px}
+.choices.three{grid-template-columns:1fr 1fr 1fr}
+.choices.one{grid-template-columns:1fr}
+.choices button{font:inherit;font-size:16px;border:1px solid #b8c7d2;background:#fff;border-radius:5px;padding:6px 6px;cursor:pointer;color:inherit;text-align:center}
+.choices.one button{text-align:left;padding:6px 10px}
+.choices button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.check{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;margin:0 0 10px;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--blue);flex:none}
+.hint{color:var(--muted);font-size:16px;line-height:1.4;margin:12px 0 0;border-left:4px solid var(--orange);padding-left:12px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:0 0 10px}
+.metric{border-top:3px solid var(--blue);padding-top:6px}
+.metric strong{font-size:26px;display:block;font-variant-numeric:tabular-nums}
+.metric span{font-size:15px;color:var(--muted)}
+.top{display:grid;grid-template-columns:1.55fr 1fr;gap:24px}
+.ptitle{font-size:18px;font-weight:600;margin:0 0 4px}
+canvas{width:100%;display:block}
+#scene,#wall{height:300px}
+#plot{height:260px;margin-top:4px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:15px;color:var(--muted);margin-top:4px}
+.legend i{display:inline-block;width:26px;height:0;border-top:4px solid;vertical-align:middle;margin-right:6px}
+.legend .d{border-top-style:dashed}
+.legend b{display:inline-block;width:22px;height:12px;vertical-align:middle;margin-right:6px;background:#dfe5ea}
+footer{margin-top:8px;font-size:14px;color:var(--muted);border-top:1px solid #dde5eb;padding-top:8px}
+button:focus-visible,input:focus-visible{outline:3px solid #007dc5;outline-offset:3px}
+@media(min-width:1700px){:root{font-size:24px}body{padding:26px 44px}h1{font-size:40px}header p{font-size:22px}.layout{grid-template-columns:400px 1fr;gap:38px}label{font-size:21px;margin-bottom:18px}.check{font-size:20px;margin-bottom:12px}.check input{width:24px;height:24px}.choices button{font-size:19px;padding:8px 6px}.group{font-size:18px}.hint{font-size:19px}.metric strong{font-size:32px}.metric span{font-size:18px}.ptitle{font-size:21px}#scene,#wall{height:400px}#plot{height:330px}.legend{font-size:18px}footer{font-size:16px}}
+@media(max-width:850px){body{padding:16px}.layout,.top{grid-template-columns:1fr}aside{border:0;padding:0}.metrics{grid-template-columns:1fr 1fr}}
+</style>
+<header><h1>Diffraction explorer: the wall behind the target</h1><p>amplitude ∝ F(q),&nbsp; q = 2k sin(θ/2),&nbsp; |t| = q²</p></header>
+<div class="layout">
+<aside>
+  <div class="group">Target</div>
+  <div class="choices" id="shapes">
+    <button data-shape="disk">black disk</button>
+    <button data-shape="sphere">hard sphere</button>
+    <button data-shape="soft">soft-edge sphere</button>
+    <button data-shape="gauss">Gaussian</button>
+    <button data-shape="expo">exponential (dipole)</button>
+  </div>
+  <label>Target radius R (fm) <output id="rOut"></output><input id="R" type="range" min="-0.3" max="1" step="0.002" value="0.398" aria-label="Target radius in femtometres, logarithmic"></label>
+  <label>Beam momentum p <output id="pOut"></output><input id="p" type="range" min="1" max="7" step="0.005" value="3" aria-label="Beam momentum in MeV, logarithmic"></label>
+  <div class="group">Horizontal axis of the plot</div>
+  <div class="choices three" id="axes">
+    <button data-axis="theta">angle θ</button>
+    <button data-axis="t">|t| (GeV²)</button>
+    <button data-axis="qR">qR</button>
+  </div>
+  <label class="check"><input id="logI" type="checkbox" checked> log brightness on the wall</label>
+  <label class="check"><input id="mott" type="checkbox"> × point-like (Mott) cross section</label>
+  <label class="check"><input id="all" type="checkbox"> show the other shapes in the plot</label>
+  <div class="group">Examples</div>
+  <div class="choices one" id="presets">
+    <button data-shape="soft" data-r="2.5" data-p="420">¹²C, 420 MeV e⁻ (Hofstadter)</button>
+    <button data-shape="soft" data-r="6.8" data-p="500">²⁰⁸Pb, 500 MeV e⁻</button>
+    <button data-shape="expo" data-r="1.085" data-p="500">proton, 500 MeV e⁻</button>
+    <button data-shape="disk" data-r="1.10" data-p="6.5e6">pp at the LHC, 6.5 TeV (TOTEM)</button>
+  </div>
+  <p class="hint" id="hint"></p>
+</aside>
+<main>
+  <div class="metrics">
+    <div class="metric"><strong id="mLam">—</strong><span>wavelength λ = 2πħc/p</span></div>
+    <div class="metric"><strong id="mTh">—</strong><span>first minimum θ₁</span></div>
+    <div class="metric"><strong id="mT">—</strong><span>|t₁| = q₁² at the first minimum</span></div>
+    <div class="metric"><strong id="mQ">—</strong><span>reach q<sub>max</sub>R = 2kR</span></div>
+  </div>
+  <div class="top">
+    <div><p class="ptitle">The experiment (not to scale)</p><canvas id="scene" role="img" aria-label="Plane waves hit a target and produce a ring pattern on a distant wall"></canvas></div>
+    <div><p class="ptitle">The wall, seen face-on</p><canvas id="wall" role="img" aria-label="Diffraction rings on the wall"></canvas></div>
+  </div>
+  <p class="ptitle" style="margin-top:8px">Intensity on the wall = |F(q)|² <span id="mottT"></span>, logarithmic</p>
+  <canvas id="plot" role="img" aria-label="Intensity versus angle, momentum transfer squared or qR, with the minima marked"></canvas>
+  <div class="legend"><span><i style="border-color:#007dc5"></i>selected target</span><span><i class="d" style="border-color:#c86418"></i>minima: zeros of F</span><span id="lgAll"><i style="border-color:#9fb3c2"></i>other shapes, same R</span><span id="lgKin"><b></b>q &gt; 2k: not reachable at this momentum</span></div>
+</main>
+</div>
+<footer>Fraunhofer (far-field) limit, elastic scattering, recoil neglected. Black disk: F = 2J₁(qR)/(qR). Hard sphere: F = 3(sin x − x cos x)/x³, x = qR. Soft edge: hard sphere × e<sup>−q²s²/2</sup>, s = R/4. Gaussian and exponential: same rms radius as the hard sphere, √(3/5) R. ħc = 197.3 MeV fm.</footer>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const HC = 197.327; // MeV fm
+const BLUE = "#007dc5", ORANGE = "#c86418", INK = "#12202d", MUTED = "#5e6e7b", GRID = "#e3e9ee", GHOST = "#9fb3c2";
+
+function J1(x) { // Numerical Recipes bessj1
+  const ax = Math.abs(x);
+  if (ax < 8) {
+    const y = x * x;
+    const a = x * (72362614232.0 + y * (-7895059235.0 + y * (242396853.1 + y * (-2972611.439 + y * (15704.48260 + y * (-30.16036606))))));
+    const b = 144725228442.0 + y * (2300535178.0 + y * (18583304.74 + y * (99447.43394 + y * (376.9991397 + y))));
+    return a / b;
+  }
+  const z = 8 / ax, y = z * z, xx = ax - 2.356194491;
+  const a = 1 + y * (0.183105e-2 + y * (-0.3516396496e-4 + y * (0.2457520174e-5 + y * (-0.240337019e-6))));
+  const b = 0.04687499995 + y * (-0.2002690873e-3 + y * (0.8449199096e-5 + y * (-0.88228987e-6 + y * 0.105787412e-6)));
+  const r = Math.sqrt(0.636619772 / ax) * (Math.cos(xx) * a - z * Math.sin(xx) * b);
+  return x < 0 ? -r : r;
+}
+const sphereF = (x) => x < 1e-3 ? 1 - x * x / 10 : 3 * (Math.sin(x) - x * Math.cos(x)) / (x * x * x);
+const SPHERE_ZEROS = [4.4934, 7.7253, 10.9041, 14.0662, 17.2208, 20.3713];
+const SHAPES = {
+  disk:   { name: "black disk", F: (x) => x < 1e-6 ? 1 : 2 * J1(x) / x, zeros: [3.8317, 7.0156, 10.1735, 13.3237, 16.4706, 19.6159] },
+  sphere: { name: "hard sphere", F: sphereF, zeros: SPHERE_ZEROS },
+  soft:   { name: "soft-edge sphere", F: (x) => sphereF(x) * Math.exp(-x * x / 32), zeros: SPHERE_ZEROS },
+  gauss:  { name: "Gaussian", F: (x) => Math.exp(-x * x / 10), zeros: [] },
+  expo:   { name: "exponential", F: (x) => Math.pow(1 + x * x / 20, -2), zeros: [] },
+};
+const QR_VIEW = 15.5; // plot and wall show qR up to this value (if reachable)
+const WALL_MAX = 70 * Math.PI / 180;
+const S = { shape: "disk", axis: "theta" };
+
+function fmtNum(v, d = 3) {
+  if (v === 0) return "0";
+  const a = Math.abs(v);
+  if (a >= 1e4 || a < 1e-3) { const e = Math.floor(Math.log10(a)); return (v / 10 ** e).toFixed(1) + "×10" + sup(e); }
+  return (+v.toPrecision(d)).toString();
+}
+function sup(e) { return String(e).replace(/-/g, "⁻").replace(/\d/g, (c) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[c]); }
+function fmtP(p) { return p >= 1e6 ? fmtNum(p / 1e6) + " TeV" : p >= 1e3 ? fmtNum(p / 1e3) + " GeV" : fmtNum(p) + " MeV"; }
+function angUnit(maxRad) {
+  if (maxRad > 2 * Math.PI / 180) return { f: 180 / Math.PI, u: "°", sep: "" };
+  if (maxRad > 2e-3) return { f: 1e3, u: "mrad", sep: " " };
+  return { f: 1e6, u: "μrad", sep: " " };
+}
+function fmtAng(th) { const u = angUnit(th * 1.0001); return fmtNum(th * u.f) + u.sep + u.u; }
+
+function setup(cv) {
+  const dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+  cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+  const c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, w, h);
+  return { c, w, h, dpr, fs: Math.max(14, Math.round(Math.min(h / 17, w / 40))) };
+}
+
+// physics for the current state
+function model() {
+  const R = 10 ** +$("R").value, p = 10 ** +$("p").value, k = p / HC;
+  const sh = SHAPES[S.shape], mott = $("mott").checked;
+  const qOf = (th) => 2 * k * Math.sin(th / 2);
+  const thOf = (q) => q >= 2 * k ? Math.PI : 2 * Math.asin(q / (2 * k));
+  const point = (th) => { const s = Math.sin(th / 2), c = Math.cos(th / 2); return c * c / (s * s * s * s); };
+  const I = (th, F = sh.F) => { const f = F(qOf(th) * R); return f * f * (mott ? point(th) : 1); };
+  const qView = QR_VIEW / R, thView = thOf(qView);
+  const zeros = sh.zeros.map((z) => ({ z, q: z / R })).filter((o) => o.q <= 2 * k).map((o) => ({ ...o, th: thOf(o.q) }));
+  return { R, p, k, sh, mott, qOf, thOf, I, qView, thView, wallMax: Math.min(thView, WALL_MAX), zeros, lam: 2 * Math.PI * HC / p };
+}
+
+function color(v) { // v in [0,1] → laser-green on black
+  const g = Math.round(255 * Math.pow(v, 1.6)), r = Math.round(235 * Math.pow(v, 4)), b = Math.round(200 * Math.pow(v, 4.5));
+  return [r, g, b];
+}
+
+function wallImage(M, N) {
+  const off = document.createElement("canvas"); off.width = off.height = N;
+  const c = off.getContext("2d"), img = c.createImageData(N, N), d = img.data;
+  const T = Math.tan(M.wallMax), logI = $("logI").checked, NB = 900;
+  const ref = M.mott ? M.I(M.wallMax * 0.04) : 1, top = Math.log10(ref), D = 6;
+  const tab = new Float32Array(NB + 1);
+  for (let i = 0; i <= NB; i++) {
+    const rho = i / NB * Math.SQRT2 * T, th = Math.atan(rho), I = Math.max(M.I(Math.max(th, 1e-9)), 1e-30);
+    tab[i] = logI ? Math.max(0, Math.min(1, (Math.log10(I) - top + D) / D)) : Math.max(0, Math.min(1, I / ref));
+  }
+  for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) {
+    const x = (i + 0.5) / N * 2 - 1, y = (j + 0.5) / N * 2 - 1, r = Math.sqrt(x * x + y * y) / Math.SQRT2;
+    const v = tab[Math.min(NB, Math.round(r * NB))], [cr, cg, cb] = color(v), o = 4 * (j * N + i);
+    d[o] = cr; d[o + 1] = cg; d[o + 2] = cb; d[o + 3] = 255;
+  }
+  c.putImageData(img, 0, 0);
+  return off;
+}
+
+function drawScene(M, off) {
+  const P = setup($("scene")), { c, w, h, fs } = P;
+  const cy = h * 0.53, objX = w * 0.27, objR = h * 0.17;
+  // incoming plane waves, spacing ∝ λ/R
+  const sp = Math.max(7, Math.min(140, M.lam / M.R * objR));
+  c.save(); c.beginPath(); c.rect(0, cy - objR * 1.9, objX, objR * 3.8); c.clip();
+  c.strokeStyle = BLUE; c.lineWidth = sp < 9 ? 1 : 2.5; c.globalAlpha = sp < 9 ? 0.35 : 0.6;
+  const phase = (performance.now() / 1000 * 60) % sp;
+  for (let x = objX - 6 - (sp - phase); x > 0; x -= sp) { c.beginPath(); c.moveTo(x, cy - objR * 1.6); c.lineTo(x, cy + objR * 1.6); c.stroke(); }
+  c.restore();
+  c.fillStyle = INK; c.font = `${fs}px Helvetica Neue,Arial`; c.textAlign = "left";
+  c.fillText(`beam p = ${fmtP(M.p)}`, 6, fs * 1.1);
+  c.fillStyle = BLUE; c.fillText(`λ = ${fmtNum(M.lam)} fm  (λ/R = ${fmtNum(M.lam / M.R)})`, 6, fs * 2.3);
+  // wall in perspective
+  const C = { x: w * 0.80, y: cy }, v = { x: 0, y: h * 0.78 }, u = { x: w * 0.17, y: -h * 0.13 };
+  const P0 = { x: C.x - u.x / 2 - v.x / 2, y: C.y - u.y / 2 - v.y / 2 }, N = off.width;
+  c.save();
+  c.setTransform(P.dpr * u.x / N, P.dpr * u.y / N, P.dpr * v.x / N, P.dpr * v.y / N, P.dpr * P0.x, P.dpr * P0.y);
+  c.drawImage(off, 0, 0); c.restore();
+  c.strokeStyle = "#8193a2"; c.lineWidth = 2; c.beginPath();
+  c.moveTo(P0.x, P0.y); c.lineTo(P0.x + u.x, P0.y + u.y); c.lineTo(P0.x + u.x + v.x, P0.y + u.y + v.y); c.lineTo(P0.x + v.x, P0.y + v.y); c.closePath(); c.stroke();
+  c.fillStyle = MUTED; c.textAlign = "center"; c.fillText("wall, far away", C.x + u.x * 0.1, P0.y + v.y + fs * 1.3);
+  // rays: straight-through and to the first minimum
+  c.strokeStyle = BLUE; c.lineWidth = 1.5; c.globalAlpha = 0.5; c.setLineDash([3, 6]);
+  c.beginPath(); c.moveTo(objX, cy); c.lineTo(C.x, C.y); c.stroke(); c.globalAlpha = 1; c.setLineDash([]);
+  const z1 = M.zeros[0];
+  if (z1 && z1.th <= M.wallMax) {
+    const rr = Math.min(1, Math.tan(z1.th) / Math.tan(M.wallMax)) * v.y / 2;
+    c.strokeStyle = ORANGE; c.lineWidth = 2.5; c.setLineDash([10, 7]);
+    for (const s of [-1, 1]) { c.beginPath(); c.moveTo(objX, cy); c.lineTo(C.x, C.y + s * rr); c.stroke(); }
+    c.setLineDash([]);
+    const a = Math.atan2(rr, C.x - objX), ar = objR * 1.9;
+    c.beginPath(); c.arc(objX, cy, ar, -a, 0); c.stroke();
+    c.fillStyle = ORANGE; c.textAlign = "left"; c.font = `600 ${fs}px Helvetica Neue,Arial`;
+    c.fillText(`θ₁ = ${fmtAng(z1.th)}`, objX + ar + 8, cy - Math.tan(a) * (ar + 8) - fs * 0.6);
+  }
+  // target
+  c.save(); c.translate(objX, cy);
+  if (S.shape === "disk") {
+    c.fillStyle = INK; c.beginPath(); c.ellipse(0, 0, objR * 0.22, objR, 0, 0, 2 * Math.PI); c.fill();
+  } else {
+    const edge = { sphere: [0.97, 1], soft: [0.6, 1.15], gauss: [0, 1.5], expo: [0, 1.7] }[S.shape];
+    const g = c.createRadialGradient(-objR * 0.25, -objR * 0.25, 0, 0, 0, objR * edge[1]);
+    g.addColorStop(0, S.shape === "expo" ? "rgba(18,32,45,1)" : "rgba(70,90,108,1)");
+    g.addColorStop(Math.max(0.01, edge[0] / edge[1]), S.shape === "gauss" || S.shape === "expo" ? "rgba(18,32,45,.95)" : "rgba(18,32,45,1)");
+    if (S.shape === "gauss") g.addColorStop(0.55, "rgba(18,32,45,.45)");
+    if (S.shape === "expo") g.addColorStop(0.3, "rgba(18,32,45,.45)");
+    g.addColorStop(1, "rgba(18,32,45,0)");
+    c.fillStyle = g; c.beginPath(); c.arc(0, 0, objR * edge[1], 0, 2 * Math.PI); c.fill();
+  }
+  c.restore();
+  c.fillStyle = INK; c.textAlign = "center"; c.font = `${fs}px Helvetica Neue,Arial`;
+  c.fillText(`${M.sh.name}, R = ${fmtNum(M.R)} fm`, objX, cy + objR * 1.9 + fs * 1.2);
+}
+
+function drawWall(M, off) {
+  const P = setup($("wall")), { c, w, h, fs } = P;
+  const s = Math.min(w, h) - 4, x0 = (w - s) / 2, y0 = (h - s) / 2;
+  c.imageSmoothingEnabled = true; c.drawImage(off, x0, y0, s, s);
+  const cx = x0 + s / 2, cy = y0 + s / 2, T = Math.tan(M.wallMax);
+  c.font = `600 ${fs}px Helvetica Neue,Arial`; c.textAlign = "left";
+  M.zeros.forEach((z, i) => {
+    if (z.th > M.wallMax * 1.4 || i > 0) return;
+    const r = Math.tan(z.th) / T * s / 2;
+    c.strokeStyle = ORANGE; c.lineWidth = 2; c.setLineDash([4, 10]);
+    c.beginPath(); c.arc(cx, cy, r, 0, 2 * Math.PI); c.stroke(); c.setLineDash([]);
+    if (r < s / 2) { c.fillStyle = ORANGE; c.fillText("θ₁", cx + r * 0.71 + 6, cy - r * 0.71 - 6); }
+  });
+  c.fillStyle = "rgba(255,255,255,.85)"; c.font = `${Math.round(fs * 0.9)}px Helvetica Neue,Arial`; c.textAlign = "right";
+  c.fillText(`edge: θ = ${fmtAng(M.wallMax)}`, x0 + s - 8, y0 + s - 10);
+}
+
+function drawPlot(M) {
+  const P = setup($("plot")), { c, w, h, fs } = P;
+  const l = fs * 4, r = w - 12, t = 8, b = h - fs * 2.6;
+  // x variable
+  let xMax, xOfTh, thOfX, unit, xlab;
+  if (S.axis === "theta") {
+    const u = angUnit(M.thView); xMax = M.thView * u.f; xOfTh = (th) => th * u.f; thOfX = (x) => x / u.f; unit = u; xlab = `scattering angle θ (${u.u})`;
+  } else if (S.axis === "t") {
+    const g = (q) => (q * HC / 1000) ** 2; xMax = g(M.qView); xOfTh = (th) => g(M.qOf(th)); thOfX = (x) => M.thOf(Math.sqrt(x) * 1000 / HC); xlab = "|t| = q² (GeV²)";
+  } else {
+    xMax = QR_VIEW; xOfTh = (th) => M.qOf(th) * M.R; thOfX = (x) => M.thOf(x / M.R); xlab = "qR (dimensionless)";
+  }
+  const xKin = S.axis === "theta" ? xMax : xOfTh(Math.PI); // beyond: unreachable
+  const X = (x) => l + x / xMax * (r - l);
+  // y range (log10)
+  const x0 = xMax * 0.03, yTop = M.mott ? Math.log10(M.I(thOfX(Math.min(x0, xKin * 0.999)))) : 0, yBot = yTop - 7;
+  const Y = (y) => t + (yTop + 0.3 - y) / (yTop + 0.3 - yBot) * (b - t);
+  c.font = `${fs}px Helvetica Neue,Arial`;
+  // unreachable band
+  if (xKin < xMax) { c.fillStyle = "#dfe5ea"; c.fillRect(X(xKin), t, r - X(xKin), b - t); }
+  // grid
+  c.strokeStyle = GRID; c.lineWidth = 1; c.fillStyle = INK;
+  const step = niceStep(xMax / 6);
+  for (let x = 0; x <= xMax * 1.0001; x += step) { const px = X(x); c.beginPath(); c.moveTo(px, t); c.lineTo(px, b); c.stroke(); c.textAlign = "center"; c.fillText(fmtNum(+x.toPrecision(6), 4), px, b + fs * 1.15); }
+  for (let y = Math.ceil(yBot); y <= yTop + 0.3; y++) { const py = Y(y); c.beginPath(); c.moveTo(l, py); c.lineTo(r, py); c.stroke(); c.textAlign = "right"; c.fillText("10" + sup(y), l - 6, py + fs * 0.35); }
+  c.strokeStyle = INK; c.lineWidth = 2; c.strokeRect(l, t, r - l, b - t);
+  c.textAlign = "center"; c.fillText(xlab, (l + r) / 2, h - 4);
+  // curves
+  const curve = (F, col, lw) => {
+    c.save(); c.beginPath(); c.rect(l, t, r - l, b - t); c.clip(); c.strokeStyle = col; c.lineWidth = lw; c.beginPath();
+    const n = 900; let started = false;
+    for (let i = 0; i <= n; i++) {
+      const x = Math.max(xMax * 1e-4, i / n * Math.min(xMax, xKin)), th = thOfX(x), I = Math.max(M.I(th, F), 1e-30);
+      const py = Math.min(b + 20, Y(Math.log10(I)));
+      started ? c.lineTo(X(x), py) : c.moveTo(X(x), py); started = true;
+    }
+    c.stroke(); c.restore();
+  };
+  if ($("all").checked) for (const [key, sh] of Object.entries(SHAPES)) if (key !== S.shape) curve(sh.F, GHOST, 2);
+  // minima
+  c.strokeStyle = ORANGE; c.lineWidth = 2; c.setLineDash([8, 6]); c.fillStyle = ORANGE; c.font = `600 ${Math.round(fs * 0.9)}px Helvetica Neue,Arial`;
+  M.zeros.forEach((z, i) => {
+    const x = xOfTh(z.th); if (x > xMax) return;
+    c.beginPath(); c.moveTo(X(x), t); c.lineTo(X(x), b); c.stroke();
+    if (i < 4) { c.textAlign = "left"; c.fillText(`qR = ${z.z.toFixed(2)}`, X(x) + 5, t + fs * (1 + 1.05 * (i % 2))); }
+  });
+  c.setLineDash([]);
+  curve(M.sh.F, BLUE, 4);
+}
+function niceStep(raw) { const e = 10 ** Math.floor(Math.log10(raw)), m = raw / e; return (m < 1.5 ? 1 : m < 3.5 ? 2 : m < 7.5 ? 5 : 10) * e; }
+
+function update() {
+  const M = model();
+  $("rOut").textContent = fmtNum(M.R) + " fm";
+  $("pOut").textContent = fmtP(M.p);
+  document.querySelectorAll("#shapes button").forEach((b) => b.classList.toggle("on", b.dataset.shape === S.shape));
+  document.querySelectorAll("#axes button").forEach((b) => b.classList.toggle("on", b.dataset.axis === S.axis));
+  document.querySelectorAll("#presets button").forEach((b) => b.classList.toggle("on",
+    b.dataset.shape === S.shape && Math.abs(Math.log10(+b.dataset.r) - +$("R").value) < 0.003 && Math.abs(Math.log10(+b.dataset.p) - +$("p").value) < 0.006));
+  $("mottT").textContent = M.mott ? "× (dσ/dΩ)_Mott" : "";
+  $("lgAll").style.display = $("all").checked ? "" : "none";
+  $("lgKin").style.display = M.thView >= Math.PI && S.axis !== "theta" ? "" : "none";
+  $("mLam").textContent = fmtNum(M.lam) + " fm";
+  const z1 = M.zeros[0];
+  $("mTh").textContent = z1 ? fmtAng(z1.th) : "none";
+  $("mT").textContent = z1 ? fmtNum((z1.q * HC / 1000) ** 2) + " GeV²" : "—";
+  $("mQ").textContent = fmtNum(2 * M.k * M.R);
+  let hint;
+  if (!M.sh.zeros.length) hint = "A smooth target has no sharp edge, so F(q) never vanishes: no minima, only a falling intensity. The proton looks like this (dipole form factor).";
+  else if (!z1) hint = `The wavelength is too long: q can reach at most 2kR = ${fmtNum(2 * M.k * M.R)}, below the first zero at qR = ${M.sh.zeros[0].toFixed(2)}. Raise p to resolve the target.`;
+  else hint = `Minima sit at fixed qR, so R = ${z1.z.toFixed(2)}/q₁. Raise p: θ₁ shrinks, but |t₁| = ${fmtNum((z1.q * HC / 1000) ** 2)} GeV² stays. Switch the axis to |t| to see it.`;
+  $("hint").textContent = hint;
+  const off = wallImage(M, 360);
+  drawScene(M, off); drawWall(M, off); drawPlot(M);
+  last = { M, off };
+}
+let last = null;
+function animate() { if (last) drawScene(last.M, last.off); requestAnimationFrame(animate); }
+
+document.querySelectorAll("#shapes button").forEach((b) => b.addEventListener("click", () => { S.shape = b.dataset.shape; update(); }));
+document.querySelectorAll("#axes button").forEach((b) => b.addEventListener("click", () => { S.axis = b.dataset.axis; update(); }));
+document.querySelectorAll("#presets button").forEach((b) => b.addEventListener("click", () => {
+  S.shape = b.dataset.shape; $("R").value = Math.log10(+b.dataset.r); $("p").value = Math.log10(+b.dataset.p); update();
+}));
+["R", "p", "logI", "mott", "all"].forEach((id) => $(id).addEventListener("input", update));
+window.addEventListener("resize", update);
+update();
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) requestAnimationFrame(animate);
+</script>

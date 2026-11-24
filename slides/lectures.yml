@@ -156,9 +156,14 @@ sessions:
 
   - date: 2026-12-01
     id: Lecture_13
-    title: Inelastic scattering
-    reading: Ch. 8
-    status: planned
+    title: Form factors, inelastic scattering
+    reading: Ch. 7–8
+    status: draft  # opens with the L12 slides not reached on 24 Nov (from slide 29)
+    topics:
+      - "Restart at L12 slide 29 (a charge cloud: the form factor)"
+      - "Diffraction explorer widget: rings on a wall behind a disk, minima at fixed qR, θ shrinks with energy while |t| stays, sharp vs smooth edge, ¹²C, ²⁰⁸Pb, proton, pp at the LHC (TOTEM dip)"
+      - "Carried over from L12: radius from the slope (board), same radius different shapes, proton-radius explorer widget, why small Q², G_E and G_M, Rosenbluth, proton radius puzzle"
+      - "Inelastic scattering (Ch. 8): to be written"
 
   - date: 2026-12-04
     id: Lecture_14
