@@ -9,6 +9,7 @@
 !slides/lectures/Lecture_*/Lecture_*.qmd
 !.github/workflows/*.yml
 !exercises/Sheet_*/Sheet_*.pdf
+!exams/2025/*.pdf
 !/Makefile
 !/README.md
 !/LICENSE

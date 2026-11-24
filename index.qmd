@@ -251,6 +251,13 @@ Class work: left- and right-handed spinors, $g=2$, and the proton size from Jeff
 :::
 ::::
 
+## Past exams {.section-title}
+
+Exams from winter 2025/26, for practice:
+[Mock exam](exams/2025/Mock_Exam_2025.pdf){.chip}
+[Exam I](exams/2025/Exam_I_2025.pdf){.chip}
+[Exam II](exams/2025/Exam_II_2025.pdf){.chip}
+
 ## Schedule {.section-title}
 
 Lectures start **16 October 2026**.
